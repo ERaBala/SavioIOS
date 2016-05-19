@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C97949641CEC381C00416BD5 /* Page1.png in Resources */ = {isa = PBXBuildFile; fileRef = C979495F1CEC381C00416BD5 /* Page1.png */; };
+		C97949651CEC381C00416BD5 /* Page2.png in Resources */ = {isa = PBXBuildFile; fileRef = C97949601CEC381C00416BD5 /* Page2.png */; };
+		C97949661CEC381C00416BD5 /* Page3.png in Resources */ = {isa = PBXBuildFile; fileRef = C97949611CEC381C00416BD5 /* Page3.png */; };
+		C97949671CEC381C00416BD5 /* Page4.png in Resources */ = {isa = PBXBuildFile; fileRef = C97949621CEC381C00416BD5 /* Page4.png */; };
+		C97949681CEC381C00416BD5 /* Page5.png in Resources */ = {isa = PBXBuildFile; fileRef = C97949631CEC381C00416BD5 /* Page5.png */; };
+		C97949771CEC987900416BD5 /* ColorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949721CEC987900416BD5 /* ColorCodes.swift */; };
+		C97949781CEC987900416BD5 /* FontCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949731CEC987900416BD5 /* FontCodes.swift */; };
+		C97949791CEC987900416BD5 /* VTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949741CEC987900416BD5 /* VTButton.swift */; };
+		C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949751CEC987900416BD5 /* VTLabel.swift */; };
+		C979497B1CEC987900416BD5 /* VTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949761CEC987900416BD5 /* VTView.swift */; };
+		C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9854A8A1CED9A5000D09AB3 /* SAWelcomViewController.swift */; };
+		C9854A9A1CED9A5000D09AB3 /* SAWelcomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9854A8B1CED9A5000D09AB3 /* SAWelcomViewController.xib */; };
+		C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F8F1CED9EF700E63471 /* PageView.xib */; };
+		C9905F9E1CED9EF700E63471 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F911CED9EF700E63471 /* ButtonTableViewCell.swift */; };
+		C9905F9F1CED9EF700E63471 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F921CED9EF700E63471 /* ButtonTableViewCell.xib */; };
+		C9905FA01CED9EF700E63471 /* FindAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F931CED9EF700E63471 /* FindAddressTableViewCell.swift */; };
+		C9905FA11CED9EF700E63471 /* FindAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F941CED9EF700E63471 /* FindAddressTableViewCell.xib */; };
+		C9905FA21CED9EF700E63471 /* linkButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F951CED9EF700E63471 /* linkButtonTableViewCell.swift */; };
+		C9905FA31CED9EF700E63471 /* linkButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F961CED9EF700E63471 /* linkButtonTableViewCell.xib */; };
+		C9905FA41CED9EF700E63471 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F971CED9EF700E63471 /* TitleTableViewCell.swift */; };
+		C9905FA51CED9EF700E63471 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F981CED9EF700E63471 /* TitleTableViewCell.xib */; };
+		C9905FA61CED9EF700E63471 /* TxtFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F991CED9EF700E63471 /* TxtFieldTableViewCell.swift */; };
+		C9905FA71CED9EF700E63471 /* TxtFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */; };
+		C9905FA81CED9EF700E63471 /* SARegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F9B1CED9EF700E63471 /* SARegistrationViewController.swift */; };
+		C9905FA91CED9EF700E63471 /* SARegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F9C1CED9EF700E63471 /* SARegistrationViewController.xib */; };
+		C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E525AB1CE986FA000FD01E /* AppDelegate.swift */; };
+		C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E525B21CE986FA000FD01E /* Assets.xcassets */; };
+		C9E525B61CE986FA000FD01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E525B41CE986FA000FD01E /* LaunchScreen.storyboard */; };
+		C9E525C41CE9A480000FD01E /* savivo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C21CE9A480000FD01E /* savivo-logo.png */; };
+		C9E525C51CE9A480000FD01E /* savivo-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */; };
+		C9E525C91CE9D29D000FD01E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E525C81CE9D29D000FD01E /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C979495F1CEC381C00416BD5 /* Page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page1.png; sourceTree = "<group>"; };
+		C97949601CEC381C00416BD5 /* Page2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page2.png; sourceTree = "<group>"; };
+		C97949611CEC381C00416BD5 /* Page3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page3.png; sourceTree = "<group>"; };
+		C97949621CEC381C00416BD5 /* Page4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page4.png; sourceTree = "<group>"; };
+		C97949631CEC381C00416BD5 /* Page5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page5.png; sourceTree = "<group>"; };
+		C97949721CEC987900416BD5 /* ColorCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCodes.swift; sourceTree = "<group>"; };
+		C97949731CEC987900416BD5 /* FontCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontCodes.swift; sourceTree = "<group>"; };
+		C97949741CEC987900416BD5 /* VTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTButton.swift; sourceTree = "<group>"; };
+		C97949751CEC987900416BD5 /* VTLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTLabel.swift; sourceTree = "<group>"; };
+		C97949761CEC987900416BD5 /* VTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTView.swift; sourceTree = "<group>"; };
+		C9854A8A1CED9A5000D09AB3 /* SAWelcomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAWelcomViewController.swift; sourceTree = "<group>"; };
+		C9854A8B1CED9A5000D09AB3 /* SAWelcomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAWelcomViewController.xib; sourceTree = "<group>"; };
+		C9905F8F1CED9EF700E63471 /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
+		C9905F911CED9EF700E63471 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		C9905F921CED9EF700E63471 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
+		C9905F931CED9EF700E63471 /* FindAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAddressTableViewCell.swift; sourceTree = "<group>"; };
+		C9905F941CED9EF700E63471 /* FindAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindAddressTableViewCell.xib; sourceTree = "<group>"; };
+		C9905F951CED9EF700E63471 /* linkButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = linkButtonTableViewCell.swift; sourceTree = "<group>"; };
+		C9905F961CED9EF700E63471 /* linkButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = linkButtonTableViewCell.xib; sourceTree = "<group>"; };
+		C9905F971CED9EF700E63471 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		C9905F981CED9EF700E63471 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		C9905F991CED9EF700E63471 /* TxtFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxtFieldTableViewCell.swift; sourceTree = "<group>"; };
+		C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TxtFieldTableViewCell.xib; sourceTree = "<group>"; };
+		C9905F9B1CED9EF700E63471 /* SARegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SARegistrationViewController.swift; sourceTree = "<group>"; };
+		C9905F9C1CED9EF700E63471 /* SARegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SARegistrationViewController.xib; sourceTree = "<group>"; };
+		C9E525A81CE986FA000FD01E /* Savio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E525AB1CE986FA000FD01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9E525B21CE986FA000FD01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9E525B51CE986FA000FD01E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C9E525B71CE986FA000FD01E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9E525C21CE9A480000FD01E /* savivo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo.png"; sourceTree = "<group>"; };
+		C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@2x.png"; sourceTree = "<group>"; };
+		C9E525C81CE9D29D000FD01E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9E525A51CE986FA000FD01E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9E525C91CE9D29D000FD01E /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C979495E1CEC381C00416BD5 /* Welcome screen */ = {
+			isa = PBXGroup;
+			children = (
+				C979495F1CEC381C00416BD5 /* Page1.png */,
+				C97949601CEC381C00416BD5 /* Page2.png */,
+				C97949611CEC381C00416BD5 /* Page3.png */,
+				C97949621CEC381C00416BD5 /* Page4.png */,
+				C97949631CEC381C00416BD5 /* Page5.png */,
+			);
+			path = "Welcome screen";
+			sourceTree = "<group>";
+		};
+		C97949711CEC987900416BD5 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				C97949721CEC987900416BD5 /* ColorCodes.swift */,
+				C97949731CEC987900416BD5 /* FontCodes.swift */,
+				C97949741CEC987900416BD5 /* VTButton.swift */,
+				C97949751CEC987900416BD5 /* VTLabel.swift */,
+				C97949761CEC987900416BD5 /* VTView.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		C9854A891CED9A5000D09AB3 /* WelcomViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9854A8A1CED9A5000D09AB3 /* SAWelcomViewController.swift */,
+				C9854A8B1CED9A5000D09AB3 /* SAWelcomViewController.xib */,
+			);
+			path = WelcomViewController;
+			sourceTree = "<group>";
+		};
+		C9905F8E1CED9EF700E63471 /* RegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9905F8F1CED9EF700E63471 /* PageView.xib */,
+				C9905F901CED9EF700E63471 /* RegistrationCell */,
+				C9905F9B1CED9EF700E63471 /* SARegistrationViewController.swift */,
+				C9905F9C1CED9EF700E63471 /* SARegistrationViewController.xib */,
+			);
+			path = RegistrationViewController;
+			sourceTree = "<group>";
+		};
+		C9905F901CED9EF700E63471 /* RegistrationCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9905F911CED9EF700E63471 /* ButtonTableViewCell.swift */,
+				C9905F921CED9EF700E63471 /* ButtonTableViewCell.xib */,
+				C9905F931CED9EF700E63471 /* FindAddressTableViewCell.swift */,
+				C9905F941CED9EF700E63471 /* FindAddressTableViewCell.xib */,
+				C9905F951CED9EF700E63471 /* linkButtonTableViewCell.swift */,
+				C9905F961CED9EF700E63471 /* linkButtonTableViewCell.xib */,
+				C9905F971CED9EF700E63471 /* TitleTableViewCell.swift */,
+				C9905F981CED9EF700E63471 /* TitleTableViewCell.xib */,
+				C9905F991CED9EF700E63471 /* TxtFieldTableViewCell.swift */,
+				C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */,
+			);
+			path = RegistrationCell;
+			sourceTree = "<group>";
+		};
+		C9E5259F1CE986F9000FD01E = {
+			isa = PBXGroup;
+			children = (
+				C9E525C81CE9D29D000FD01E /* Security.framework */,
+				C9E525AA1CE986FA000FD01E /* Savio */,
+				C9E525A91CE986FA000FD01E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9E525A91CE986FA000FD01E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9E525A81CE986FA000FD01E /* Savio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9E525AA1CE986FA000FD01E /* Savio */ = {
+			isa = PBXGroup;
+			children = (
+				C9905F8E1CED9EF700E63471 /* RegistrationViewController */,
+				C9854A891CED9A5000D09AB3 /* WelcomViewController */,
+				C97949711CEC987900416BD5 /* Global */,
+				C9E525C11CE9A480000FD01E /* Graphics */,
+				C9E525AB1CE986FA000FD01E /* AppDelegate.swift */,
+				C9E525B21CE986FA000FD01E /* Assets.xcassets */,
+				C9E525B41CE986FA000FD01E /* LaunchScreen.storyboard */,
+				C9E525B71CE986FA000FD01E /* Info.plist */,
+			);
+			path = Savio;
+			sourceTree = "<group>";
+		};
+		C9E525C11CE9A480000FD01E /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				C979495E1CEC381C00416BD5 /* Welcome screen */,
+				C9E525C21CE9A480000FD01E /* savivo-logo.png */,
+				C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9E525A71CE986FA000FD01E /* Savio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9E525BA1CE986FA000FD01E /* Build configuration list for PBXNativeTarget "Savio" */;
+			buildPhases = (
+				C9E525A41CE986FA000FD01E /* Sources */,
+				C9E525A51CE986FA000FD01E /* Frameworks */,
+				C9E525A61CE986FA000FD01E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Savio;
+			productName = Savio;
+			productReference = C9E525A81CE986FA000FD01E /* Savio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9E525A01CE986F9000FD01E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Prashant;
+				TargetAttributes = {
+					C9E525A71CE986FA000FD01E = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = C9E525A31CE986F9000FD01E /* Build configuration list for PBXProject "Savio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9E5259F1CE986F9000FD01E;
+			productRefGroup = C9E525A91CE986FA000FD01E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9E525A71CE986FA000FD01E /* Savio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9E525A61CE986FA000FD01E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9E525C51CE9A480000FD01E /* savivo-logo@2x.png in Resources */,
+				C97949681CEC381C00416BD5 /* Page5.png in Resources */,
+				C97949641CEC381C00416BD5 /* Page1.png in Resources */,
+				C9E525C41CE9A480000FD01E /* savivo-logo.png in Resources */,
+				C9905FA31CED9EF700E63471 /* linkButtonTableViewCell.xib in Resources */,
+				C97949661CEC381C00416BD5 /* Page3.png in Resources */,
+				C97949651CEC381C00416BD5 /* Page2.png in Resources */,
+				C9905F9F1CED9EF700E63471 /* ButtonTableViewCell.xib in Resources */,
+				C9E525B61CE986FA000FD01E /* LaunchScreen.storyboard in Resources */,
+				C97949671CEC381C00416BD5 /* Page4.png in Resources */,
+				C9854A9A1CED9A5000D09AB3 /* SAWelcomViewController.xib in Resources */,
+				C9905FA71CED9EF700E63471 /* TxtFieldTableViewCell.xib in Resources */,
+				C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */,
+				C9905FA51CED9EF700E63471 /* TitleTableViewCell.xib in Resources */,
+				C9905FA91CED9EF700E63471 /* SARegistrationViewController.xib in Resources */,
+				C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */,
+				C9905FA11CED9EF700E63471 /* FindAddressTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9E525A41CE986FA000FD01E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9905F9E1CED9EF700E63471 /* ButtonTableViewCell.swift in Sources */,
+				C9905FA01CED9EF700E63471 /* FindAddressTableViewCell.swift in Sources */,
+				C97949781CEC987900416BD5 /* FontCodes.swift in Sources */,
+				C9905FA41CED9EF700E63471 /* TitleTableViewCell.swift in Sources */,
+				C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */,
+				C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */,
+				C9905FA81CED9EF700E63471 /* SARegistrationViewController.swift in Sources */,
+				C97949791CEC987900416BD5 /* VTButton.swift in Sources */,
+				C9905FA61CED9EF700E63471 /* TxtFieldTableViewCell.swift in Sources */,
+				C9905FA21CED9EF700E63471 /* linkButtonTableViewCell.swift in Sources */,
+				C97949771CEC987900416BD5 /* ColorCodes.swift in Sources */,
+				C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */,
+				C979497B1CEC987900416BD5 /* VTView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9E525B41CE986FA000FD01E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9E525B51CE986FA000FD01E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9E525B81CE986FA000FD01E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9E525B91CE986FA000FD01E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9E525BB1CE986FA000FD01E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Savio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Debug;
+		};
+		C9E525BC1CE986FA000FD01E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Savio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9E525A31CE986F9000FD01E /* Build configuration list for PBXProject "Savio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9E525B81CE986FA000FD01E /* Debug */,
+				C9E525B91CE986FA000FD01E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9E525BA1CE986FA000FD01E /* Build configuration list for PBXNativeTarget "Savio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9E525BB1CE986FA000FD01E /* Debug */,
+				C9E525BC1CE986FA000FD01E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9E525A01CE986F9000FD01E /* Project object */;
+}
