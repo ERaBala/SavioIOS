@@ -13,3 +13,4 @@
 #endif /* BridgingHeader_h */
 
 #import "KeychainItemWrapper.h"
+#import <CommonCrypto/CommonCrypto.h>

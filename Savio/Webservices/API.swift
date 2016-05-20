@@ -56,9 +56,11 @@ class API: UIView {
                     {
                         if let addressArray = dict["Addresses"] as? Array<String>
                         {
+                            //if dictionary contains address array return it for the further development
                             self.delegate?.success(addressArray)
                         }
                         else{
+                            //else return an error
                             self.delegate?.error("The postcode doesn't look right")
                         }
                         
@@ -73,6 +75,7 @@ class API: UIView {
         }
     }
     
+    //API call to register the user
     func registerTheUserWithTitle(title:String,first_name:String,second_name:String,date_of_birth:String,email:String,phone_number:String,address_1:String,address_2:String,address_3:String,town:String,country:String,post_code:String,house_number:String)
     {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.188.214:8080/SavioAPI/V1/Customers/Register")!)

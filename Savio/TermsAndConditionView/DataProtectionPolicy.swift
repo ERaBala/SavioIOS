@@ -12,9 +12,15 @@ class DataProtectionPolicy: UIView {
 
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var dataPolicyAndTermsTextView: UITextView!
     override func drawRect(rect: CGRect) {
+         //set the shadow color for back button
         backButton.layer.shadowColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
+        
+        //set the content offset for textview so it,will begin at point(0,0)
+        dataPolicyAndTermsTextView.contentOffset = CGPointMake(0, 0)
     }
     @IBAction func backButtonPressed(sender: AnyObject) {
+        self.removeFromSuperview()
     }
 }
