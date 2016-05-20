@@ -32,12 +32,15 @@
 		C9905FA71CED9EF700E63471 /* TxtFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */; };
 		C9905FA81CED9EF700E63471 /* SARegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F9B1CED9EF700E63471 /* SARegistrationViewController.swift */; };
 		C9905FA91CED9EF700E63471 /* SARegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F9C1CED9EF700E63471 /* SARegistrationViewController.xib */; };
+		C9905FAD1CEDCD1A00E63471 /* Registration.json in Resources */ = {isa = PBXBuildFile; fileRef = C9905FAC1CEDCD1A00E63471 /* Registration.json */; };
 		C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E525AB1CE986FA000FD01E /* AppDelegate.swift */; };
 		C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E525B21CE986FA000FD01E /* Assets.xcassets */; };
 		C9E525B61CE986FA000FD01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E525B41CE986FA000FD01E /* LaunchScreen.storyboard */; };
 		C9E525C41CE9A480000FD01E /* savivo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C21CE9A480000FD01E /* savivo-logo.png */; };
 		C9E525C51CE9A480000FD01E /* savivo-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */; };
 		C9E525C91CE9D29D000FD01E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E525C81CE9D29D000FD01E /* Security.framework */; };
+		C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */; };
+		C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,7 @@
 		C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TxtFieldTableViewCell.xib; sourceTree = "<group>"; };
 		C9905F9B1CED9EF700E63471 /* SARegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SARegistrationViewController.swift; sourceTree = "<group>"; };
 		C9905F9C1CED9EF700E63471 /* SARegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SARegistrationViewController.xib; sourceTree = "<group>"; };
+		C9905FAC1CEDCD1A00E63471 /* Registration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Registration.json; sourceTree = "<group>"; };
 		C9E525A81CE986FA000FD01E /* Savio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E525AB1CE986FA000FD01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E525B21CE986FA000FD01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		C9E525C21CE9A480000FD01E /* savivo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo.png"; sourceTree = "<group>"; };
 		C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@2x.png"; sourceTree = "<group>"; };
 		C9E525C81CE9D29D000FD01E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
+		C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 		C9905F8E1CED9EF700E63471 /* RegistrationViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C9905FAC1CEDCD1A00E63471 /* Registration.json */,
 				C9905F8F1CED9EF700E63471 /* PageView.xib */,
 				C9905F901CED9EF700E63471 /* RegistrationCell */,
 				C9905F9B1CED9EF700E63471 /* SARegistrationViewController.swift */,
@@ -145,6 +152,8 @@
 				C9905F981CED9EF700E63471 /* TitleTableViewCell.xib */,
 				C9905F991CED9EF700E63471 /* TxtFieldTableViewCell.swift */,
 				C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */,
+				C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */,
+				C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */,
 			);
 			path = RegistrationCell;
 			sourceTree = "<group>";
@@ -261,6 +270,8 @@
 				C97949671CEC381C00416BD5 /* Page4.png in Resources */,
 				C9854A9A1CED9A5000D09AB3 /* SAWelcomViewController.xib in Resources */,
 				C9905FA71CED9EF700E63471 /* TxtFieldTableViewCell.xib in Resources */,
+				C9905FAD1CEDCD1A00E63471 /* Registration.json in Resources */,
+				C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */,
 				C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */,
 				C9905FA51CED9EF700E63471 /* TitleTableViewCell.xib in Resources */,
 				C9905FA91CED9EF700E63471 /* SARegistrationViewController.xib in Resources */,
@@ -280,6 +291,7 @@
 				C9905FA01CED9EF700E63471 /* FindAddressTableViewCell.swift in Sources */,
 				C97949781CEC987900416BD5 /* FontCodes.swift in Sources */,
 				C9905FA41CED9EF700E63471 /* TitleTableViewCell.swift in Sources */,
+				C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */,
 				C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */,
 				C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */,
 				C9905FA81CED9EF700E63471 /* SARegistrationViewController.swift in Sources */,
@@ -396,7 +408,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};

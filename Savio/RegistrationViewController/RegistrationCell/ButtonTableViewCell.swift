@@ -7,10 +7,14 @@
 //
 
 import UIKit
-
+protocol ButtonCellDelegate {
+    func buttonClicked(sender:UIButton)
+}
 class ButtonTableViewCell: UITableViewCell {
     
     @IBOutlet weak var btn: UIButton?
+    weak var tblView: UITableView?
+    var delegate: ButtonCellDelegate?
 
 
     override func awakeFromNib() {
@@ -19,12 +23,17 @@ class ButtonTableViewCell: UITableViewCell {
         
         btn?.layer.cornerRadius = 2.0
         btn?.layer.masksToBounds = true
+//        btn?.addTarget(self, action:#selector(btnClicked(_:)), forControlEvents: .TouchUpInside
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+  @IBAction func btnClicked(sender:UIButton){
+        delegate?.buttonClicked(sender)
     }
     
 }

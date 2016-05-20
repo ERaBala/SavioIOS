@@ -86,7 +86,7 @@ class SAWelcomViewController: UIViewController {
         // Set self as the delegate of the scrollview.
 //        scrollView.delegate = self
         
-        // Load the TestView view from the TestView.xib file and configure it properly.
+        // Load the PageView view from the TestView.xib file and configure it properly.
         for var i=0; i<samleDictArr.count; ++i {
             // Load the TestView view.
             let testView = NSBundle.mainBundle().loadNibNamed("PageView", owner: self, options: nil)[0] as! UIView

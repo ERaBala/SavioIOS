@@ -25,8 +25,8 @@
                         <constraint firstAttribute="height" constant="50" id="Mfh-Kw-oBo"/>
                     </constraints>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEh-U8-9LS">
-                    <rect key="frame" x="0.0" y="152" width="600" height="448"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEh-U8-9LS">
+                    <rect key="frame" x="0.0" y="122" width="600" height="478"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="bZP-pR-2FF"/>
@@ -37,7 +37,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="SEh-U8-9LS" secondAttribute="bottom" id="WDa-Ix-4Vx"/>
-                <constraint firstItem="SEh-U8-9LS" firstAttribute="top" secondItem="KrR-W3-iqx" secondAttribute="bottom" constant="60" id="WHu-WR-N3P"/>
+                <constraint firstItem="SEh-U8-9LS" firstAttribute="top" secondItem="KrR-W3-iqx" secondAttribute="bottom" constant="30" id="WHu-WR-N3P"/>
                 <constraint firstAttribute="trailing" secondItem="SEh-U8-9LS" secondAttribute="trailing" id="jZJ-nu-Ooe"/>
                 <constraint firstItem="KrR-W3-iqx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jk0-Ha-JBn"/>
                 <constraint firstItem="SEh-U8-9LS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pg2-tg-cQY"/>

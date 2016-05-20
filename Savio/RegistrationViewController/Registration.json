@@ -1,0 +1,213 @@
+[
+    {
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"We need to know your title and name",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"TitleTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Title",
+							"dropDownArray":["Mr.","Mrs.","Miss."],
+							"text":""
+						},
+						"textField2":{
+							"placeholder":"Name",
+							"dropDownArray":[],
+							"text":""
+						},
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"Wow, thats such a long name we can't save it",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+							
+						}
+				   }
+	},
+
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Surname",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Date of birth",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"That postcode doesn't look right",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"FindAddressTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Postcode",
+							"dropDownArray":[],
+							"text":""
+						},
+						"button":{
+							"placeholder":"Find address",
+							"dropDownArray":[]
+						}
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"Don't forget your house number",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"First Address Line",
+							"dropDownArray":[],
+							"text":""							
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Second Address Line",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Third Address Line",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"Don't forget your town",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Town",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"linkButtonTableViewCell",
+		"metaData":{
+						"button":{
+							"placeholder":"Why do we need this information?",
+							"dropDownArray":[]
+						}
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"That mobile number doesn't look right",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Mobile number",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"This does'nt look loke an email address",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Email",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"ButtonTableViewCell",
+		"metaData":{
+						"button":{
+							"placeholder":"Register",
+							"dropDownArray":[]
+						}
+				   }
+	},
+	{
+		"classType":"linkButtonTableViewCell",
+		"metaData":{
+						"button":{
+							"placeholder":"Back",
+							"dropDownArray":[]
+						}
+				   }
+	},
+
+
+
+]

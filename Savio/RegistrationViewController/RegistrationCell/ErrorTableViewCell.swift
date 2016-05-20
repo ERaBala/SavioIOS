@@ -1,24 +1,17 @@
 //
-//  linkButtonTableViewCell.swift
+//  ErrorTableViewCell.swift
 //  Savio
 //
-//  Created by Prashant on 19/05/16.
+//  Created by Prashant on 20/05/16.
 //  Copyright © 2016 Prashant. All rights reserved.
 //
 
 import UIKit
 
-protocol linkButtonTableViewCellDelegate {
-    
-    func linkButtonClicked(sender:UIButton)
-}
+class ErrorTableViewCell: UITableViewCell {
 
-class linkButtonTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var btnLink: UIButton?
-    weak var tblView: UITableView?
-    var delegate: linkButtonTableViewCellDelegate?
-    
+    @IBOutlet weak var lblError: UILabel?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
