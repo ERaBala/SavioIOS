@@ -133,7 +133,6 @@
 		A8392A431CEEE0C200C7EE48 /* GothamRounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8392A401CEEE0C200C7EE48 /* GothamRounded-Medium.otf */; };
 		A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897514C1CEF099500F122AD /* CreatePINViewController.swift */; };
 		A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A897514D1CEF099500F122AD /* CreatePINViewController.xib */; };
-		A89751551CEF24AB00F122AD /* Link.html in Resources */ = {isa = PBXBuildFile; fileRef = A89751541CEF24AB00F122AD /* Link.html */; };
 		A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */; };
 		A8B74C3D1CEDD152003A5D9A /* DataProtectionPolicy.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */; };
 		C97949641CEC381C00416BD5 /* Page1.png in Resources */ = {isa = PBXBuildFile; fileRef = C979495F1CEC381C00416BD5 /* Page1.png */; };
@@ -170,6 +169,7 @@
 		C9E525C91CE9D29D000FD01E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E525C81CE9D29D000FD01E /* Security.framework */; };
 		C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */; };
 		C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */; };
+		C9FD9A9C1CEF5C16006FF2C7 /* Link.html in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A9B1CEF5C16006FF2C7 /* Link.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -301,7 +301,6 @@
 		A8392A401CEEE0C200C7EE48 /* GothamRounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Medium.otf"; sourceTree = "<group>"; };
 		A897514C1CEF099500F122AD /* CreatePINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePINViewController.swift; sourceTree = "<group>"; };
 		A897514D1CEF099500F122AD /* CreatePINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePINViewController.xib; sourceTree = "<group>"; };
-		A89751541CEF24AB00F122AD /* Link.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Link.html; path = ../../../../Downloads/Link.html; sourceTree = "<group>"; };
 		A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProtectionPolicy.swift; sourceTree = "<group>"; };
 		A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataProtectionPolicy.xib; sourceTree = "<group>"; };
 		C979495F1CEC381C00416BD5 /* Page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page1.png; sourceTree = "<group>"; };
@@ -340,6 +339,7 @@
 		C9E525C81CE9D29D000FD01E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
+		C9FD9A9B1CEF5C16006FF2C7 /* Link.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Link.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,7 +376,7 @@
 		A8095B921CEDC4D5006366F7 /* TermsAndConditionView */ = {
 			isa = PBXGroup;
 			children = (
-				A89751541CEF24AB00F122AD /* Link.html */,
+				C9FD9A9B1CEF5C16006FF2C7 /* Link.html */,
 				A8095B931CEDC4D5006366F7 /* ImportantInformationView.swift */,
 				A8095B941CEDC4D5006366F7 /* ImportantInformationView.xib */,
 				A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */,
@@ -760,6 +760,7 @@
 				A8095C471CEDC616006366F7 /* pre-loader@2x33.png in Resources */,
 				A8095C3E1CEDC616006366F7 /* pre-loader@2x25.png in Resources */,
 				A8095C711CEDC617006366F7 /* pre-loader@3x8.png in Resources */,
+				C9FD9A9C1CEF5C16006FF2C7 /* Link.html in Resources */,
 				A8095C541CEDC616006366F7 /* pre-loader@3x13.png in Resources */,
 				A8095C581CEDC616006366F7 /* pre-loader@3x17.png in Resources */,
 				A8095C271CEDC616006366F7 /* pre-loader@1x4.png in Resources */,
@@ -827,6 +828,13 @@
 				C9905FA71CED9EF700E63471 /* TxtFieldTableViewCell.xib in Resources */,
 				C9905FAD1CEDCD1A00E63471 /* Registration.json in Resources */,
 				C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */,
+				A8095C2D1CEDC616006366F7 /* pre-loader@2x.png in Resources */,
+				A8095C6B1CEDC617006366F7 /* pre-loader@3x34.png in Resources */,
+				A8095C351CEDC616006366F7 /* pre-loader@2x17.png in Resources */,
+				A8095C201CEDC616006366F7 /* pre-loader@1x3.png in Resources */,
+				A8095C661CEDC617006366F7 /* pre-loader@3x3.png in Resources */,
+				A8095C1C1CEDC616006366F7 /* pre-loader@1x26.png in Resources */,
+				A8095C5A1CEDC616006366F7 /* pre-loader@3x19.png in Resources */,
 				C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */,
 				C9905FA51CED9EF700E63471 /* TitleTableViewCell.xib in Resources */,
 				A8095C261CEDC616006366F7 /* pre-loader@1x35.png in Resources */,
@@ -853,7 +861,6 @@
 				A8095C4F1CEDC616006366F7 /* pre-loader@2x9.png in Resources */,
 				A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */,
 				A8095C0B1CEDC616006366F7 /* pre-loader@1x10.png in Resources */,
-				A89751551CEF24AB00F122AD /* Link.html in Resources */,
 				A8095C0E1CEDC616006366F7 /* pre-loader@1x13.png in Resources */,
 				A8095C511CEDC616006366F7 /* pre-loader@3x10.png in Resources */,
 				A8095C441CEDC616006366F7 /* pre-loader@2x30.png in Resources */,
@@ -904,6 +911,7 @@
 				A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */,
 				C9905FA41CED9EF700E63471 /* TitleTableViewCell.swift in Sources */,
 				C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */,
+				A8392A1E1CEED33600C7EE48 /* NSString-MD5.swift in Sources */,
 				C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */,
 				A8095B981CEDC4D5006366F7 /* ImportantInformationView.swift in Sources */,
 				C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */,
@@ -974,6 +982,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = ../Savio/BridgingHeader.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1011,6 +1020,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = ../Savio/BridgingHeader.h;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1024,6 +1034,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1037,7 +1048,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/maheshwari/Workspace/SavioIOS/Savio/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
