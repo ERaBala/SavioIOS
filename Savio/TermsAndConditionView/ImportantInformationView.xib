@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GothamRounded-Medium.otf">
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
-            <string>GothamRounded-Medium</string>
         </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
         </mutableArray>
     </customFonts>
@@ -27,8 +27,8 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pp-S0-ESN">
                             <rect key="frame" x="10" y="40" width="191" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="191" id="5Ts-tZ-QoQ"/>
-                                <constraint firstAttribute="height" constant="21" id="ADy-Ym-veJ"/>
+                                <constraint firstAttribute="width" constant="191" id="QDP-sM-nfa"/>
+                                <constraint firstAttribute="height" constant="21" id="WIT-rR-TZp"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,17 +37,20 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3W-4L-dLT">
                             <rect key="frame" x="10" y="76" width="70" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="21" id="F2n-j6-mWH"/>
-                                <constraint firstAttribute="width" constant="70" id="PpY-x0-pL3"/>
+                                <constraint firstAttribute="width" constant="70" id="2QB-05-qdq"/>
+                                <constraint firstAttribute="height" constant="21" id="PGS-w7-qKa"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="13"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slp-4J-ir4">
-                            <rect key="frame" x="10" y="511" width="560" height="29"/>
+                            <rect key="frame" x="10" y="489" width="560" height="40"/>
                             <color key="backgroundColor" red="0.95294117647058818" green="0.68627450980392157" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="dhx-Sn-lmc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                             <state key="normal" title="Accept">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -69,18 +72,25 @@
                                 <action selector="gotItButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="3YM-N8-a0A"/>
                             </connections>
                         </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RB6-7D-MCA">
+                            <rect key="frame" x="10" y="100" width="560" height="375"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda..</string>
+                            <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" secureTextEntry="YES"/>
+                        </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRx-i0-IUK">
-                            <rect key="frame" x="266" y="543" width="48" height="30"/>
+                            <rect key="frame" x="266" y="537" width="48" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="48" id="2Jo-Ii-bon"/>
-                                <constraint firstAttribute="height" constant="30" id="H8n-QY-y0O"/>
+                                <constraint firstAttribute="width" constant="48" id="Bmw-KP-FXL"/>
+                                <constraint firstAttribute="height" constant="30" id="M4P-e4-wNw"/>
                             </constraints>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
                                     <fragment content="Cancel">
                                         <attributes>
                                             <color key="NSColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="14" name="GothamRounded-Light"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
@@ -90,92 +100,38 @@
                                 <action selector="cancelButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xhc-bo-dn6"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wu-8K-6ez">
-                            <rect key="frame" x="10" y="466" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="20" id="hvU-Xm-c1n"/>
-                                <constraint firstAttribute="height" constant="20" id="pWe-dT-vr1"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="check-box.png"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                    <integer key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="checkButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="6AX-GW-5U7"/>
-                            </connections>
-                        </button>
-                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7oX-Au-7ez">
-                            <rect key="frame" x="40" y="440" width="532" height="55"/>
-                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="55" id="p1a-vh-nLG"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="delegate" destination="iN0-l3-epB" id="GNC-fl-tIP"/>
-                            </connections>
-                        </webView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RB6-7D-MCA">
-                            <rect key="frame" x="10" y="100" width="560" height="346"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda..</string>
-                            <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" secureTextEntry="YES"/>
-                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="D3W-4L-dLT" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="1fG-2q-eAC"/>
-                        <constraint firstItem="slp-4J-ir4" firstAttribute="top" secondItem="7oX-Au-7ez" secondAttribute="bottom" constant="16" id="1fp-yC-HCm"/>
-                        <constraint firstItem="RB6-7D-MCA" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="54a-9g-MfN"/>
-                        <constraint firstItem="uRx-i0-IUK" firstAttribute="top" secondItem="slp-4J-ir4" secondAttribute="bottom" constant="3" id="6Qr-Sw-hbj"/>
-                        <constraint firstAttribute="trailing" secondItem="slp-4J-ir4" secondAttribute="trailing" constant="10" id="7k8-W9-NV8"/>
-                        <constraint firstItem="7oX-Au-7ez" firstAttribute="top" secondItem="RB6-7D-MCA" secondAttribute="bottom" constant="-6" id="7w6-l2-CXA"/>
-                        <constraint firstItem="uRx-i0-IUK" firstAttribute="centerX" secondItem="C0c-tE-4TG" secondAttribute="centerX" id="9Il-Y2-uSM"/>
-                        <constraint firstAttribute="bottom" secondItem="uRx-i0-IUK" secondAttribute="bottom" constant="7" id="EhK-Jw-2hq"/>
-                        <constraint firstItem="6Pp-S0-ESN" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="I1U-Ba-2cf"/>
-                        <constraint firstAttribute="trailing" secondItem="7oX-Au-7ez" secondAttribute="trailing" constant="8" id="J2u-7R-w6I"/>
-                        <constraint firstItem="7oX-Au-7ez" firstAttribute="leading" secondItem="8wu-8K-6ez" secondAttribute="trailing" constant="10" id="JB3-ad-rK1"/>
-                        <constraint firstItem="6Pp-S0-ESN" firstAttribute="top" secondItem="C0c-tE-4TG" secondAttribute="top" constant="40" id="JHR-HF-TDE"/>
-                        <constraint firstItem="RB6-7D-MCA" firstAttribute="centerX" secondItem="C0c-tE-4TG" secondAttribute="centerX" id="KDo-di-EzO"/>
-                        <constraint firstAttribute="trailing" secondItem="RB6-7D-MCA" secondAttribute="trailing" constant="10" id="Uhs-Vw-1ud"/>
-                        <constraint firstItem="RB6-7D-MCA" firstAttribute="top" secondItem="D3W-4L-dLT" secondAttribute="bottom" constant="3" id="WAs-3W-b1l"/>
-                        <constraint firstItem="7oX-Au-7ez" firstAttribute="top" secondItem="RB6-7D-MCA" secondAttribute="bottom" constant="-6" id="WE8-sU-02w"/>
-                        <constraint firstItem="slp-4J-ir4" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="f9Z-uq-WYy"/>
-                        <constraint firstItem="7oX-Au-7ez" firstAttribute="leading" secondItem="8wu-8K-6ez" secondAttribute="trailing" constant="10" id="jVj-XP-qCW"/>
-                        <constraint firstItem="uRx-i0-IUK" firstAttribute="top" secondItem="slp-4J-ir4" secondAttribute="bottom" constant="3" id="muM-tb-MzF"/>
-                        <constraint firstItem="8wu-8K-6ez" firstAttribute="top" secondItem="RB6-7D-MCA" secondAttribute="bottom" constant="20" id="nBW-7s-0EF"/>
-                        <constraint firstItem="D3W-4L-dLT" firstAttribute="top" secondItem="6Pp-S0-ESN" secondAttribute="bottom" constant="15" id="oZz-YW-Ne2"/>
-                        <constraint firstItem="slp-4J-ir4" firstAttribute="top" secondItem="7oX-Au-7ez" secondAttribute="bottom" constant="16" id="tQC-e3-Hgl"/>
-                        <constraint firstItem="slp-4J-ir4" firstAttribute="top" secondItem="8wu-8K-6ez" secondAttribute="bottom" constant="25" id="uZz-nb-l7Z"/>
-                        <constraint firstItem="8wu-8K-6ez" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="whg-0s-tmd"/>
-                        <constraint firstItem="D3W-4L-dLT" firstAttribute="top" secondItem="6Pp-S0-ESN" secondAttribute="bottom" constant="15" id="yqx-WL-5d1"/>
+                        <constraint firstItem="RB6-7D-MCA" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="5tv-vI-fyL"/>
+                        <constraint firstAttribute="trailing" secondItem="RB6-7D-MCA" secondAttribute="trailing" constant="10" id="6YF-9p-sSw"/>
+                        <constraint firstAttribute="bottom" secondItem="uRx-i0-IUK" secondAttribute="bottom" constant="13" id="F3X-eg-qH0"/>
+                        <constraint firstItem="6Pp-S0-ESN" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="RBO-dN-8qO"/>
+                        <constraint firstItem="D3W-4L-dLT" firstAttribute="top" secondItem="6Pp-S0-ESN" secondAttribute="bottom" constant="15" id="SeG-Ve-tcz"/>
+                        <constraint firstItem="RB6-7D-MCA" firstAttribute="top" secondItem="D3W-4L-dLT" secondAttribute="bottom" constant="3" id="WPI-0s-Ni0"/>
+                        <constraint firstAttribute="trailing" secondItem="slp-4J-ir4" secondAttribute="trailing" constant="10" id="Wuq-QM-nJv"/>
+                        <constraint firstItem="slp-4J-ir4" firstAttribute="top" secondItem="RB6-7D-MCA" secondAttribute="bottom" constant="14" id="hJ4-rT-7kP"/>
+                        <constraint firstItem="RB6-7D-MCA" firstAttribute="centerX" secondItem="C0c-tE-4TG" secondAttribute="centerX" id="m3O-cY-OoH"/>
+                        <constraint firstItem="6Pp-S0-ESN" firstAttribute="top" secondItem="C0c-tE-4TG" secondAttribute="top" constant="40" id="oov-xw-6le"/>
+                        <constraint firstItem="slp-4J-ir4" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="paJ-fF-x3h"/>
+                        <constraint firstItem="uRx-i0-IUK" firstAttribute="centerX" secondItem="slp-4J-ir4" secondAttribute="centerX" id="rNa-s8-Paj"/>
+                        <constraint firstItem="D3W-4L-dLT" firstAttribute="leading" secondItem="C0c-tE-4TG" secondAttribute="leading" constant="10" id="v2B-yM-fZ9"/>
+                        <constraint firstItem="uRx-i0-IUK" firstAttribute="top" secondItem="slp-4J-ir4" secondAttribute="bottom" constant="8" id="yaf-OY-cLI"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="yqx-WL-5d1"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="C0c-tE-4TG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="BHQ-kk-LxB"/>
-                <constraint firstAttribute="trailing" secondItem="C0c-tE-4TG" secondAttribute="trailing" constant="10" id="EM9-De-AKT"/>
-                <constraint firstItem="C0c-tE-4TG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Uwe-2L-cHD"/>
-                <constraint firstAttribute="bottom" secondItem="C0c-tE-4TG" secondAttribute="bottom" constant="10" id="gZW-O5-qZA"/>
+                <constraint firstAttribute="bottom" secondItem="C0c-tE-4TG" secondAttribute="bottom" constant="10" id="1jU-lb-RvJ"/>
+                <constraint firstItem="C0c-tE-4TG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="TQM-kE-ZRB"/>
+                <constraint firstAttribute="trailing" secondItem="C0c-tE-4TG" secondAttribute="trailing" constant="10" id="jk6-Lc-Ccx"/>
+                <constraint firstItem="C0c-tE-4TG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kW7-LF-eny"/>
             </constraints>
             <connections>
-                <outlet property="acceptTermsWebView" destination="7oX-Au-7ez" id="16x-Ov-yEK"/>
-                <outlet property="checkButton" destination="8wu-8K-6ez" id="wUn-gA-TxA"/>
                 <outlet property="gotItButton" destination="slp-4J-ir4" id="ZSX-8s-1nK"/>
                 <outlet property="termsAndConditionTextView" destination="RB6-7D-MCA" id="ev3-J2-9Tp"/>
             </connections>
-            <point key="canvasLocation" x="278" y="359"/>
+            <point key="canvasLocation" x="379" y="331"/>
         </view>
     </objects>
-    <resources>
-        <image name="check-box.png" width="12" height="12"/>
-    </resources>
 </document>

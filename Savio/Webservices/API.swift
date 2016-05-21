@@ -81,26 +81,28 @@ class API: UIView {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.188.214:8080/SavioAPI/V1/Customers/Register")!)
         request.HTTPMethod = "POST"
         
-        let params = ["title":title,"first_name":first_name,"second_name":second_name,"date_of_birth":date_of_birth,"email":email,"phone_number":phone_number,"address_1":address_1,"address_2":address_2,"address_3":address_3,"town":town,"country":country,"post_code":post_code,"house_number":house_number] as Dictionary<String, String>
+        let params = ["title":title,"first_name":first_name,"second_name":second_name,"date_of_birth":date_of_birth,"email":email,"phone_number":phone_number,"address_1":address_1,"address_2":address_2,"address_3":address_3,"town":town,"country":country,"post_code":post_code,"house_number":house_number, "pin":"1234","confirm_pin":"1234"] as Dictionary<String, String>
 
         
         request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            print("Response: \(response)")
-            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Body: \(strData)")
-            do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    print(jsonResult)
+        print(request)
+                let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+            if let data = data
+            {
+                let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                 print(json)
+                if let dict = json as? NSDictionary
+                {
+                    
+                    
                 }
-            } catch let error as NSError {
-                print(error.localizedDescription)
             }
             
-        })
+        }
+        dataTask.resume()
+
         
         
     }
