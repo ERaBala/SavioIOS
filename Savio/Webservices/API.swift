@@ -10,6 +10,8 @@ import UIKit
 import SystemConfiguration
 import Foundation
 
+let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
+var OTP = ""
 
 protocol PostCodeVerification {
     func success(addressArray:Array<String>)
@@ -52,7 +54,7 @@ class API: UIView {
                 if let data = data
                 {
                     let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
-                    if let dict = json as? NSDictionary
+                    if let dict = json as? Dictionary<String,String>
                     {
                         if let addressArray = dict["Addresses"] as? Array<String>
                         {
@@ -78,7 +80,7 @@ class API: UIView {
     //API call to register the user
     func registerTheUserWithTitle(title:String,first_name:String,second_name:String,date_of_birth:String,email:String,phone_number:String,address_1:String,address_2:String,address_3:String,town:String,country:String,post_code:String,house_number:String)
     {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.188.214:8080/SavioAPI/V1/Customers/Register")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
         request.HTTPMethod = "POST"
         
         let params = ["title":title,"first_name":first_name,"second_name":second_name,"date_of_birth":date_of_birth,"email":email,"phone_number":phone_number,"address_1":address_1,"address_2":address_2,"address_3":address_3,"town":town,"country":country,"post_code":post_code,"house_number":house_number, "pin":"1234","confirm_pin":"1234"] as Dictionary<String, String>
@@ -93,10 +95,45 @@ class API: UIView {
             {
                 let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
                  print(json)
-                if let dict = json as? NSDictionary
+                if let dict = json as? Dictionary<String,String>
                 {
                     
                     
+                }
+                else{
+                    print("error")
+                }
+            }
+            
+        }
+        dataTask.resume()
+    }
+    
+    
+    
+    func getOTP(title:String,first_name:String,second_name:String,date_of_birth:String,email:String,phone_number:String,address_1:String,address_2:String,address_3:String,town:String,country:String,post_code:String,house_number:String) {
+        let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/OTP/GetOTP",baseURL))!)
+        request.HTTPMethod = "POST"
+        
+        let params = ["title":title,"first_name":first_name,"second_name":second_name,"date_of_birth":date_of_birth,"email":email,"phone_number":phone_number,"address_1":address_1,"address_2":address_2,"address_3":address_3,"town":town,"country":country,"post_code":post_code,"house_number":house_number] as Dictionary<String, String>
+        
+        
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        print(request)
+        let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+            if let data = data
+            {
+                let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                print(json)
+                if let dict = json as? Dictionary<String,String>
+                {
+                    OTP = dict["otp"]! as String
+                    
+                }
+                else{
+                    print("error ")
                 }
             }
             
@@ -104,9 +141,7 @@ class API: UIView {
         dataTask.resume()
 
         
-        
     }
-    
     
     //KeychainItemWrapper methods
     func storeValueInKeychain(pin:String){

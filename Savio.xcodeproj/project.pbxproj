@@ -167,6 +167,8 @@
 		C9E525C41CE9A480000FD01E /* savivo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C21CE9A480000FD01E /* savivo-logo.png */; };
 		C9E525C51CE9A480000FD01E /* savivo-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */; };
 		C9E525C91CE9D29D000FD01E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E525C81CE9D29D000FD01E /* Security.framework */; };
+		C9E535F31CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E535F11CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift */; };
+		C9E535F41CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E535F21CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib */; };
 		C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */; };
 		C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */; };
 		C9FD9A9C1CEF5C16006FF2C7 /* Link.html in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A9B1CEF5C16006FF2C7 /* Link.html */; };
@@ -337,6 +339,8 @@
 		C9E525C21CE9A480000FD01E /* savivo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo.png"; sourceTree = "<group>"; };
 		C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@2x.png"; sourceTree = "<group>"; };
 		C9E525C81CE9D29D000FD01E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C9E535F11CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAEnterYourPINViewController.swift; sourceTree = "<group>"; };
+		C9E535F21CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAEnterYourPINViewController.xib; sourceTree = "<group>"; };
 		C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		C9FD9A9B1CEF5C16006FF2C7 /* Link.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Link.html; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 			children = (
 				A897514C1CEF099500F122AD /* CreatePINViewController.swift */,
 				A897514D1CEF099500F122AD /* CreatePINViewController.xib */,
+				C9E535F11CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift */,
+				C9E535F21CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib */,
 			);
 			path = PINViewController;
 			sourceTree = "<group>";
@@ -862,6 +868,7 @@
 				A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */,
 				A8095C0B1CEDC616006366F7 /* pre-loader@1x10.png in Resources */,
 				A8095C0E1CEDC616006366F7 /* pre-loader@1x13.png in Resources */,
+				C9E535F41CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib in Resources */,
 				A8095C511CEDC616006366F7 /* pre-loader@3x10.png in Resources */,
 				A8095C441CEDC616006366F7 /* pre-loader@2x30.png in Resources */,
 				A8095C461CEDC616006366F7 /* pre-loader@2x32.png in Resources */,
@@ -922,6 +929,7 @@
 				C9905FA21CED9EF700E63471 /* linkButtonTableViewCell.swift in Sources */,
 				A8095C751CEDC6A3006366F7 /* API.swift in Sources */,
 				C97949771CEC987900416BD5 /* ColorCodes.swift in Sources */,
+				C9E535F31CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift in Sources */,
 				C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */,
 				A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */,
 				C979497B1CEC987900416BD5 /* VTView.swift in Sources */,

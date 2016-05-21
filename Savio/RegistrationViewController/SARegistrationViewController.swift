@@ -13,7 +13,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     @IBOutlet weak var tblView: UITableView!
     var arrRegistration  = [Dictionary <String, AnyObject>]()
     var arrRegistrationFields = [UITableViewCell]()
-
+    let apiClass = API()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,6 +198,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
         }
        self.createCells()
+        
+        //Call the Register API 
+         apiClass.registerTheUserWithTitle("Miss", first_name: "Maheshwari", second_name: "Kodande", date_of_birth: "04|09|1990", email: "maheshwari.kodande@vsplc.com", phone_number: "9876543210", address_1: "Teerth tecnosp", address_2: "", address_3: "", town: "Pune", country: "India", post_code: "411045", house_number: "1234")
     }
     
 //    @IBAction func clickOnRegisterButton(sender:UIButton){

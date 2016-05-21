@@ -27,7 +27,6 @@ class ImportantInformationView: UIView {
         //set the content offset for textview so it,will begin at point(0,0)
         termsAndConditionTextView.contentOffset = CGPointMake(0, 0)
   
-   
         
     }
     
