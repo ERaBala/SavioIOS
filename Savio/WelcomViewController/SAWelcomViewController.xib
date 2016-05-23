@@ -45,7 +45,7 @@
                         <constraint firstAttribute="height" constant="40" id="ncu-Jf-PqH"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="20"/>
-                    <state key="normal" title="Sign up to Savio     &gt;">
+                    <state key="normal" title="Sign up to Savio">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
