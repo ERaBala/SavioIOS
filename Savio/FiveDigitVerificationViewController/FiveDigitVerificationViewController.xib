@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GothamRounded-Light.otf">
+            <string>GothamRounded-Light</string>
             <string>GothamRounded-Light</string>
         </mutableArray>
         <mutableArray key="GothamRounded-Medium.otf">
@@ -19,6 +20,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FiveDigitVerificationViewController" customModule="Savio" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="0wM-Li-Y8L" id="HqS-yb-tvc"/>
+                <outlet property="codeDoesNotMatchLabel" destination="YnB-er-ZmT" id="9rT-3q-Lkn"/>
                 <outlet property="fiveDigitTextField" destination="Vat-uq-VUl" id="emD-V9-eS9"/>
                 <outlet property="gotItButton" destination="F0n-B1-XQp" id="yq7-i5-i25"/>
                 <outlet property="headerText" destination="8DL-NG-yGU" id="6Oi-k5-kmS"/>
@@ -59,7 +61,8 @@
                         <fragment content="Your code was sent to 09876543210">
                             <attributes>
                                 <color key="NSColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" metaFont="system" size="14"/>
+                                <font key="NSFont" size="14" name="GothamRounded-Light"/>
+                                <font key="NSOriginalFont" size="14" name="GothamRounded-Light"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -86,14 +89,14 @@
                         <action selector="clickOnGotItButton:" destination="-1" eventType="touchUpInside" id="Wu4-1E-8TP"/>
                     </connections>
                 </button>
-                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-uq-VUl">
-                    <rect key="frame" x="30" y="285" width="540" height="30"/>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-uq-VUl">
+                    <rect key="frame" x="30" y="234" width="540" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="280" id="1h3-uh-xpX"/>
-                        <constraint firstAttribute="height" constant="30" id="end-TZ-Q6z"/>
+                        <constraint firstAttribute="height" constant="40" id="end-TZ-Q6z"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="1h3-uh-xpX"/>
@@ -145,11 +148,21 @@
                         <action selector="clickOnBackButton:" destination="-1" eventType="touchUpInside" id="I2k-mC-Gj6"/>
                     </connections>
                 </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code does not match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnB-er-ZmT">
+                    <rect key="frame" x="171" y="267" width="258" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="ef4-W7-OZY"/>
+                        <constraint firstAttribute="width" constant="258" id="tNL-i6-SX6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="0wM-Li-Y8L" firstAttribute="top" secondItem="F0n-B1-XQp" secondAttribute="bottom" constant="20" id="0Gw-OQ-Pkn"/>
-                <constraint firstItem="Vat-uq-VUl" firstAttribute="top" secondItem="GpB-HN-YI8" secondAttribute="bottom" constant="26" id="1hE-Yr-Z7i"/>
+                <constraint firstItem="Vat-uq-VUl" firstAttribute="top" secondItem="GpB-HN-YI8" secondAttribute="bottom" constant="-25" id="1hE-Yr-Z7i"/>
                 <constraint firstItem="GpB-HN-YI8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5ie-b5-abX"/>
                 <constraint firstItem="0wM-Li-Y8L" firstAttribute="top" secondItem="F0n-B1-XQp" secondAttribute="bottom" constant="18" id="6d7-X8-5dK"/>
                 <constraint firstItem="F0n-B1-XQp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7nX-sf-fQh"/>
@@ -161,13 +174,15 @@
                 <constraint firstItem="aKg-ku-OcO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NwS-IL-xii"/>
                 <constraint firstAttribute="trailing" secondItem="Vat-uq-VUl" secondAttribute="trailing" constant="30" id="P7K-dA-dDH"/>
                 <constraint firstItem="8DL-NG-yGU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cSQ-uf-bMh"/>
+                <constraint firstItem="YnB-er-ZmT" firstAttribute="top" secondItem="GpB-HN-YI8" secondAttribute="bottom" constant="8" id="dDN-da-IsZ"/>
                 <constraint firstAttribute="bottom" secondItem="F0n-B1-XQp" secondAttribute="bottom" constant="140" id="eAX-3h-kLx"/>
                 <constraint firstItem="F0n-B1-XQp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="gIq-00-wAk"/>
-                <constraint firstItem="aKg-ku-OcO" firstAttribute="top" secondItem="Vat-uq-VUl" secondAttribute="bottom" constant="14" id="h3H-zH-nut"/>
+                <constraint firstItem="aKg-ku-OcO" firstAttribute="top" secondItem="Vat-uq-VUl" secondAttribute="bottom" constant="55" id="h3H-zH-nut"/>
                 <constraint firstAttribute="trailing" secondItem="F0n-B1-XQp" secondAttribute="trailing" constant="30" id="hxf-gm-KuS"/>
                 <constraint firstItem="Vat-uq-VUl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="i8e-TS-1JO"/>
                 <constraint firstItem="8DL-NG-yGU" firstAttribute="top" secondItem="Oqd-I4-ww3" secondAttribute="bottom" constant="5" id="oS5-LR-dNB"/>
                 <constraint firstItem="Vat-uq-VUl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="wVH-9a-gzn"/>
+                <constraint firstItem="YnB-er-ZmT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yvz-LR-eYa"/>
                 <constraint firstItem="GpB-HN-YI8" firstAttribute="top" secondItem="8DL-NG-yGU" secondAttribute="bottom" constant="8" id="zRG-ex-x4I"/>
             </constraints>
             <variation key="default">

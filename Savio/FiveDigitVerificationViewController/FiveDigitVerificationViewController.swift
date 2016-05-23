@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FiveDigitVerificationViewController: UIViewController {
+class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var headerText: UILabel!
    
+    @IBOutlet weak var codeDoesNotMatchLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var gotItButton: UIButton!
     @IBOutlet weak var resentCodeButton: UIButton!
@@ -35,8 +36,16 @@ class FiveDigitVerificationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+      //UITextField delegate method
     
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        if(textField.isFirstResponder())
+        {
+            textField.resignFirstResponder()
+        }
+        return true
+        
+    }
     @IBAction func clickOnBackButton(sender: AnyObject) {
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
@@ -56,9 +65,19 @@ class FiveDigitVerificationViewController: UIViewController {
             headerText.text = "Enter your 5 digit code"
             gotItButton.setTitle("Confirm", forState: UIControlState.Normal)
         }
-        else if(yourCodeSentLabel.hidden == true){
-            let createPINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
-            self.navigationController?.pushViewController(createPINView, animated: true)
+        else if(yourCodeSentLabel.hidden == true)
+        {
+            if(fiveDigitTextField.text == "")
+            {
+                codeDoesNotMatchLabel.text = "Please enter code"
+                codeDoesNotMatchLabel.hidden = false;
+            }
+            else{
+                codeDoesNotMatchLabel.hidden = true;
+                let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+                self.navigationController?.pushViewController(objCreatePINView, animated: true)
+            }
+      
         }
 
         

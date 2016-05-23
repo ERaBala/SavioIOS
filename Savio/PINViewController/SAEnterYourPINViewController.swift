@@ -8,8 +8,12 @@
 
 import UIKit
 
-class SAEnterYourPINViewController: UIViewController {
+class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var btnForgottPasscode: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var lblSentYouCode: UILabel!
+    @IBOutlet weak var lblForgottonYourPasscode: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var forgotPasscodeButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -37,6 +41,15 @@ class SAEnterYourPINViewController: UIViewController {
         loginButton.layer.cornerRadius = 5
         
     }
+    //UITextField delegate method
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        if(textField.isFirstResponder())
+        {
+            textField.resignFirstResponder()
+        }
+        return true
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,15 +57,34 @@ class SAEnterYourPINViewController: UIViewController {
     }
     @IBAction func clickOnRegisterButton(sender: AnyObject) {
         
-        let saRegisterViewController = SARegistrationViewController(nibName:"SARegistrationViewController",bundle: nil)
-        self.navigationController?.pushViewController(saRegisterViewController, animated: true)
+        if(registerButton.titleLabel?.text == "Register")
+        {
+            let saRegisterViewController = SARegistrationViewController(nibName:"SARegistrationViewController",bundle: nil)
+            self.navigationController?.pushViewController(saRegisterViewController, animated: true)
+        }
+        else{
+            let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+            self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+        }
+  
     }
     
     @IBAction func clickedOnForgotPasscode(sender: AnyObject) {
-        let createPINViewController = CreatePINViewController(nibName:"CreatePINViewController",bundle: nil)
-        self.navigationController?.pushViewController(createPINViewController, animated: true)
+        lblSentYouCode.hidden = false
+        lblForgottonYourPasscode.hidden = false
+        btnCancel.hidden = false
+        registerButton .setTitle("Send me a code", forState: UIControlState.Normal)
+        
+        forgotPasscodeButton.hidden = true
+        loginButton.hidden = true
+        enterPasscodeTextField.hidden = true
+
     }
    
+    @IBAction func onClickCancelButton(sender: AnyObject) {
+ 
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     @IBAction func clickOnLoginButton(sender: AnyObject) {
     }
 

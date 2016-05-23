@@ -144,15 +144,15 @@ class API: UIView {
     }
     
     //KeychainItemWrapper methods
-    func storeValueInKeychain(pin:String){
+    //KeychainItemWrapper methods
+    func storeValueInKeychainForKey(key:String,value:AnyObject){
         //Save the value of password into keychain
-        KeychainItemWrapper.save("myPassword", data: pin)
-    }
-
-    func getValueFromKeychain()-> String{
-        //get the value of password from keychain
-        return KeychainItemWrapper.load("myPassword") as! String
-        
+        KeychainItemWrapper.save(key, data: value)
     }
     
+    func getValueFromKeychainOfKey(key:String)-> String{
+        //get the value of password from keychain
+        return KeychainItemWrapper.load(key) as! String
+        
+    }
 }
