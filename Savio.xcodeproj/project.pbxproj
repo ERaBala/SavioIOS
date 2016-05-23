@@ -135,6 +135,16 @@
 		A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A897514D1CEF099500F122AD /* CreatePINViewController.xib */; };
 		A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */; };
 		A8B74C3D1CEDD152003A5D9A /* DataProtectionPolicy.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */; };
+		C95CD60C1CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD6081CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.swift */; };
+		C95CD60D1CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95CD6091CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.xib */; };
+		C95CD60E1CF2C7EE00013200 /* PickerTextfildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD60A1CF2C7EE00013200 /* PickerTextfildTableViewCell.swift */; };
+		C95CD60F1CF2C7EE00013200 /* PickerTextfildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95CD60B1CF2C7EE00013200 /* PickerTextfildTableViewCell.xib */; };
+		C95CD6171CF2C92100013200 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD6111CF2C92100013200 /* DPDConstants.swift */; };
+		C95CD6181CF2C92100013200 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD6121CF2C92100013200 /* DPDKeyboardListener.swift */; };
+		C95CD6191CF2C92100013200 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD6131CF2C92100013200 /* DPDUIView+Extension.swift */; };
+		C95CD61A1CF2C92100013200 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD6141CF2C92100013200 /* DropDown.swift */; };
+		C95CD61B1CF2C92100013200 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95CD6151CF2C92100013200 /* DropDownCell.swift */; };
+		C95CD61C1CF2C92100013200 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95CD6161CF2C92100013200 /* DropDownCell.xib */; };
 		C97949641CEC381C00416BD5 /* Page1.png in Resources */ = {isa = PBXBuildFile; fileRef = C979495F1CEC381C00416BD5 /* Page1.png */; };
 		C97949651CEC381C00416BD5 /* Page2.png in Resources */ = {isa = PBXBuildFile; fileRef = C97949601CEC381C00416BD5 /* Page2.png */; };
 		C97949661CEC381C00416BD5 /* Page3.png in Resources */ = {isa = PBXBuildFile; fileRef = C97949611CEC381C00416BD5 /* Page3.png */; };
@@ -305,6 +315,16 @@
 		A897514D1CEF099500F122AD /* CreatePINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePINViewController.xib; sourceTree = "<group>"; };
 		A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProtectionPolicy.swift; sourceTree = "<group>"; };
 		A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataProtectionPolicy.xib; sourceTree = "<group>"; };
+		C95CD6081CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTxtFieldTableViewCell.swift; sourceTree = "<group>"; };
+		C95CD6091CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTxtFieldTableViewCell.xib; sourceTree = "<group>"; };
+		C95CD60A1CF2C7EE00013200 /* PickerTextfildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTextfildTableViewCell.swift; sourceTree = "<group>"; };
+		C95CD60B1CF2C7EE00013200 /* PickerTextfildTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTextfildTableViewCell.xib; sourceTree = "<group>"; };
+		C95CD6111CF2C92100013200 /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		C95CD6121CF2C92100013200 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		C95CD6131CF2C92100013200 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		C95CD6141CF2C92100013200 /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		C95CD6151CF2C92100013200 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		C95CD6161CF2C92100013200 /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		C979495F1CEC381C00416BD5 /* Page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page1.png; sourceTree = "<group>"; };
 		C97949601CEC381C00416BD5 /* Page2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page2.png; sourceTree = "<group>"; };
 		C97949611CEC381C00416BD5 /* Page3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page3.png; sourceTree = "<group>"; };
@@ -584,6 +604,19 @@
 			path = PINViewController;
 			sourceTree = "<group>";
 		};
+		C95CD6101CF2C92100013200 /* DropDownList */ = {
+			isa = PBXGroup;
+			children = (
+				C95CD6111CF2C92100013200 /* DPDConstants.swift */,
+				C95CD6121CF2C92100013200 /* DPDKeyboardListener.swift */,
+				C95CD6131CF2C92100013200 /* DPDUIView+Extension.swift */,
+				C95CD6141CF2C92100013200 /* DropDown.swift */,
+				C95CD6151CF2C92100013200 /* DropDownCell.swift */,
+				C95CD6161CF2C92100013200 /* DropDownCell.xib */,
+			);
+			path = DropDownList;
+			sourceTree = "<group>";
+		};
 		C979495E1CEC381C00416BD5 /* Welcome screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +665,10 @@
 		C9905F901CED9EF700E63471 /* RegistrationCell */ = {
 			isa = PBXGroup;
 			children = (
+				C95CD6081CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.swift */,
+				C95CD6091CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.xib */,
+				C95CD60A1CF2C7EE00013200 /* PickerTextfildTableViewCell.swift */,
+				C95CD60B1CF2C7EE00013200 /* PickerTextfildTableViewCell.xib */,
 				C9905F911CED9EF700E63471 /* ButtonTableViewCell.swift */,
 				C9905F921CED9EF700E63471 /* ButtonTableViewCell.xib */,
 				C9905F931CED9EF700E63471 /* FindAddressTableViewCell.swift */,
@@ -669,6 +706,7 @@
 		C9E525AA1CE986FA000FD01E /* Savio */ = {
 			isa = PBXGroup;
 			children = (
+				C95CD6101CF2C92100013200 /* DropDownList */,
 				A897514B1CEF07D400F122AD /* PINViewController */,
 				A8392A3D1CEEE0C200C7EE48 /* Font */,
 				A8392A381CEEDA6A00C7EE48 /* FiveDigitVerificationViewController */,
@@ -767,6 +805,7 @@
 				A8095C3E1CEDC616006366F7 /* pre-loader@2x25.png in Resources */,
 				A8095C711CEDC617006366F7 /* pre-loader@3x8.png in Resources */,
 				C9FD9A9C1CEF5C16006FF2C7 /* Link.html in Resources */,
+				C95CD61C1CF2C92100013200 /* DropDownCell.xib in Resources */,
 				A8095C541CEDC616006366F7 /* pre-loader@3x13.png in Resources */,
 				A8095C581CEDC616006366F7 /* pre-loader@3x17.png in Resources */,
 				A8095C271CEDC616006366F7 /* pre-loader@1x4.png in Resources */,
@@ -805,6 +844,7 @@
 				A8095C1A1CEDC616006366F7 /* pre-loader@1x24.png in Resources */,
 				A8095C551CEDC616006366F7 /* pre-loader@3x14.png in Resources */,
 				A8095C431CEDC616006366F7 /* pre-loader@2x3.png in Resources */,
+				C95CD60F1CF2C7EE00013200 /* PickerTextfildTableViewCell.xib in Resources */,
 				A8095C6C1CEDC617006366F7 /* pre-loader@3x35.png in Resources */,
 				A8392A3C1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.xib in Resources */,
 				A8095C3C1CEDC616006366F7 /* pre-loader@2x23.png in Resources */,
@@ -812,6 +852,7 @@
 				A8095C101CEDC616006366F7 /* pre-loader@1x15.png in Resources */,
 				A8095C381CEDC616006366F7 /* pre-loader@2x2.png in Resources */,
 				A8095C411CEDC616006366F7 /* pre-loader@2x28.png in Resources */,
+				C95CD60D1CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.xib in Resources */,
 				A8095C221CEDC616006366F7 /* pre-loader@1x31.png in Resources */,
 				A8392A2B1CEED48C00C7EE48 /* check-box@3x.png in Resources */,
 				A8095C621CEDC617006366F7 /* pre-loader@3x26.png in Resources */,
@@ -912,25 +953,32 @@
 			files = (
 				C9905F9E1CED9EF700E63471 /* ButtonTableViewCell.swift in Sources */,
 				A8392A3B1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.swift in Sources */,
+				C95CD60C1CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.swift in Sources */,
+				C95CD6181CF2C92100013200 /* DPDKeyboardListener.swift in Sources */,
 				C9905FA01CED9EF700E63471 /* FindAddressTableViewCell.swift in Sources */,
 				C97949781CEC987900416BD5 /* FontCodes.swift in Sources */,
 				A8095B961CEDC4D5006366F7 /* ImageViewAnimation.swift in Sources */,
 				A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */,
 				C9905FA41CED9EF700E63471 /* TitleTableViewCell.swift in Sources */,
 				C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */,
+				C95CD61B1CF2C92100013200 /* DropDownCell.swift in Sources */,
 				A8392A1E1CEED33600C7EE48 /* NSString-MD5.swift in Sources */,
 				C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */,
 				A8095B981CEDC4D5006366F7 /* ImportantInformationView.swift in Sources */,
 				C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */,
 				A8095B951CEDC4D5006366F7 /* KeychainItemWrapper.m in Sources */,
+				C95CD60E1CF2C7EE00013200 /* PickerTextfildTableViewCell.swift in Sources */,
 				C9905FA81CED9EF700E63471 /* SARegistrationViewController.swift in Sources */,
 				C97949791CEC987900416BD5 /* VTButton.swift in Sources */,
 				C9905FA61CED9EF700E63471 /* TxtFieldTableViewCell.swift in Sources */,
+				C95CD6171CF2C92100013200 /* DPDConstants.swift in Sources */,
+				C95CD61A1CF2C92100013200 /* DropDown.swift in Sources */,
 				C9905FA21CED9EF700E63471 /* linkButtonTableViewCell.swift in Sources */,
 				A8095C751CEDC6A3006366F7 /* API.swift in Sources */,
 				C97949771CEC987900416BD5 /* ColorCodes.swift in Sources */,
 				C9E535F31CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift in Sources */,
 				C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */,
+				C95CD6191CF2C92100013200 /* DPDUIView+Extension.swift in Sources */,
 				A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */,
 				C979497B1CEC987900416BD5 /* VTView.swift in Sources */,
 			);
@@ -1043,7 +1091,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../SavioIOS/$(PROJECT_NAME)/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1058,7 +1106,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../SavioIOS/$(PROJECT_NAME)/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;

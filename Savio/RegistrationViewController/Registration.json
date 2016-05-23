@@ -47,7 +47,7 @@
 				   }
 	},
 	{
-		"classType":"TxtFieldTableViewCell",
+		"classType":"PickerTextfildTableViewCell",
 		"metaData":{
 						"textField1":{
 							"placeholder":"Date of birth",
@@ -77,6 +77,17 @@
 						"button":{
 							"placeholder":"Find address",
 							"dropDownArray":[]
+						}
+				   }
+	},
+	{
+		"classType":"DropDownTxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"Select your Address",
+							"dropDownArray":[],
+							"text":"",
+							"isCellShown": "No"						
 						}
 				   }
 	},

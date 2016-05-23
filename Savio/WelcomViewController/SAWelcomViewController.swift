@@ -20,12 +20,11 @@ class SAWelcomViewController: UIViewController {
     var flag: Bool = false
 
     let sampleBGColors: Array<UIColor> = [UIColor.redColor(), UIColor.yellowColor(), UIColor.greenColor(), UIColor.magentaColor(), UIColor.orangeColor()]
-    let samleDictArr: Array<String> = ["Page1", "Page2", "Page3", "Page4","Page5"]
+    let samleDictArr: Array<String> = ["Page5", "Page1", "Page2", "Page3", "Page4"]
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        
     }
     
 
@@ -49,8 +48,9 @@ class SAWelcomViewController: UIViewController {
     }
     
     @IBAction func clickOnSignUpButton(sender:UIButton){
-        let saRegistarionViewController = SARegistrationViewController(nibName:"SARegistrationViewController",bundle: nil)
-        self.presentViewController(saRegistarionViewController, animated: true, completion: nil)
+        let objSARegistarionViewController = SARegistrationViewController(nibName:"SARegistrationViewController",bundle: nil)
+        self.navigationController?.pushViewController(objSARegistarionViewController, animated: true)
+//        self.presentViewController(saRegistarionViewController, animated: true, completion: nil)
     }
     
 
@@ -135,6 +135,13 @@ class SAWelcomViewController: UIViewController {
 //        newFrame.origin.x = newFrame.size.width * CGFloat(pageControl.currentPage)
 //        scrollView.scrollRectToVisible(newFrame, animated: true)
         
+    }
+    
+    @IBAction func clickOnImportantLink(sender:UIButton){
+        
+        let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! UIView
+        objimpInfo.frame = self.view.frame
+        self.view.addSubview(objimpInfo)
     }
     
 }

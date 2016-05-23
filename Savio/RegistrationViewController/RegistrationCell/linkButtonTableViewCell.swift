@@ -30,4 +30,9 @@ class linkButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func clickedOnLinkButton(sender:UIButton){
+        print("\(sender.currentAttributedTitle)")
+        delegate?.linkButtonClicked(sender);
+    }
+    
 }

@@ -8,10 +8,9 @@
 
 import UIKit
 protocol FindAddressCellDelegate {
-    func FindAddressCellText(txt:String)
-    func getAddressButtonClicked(sender:UIButton)
+    func getAddressButtonClicked(findAddrCell: FindAddressTableViewCell)
 }
-class FindAddressTableViewCell: UITableViewCell {
+class FindAddressTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     @IBOutlet weak var tfPostCode: UITextField?
     @IBOutlet weak var btnPostCode: UIButton?
@@ -94,6 +93,10 @@ class FindAddressTableViewCell: UITableViewCell {
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
         return true
+    }
+    @IBAction func clickOnAddressButton(sender:UIButton){
+        tfPostCode?.resignFirstResponder()
+        delegate?.getAddressButtonClicked(self)
     }
 
     

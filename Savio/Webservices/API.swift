@@ -13,14 +13,14 @@ import Foundation
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
 var OTP = ""
 
-protocol PostCodeVerification {
+protocol PostCodeVerificationDelegate {
     func success(addressArray:Array<String>)
     func error(error:String)
 }
 
 class API: UIView {
     let session = NSURLSession.sharedSession()
-    var delegate: PostCodeVerification?
+    var delegate: PostCodeVerificationDelegate?
     
     //Checking Reachability function
     func isConnectedToNetwork() -> Bool {

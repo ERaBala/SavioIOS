@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="GothamRounded-Medium.otf">
+            <string>GothamRounded-Medium</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SAWelcomViewController" customModule="Savio" customModuleProvider="target">
             <connections>
@@ -28,7 +33,7 @@
                     </constraints>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xE-XW-drk">
-                    <rect key="frame" x="0.0" y="123" width="600" height="375"/>
+                    <rect key="frame" x="0.0" y="123" width="600" height="339"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Yfw-Gb-jTd"/>
                     </connections>
@@ -39,7 +44,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="ncu-Jf-PqH"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="20"/>
                     <state key="normal" title="Sign up to Savio     &gt;">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -48,7 +53,7 @@
                     </connections>
                 </button>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Jtq-Lk-shb">
-                    <rect key="frame" x="259" y="506" width="82" height="37"/>
+                    <rect key="frame" x="259" y="453" width="82" height="37"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="82" id="UcE-X2-xbd"/>
                         <constraint firstAttribute="height" constant="37" id="Vfs-dg-fxh"/>
@@ -56,6 +61,27 @@
                     <color key="pageIndicatorTintColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="currentPageIndicatorTintColor" red="0.76078431372549016" green="0.75294117647058822" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                 </pageControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7V-67-A51">
+                    <rect key="frame" x="50" y="498" width="500" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="51F-Xr-Z6c"/>
+                        <constraint firstAttribute="width" secondItem="Z7V-67-A51" secondAttribute="height" multiplier="50:3" id="kEw-Dg-9tW"/>
+                    </constraints>
+                    <state key="normal">
+                        <attributedString key="attributedTitle">
+                            <fragment content="Important Information">
+                                <attributes>
+                                    <color key="NSColor" red="0.39215686274509803" green="0.396078431372549" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" metaFont="system" size="15"/>
+                                    <integer key="NSUnderline" value="1"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="clickOnImportantLink:" destination="-1" eventType="touchUpInside" id="0z1-2o-JLL"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -65,9 +91,12 @@
                 <constraint firstItem="Awj-9b-C57" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IwI-XX-L1D"/>
                 <constraint firstAttribute="trailing" secondItem="Dlu-SC-Nss" secondAttribute="trailing" constant="50" id="MvE-et-R7f"/>
                 <constraint firstAttribute="trailing" secondItem="4xE-XW-drk" secondAttribute="trailing" id="OGr-pK-WG0"/>
-                <constraint firstItem="Jtq-Lk-shb" firstAttribute="top" secondItem="4xE-XW-drk" secondAttribute="bottom" constant="8" id="RVQ-xB-dGo"/>
+                <constraint firstItem="Z7V-67-A51" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="Puf-wD-aB5"/>
+                <constraint firstItem="Jtq-Lk-shb" firstAttribute="top" secondItem="4xE-XW-drk" secondAttribute="bottom" constant="-9" id="RVQ-xB-dGo"/>
+                <constraint firstAttribute="trailing" secondItem="Z7V-67-A51" secondAttribute="trailing" constant="50" id="Yoy-7c-RZT"/>
+                <constraint firstItem="Z7V-67-A51" firstAttribute="top" secondItem="Jtq-Lk-shb" secondAttribute="bottom" constant="8" id="ZFz-gw-LKh"/>
                 <constraint firstItem="4xE-XW-drk" firstAttribute="top" secondItem="Awj-9b-C57" secondAttribute="bottom" constant="23" id="fPL-nO-LLY"/>
-                <constraint firstItem="Dlu-SC-Nss" firstAttribute="top" secondItem="Jtq-Lk-shb" secondAttribute="bottom" constant="20" id="ij7-ci-FkX"/>
+                <constraint firstItem="Dlu-SC-Nss" firstAttribute="top" secondItem="Jtq-Lk-shb" secondAttribute="bottom" constant="73" id="ij7-ci-FkX"/>
                 <constraint firstItem="4xE-XW-drk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qhg-GK-dRF"/>
                 <constraint firstItem="Dlu-SC-Nss" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="vk8-sB-SGJ"/>
             </constraints>

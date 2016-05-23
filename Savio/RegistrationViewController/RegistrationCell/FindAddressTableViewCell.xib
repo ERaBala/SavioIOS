@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,19 +16,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heI-l4-6Xd">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3bk-Tq-jGb">
+                        <rect key="frame" x="8" y="4" width="176" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="0vD-nC-3hI"/>
+                            <constraint firstAttribute="width" secondItem="3bk-Tq-jGb" secondAttribute="height" multiplier="176:27" id="ScX-dF-y1Y"/>
+                            <constraint firstAttribute="width" constant="176" id="ejP-0f-sC9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="qvP-O6-8u8"/>
+                        </connections>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heI-l4-6Xd">
                         <rect key="frame" x="192" y="2" width="120" height="30"/>
                         <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="heI-l4-6Xd" secondAttribute="height" multiplier="4:1" id="B7U-zj-MXI"/>
+                            <constraint firstAttribute="width" constant="120" id="qmU-22-BCF"/>
+                            <constraint firstAttribute="height" constant="30" id="znF-YO-O5f"/>
+                        </constraints>
                         <state key="normal" title="Find Address">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="clickOnAddressButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="INj-l8-VGc"/>
+                        </connections>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3bk-Tq-jGb">
-                        <rect key="frame" x="8" y="4" width="176" height="27"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="3bk-Tq-jGb" secondAttribute="bottom" constant="-5" id="12M-t0-PmI"/>
+                    <constraint firstItem="heI-l4-6Xd" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5lb-k9-xGi"/>
+                    <constraint firstItem="heI-l4-6Xd" firstAttribute="leading" secondItem="3bk-Tq-jGb" secondAttribute="trailing" constant="8" id="B5z-fM-TEa"/>
+                    <constraint firstItem="3bk-Tq-jGb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="Qwf-Xa-fmn"/>
+                    <constraint firstItem="heI-l4-6Xd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-6" id="UTe-Q8-LU5"/>
+                    <constraint firstItem="3bk-Tq-jGb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="dOz-5L-Ms1"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="heI-l4-6Xd" secondAttribute="bottom" constant="-6" id="dxx-0t-OfC"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnPostCode" destination="heI-l4-6Xd" id="eDy-AF-Yn7"/>

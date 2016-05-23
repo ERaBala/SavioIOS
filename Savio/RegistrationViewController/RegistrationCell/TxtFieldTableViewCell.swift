@@ -9,18 +9,16 @@
 import UIKit
 
 protocol TxtFieldTableViewCellDelegate {
-
-    func TxtFieldCellText(txt:String)
+    func txtFieldCellText(txtFldCell:TxtFieldTableViewCell)
 }
 
 class TxtFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    
-
     var delegate: TxtFieldTableViewCellDelegate?
     @IBOutlet weak var tf: UITextField?
     weak var tblView: UITableView?
-    var isWarningShown: Bool = false
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -94,6 +92,8 @@ class TxtFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     func textFieldDidEndEditing(textField: UITextField){
 //        self.removeKeyboardNotification()
+        self.delegate?.txtFieldCellText(self)
+
     }
 //    func textFieldShouldEndEditing(textField: UITextField) -> Bool{
 //        self.removeKeyboardNotification()
@@ -102,6 +102,7 @@ class TxtFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
 //    }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
+        self.delegate?.txtFieldCellText(self)
         return true
     }
 }

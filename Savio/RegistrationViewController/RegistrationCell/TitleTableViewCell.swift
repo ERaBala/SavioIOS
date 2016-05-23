@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TitleTableViewCellDelegate {
-    func TitleCellText(txt:String)
+    func titleCellText(titleCell:TitleTableViewCell)
 }
 
 class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
@@ -19,6 +19,8 @@ class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     weak var tblView: UITableView?
      var delegate: TitleTableViewCellDelegate?
     weak var dict: NSDictionary?
+    let dropDown = DropDown()
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,8 +39,26 @@ class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
         tfName?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
         tfName?.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         tfName?.delegate=self
+        
+        dropDown.dataSource = [
+            "Mr.",
+            "Mrs.",
+            "Miss."
+        ]
 
-
+        dropDown.selectionAction = { [unowned self] (index, item) in
+            self.tfTitle?.text = item
+            self.delegate?.titleCellText(self);
+            
+        }
+        
+        //		dropDown.cancelAction = { [unowned self] in
+        //			self.dropDown.selectRowAtIndex(-1)
+        //			self.actionButton.setTitle("Canceled", forState: .Normal)
+        //		}
+        
+        dropDown.anchorView = tfTitle
+        dropDown.bottomOffset = CGPoint(x: 0, y:tfTitle!.bounds.height)
         
     }
 
@@ -87,11 +107,16 @@ class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
+        if textField == tfTitle{
+            self.showOrDismiss()
+            return false
+        }
         self.registerForKeyboardNotifications()
         return true
     }
     func textFieldDidEndEditing(textField: UITextField){
         self.removeKeyboardNotification()
+        self.delegate?.titleCellText(self)
     }
 //    func textFieldShouldEndEditing(textField: UITextField) -> Bool{
 //        self.removeKeyboardNotification()
@@ -100,7 +125,16 @@ class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
 //    }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
+        self.delegate?.titleCellText(self)
         return true
+    }
+    
+    func showOrDismiss(){
+        if dropDown.hidden {
+            dropDown.show()
+        } else {
+            dropDown.hide()
+        }
     }
     
 }

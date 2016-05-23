@@ -23,7 +23,6 @@ class ButtonTableViewCell: UITableViewCell {
         
         btn?.layer.cornerRadius = 2.0
         btn?.layer.masksToBounds = true
-//        btn?.addTarget(self, action:#selector(btnClicked(_:)), forControlEvents: .TouchUpInside
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

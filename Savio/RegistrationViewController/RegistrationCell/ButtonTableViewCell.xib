@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzl-e3-kmR">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzl-e3-kmR">
                         <rect key="frame" x="8" y="2" width="304" height="30"/>
                         <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal">
@@ -25,6 +26,12 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="Yzl-e3-kmR" secondAttribute="bottom" constant="-6" id="0Jr-b6-Rzs"/>
+                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="alM-0J-u4G"/>
+                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bdN-Wr-jgA"/>
+                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-6" id="dzg-Fx-aCN"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btn" destination="Yzl-e3-kmR" id="0Vs-cu-gv5"/>

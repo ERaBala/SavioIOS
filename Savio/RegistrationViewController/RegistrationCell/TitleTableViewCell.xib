@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,16 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSe-vs-hRB">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSe-vs-hRB">
                         <rect key="frame" x="6" y="4" width="90" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="3Y4-bN-PIZ"/>
+                            <constraint firstAttribute="width" secondItem="DSe-vs-hRB" secondAttribute="height" multiplier="10:3" id="Knk-D4-MOW"/>
+                            <constraint firstAttribute="width" constant="90" id="Ltc-8j-ySu"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <outlet property="delegate" destination="-1" id="eBg-uj-AwQ"/>
                         </connections>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-nc-8gY">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-nc-8gY">
                         <rect key="frame" x="102" y="4" width="210" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="210" id="aaY-e2-zK6"/>
+                            <constraint firstAttribute="height" constant="27" id="bcf-FO-FlU"/>
+                            <constraint firstAttribute="width" secondItem="bcP-nc-8gY" secondAttribute="height" multiplier="70:9" id="hIF-GW-AGY"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
@@ -31,6 +43,15 @@
                         </connections>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="DSe-vs-hRB" secondAttribute="bottom" constant="-5" id="0ON-GD-7hL"/>
+                    <constraint firstItem="bcP-nc-8gY" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="41y-Uj-sKA"/>
+                    <constraint firstItem="DSe-vs-hRB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="C7t-7N-WQY"/>
+                    <constraint firstItem="DSe-vs-hRB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="OQJ-3J-TK1"/>
+                    <constraint firstItem="bcP-nc-8gY" firstAttribute="leading" secondItem="DSe-vs-hRB" secondAttribute="trailing" constant="6" id="c1L-aQ-bCC"/>
+                    <constraint firstItem="bcP-nc-8gY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="fuh-Us-uvR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="bcP-nc-8gY" secondAttribute="bottom" constant="-5" id="nGW-o1-KPt"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="tfName" destination="bcP-nc-8gY" id="4QU-sC-IUA"/>
