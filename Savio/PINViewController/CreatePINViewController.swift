@@ -48,6 +48,15 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
     
     //UITextFieldDelegateMethods
     func textFieldDidBeginEditing(textField: UITextField){
+        
+        enterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
+        reEnterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
+        
+        enterFourDigitPIN.textColor = UIColor.blackColor()
+        reEnterFourDigitPIN.textColor = UIColor.blackColor()
+        
+        enterFiveDigitCodeLabel.hidden = true;
+        
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             
@@ -83,15 +92,23 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func onClickConfirmButton(sender: AnyObject) {
-        
+        enterFourDigitPIN.resignFirstResponder()
+        reEnterFourDigitPIN.resignFirstResponder()
         if(enterFourDigitPIN.text == "" || reEnterFourDigitPIN.text == "")
         {
             enterFiveDigitCodeLabel.hidden = false;
+            enterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
+            reEnterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
+
         }
         else if(enterFourDigitPIN.text  != reEnterFourDigitPIN.text)
         {
             enterFiveDigitCodeLabel.hidden = false;
             enterFiveDigitCodeLabel.text = "Passcode do not match"
+
+            
+            enterFourDigitPIN.textColor = UIColor.redColor()
+            reEnterFourDigitPIN.textColor = UIColor.redColor()
         }
         else{
             enterFiveDigitCodeLabel.hidden = true;

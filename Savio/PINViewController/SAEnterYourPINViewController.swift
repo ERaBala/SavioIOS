@@ -50,6 +50,11 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate {
         return true
         
     }
+    func textFieldDidBeginEditing(textField: UITextField) {
+
+        enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
+        enterPasscodeTextField.textColor = UIColor.blackColor()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

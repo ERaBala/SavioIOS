@@ -38,6 +38,12 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate 
     }
       //UITextField delegate method
     
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        codeDoesNotMatchLabel.hidden = true;
+        fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
+        fiveDigitTextField.textColor = UIColor.blackColor()
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         if(textField.isFirstResponder())
         {

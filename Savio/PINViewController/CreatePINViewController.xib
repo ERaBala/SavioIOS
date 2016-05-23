@@ -7,10 +7,10 @@
     <customFonts key="customFonts">
         <mutableArray key="GothamRounded-Light.otf">
             <string>GothamRounded-Light</string>
-            <string>GothamRounded-Light</string>
-            <string>GothamRounded-Light</string>
         </mutableArray>
         <mutableArray key="GothamRounded-Medium.otf">
+            <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
         </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
@@ -58,7 +58,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="p0G-oz-jq5"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="BSG-8O-Nyd"/>
@@ -93,7 +93,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="wrx-jD-Wft"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="sLM-sd-NOb"/>

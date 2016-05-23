@@ -31,11 +31,7 @@ class ImportantInformationView: UIView {
     
     
     @IBAction func gotItButtonPressed(sender: AnyObject) {
-        
+         self.removeFromSuperview()
     }
 
-
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
-        self.removeFromSuperview()
-    }
 }

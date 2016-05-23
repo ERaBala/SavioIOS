@@ -7,9 +7,9 @@
     <customFonts key="customFonts">
         <mutableArray key="GothamRounded-Light.otf">
             <string>GothamRounded-Light</string>
-            <string>GothamRounded-Light</string>
         </mutableArray>
         <mutableArray key="GothamRounded-Medium.otf">
+            <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
         </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
@@ -95,7 +95,7 @@
                         <constraint firstAttribute="width" constant="280" id="1h3-uh-xpX"/>
                         <constraint firstAttribute="height" constant="40" id="end-TZ-Q6z"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -149,7 +149,7 @@
                     </connections>
                 </button>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code does not match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnB-er-ZmT">
-                    <rect key="frame" x="171" y="267" width="258" height="21"/>
+                    <rect key="frame" x="171" y="215" width="258" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="ef4-W7-OZY"/>
                         <constraint firstAttribute="width" constant="258" id="tNL-i6-SX6"/>
@@ -174,7 +174,7 @@
                 <constraint firstItem="aKg-ku-OcO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NwS-IL-xii"/>
                 <constraint firstAttribute="trailing" secondItem="Vat-uq-VUl" secondAttribute="trailing" constant="30" id="P7K-dA-dDH"/>
                 <constraint firstItem="8DL-NG-yGU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cSQ-uf-bMh"/>
-                <constraint firstItem="YnB-er-ZmT" firstAttribute="top" secondItem="GpB-HN-YI8" secondAttribute="bottom" constant="8" id="dDN-da-IsZ"/>
+                <constraint firstItem="YnB-er-ZmT" firstAttribute="top" secondItem="GpB-HN-YI8" secondAttribute="bottom" constant="-44" id="dDN-da-IsZ"/>
                 <constraint firstAttribute="bottom" secondItem="F0n-B1-XQp" secondAttribute="bottom" constant="140" id="eAX-3h-kLx"/>
                 <constraint firstItem="F0n-B1-XQp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="gIq-00-wAk"/>
                 <constraint firstItem="aKg-ku-OcO" firstAttribute="top" secondItem="Vat-uq-VUl" secondAttribute="bottom" constant="55" id="h3H-zH-nut"/>

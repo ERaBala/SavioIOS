@@ -11,6 +11,7 @@
         </mutableArray>
         <mutableArray key="GothamRounded-Medium.otf">
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
             <string>GothamRounded-Book</string>
@@ -48,7 +49,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="08N-L0-BdL"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="uor-O1-450"/>
@@ -182,6 +183,7 @@
                 <constraint firstItem="oLD-AK-Fy3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wpY-h4-ACF"/>
                 <constraint firstItem="YRO-Ha-Z4h" firstAttribute="top" secondItem="oLD-AK-Fy3" secondAttribute="bottom" constant="16" id="zIW-82-qsR"/>
             </constraints>
+            <point key="canvasLocation" x="611" y="267"/>
         </view>
     </objects>
     <resources>
