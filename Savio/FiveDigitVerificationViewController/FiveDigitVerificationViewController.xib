@@ -95,7 +95,7 @@
                         <constraint firstAttribute="width" constant="280" id="1h3-uh-xpX"/>
                         <constraint firstAttribute="height" constant="40" id="end-TZ-Q6z"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -154,7 +154,7 @@
                         <constraint firstAttribute="height" constant="21" id="ef4-W7-OZY"/>
                         <constraint firstAttribute="width" constant="258" id="tNL-i6-SX6"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="15"/>
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

@@ -49,7 +49,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="08N-L0-BdL"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="uor-O1-450"/>
@@ -110,7 +110,7 @@
                         <constraint firstAttribute="height" constant="21" id="Kbb-PM-Wbn"/>
                         <constraint firstAttribute="width" constant="240" id="WGz-Ev-9fj"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="15"/>
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
