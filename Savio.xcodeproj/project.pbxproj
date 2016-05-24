@@ -184,6 +184,9 @@
 		C9E855011CF456CC006213BF /* savivo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854FE1CF456CC006213BF /* savivo-logo.png */; };
 		C9E855021CF456CC006213BF /* savivo-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854FF1CF456CC006213BF /* savivo-logo@2x.png */; };
 		C9E855031CF456CC006213BF /* savivo-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E855001CF456CC006213BF /* savivo-logo@3x.png */; };
+		C9E855071CF4962D006213BF /* splash-logo@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E855041CF4962D006213BF /* splash-logo@1x.png */; };
+		C9E855081CF4962D006213BF /* splash-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E855051CF4962D006213BF /* splash-logo@2x.png */; };
+		C9E855091CF4962D006213BF /* splash-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E855061CF4962D006213BF /* splash-logo@3x.png */; };
 		C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */; };
 		C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -370,6 +373,9 @@
 		C9E854FE1CF456CC006213BF /* savivo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo.png"; sourceTree = "<group>"; };
 		C9E854FF1CF456CC006213BF /* savivo-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@2x.png"; sourceTree = "<group>"; };
 		C9E855001CF456CC006213BF /* savivo-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@3x.png"; sourceTree = "<group>"; };
+		C9E855041CF4962D006213BF /* splash-logo@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo@1x.png"; sourceTree = "<group>"; };
+		C9E855051CF4962D006213BF /* splash-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo@2x.png"; sourceTree = "<group>"; };
+		C9E855061CF4962D006213BF /* splash-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo@3x.png"; sourceTree = "<group>"; };
 		C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -735,6 +741,9 @@
 		C9E525C11CE9A480000FD01E /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				C9E855041CF4962D006213BF /* splash-logo@1x.png */,
+				C9E855051CF4962D006213BF /* splash-logo@2x.png */,
+				C9E855061CF4962D006213BF /* splash-logo@3x.png */,
 				C9E854FD1CF456CC006213BF /* logo */,
 				C9E854F01CF44B4A006213BF /* down-arrow-15x15.png */,
 				C9E854F11CF44B4A006213BF /* down-arrow-30x30.png */,
@@ -744,7 +753,6 @@
 				C9E854E61CF43732006213BF /* arrow_down.png */,
 				C9E854E71CF43732006213BF /* arrow.png */,
 				C9E854E81CF43732006213BF /* down-arrow-1.png */,
-				A8392A1F1CEED48C00C7EE48 /* CheckBox */,
 				A8095B9D1CEDC616006366F7 /* savioLoader */,
 				C979495E1CEC381C00416BD5 /* Welcome screen */,
 			);
@@ -905,6 +913,7 @@
 				A8095C661CEDC617006366F7 /* pre-loader@3x3.png in Resources */,
 				A8095C1C1CEDC616006366F7 /* pre-loader@1x26.png in Resources */,
 				A8095C5A1CEDC616006366F7 /* pre-loader@3x19.png in Resources */,
+				C9E855071CF4962D006213BF /* splash-logo@1x.png in Resources */,
 				C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */,
 				C9905FA51CED9EF700E63471 /* TitleTableViewCell.xib in Resources */,
 				A8095C261CEDC616006366F7 /* pre-loader@1x35.png in Resources */,
@@ -914,9 +923,11 @@
 				A8095C451CEDC616006366F7 /* pre-loader@2x31.png in Resources */,
 				A8095C5D1CEDC616006366F7 /* pre-loader@3x21.png in Resources */,
 				A8095C601CEDC617006366F7 /* pre-loader@3x24.png in Resources */,
+				C9E855081CF4962D006213BF /* splash-logo@2x.png in Resources */,
 				A8095C1F1CEDC616006366F7 /* pre-loader@1x29.png in Resources */,
 				A8095C4E1CEDC616006366F7 /* pre-loader@2x8.png in Resources */,
 				C9905FA91CED9EF700E63471 /* SARegistrationViewController.xib in Resources */,
+				C9E855091CF4962D006213BF /* splash-logo@3x.png in Resources */,
 				A8095C331CEDC616006366F7 /* pre-loader@2x15.png in Resources */,
 				A8095C651CEDC617006366F7 /* pre-loader@3x29.png in Resources */,
 				A8095C571CEDC616006366F7 /* pre-loader@3x16.png in Resources */,

@@ -79,6 +79,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 cell.tblView = tblView
                 cell.dict = dict
                 let tfTitleDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
+                cell.tfTitle?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
                 
                 cell.tfTitle!.attributedPlaceholder = NSAttributedString(string:(tfTitleDict["placeholder"] as? String)!, attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)])
                 if (dictForTextFieldValue["title"] != nil){
@@ -119,6 +120,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let cell = bundleArr[0] as! TxtFieldTableViewCell
                 cell.delegate = self
                 cell.tblView = tblView
+                 cell.tf?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
+                
                 let tfTitleDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
                 cell.tf!.attributedPlaceholder = NSAttributedString(string:(tfTitleDict["placeholder"] as? String)!, attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)])
                 if (dictForTextFieldValue[(cell.tf?.placeholder)!] != nil){
@@ -204,7 +207,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 cell.tblView = tblView
                 let tfTitleDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
                 cell.tfDatePicker!.attributedPlaceholder = NSAttributedString(string:(tfTitleDict["placeholder"] as? String)!, attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)])
-                
+                cell.tfDatePicker?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
                 if (dictForTextFieldValue[(cell.tfDatePicker?.placeholder)!] != nil){
                     cell.tfDatePicker?.text = dictForTextFieldValue[(cell.tfDatePicker?.placeholder)!] as? String
 //                    cell.tfDatePicker.pre = dictForTextFieldValue[(cell.tfDatePicker?.placeholder)!] as? String
@@ -218,6 +221,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let cell = bundleArr[0] as! FindAddressTableViewCell
                 cell.delegate = self
                 cell.tblView = tblView
+                cell.tfPostCode?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
                 let tfPostcodeDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
                 cell.tfPostCode!.attributedPlaceholder = NSAttributedString(string:(tfPostcodeDict["placeholder"] as? String)!, attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)])
                 if (dictForTextFieldValue[(cell.tfPostCode?.placeholder)!] != nil){
@@ -274,7 +278,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 cell.delegate = self
                 cell.tblView = tblView
                 cell.dict = dict
-                
+                cell.tf?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
                 let tfTitleDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
                 cell.tf!.attributedPlaceholder = NSAttributedString(string:(tfTitleDict["placeholder"] as? String)!, attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)])
                 if (dictForTextFieldValue[(cell.tf?.placeholder)!] != nil){
