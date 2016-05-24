@@ -99,13 +99,13 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
             enterFiveDigitCodeLabel.hidden = false;
             enterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
             reEnterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
-
+            
         }
         else if(enterFourDigitPIN.text  != reEnterFourDigitPIN.text)
         {
             enterFiveDigitCodeLabel.hidden = false;
             enterFiveDigitCodeLabel.text = "Passcode do not match"
-
+            
             
             enterFourDigitPIN.textColor = UIColor.redColor()
             reEnterFourDigitPIN.textColor = UIColor.redColor()
@@ -113,30 +113,16 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         else{
             enterFiveDigitCodeLabel.hidden = true;
         
-            let objEnterPasscode = SAEnterYourPINViewController(nibName: "SAEnterYourPINViewController",bundle: nil)
-            self.navigationController?.pushViewController(objEnterPasscode, animated: true)
-            
             print(reEnterFourDigitPIN.text!.MD5())
             objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
+
+            let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+            self.navigationController?.pushViewController(objHurrrayView, animated: true)
             
-            /*
-            let alert = UIAlertController(title: "Now we can start saving plan.", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            */
         }
         
         
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

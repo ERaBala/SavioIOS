@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate {
+class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSentDelegate {
 
+    @IBOutlet weak var passcodeDoesNotMatchLabel: UILabel!
     @IBOutlet weak var btnForgottPasscode: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var lblSentYouCode: UILabel!
@@ -18,8 +19,12 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var forgotPasscodeButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var enterPasscodeTextField: UITextField!
+    var objAnimView = ImageViewAnimation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
 
         // Do any additional setup after loading the view.
         //change the border color and placeholder color of UITextField
@@ -50,6 +55,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate {
         return true
         
     }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
 
         enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
@@ -68,29 +74,69 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate {
             self.navigationController?.pushViewController(saRegisterViewController, animated: true)
         }
         else{
-            let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
-            self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+             let objAPI = API()
+            objAPI.otpSentDelegate = self
+            var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
+            objAPI.getOTPForNumber(dict["Mobile number"]! as String, country_code: "91")
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView.frame = self.view.frame
+            objAnimView.animate()
+            self.view.addSubview(objAnimView)
         }
   
     }
     
     @IBAction func clickedOnForgotPasscode(sender: AnyObject) {
-        lblSentYouCode.hidden = false
-        lblForgottonYourPasscode.hidden = false
-        btnCancel.hidden = false
-        registerButton .setTitle("Send me a code", forState: UIControlState.Normal)
-        
-        forgotPasscodeButton.hidden = true
-        loginButton.hidden = true
-        enterPasscodeTextField.hidden = true
+
+            lblSentYouCode.hidden = false
+            lblForgottonYourPasscode.hidden = false
+            btnCancel.hidden = false
+            registerButton .setTitle("Send me a code", forState: UIControlState.Normal)
+            
+            forgotPasscodeButton.hidden = true
+            loginButton.hidden = true
+            enterPasscodeTextField.hidden = true
+
 
     }
+    
+    //OTP Verification Delegate Method
+    func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
+    {
+        objAnimView.removeFromSuperview()
+        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+    }
+    func errorResponseForOTPSentAPI(error:String){
+        objAnimView.removeFromSuperview()
+        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+        
+    }
+    
+
    
     @IBAction func onClickCancelButton(sender: AnyObject) {
  
-        self.navigationController?.popViewControllerAnimated(true)
+        lblSentYouCode.hidden = true
+        lblForgottonYourPasscode.hidden = true
+        btnCancel.hidden = true
+        registerButton .setTitle("Register", forState: UIControlState.Normal)
+        
+        forgotPasscodeButton.hidden = false
+        loginButton.hidden = false
+        enterPasscodeTextField.hidden = false
     }
     @IBAction func clickOnLoginButton(sender: AnyObject) {
+        if(enterPasscodeTextField.text == "")
+        {
+            
+            enterPasscodeTextField.layer.borderColor = UIColor.redColor().CGColor
+            passcodeDoesNotMatchLabel.hidden = false
+            passcodeDoesNotMatchLabel.text = "Please enter passcode"
+        }
+        else{
+        }
     }
 
     /*

@@ -7,13 +7,13 @@
     <customFonts key="customFonts">
         <mutableArray key="GothamRounded-Light.otf">
             <string>GothamRounded-Light</string>
-            <string>GothamRounded-Light</string>
         </mutableArray>
         <mutableArray key="GothamRounded-Medium.otf">
             <string>GothamRounded-Medium</string>
-            <string>GothamRounded-Medium</string>
         </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
         </mutableArray>
@@ -28,6 +28,7 @@
                 <outlet property="lblForgottonYourPasscode" destination="uH3-CJ-3vG" id="mTC-he-8dV"/>
                 <outlet property="lblSentYouCode" destination="WBk-LD-bTU" id="Hpd-zo-GHh"/>
                 <outlet property="loginButton" destination="oLD-AK-Fy3" id="gLJ-0D-MQx"/>
+                <outlet property="passcodeDoesNotMatchLabel" destination="uH3-CJ-3vG" id="cqb-Pz-T9Y"/>
                 <outlet property="registerButton" destination="1ng-Ts-N3O" id="TEo-3O-Hbk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -38,25 +39,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="savivo-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="OTi-RR-xfC">
-                    <rect key="frame" x="263" y="60" width="75" height="75"/>
+                    <rect key="frame" x="258" y="25" width="85" height="85"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="9dA-BT-SqY"/>
-                        <constraint firstAttribute="width" constant="75" id="o5c-Ix-co3"/>
+                        <constraint firstAttribute="height" constant="85" id="9dA-BT-SqY"/>
+                        <constraint firstAttribute="width" constant="85" id="o5c-Ix-co3"/>
                     </constraints>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajo-fL-EaP">
-                    <rect key="frame" x="30" y="176" width="540" height="40"/>
+                    <rect key="frame" x="30" y="141" width="540" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="08N-L0-BdL"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
+                    <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="uor-O1-450"/>
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLD-AK-Fy3">
-                    <rect key="frame" x="30" y="233" width="540" height="40"/>
+                    <rect key="frame" x="30" y="198" width="540" height="40"/>
                     <color key="backgroundColor" red="0.36470588235294116" green="0.37254901960784315" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="pXm-hI-fNG"/>
@@ -70,7 +71,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-Ha-Z4h">
-                    <rect key="frame" x="215" y="289" width="170" height="30"/>
+                    <rect key="frame" x="215" y="254" width="170" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9jI-6B-tZ0"/>
                         <constraint firstAttribute="width" constant="170" id="iBZ-kK-QZU"/>
@@ -91,7 +92,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ng-Ts-N3O">
-                    <rect key="frame" x="30" y="406" width="540" height="40"/>
+                    <rect key="frame" x="30" y="371" width="540" height="40"/>
                     <color key="backgroundColor" red="0.95686274509803915" green="0.69019607843137254" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="XSn-tm-oQo"/>
@@ -105,7 +106,7 @@
                     </connections>
                 </button>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your passcode does't match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hME-bb-vkK">
-                    <rect key="frame" x="180" y="140" width="240" height="21"/>
+                    <rect key="frame" x="180" y="105" width="240" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Kbb-PM-Wbn"/>
                         <constraint firstAttribute="width" constant="240" id="WGz-Ev-9fj"/>
@@ -115,7 +116,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgotton your passcode?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uH3-CJ-3vG">
-                    <rect key="frame" x="200" y="150" width="200" height="150"/>
+                    <rect key="frame" x="200" y="115" width="200" height="150"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="lfx-0y-bzJ"/>
                         <constraint firstAttribute="height" constant="150" id="t2S-MN-Ykz"/>
@@ -124,18 +125,18 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll sent you a code to unlock your account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBk-LD-bTU">
-                    <rect key="frame" x="213" y="341" width="175" height="40"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll send you a code to unlock your account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBk-LD-bTU">
+                    <rect key="frame" x="213" y="306" width="175" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="e6J-D1-bOG"/>
                         <constraint firstAttribute="height" constant="40" id="ptG-nv-Uv3"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yO2-Dv-Fci">
-                    <rect key="frame" x="270" y="478" width="61" height="30"/>
+                    <rect key="frame" x="270" y="443" width="61" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2hE-tg-R8U"/>
                         <constraint firstAttribute="width" constant="61" id="d5e-rs-Svj"/>
@@ -170,15 +171,15 @@
                 <constraint firstItem="ajo-fL-EaP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hMl-Jz-hUe"/>
                 <constraint firstItem="1ng-Ts-N3O" firstAttribute="top" secondItem="YRO-Ha-Z4h" secondAttribute="bottom" constant="87" id="hZ3-0N-1sh"/>
                 <constraint firstItem="ajo-fL-EaP" firstAttribute="top" secondItem="hME-bb-vkK" secondAttribute="bottom" constant="15" id="k1Y-bE-ood"/>
-                <constraint firstItem="uH3-CJ-3vG" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" constant="15" id="kAa-ix-lHM"/>
-                <constraint firstItem="OTi-RR-xfC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="mL8-rd-Seu"/>
+                <constraint firstItem="uH3-CJ-3vG" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" constant="5" id="kAa-ix-lHM"/>
+                <constraint firstItem="OTi-RR-xfC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="mL8-rd-Seu"/>
                 <constraint firstAttribute="trailing" secondItem="1ng-Ts-N3O" secondAttribute="trailing" constant="30" id="n2S-k8-Sao"/>
                 <constraint firstItem="yO2-Dv-Fci" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o1g-d8-2Ar"/>
-                <constraint firstItem="hME-bb-vkK" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" constant="5" id="pZQ-uC-9dh"/>
+                <constraint firstItem="hME-bb-vkK" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" constant="-5" id="pZQ-uC-9dh"/>
                 <constraint firstItem="WBk-LD-bTU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pun-GM-lA0"/>
                 <constraint firstAttribute="trailing" secondItem="ajo-fL-EaP" secondAttribute="trailing" constant="30" id="stw-AA-zMX"/>
                 <constraint firstItem="YRO-Ha-Z4h" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tWp-PJ-8uI"/>
-                <constraint firstItem="OTi-RR-xfC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tkS-2e-Ms8"/>
+                <constraint firstItem="OTi-RR-xfC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="0.5" id="tkS-2e-Ms8"/>
                 <constraint firstItem="WBk-LD-bTU" firstAttribute="top" secondItem="YRO-Ha-Z4h" secondAttribute="bottom" constant="22" id="wVQ-8J-Vmk"/>
                 <constraint firstItem="oLD-AK-Fy3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wpY-h4-ACF"/>
                 <constraint firstItem="YRO-Ha-Z4h" firstAttribute="top" secondItem="oLD-AK-Fy3" secondAttribute="bottom" constant="16" id="zIW-82-qsR"/>
