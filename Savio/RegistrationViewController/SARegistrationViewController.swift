@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SARegistrationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TxtFieldTableViewCellDelegate,TitleTableViewCellDelegate,FindAddressCellDelegate,linkButtonTableViewCellDelegate,ButtonCellDelegate,PostCodeVerificationDelegate,DropDownTxtFieldTableViewCellDelegate,PickerTxtFieldTableViewCellDelegate{
+class SARegistrationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TxtFieldTableViewCellDelegate,TitleTableViewCellDelegate,FindAddressCellDelegate,linkButtonTableViewCellDelegate,ButtonCellDelegate,PostCodeVerificationDelegate,DropDownTxtFieldTableViewCellDelegate,PickerTxtFieldTableViewCellDelegate,ImportantInformationViewDelegate{
     
     @IBOutlet weak var tblView: UITableView!
     var arrRegistration  = [Dictionary <String, AnyObject>]()
@@ -29,9 +29,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         self.tblView.rowHeight = UITableViewAutomaticDimension
         self.getJSONForUI()
         self.createCells()
-        
        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -214,7 +213,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         for var i=0; i<arrRegistration.count; i++ {
             let dict = arrRegistration[i] as Dictionary<String,AnyObject>
                 if dict["classType"]!.isEqualToString("ErrorTableViewCell"){
-        return 35.0
+        return 30.0
             }
                 else{
                     35.0
@@ -281,7 +280,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     }
         else{
 //            NW1W 9BE
-            
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
             objAnimView!.frame = self.view.frame
             objAnimView?.animate()
@@ -318,21 +316,119 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     
-    
     func buttonClicked(sender:UIButton){
+        
+//        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+//        self.navigationController?.pushViewController(objHurrrayView, animated: true)
+        
+        
         
         if checkTextFiledValidation() == false{
             //call term and condition screen
             
-            let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! UIView
-            objimpInfo.frame = self.view.frame
-            self.view.addSubview(objimpInfo)
-            
+            let objImpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
+            objImpInfo.delegate = self
+//            objImpInfo.lblHeading.text = "Term And Condition"
+            objImpInfo.frame = self.view.frame
+            self.view.addSubview(objImpInfo)
         }
         
         
+//        objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+//        objAnimView!.frame = self.view.frame
+//        objAnimView?.animate()
+//        self.view.addSubview(objAnimView!)
+//        
+//        let objAPI = API()
+//        objAPI.delegate = self
+//        let dict = ["title":"Ms.","first_name":"palak","second_name":"Jaiswal","date_of_birth":"03-06-1990","email":"palak@gmail.com","phone_number":"9876543210","address_1":"Hinjewadi, Pune","address_2":"","address_3":"","town":"Pune","country":"India","post_code":"401302","house_number":"302","pin":"1234","confirm_pin":"1234"] as Dictionary<String,AnyObject>
+//        
+//        objAPI.registerTheUserWithTitle(dict)
+        
 //     checkTextFiledValidation()
     }
+    
+    //
+    
+    func acceptPolicy(obj:ImportantInformationView){
+        var dict = Dictionary<String, AnyObject>()
+
+        for var i=0; i<arrRegistrationFields.count; i++ {
+            //            var  dict : NSMutableDictionary = NSMutableDictionary()
+            if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell){
+                let cell = arrRegistrationFields[i] as! TitleTableViewCell
+                dict["title"] = cell.tfTitle?.text
+                dict["first_name"] = cell.tfTitle?.text
+            }
+            
+            if arrRegistrationFields[i].isKindOfClass(TxtFieldTableViewCell){
+                let cell = arrRegistrationFields[i] as! TxtFieldTableViewCell
+//                if cell.tf?.placeholder == "Surname"{
+//                    dict["second_name"] = cell.tf?.text
+//                }
+                if cell.tf?.placeholder == "Surname"{
+                    dict["second_name"] = cell.tf?.text
+                }
+                if cell.tf?.placeholder == "First Address Line"{
+                    dict["address_1"] = cell.tf?.text
+
+                }
+                if cell.tf?.placeholder == "Second Address Line"{
+                    dict["address_2"] = cell.tf?.text
+                    
+                }
+                if cell.tf?.placeholder == "Third Address Line"{
+                    dict["address_3"] = cell.tf?.text
+                    
+                }
+                
+                if cell.tf?.placeholder == "Town"{
+                    dict["town"] = cell.tf?.text
+
+                }
+                
+                 if cell.tf?.placeholder == "Mobile number"{
+                    dict["phone_number"] = cell.tf?.text
+
+                }
+                
+                 if cell.tf?.placeholder == "Email"{
+                    dict["email"] = cell.tf?.text
+
+                }
+            }
+            
+            if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
+                let cell = arrRegistrationFields[i] as! FindAddressTableViewCell
+                dict["post_code"] = cell.tfPostCode?.text
+            }
+            
+            if arrRegistrationFields[i].isKindOfClass(PickerTextfildTableViewCell){
+                let cell = arrRegistrationFields[i] as! PickerTextfildTableViewCell
+                dict["date_of_birth"] = cell.tfDatePicker?.text
+            }
+            
+            
+        }
+        
+        print("DictPara:\(dict)")
+        
+        objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+        objAnimView!.frame = self.view.frame
+        objAnimView?.animate()
+        self.view.addSubview(objAnimView!)
+        
+        let objAPI = API()
+        objAPI.delegate = self
+//        let dict = ["title":"Ms.","first_name":"palak","second_name":"Jaiswal","date_of_birth":"03-06-1990","email":"palak@gmail.com","phone_number":"9876543210","address_1":"Hinjewadi, Pune","address_2":"","address_3":"","town":"Pune","country":"India","post_code":"401302","house_number":"302","pin":"1234","confirm_pin":"1234"] as Dictionary<String,AnyObject>
+        
+        objAPI.registerTheUserWithTitle(dict)
+        
+//        objAPI.registerTheUserWithTitle(dictForTextFieldValue["title"] as! String, first_name: dictForTextFieldValue["name"] as! String, second_name: dictForTextFieldValue["Surname"] as! String, date_of_birth: dictForTextFieldValue["Date of birth"] as! String, email: dictForTextFieldValue["Email"] as! String, phone_number: dictForTextFieldValue[Mobile number] as! String, address_1: dictForTextFieldValue["title"] as! String, address_2: dictForTextFieldValue["title"] as! String, address_3: dictForTextFieldValue["title"] as! String, town: dictForTextFieldValue["title"] as! String, country: dictForTextFieldValue["title"] as! String, post_code: dictForTextFieldValue["title"] as! String, house_number: dictForTextFieldValue["title"] as! String)
+        
+    }
+   
+    
     
     func checkTextFiledValidation()->Bool{
         var returnFlag = false
@@ -358,8 +454,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     errorMsg = "Please select a title"
                     errorFLag = true
                 }
-                
-                
                 dict = arrRegistration[0] as Dictionary<String,AnyObject>
                 idx = 0
             }
@@ -445,6 +539,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 idx = 5
             }
             print("\(idx)")
+            
             if(errorFLag == true){
                 returnFlag = true
                 var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
@@ -518,6 +613,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         self.createCells()
         
     }
+    
     func error(error:String){
         objAnimView?.removeFromSuperview()
         print("\(error)")
@@ -530,7 +626,18 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         dict["metaData"] = metadataDict
         arrRegistration[5] = dict
         self.createCells()
+    }
+    
+    func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
+        objAnimView?.removeFromSuperview()
+        print("\(objResponse)")
+        
+        
+        
 
+    }
+    func errorResponseForRegistrationAPI(error:String){
+        objAnimView?.removeFromSuperview()
 
     }
     

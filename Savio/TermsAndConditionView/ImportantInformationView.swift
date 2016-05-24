@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ImportantInformationView: UIView {
+protocol ImportantInformationViewDelegate {
+    func acceptPolicy(obj:ImportantInformationView)
+}
 
-    
+class ImportantInformationView: UIView {
  
+    var delegate: ImportantInformationViewDelegate?
     @IBOutlet weak var termsAndConditionTextView: UITextView!
     @IBOutlet weak var gotItButton: UIButton!
     var isChecked : Bool! = false
@@ -31,7 +34,12 @@ class ImportantInformationView: UIView {
     
     
     @IBAction func gotItButtonPressed(sender: AnyObject) {
-         self.removeFromSuperview()
+        self.removeFromSuperview()
+        delegate?.acceptPolicy(self)
     }
 
+
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        self.removeFromSuperview()
+    }
 }

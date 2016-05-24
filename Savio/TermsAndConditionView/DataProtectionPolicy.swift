@@ -8,11 +8,22 @@
 
 import UIKit
 
+//protocol DataProtectionPolicyDelegate {
+//    
+//}
+
 class DataProtectionPolicy: UIView {
+    
+//    var delegate: DataProtectionPolicyDelegate?
 
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var dataPolicyAndTermsTextView: UITextView!
+    
+    @IBOutlet weak var lblHeading: UILabel!
+    
+
+    
     override func drawRect(rect: CGRect) {
          //set the shadow color for back button
         backButton.layer.shadowColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
