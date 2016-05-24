@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SARegistrationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TxtFieldTableViewCellDelegate,TitleTableViewCellDelegate,FindAddressCellDelegate,linkButtonTableViewCellDelegate,ButtonCellDelegate,PostCodeVerificationDelegate,DropDownTxtFieldTableViewCellDelegate,PickerTxtFieldTableViewCellDelegate,ImportantInformationViewDelegate{
+class SARegistrationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TxtFieldTableViewCellDelegate,TitleTableViewCellDelegate,FindAddressCellDelegate,linkButtonTableViewCellDelegate,ButtonCellDelegate,PostCodeVerificationDelegate,DropDownTxtFieldTableViewCellDelegate,PickerTxtFieldTableViewCellDelegate,ImportantInformationViewDelegate,OTPSentDelegate{
     
     @IBOutlet weak var tblView: UITableView!
     var arrRegistration  = [Dictionary <String, AnyObject>]()
@@ -29,6 +29,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         self.tblView.rowHeight = UITableViewAutomaticDimension
         self.getJSONForUI()
         self.createCells()
+        
+        
+        
        
 
     }
@@ -413,12 +416,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     
     func buttonClicked(sender:UIButton){
-        
-//        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
-//        self.navigationController?.pushViewController(objHurrrayView, animated: true)
-        
-        
-        
+
         if checkTextFiledValidation() == false{
             //call term and condition screen
             
@@ -428,20 +426,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             objImpInfo.frame = self.view.frame
             self.view.addSubview(objImpInfo)
         }
-        
-        
-//        objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-//        objAnimView!.frame = self.view.frame
-//        objAnimView?.animate()
-//        self.view.addSubview(objAnimView!)
-//        
-//        let objAPI = API()
-//        objAPI.delegate = self
-//        let dict = ["title":"Ms.","first_name":"palak","second_name":"Jaiswal","date_of_birth":"03-06-1990","email":"palak@gmail.com","phone_number":"9876543210","address_1":"Hinjewadi, Pune","address_2":"","address_3":"","town":"Pune","country":"India","post_code":"401302","house_number":"302","pin":"1234","confirm_pin":"1234"] as Dictionary<String,AnyObject>
-//        
-//        objAPI.registerTheUserWithTitle(dict)
-        
-//     checkTextFiledValidation()
+
+    
     }
     
     //
@@ -487,11 +473,16 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     dict["phone_number"] = cell.tf?.text
 
                 }
+                if cell.tf?.placeholder == "County"{
+                    dict["county"] = cell.tf?.text
+                    
+                }
                 
                  if cell.tf?.placeholder == "Email"{
                     dict["email"] = cell.tf?.text
 
                 }
+
             }
             
             if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
@@ -504,11 +495,13 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 dict["date_of_birth"] = cell.tfDatePicker?.text
             }
             
-            
+              dict["device_ID"] = NSUUID().UUIDString
         }
         
         print("DictPara:\(dict)")
         
+        
+
         objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
         objAnimView!.frame = self.view.frame
         objAnimView?.animate()
@@ -516,9 +509,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
         let objAPI = API()
         objAPI.delegate = self
-//        let dict = ["title":"Ms.","first_name":"palak","second_name":"Jaiswal","date_of_birth":"03-06-1990","email":"palak@gmail.com","phone_number":"9876543210","address_1":"Hinjewadi, Pune","address_2":"","address_3":"","town":"Pune","country":"India","post_code":"401302","house_number":"302","pin":"1234","confirm_pin":"1234"] as Dictionary<String,AnyObject>
-        
         objAPI.registerTheUserWithTitle(dict)
+        objAPI.storeValueInKeychainForKey("userInfo", value: dict)
         
 //        objAPI.registerTheUserWithTitle(dictForTextFieldValue["title"] as! String, first_name: dictForTextFieldValue["name"] as! String, second_name: dictForTextFieldValue["Surname"] as! String, date_of_birth: dictForTextFieldValue["Date of birth"] as! String, email: dictForTextFieldValue["Email"] as! String, phone_number: dictForTextFieldValue[Mobile number] as! String, address_1: dictForTextFieldValue["title"] as! String, address_2: dictForTextFieldValue["title"] as! String, address_3: dictForTextFieldValue["title"] as! String, town: dictForTextFieldValue["title"] as! String, country: dictForTextFieldValue["title"] as! String, post_code: dictForTextFieldValue["title"] as! String, house_number: dictForTextFieldValue["title"] as! String)
         
@@ -788,6 +780,20 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
 //            }
 //    }
     
+      //OTP Verification Delegate Method
+    func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
+    {
+        objAnimView?.removeFromSuperview()
+        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+    }
+    func errorResponseForOTPSentAPI(error:String){
+        objAnimView?.removeFromSuperview()
+        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+
+    }
+    
     
     //PostCode Verification Delegate Method
     func success(addressArray:Array<String>){
@@ -825,7 +831,10 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
         
-        
+        let objAPI = API()
+        objAPI.otpSentDelegate = self
+        objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+      
         
 
     }

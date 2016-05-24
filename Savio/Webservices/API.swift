@@ -11,7 +11,8 @@ import SystemConfiguration
 import Foundation
 
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
-var OTP = ""
+let APIKey = "TYJHDBcrTqsh8l8Jffuv2BSXUIpKV40Z"
+let custom_message = "Your Savio phone verification code is {{code}}"
 
 protocol PostCodeVerificationDelegate {
     func success(addressArray:Array<String>)
@@ -20,10 +21,24 @@ protocol PostCodeVerificationDelegate {
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>)
     func errorResponseForRegistrationAPI(error:String)
 }
+protocol OTPSentDelegate{
+    
+    func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
+    func errorResponseForOTPSentAPI(error:String)
+}
+
+protocol OTPVerificationDelegate{
+    
+    func successResponseForOTPVerificationAPI(objResponse:Dictionary<String,AnyObject>)
+    func errorResponseForOTPVerificationAPI(error:String)
+}
+
 
 class API: UIView {
     let session = NSURLSession.sharedSession()
     var delegate: PostCodeVerificationDelegate?
+    var otpSentDelegate : OTPSentDelegate?
+    var otpVerificationDelegate : OTPVerificationDelegate?
     
     //Checking Reachability function
     func isConnectedToNetwork() -> Bool {
@@ -63,13 +78,13 @@ class API: UIView {
                         {
                             //if dictionary contains address array return it for the further development
                             dispatch_async(dispatch_get_main_queue()){
-                            self.delegate?.success(addressArray)
+                                self.delegate?.success(addressArray)
                             }
                         }
                         else{
                             //else return an error
                             dispatch_async(dispatch_get_main_queue()){
-                            self.delegate?.error("The postcode doesn't look right")
+                                self.delegate?.error("The postcode doesn't look right")
                             }
                         }
                     }
@@ -83,91 +98,158 @@ class API: UIView {
         }
     }
     
-    //API call to register the user
-//    func registerTheUserWithTitle(title:String,first_name:String,second_name:String,date_of_birth:String,email:String,phone_number:String,address_1:String,address_2:String,address_3:String,town:String,country:String,post_code:String,house_number:String)
     
     func registerTheUserWithTitle(dictParam:Dictionary<String,AnyObject>)
-
     {
-        let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
-        request.HTTPMethod = "POST"
         
-//        let params = ["title":title,"first_name":first_name,"second_name":second_name,"date_of_birth":date_of_birth,"email":email,"phone_number":phone_number,"address_1":address_1,"address_2":address_2,"address_3":address_3,"town":town,"country":country,"post_code":post_code,"house_number":house_number, "pin":"1234","confirm_pin":"1234"] as Dictionary<String, String>
-
-        
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        print(request)
-                let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            if let data = data
-            {
-                let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
-                 print(json)
-                if let dict = json as? Dictionary<String,AnyObject>
-                {
-                    print("\(dict)")
-                     dispatch_async(dispatch_get_main_queue()){
-                    self.delegate?.successResponseForRegistrationAPI(dict)
-                    }
-                }
-                else{
-                    print("error")
-                     dispatch_async(dispatch_get_main_queue()){
-                        self.delegate?.errorResponseForRegistrationAPI("Error")
-                    }
-                    
-                }
-            }
+        if(self.isConnectedToNetwork())
+        {
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
+            request.HTTPMethod = "POST"
             
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            print(request)
+            let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if let data = data
+                {
+                    let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                    print(json)
+                    if let dict = json as? Dictionary<String,AnyObject>
+                    {
+                        print("\(dict)")
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.delegate?.successResponseForRegistrationAPI(dict)
+                        }
+                    }
+                    else{
+                        print("error")
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.delegate?.errorResponseForRegistrationAPI("Error")
+                        }
+                        
+                    }
+                }
+                
+            }
+            dataTask.resume()
         }
-        dataTask.resume()
+        else{
+            delegate?.error("No network found")
+        }
+        
     }
     
     
     
-    func getOTP(title:String,first_name:String,second_name:String,date_of_birth:String,email:String,phone_number:String,address_1:String,address_2:String,address_3:String,town:String,country:String,post_code:String,house_number:String) {
-        let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/OTP/GetOTP",baseURL))!)
-        request.HTTPMethod = "POST"
+    func getOTPForNumber(phoneNumber:String,country_code:String) {
         
-        let params = ["title":title,"first_name":first_name,"second_name":second_name,"date_of_birth":date_of_birth,"email":email,"phone_number":phone_number,"address_1":address_1,"address_2":address_2,"address_3":address_3,"town":town,"country":country,"post_code":post_code,"house_number":house_number] as Dictionary<String, String>
-        
-        
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        print(request)
-        let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            if let data = data
-            {
-                let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
-                print(json)
-                if let dict = json as? Dictionary<String,String>
+        if(self.isConnectedToNetwork())
+        {
+            let request = NSMutableURLRequest(URL: NSURL(string:"http://api.authy.com/protected/json/phones/verification/start")!)
+            
+            request.HTTPMethod = "POST"
+            
+            let params = ["api_key":APIKey,"via":"sms","phone_number":phoneNumber,"country_code":country_code] as Dictionary<String, String>
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            print(request)
+            let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if let data = data
                 {
-                    OTP = dict["otp"]! as String
-                    
+                    let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                    if let dict = json as? Dictionary<String,AnyObject>
+                    {
+                        print(dict)
+                        if(dict["success"] as! Bool == true)
+                        {dispatch_async(dispatch_get_main_queue()){
+                            self.otpSentDelegate?.successResponseForOTPSentAPI(dict)
+                            }
+                        }
+                        
+                    }
+                    else{
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.otpSentDelegate?.errorResponseForOTPSentAPI((error?.localizedDescription)!)
+                        }
+                    }
                 }
                 else{
-                    print("error ")
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.otpSentDelegate?.errorResponseForOTPSentAPI((error?.localizedDescription)!)
+                    }
                 }
+                
             }
+            dataTask.resume()
             
         }
-        dataTask.resume()
-
-        
+        else{
+            self.otpSentDelegate?.errorResponseForOTPSentAPI("No network found")
+        }
     }
     
-    //KeychainItemWrapper methods
+    func verifyOTP(phoneNumber:String,country_code:String,OTP:String)
+    {
+        if(self.isConnectedToNetwork())
+        {
+            let dataTask = session.dataTaskWithURL(NSURL(string: String(format: "http://api.authy.com/protected/json/phones/verification/check?api_key=%@&via=sms&phone_number=%@&country_code=%@&verification_code=%@",APIKey,phoneNumber,country_code,OTP))!) { data, response, error in
+                if let data = data
+                {
+                    let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                    if let dict = json as? Dictionary<String,AnyObject>
+                    {
+                        print(dict)
+                        if(dict["message"] as! String  == "Verification code is correct.")
+                        {
+                            dispatch_async(dispatch_get_main_queue()){
+                                self.otpVerificationDelegate?.successResponseForOTPVerificationAPI(dict)
+                            }
+                        }
+                        else if(dict["message"] as! String == "Verification code is incorrect."){
+                            dispatch_async(dispatch_get_main_queue()){
+                                self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI("Verification code is incorrect.")
+                            }
+                        }
+                        else{
+                            dispatch_async(dispatch_get_main_queue()){
+                                self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI("Verification code is incorrect.")
+                            }
+                        }
+                        
+                    }
+                    else{
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI((error?.localizedDescription)!)
+                        }
+                    }
+                }
+                else{
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI((error?.localizedDescription)!)
+                    }
+                }
+                
+            }
+            dataTask.resume()
+        }
+        else{
+            self.otpSentDelegate?.errorResponseForOTPSentAPI("No network found")
+        }
+    }
+    
     //KeychainItemWrapper methods
     func storeValueInKeychainForKey(key:String,value:AnyObject){
         //Save the value of password into keychain
         KeychainItemWrapper.save(key, data: value)
     }
     
-    func getValueFromKeychainOfKey(key:String)-> String{
+    func getValueFromKeychainOfKey(key:String)-> AnyObject{
         //get the value of password from keychain
-        return KeychainItemWrapper.load(key) as! String
+        return KeychainItemWrapper.load(key) as AnyObject
         
     }
 }
