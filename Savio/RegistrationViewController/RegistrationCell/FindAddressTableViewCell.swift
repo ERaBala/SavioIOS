@@ -79,6 +79,7 @@ class FindAddressTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
+        textField.textColor = UIColor.blackColor()
         self.registerForKeyboardNotifications()
         return true
     }

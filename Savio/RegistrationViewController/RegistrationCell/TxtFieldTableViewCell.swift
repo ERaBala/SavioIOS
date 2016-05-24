@@ -86,6 +86,7 @@ class TxtFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
    func textFieldShouldBeginEditing(textField: UITextField) -> Bool
      {
+        tf!.textColor = UIColor.blackColor()
         self.registerForKeyboardNotifications()
         return true
     }

@@ -107,6 +107,7 @@ class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
+        textField.textColor = UIColor.blackColor()
         if textField == tfTitle{
             self.showOrDismiss()
             return false

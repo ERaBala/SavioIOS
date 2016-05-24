@@ -20,6 +20,8 @@ class PickerTextfildTableViewCell: UITableViewCell,UITextFieldDelegate{
     var previousDate: String?
 
     @IBOutlet weak var toolBarInput: UIToolbar?
+    
+    var datePickerView:UIDatePicker = UIDatePicker()
 
     var delegate: PickerTxtFieldTableViewCellDelegate?
 
@@ -49,24 +51,30 @@ class PickerTextfildTableViewCell: UITableViewCell,UITextFieldDelegate{
     @IBAction func selectDate(sender: UITextField) {
         previousDate = tfDatePicker.text
         
-        let datePickerView:UIDatePicker = UIDatePicker()
+//        let datePickerView:UIDatePicker = UIDatePicker()
         
         datePickerView.datePickerMode = UIDatePickerMode.Date
         
         sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: "datePickerValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
+//               datePickerView.selectRow(0!, inComponent: 0, animated: false)
       
         
     }
-
-    func datePickerValueChanged(sender:UIDatePicker) {
+    
+    func setDateToTextField(){
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        tfDatePicker.text = dateFormatter.stringFromDate(sender.date)
+        tfDatePicker.text = dateFormatter.stringFromDate(datePickerView.date)
+    }
+
+    func datePickerValueChanged(sender:UIDatePicker) {
+       self.setDateToTextField()
     }
     
     @IBAction func toolBarDoneBtnClicked(){
+        self.setDateToTextField()
         tfDatePicker.resignFirstResponder()
         previousDate = tfDatePicker.text!
         delegate?.selectedDate(self)
