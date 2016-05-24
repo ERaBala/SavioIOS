@@ -19,6 +19,7 @@ class SAWelcomViewController: UIViewController {
     
     var flag: Bool = false
 
+    var idx: Int = 0
     let sampleBGColors: Array<UIColor> = [UIColor.redColor(), UIColor.yellowColor(), UIColor.greenColor(), UIColor.magentaColor(), UIColor.orangeColor()]
     let samleDictArr: Array<String> = ["Page5", "Page1", "Page2", "Page3", "Page4"]
     
@@ -40,6 +41,7 @@ class SAWelcomViewController: UIViewController {
         configureScrollView()
         configurePageControl()
         signUpBtn.layer.cornerRadius = 5.0
+        idx = 0
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,15 +68,12 @@ class SAWelcomViewController: UIViewController {
     
     
     func configureScrollView() {
-        
         if flag {
             return
         }
         // Enable paging.
         scrollView.pagingEnabled = true
-        
         flag = true
-        
         // Set the following flag values.
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
@@ -104,6 +103,7 @@ class SAWelcomViewController: UIViewController {
             // Add the test view as a subview to the scrollview.
             scrollView.addSubview(testView)
         }
+        self.change()
     }
     
     
@@ -131,11 +131,27 @@ class SAWelcomViewController: UIViewController {
     
     @IBAction func changePage(sender: AnyObject) {
         // Calculate the frame that should scroll to based on the page control current page.
-//        var newFrame = scrollView.frame
-//        newFrame.origin.x = newFrame.size.width * CGFloat(pageControl.currentPage)
-//        scrollView.scrollRectToVisible(newFrame, animated: true)
         
     }
+    
+    
+    //Function invoke for make
+    func change(){
+        var flag = true
+        if(idx == 5){
+            idx = 0
+            flag = false
+        }
+        var newFrame = scrollView.frame
+        pageControl.currentPage = idx
+        newFrame.origin.x = newFrame.size.width * CGFloat(pageControl.currentPage)
+        
+        scrollView.scrollRectToVisible(newFrame, animated: flag)
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "change", userInfo: nil, repeats: false)
+        idx++
+
+    }
+    
     
     @IBAction func clickOnImportantLink(sender:UIButton){
         

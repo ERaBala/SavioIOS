@@ -174,11 +174,20 @@
 		C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E525AB1CE986FA000FD01E /* AppDelegate.swift */; };
 		C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E525B21CE986FA000FD01E /* Assets.xcassets */; };
 		C9E525B61CE986FA000FD01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E525B41CE986FA000FD01E /* LaunchScreen.storyboard */; };
-		C9E525C41CE9A480000FD01E /* savivo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C21CE9A480000FD01E /* savivo-logo.png */; };
-		C9E525C51CE9A480000FD01E /* savivo-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */; };
 		C9E525C91CE9D29D000FD01E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E525C81CE9D29D000FD01E /* Security.framework */; };
 		C9E535F31CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E535F11CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift */; };
 		C9E535F41CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E535F21CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib */; };
+		C9E854E91CF43732006213BF /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854E61CF43732006213BF /* arrow_down.png */; };
+		C9E854EA1CF43732006213BF /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854E71CF43732006213BF /* arrow.png */; };
+		C9E854EB1CF43732006213BF /* down-arrow-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854E81CF43732006213BF /* down-arrow-1.png */; };
+		C9E854EE1CF43B25006213BF /* arrow_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854EC1CF43B25006213BF /* arrow_20x20.png */; };
+		C9E854EF1CF43B25006213BF /* arrow_30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854ED1CF43B25006213BF /* arrow_30x30.png */; };
+		C9E854F31CF44B4A006213BF /* down-arrow-15x15.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854F01CF44B4A006213BF /* down-arrow-15x15.png */; };
+		C9E854F41CF44B4A006213BF /* down-arrow-30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854F11CF44B4A006213BF /* down-arrow-30x30.png */; };
+		C9E854F51CF44B4A006213BF /* down-arrow-45x45.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854F21CF44B4A006213BF /* down-arrow-45x45.png */; };
+		C9E855011CF456CC006213BF /* savivo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854FE1CF456CC006213BF /* savivo-logo.png */; };
+		C9E855021CF456CC006213BF /* savivo-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E854FF1CF456CC006213BF /* savivo-logo@2x.png */; };
+		C9E855031CF456CC006213BF /* savivo-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E855001CF456CC006213BF /* savivo-logo@3x.png */; };
 		C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */; };
 		C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */; };
 		C9FD9A9C1CEF5C16006FF2C7 /* Link.html in Resources */ = {isa = PBXBuildFile; fileRef = C9FD9A9B1CEF5C16006FF2C7 /* Link.html */; };
@@ -356,11 +365,20 @@
 		C9E525B21CE986FA000FD01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E525B51CE986FA000FD01E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9E525B71CE986FA000FD01E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9E525C21CE9A480000FD01E /* savivo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo.png"; sourceTree = "<group>"; };
-		C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@2x.png"; sourceTree = "<group>"; };
 		C9E525C81CE9D29D000FD01E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C9E535F11CF02C7F0017FBC6 /* SAEnterYourPINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAEnterYourPINViewController.swift; sourceTree = "<group>"; };
 		C9E535F21CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAEnterYourPINViewController.xib; sourceTree = "<group>"; };
+		C9E854E61CF43732006213BF /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
+		C9E854E71CF43732006213BF /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		C9E854E81CF43732006213BF /* down-arrow-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow-1.png"; sourceTree = "<group>"; };
+		C9E854EC1CF43B25006213BF /* arrow_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_20x20.png; sourceTree = "<group>"; };
+		C9E854ED1CF43B25006213BF /* arrow_30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_30x30.png; sourceTree = "<group>"; };
+		C9E854F01CF44B4A006213BF /* down-arrow-15x15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow-15x15.png"; sourceTree = "<group>"; };
+		C9E854F11CF44B4A006213BF /* down-arrow-30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow-30x30.png"; sourceTree = "<group>"; };
+		C9E854F21CF44B4A006213BF /* down-arrow-45x45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow-45x45.png"; sourceTree = "<group>"; };
+		C9E854FE1CF456CC006213BF /* savivo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo.png"; sourceTree = "<group>"; };
+		C9E854FF1CF456CC006213BF /* savivo-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@2x.png"; sourceTree = "<group>"; };
+		C9E855001CF456CC006213BF /* savivo-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savivo-logo@3x.png"; sourceTree = "<group>"; };
 		C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		C9FD9A9B1CEF5C16006FF2C7 /* Link.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Link.html; sourceTree = "<group>"; };
@@ -731,13 +749,30 @@
 		C9E525C11CE9A480000FD01E /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				C9E854FD1CF456CC006213BF /* logo */,
+				C9E854F01CF44B4A006213BF /* down-arrow-15x15.png */,
+				C9E854F11CF44B4A006213BF /* down-arrow-30x30.png */,
+				C9E854F21CF44B4A006213BF /* down-arrow-45x45.png */,
+				C9E854EC1CF43B25006213BF /* arrow_20x20.png */,
+				C9E854ED1CF43B25006213BF /* arrow_30x30.png */,
+				C9E854E61CF43732006213BF /* arrow_down.png */,
+				C9E854E71CF43732006213BF /* arrow.png */,
+				C9E854E81CF43732006213BF /* down-arrow-1.png */,
 				A8392A1F1CEED48C00C7EE48 /* CheckBox */,
 				A8095B9D1CEDC616006366F7 /* savioLoader */,
 				C979495E1CEC381C00416BD5 /* Welcome screen */,
-				C9E525C21CE9A480000FD01E /* savivo-logo.png */,
-				C9E525C31CE9A480000FD01E /* savivo-logo@2x.png */,
 			);
 			path = Graphics;
+			sourceTree = "<group>";
+		};
+		C9E854FD1CF456CC006213BF /* logo */ = {
+			isa = PBXGroup;
+			children = (
+				C9E854FE1CF456CC006213BF /* savivo-logo.png */,
+				C9E854FF1CF456CC006213BF /* savivo-logo@2x.png */,
+				C9E855001CF456CC006213BF /* savivo-logo@3x.png */,
+			);
+			path = logo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -810,10 +845,11 @@
 				A8095C581CEDC616006366F7 /* pre-loader@3x17.png in Resources */,
 				A8095C271CEDC616006366F7 /* pre-loader@1x4.png in Resources */,
 				A8095C5C1CEDC616006366F7 /* pre-loader@3x20.png in Resources */,
-				C9E525C51CE9A480000FD01E /* savivo-logo@2x.png in Resources */,
+				C9E854F51CF44B4A006213BF /* down-arrow-45x45.png in Resources */,
 				A8095C361CEDC616006366F7 /* pre-loader@2x18.png in Resources */,
 				A8095C131CEDC616006366F7 /* pre-loader@1x18.png in Resources */,
 				A8095C3A1CEDC616006366F7 /* pre-loader@2x21.png in Resources */,
+				C9E855021CF456CC006213BF /* savivo-logo@2x.png in Resources */,
 				A8095C1D1CEDC616006366F7 /* pre-loader@1x27.png in Resources */,
 				A8095C171CEDC616006366F7 /* pre-loader@1x21.png in Resources */,
 				A8095C241CEDC616006366F7 /* pre-loader@1x33.png in Resources */,
@@ -826,7 +862,7 @@
 				A8095C6F1CEDC617006366F7 /* pre-loader@3x6.png in Resources */,
 				C97949641CEC381C00416BD5 /* Page1.png in Resources */,
 				A8095C291CEDC616006366F7 /* pre-loader@1x6.png in Resources */,
-				C9E525C41CE9A480000FD01E /* savivo-logo.png in Resources */,
+				C9E854F41CF44B4A006213BF /* down-arrow-30x30.png in Resources */,
 				C9905FA31CED9EF700E63471 /* linkButtonTableViewCell.xib in Resources */,
 				C97949661CEC381C00416BD5 /* Page3.png in Resources */,
 				A8095C1E1CEDC616006366F7 /* pre-loader@1x28.png in Resources */,
@@ -838,6 +874,7 @@
 				C9905F9F1CED9EF700E63471 /* ButtonTableViewCell.xib in Resources */,
 				A8095C6E1CEDC617006366F7 /* pre-loader@3x5.png in Resources */,
 				A8095C701CEDC617006366F7 /* pre-loader@3x7.png in Resources */,
+				C9E855011CF456CC006213BF /* savivo-logo.png in Resources */,
 				A8095C3B1CEDC616006366F7 /* pre-loader@2x22.png in Resources */,
 				A8095C301CEDC616006366F7 /* pre-loader@2x12.png in Resources */,
 				C9E525B61CE986FA000FD01E /* LaunchScreen.storyboard in Resources */,
@@ -853,6 +890,7 @@
 				A8095C381CEDC616006366F7 /* pre-loader@2x2.png in Resources */,
 				A8095C411CEDC616006366F7 /* pre-loader@2x28.png in Resources */,
 				C95CD60D1CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.xib in Resources */,
+				C9E854EE1CF43B25006213BF /* arrow_20x20.png in Resources */,
 				A8095C221CEDC616006366F7 /* pre-loader@1x31.png in Resources */,
 				A8392A2B1CEED48C00C7EE48 /* check-box@3x.png in Resources */,
 				A8095C621CEDC617006366F7 /* pre-loader@3x26.png in Resources */,
@@ -865,6 +903,7 @@
 				A8095C4C1CEDC616006366F7 /* pre-loader@2x6.png in Resources */,
 				A8095C4D1CEDC616006366F7 /* pre-loader@2x7.png in Resources */,
 				A8095C641CEDC617006366F7 /* pre-loader@3x28.png in Resources */,
+				C9E854E91CF43732006213BF /* arrow_down.png in Resources */,
 				A8095C531CEDC616006366F7 /* pre-loader@3x12.png in Resources */,
 				A8095C3F1CEDC616006366F7 /* pre-loader@2x26.png in Resources */,
 				A8095C691CEDC617006366F7 /* pre-loader@3x32.png in Resources */,
@@ -874,6 +913,7 @@
 				C9854A9A1CED9A5000D09AB3 /* SAWelcomViewController.xib in Resources */,
 				C9905FA71CED9EF700E63471 /* TxtFieldTableViewCell.xib in Resources */,
 				C9905FAD1CEDCD1A00E63471 /* Registration.json in Resources */,
+				C9E854EF1CF43B25006213BF /* arrow_30x30.png in Resources */,
 				C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */,
 				A8095C2D1CEDC616006366F7 /* pre-loader@2x1.png in Resources */,
 				A8095C6B1CEDC617006366F7 /* pre-loader@3x34.png in Resources */,
@@ -885,6 +925,7 @@
 				C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */,
 				C9905FA51CED9EF700E63471 /* TitleTableViewCell.xib in Resources */,
 				A8095C261CEDC616006366F7 /* pre-loader@1x35.png in Resources */,
+				C9E854EA1CF43732006213BF /* arrow.png in Resources */,
 				A8B74C3D1CEDD152003A5D9A /* DataProtectionPolicy.xib in Resources */,
 				A8095C6A1CEDC617006366F7 /* pre-loader@3x33.png in Resources */,
 				A8095C451CEDC616006366F7 /* pre-loader@2x31.png in Resources */,
@@ -907,12 +948,14 @@
 				C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */,
 				A8095C4F1CEDC616006366F7 /* pre-loader@2x9.png in Resources */,
 				A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */,
+				C9E854EB1CF43732006213BF /* down-arrow-1.png in Resources */,
 				A8095C0B1CEDC616006366F7 /* pre-loader@1x10.png in Resources */,
 				A8095C0E1CEDC616006366F7 /* pre-loader@1x13.png in Resources */,
 				C9E535F41CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib in Resources */,
 				A8095C511CEDC616006366F7 /* pre-loader@3x10.png in Resources */,
 				A8095C441CEDC616006366F7 /* pre-loader@2x30.png in Resources */,
 				A8095C461CEDC616006366F7 /* pre-loader@2x32.png in Resources */,
+				C9E854F31CF44B4A006213BF /* down-arrow-15x15.png in Resources */,
 				A8095C401CEDC616006366F7 /* pre-loader@2x27.png in Resources */,
 				A8095C501CEDC616006366F7 /* pre-loader@3x1.png in Resources */,
 				A8095C681CEDC617006366F7 /* pre-loader@3x31.png in Resources */,
@@ -924,6 +967,7 @@
 				A8392A261CEED48C00C7EE48 /* check-box-checked@1x.png in Resources */,
 				A8095C121CEDC616006366F7 /* pre-loader@1x17.png in Resources */,
 				A8095C5B1CEDC616006366F7 /* pre-loader@3x2.png in Resources */,
+				C9E855031CF456CC006213BF /* savivo-logo@3x.png in Resources */,
 				A8095C391CEDC616006366F7 /* pre-loader@2x20.png in Resources */,
 				A8392A411CEEE0C200C7EE48 /* gotham-rounded-book-2.otf in Resources */,
 				A8392A431CEEE0C200C7EE48 /* GothamRounded-Medium.otf in Resources */,

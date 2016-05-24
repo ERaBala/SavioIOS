@@ -25,11 +25,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="savivo-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Awj-9b-C57">
-                    <rect key="frame" x="263" y="25" width="75" height="75"/>
+                    <rect key="frame" x="258" y="25" width="85" height="85"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="65n-6J-Upp"/>
-                        <constraint firstAttribute="height" constant="75" id="HWV-ga-ya9"/>
-                        <constraint firstAttribute="width" secondItem="Awj-9b-C57" secondAttribute="height" multiplier="1:1" id="VoD-1N-iA6"/>
+                        <constraint firstAttribute="width" secondItem="Awj-9b-C57" secondAttribute="height" multiplier="1:1" id="2q2-Hc-WP2"/>
+                        <constraint firstAttribute="height" constant="85" id="hkz-0v-te1"/>
+                        <constraint firstAttribute="width" constant="85" id="smM-64-uiZ"/>
                     </constraints>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xE-XW-drk">
@@ -38,23 +38,10 @@
                         <outlet property="delegate" destination="-1" id="Yfw-Gb-jTd"/>
                     </connections>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlu-SC-Nss">
-                    <rect key="frame" x="50" y="563" width="500" height="40"/>
-                    <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="ncu-Jf-PqH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="20"/>
-                    <state key="normal" title="Sign up to Savio">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickOnSignUpButton:" destination="-1" eventType="touchUpInside" id="pzC-tq-x8t"/>
-                    </connections>
-                </button>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Jtq-Lk-shb">
                     <rect key="frame" x="259" y="453" width="82" height="37"/>
                     <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="9Th-sm-1w4"/>
                         <constraint firstAttribute="width" constant="82" id="UcE-X2-xbd"/>
                         <constraint firstAttribute="height" constant="37" id="Vfs-dg-fxh"/>
                     </constraints>
@@ -62,10 +49,9 @@
                     <color key="currentPageIndicatorTintColor" red="0.76078431372549016" green="0.75294117647058822" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                 </pageControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7V-67-A51">
-                    <rect key="frame" x="50" y="498" width="500" height="30"/>
+                    <rect key="frame" x="50" y="481" width="500" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="51F-Xr-Z6c"/>
-                        <constraint firstAttribute="width" secondItem="Z7V-67-A51" secondAttribute="height" multiplier="50:3" id="kEw-Dg-9tW"/>
+                        <constraint firstAttribute="height" constant="30" id="urX-7l-2ND"/>
                     </constraints>
                     <state key="normal">
                         <attributedString key="attributedTitle">
@@ -82,29 +68,45 @@
                         <action selector="clickOnImportantLink:" destination="-1" eventType="touchUpInside" id="0z1-2o-JLL"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlu-SC-Nss">
+                    <rect key="frame" x="50" y="552" width="500" height="51"/>
+                    <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="hs1-Kq-5BE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="16"/>
+                    <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Sign up to Savio      " image="arrow_20x20.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickOnSignUpButton:" destination="-1" eventType="touchUpInside" id="pzC-tq-x8t"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Dlu-SC-Nss" secondAttribute="bottom" constant="-3" id="4Hz-NI-hWG"/>
-                <constraint firstItem="Awj-9b-C57" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="FJL-Q2-RQQ"/>
+                <constraint firstItem="Dlu-SC-Nss" firstAttribute="top" secondItem="Z7V-67-A51" secondAttribute="bottom" constant="41" id="3mk-he-HWd"/>
+                <constraint firstItem="Z7V-67-A51" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GPX-YR-eWm"/>
+                <constraint firstItem="Dlu-SC-Nss" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GhO-4r-sI6"/>
                 <constraint firstItem="Jtq-Lk-shb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hs1-64-R5b"/>
-                <constraint firstItem="Awj-9b-C57" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IwI-XX-L1D"/>
-                <constraint firstAttribute="trailing" secondItem="Dlu-SC-Nss" secondAttribute="trailing" constant="50" id="MvE-et-R7f"/>
+                <constraint firstAttribute="trailing" secondItem="Z7V-67-A51" secondAttribute="trailing" constant="50" id="NEZ-Jx-Qzf"/>
                 <constraint firstAttribute="trailing" secondItem="4xE-XW-drk" secondAttribute="trailing" id="OGr-pK-WG0"/>
-                <constraint firstItem="Z7V-67-A51" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="Puf-wD-aB5"/>
                 <constraint firstItem="Jtq-Lk-shb" firstAttribute="top" secondItem="4xE-XW-drk" secondAttribute="bottom" constant="-9" id="RVQ-xB-dGo"/>
-                <constraint firstAttribute="trailing" secondItem="Z7V-67-A51" secondAttribute="trailing" constant="50" id="Yoy-7c-RZT"/>
-                <constraint firstItem="Z7V-67-A51" firstAttribute="top" secondItem="Jtq-Lk-shb" secondAttribute="bottom" constant="8" id="ZFz-gw-LKh"/>
-                <constraint firstItem="4xE-XW-drk" firstAttribute="top" secondItem="Awj-9b-C57" secondAttribute="bottom" constant="23" id="fPL-nO-LLY"/>
-                <constraint firstItem="Dlu-SC-Nss" firstAttribute="top" secondItem="Jtq-Lk-shb" secondAttribute="bottom" constant="73" id="ij7-ci-FkX"/>
+                <constraint firstAttribute="bottom" secondItem="Dlu-SC-Nss" secondAttribute="bottom" constant="-3" id="dRW-A0-4X2"/>
+                <constraint firstItem="4xE-XW-drk" firstAttribute="top" secondItem="Awj-9b-C57" secondAttribute="bottom" constant="13" id="dcG-nH-Aum"/>
+                <constraint firstItem="Z7V-67-A51" firstAttribute="top" secondItem="4xE-XW-drk" secondAttribute="bottom" constant="19" id="php-SY-2PI"/>
                 <constraint firstItem="4xE-XW-drk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qhg-GK-dRF"/>
-                <constraint firstItem="Dlu-SC-Nss" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="vk8-sB-SGJ"/>
+                <constraint firstItem="Awj-9b-C57" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sDc-K2-pzu"/>
+                <constraint firstItem="Awj-9b-C57" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="urU-0e-mEz"/>
+                <constraint firstAttribute="trailing" secondItem="Dlu-SC-Nss" secondAttribute="trailing" constant="50" id="w94-d5-IdL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="313" y="283"/>
         </view>
     </objects>
     <resources>
-        <image name="savivo-logo.png" width="80" height="80"/>
+        <image name="arrow_20x20.png" width="20" height="30"/>
+        <image name="savivo-logo.png" width="85" height="85"/>
     </resources>
 </document>

@@ -7,8 +7,9 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="GothamRounded-Medium.otf">
-            <string>GothamRounded-Medium</string>
+        <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -28,7 +29,7 @@
                             <constraint firstAttribute="width" secondItem="3bk-Tq-jGb" secondAttribute="height" multiplier="176:27" id="ScX-dF-y1Y"/>
                             <constraint firstAttribute="width" constant="176" id="ejP-0f-sC9"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="qvP-O6-8u8"/>
@@ -42,6 +43,7 @@
                             <constraint firstAttribute="width" constant="120" id="qmU-22-BCF"/>
                             <constraint firstAttribute="height" constant="30" id="znF-YO-O5f"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
                         <state key="normal" title="Find Address">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>

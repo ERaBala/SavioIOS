@@ -6,8 +6,8 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="GothamRounded-Medium.otf">
-            <string>GothamRounded-Medium</string>
+        <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -22,7 +22,7 @@
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ex9-nW-iG7">
                         <rect key="frame" x="8" y="3" width="304" height="27"/>
-                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <outlet property="delegate" destination="-1" id="wkX-CZ-qEj"/>

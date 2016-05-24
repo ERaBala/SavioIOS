@@ -137,4 +137,8 @@ class TitleTableViewCell: UITableViewCell,UITextFieldDelegate {
         }
     }
     
+    @IBAction func clickeOnDropDownArrow(sender:UIButton){
+        self.showOrDismiss()
+    }
+    
 }

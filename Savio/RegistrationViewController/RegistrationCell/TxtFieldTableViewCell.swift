@@ -84,7 +84,6 @@ class TxtFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
         tblView?.contentInset = contentInsets;
         tblView?.scrollIndicatorInsets = contentInsets;
     }
-    
    func textFieldShouldBeginEditing(textField: UITextField) -> Bool
      {
         self.registerForKeyboardNotifications()
@@ -92,8 +91,11 @@ class TxtFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     func textFieldDidEndEditing(textField: UITextField){
 //        self.removeKeyboardNotification()
-        self.delegate?.txtFieldCellText(self)
-
+         self.delegate?.txtFieldCellText(self)
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
+        return true
     }
 //    func textFieldShouldEndEditing(textField: UITextField) -> Bool{
 //        self.removeKeyboardNotification()

@@ -66,7 +66,6 @@ class DropDownTxtFieldTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     func setUpDropDown(){
         dropDown.dataSource = arr
-        
         print("\(arr)")
         
         dropDown.selectionAction = { [unowned self] (index, item) in
@@ -75,7 +74,10 @@ class DropDownTxtFieldTableViewCell: UITableViewCell,UITextFieldDelegate {
         }
         dropDown.anchorView = tf
         dropDown.bottomOffset = CGPoint(x: 0, y:tf!.bounds.height)
-
+    }
+    
+    @IBAction func clickeOnDropDownArrow(sender:UIButton){
+        self.showOrDismiss()
     }
     
 }

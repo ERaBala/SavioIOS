@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,16 +12,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3p1-eM-9bL">
-                    <rect key="frame" x="20" y="10" width="560" height="574"/>
-                    <animations/>
+                    <rect key="frame" x="10" y="10" width="580" height="580"/>
                 </imageView>
             </subviews>
-            <animations/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="3p1-eM-9bL" secondAttribute="bottom" constant="16" id="1Ja-26-CWC"/>
-                <constraint firstItem="3p1-eM-9bL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="MRU-JE-r29"/>
-                <constraint firstAttribute="trailing" secondItem="3p1-eM-9bL" secondAttribute="trailing" constant="20" id="aZZ-Vp-nhe"/>
-                <constraint firstItem="3p1-eM-9bL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="v5d-mG-X5Y"/>
+                <constraint firstAttribute="trailing" secondItem="3p1-eM-9bL" secondAttribute="trailing" constant="10" id="85K-gv-4Jc"/>
+                <constraint firstItem="3p1-eM-9bL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="EAV-Wi-1wj"/>
+                <constraint firstItem="3p1-eM-9bL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="emb-ST-fZ2"/>
+                <constraint firstAttribute="bottom" secondItem="3p1-eM-9bL" secondAttribute="bottom" constant="10" id="hSS-ga-NfY"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
         </view>

@@ -6,8 +6,8 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="GothamRounded-Light.otf">
-            <string>GothamRounded-Light</string>
+        <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -21,17 +21,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmA-Le-iBO">
-                        <rect key="frame" x="8" y="17" width="304" height="15"/>
+                        <rect key="frame" x="8" y="14" width="304" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="KM2-Hn-Nih"/>
+                            <constraint firstAttribute="height" constant="18" id="KM2-Hn-Nih"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="15"/>
-                        <color key="textColor" red="0.74901960784313726" green="0.34509803921568627" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
+                        <color key="textColor" red="0.82745098039215681" green="0.16470588235294117" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qmA-Le-iBO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="6hr-Vg-gED"/>
+                    <constraint firstItem="qmA-Le-iBO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="6hr-Vg-gED"/>
                     <constraint firstItem="qmA-Le-iBO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="NDp-W9-Hz3"/>
                     <constraint firstItem="qmA-Le-iBO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vfL-Fl-DtW"/>
                 </constraints>
@@ -39,7 +39,7 @@
             <connections>
                 <outlet property="lblError" destination="qmA-Le-iBO" id="CLJ-yH-kOL"/>
             </connections>
-            <point key="canvasLocation" x="324" y="223"/>
+            <point key="canvasLocation" x="324" y="222.5"/>
         </tableViewCell>
     </objects>
 </document>

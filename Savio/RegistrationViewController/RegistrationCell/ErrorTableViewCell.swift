@@ -15,6 +15,7 @@ class ErrorTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        lblError?.textColor = UIColor.redColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

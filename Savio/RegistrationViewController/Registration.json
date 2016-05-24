@@ -152,6 +152,26 @@
 				   }
 	},
 	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"Don't forget your County",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
+	{
+		"classType":"TxtFieldTableViewCell",
+		"metaData":{
+						"textField1":{
+							"placeholder":"County",
+							"dropDownArray":[],
+							"text":""
+						}
+				   }
+	},
+	{
 		"classType":"linkButtonTableViewCell",
 		"metaData":{
 						"button":{

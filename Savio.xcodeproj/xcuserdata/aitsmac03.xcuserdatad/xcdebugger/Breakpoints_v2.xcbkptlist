@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/RegistrationCell/TxtFieldTableViewCell.swift"
-            timestampString = "485434000.460079"
+            timestampString = "485786233.426382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "textFieldShouldBeginEditing(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,27 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "485673300.598235"
+            timestampString = "485789345.640705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "tableView(_:heightForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "485445945.754303"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "createCells()"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Savio/RegistrationViewController/RegistrationCell/ButtonTableViewCell.swift"
-            timestampString = "485445967.637979"
+            filePath = "Savio/Webservices/API.swift"
+            timestampString = "485782640.438743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "btnClicked(_:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "verifyPostCode(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "485447261.354121"
+            timestampString = "485789345.640705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "createCells()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,12 +90,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "485447447.489732"
+            timestampString = "485783009.448188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "getJSONForUI()"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "createCells()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
+            timestampString = "485789345.640705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
+            landmarkName = "checkTextFiledValidation()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
