@@ -77,7 +77,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
              let objAPI = API()
             objAPI.otpSentDelegate = self
             var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
-            objAPI.getOTPForNumber(dict["Mobile number"]! as String, country_code: "91")
+            objAPI.getOTPForNumber(dict["phone_number"]! as String, country_code: "91")
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
             objAnimView.frame = self.view.frame
             objAnimView.animate()

@@ -496,7 +496,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 dict["date_of_birth"] = cell.tfDatePicker?.text
             }
             
-              dict["device_ID"] = NSUUID().UUIDString
+            dict["device_ID"] = NSUUID().UUIDString
+            
+            dict["pin"] = ""
+            
+            dict["confirm_pin"] = ""
         }
         
         print("DictPara:\(dict)")
