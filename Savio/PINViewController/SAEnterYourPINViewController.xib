@@ -24,6 +24,7 @@
                 <outlet property="btnCancel" destination="yO2-Dv-Fci" id="sbz-I7-Fsk"/>
                 <outlet property="btnForgottPasscode" destination="YRO-Ha-Z4h" id="Eme-Fg-pIa"/>
                 <outlet property="enterPasscodeTextField" destination="ajo-fL-EaP" id="P0l-6N-IgH"/>
+                <outlet property="errorLabel" destination="hME-bb-vkK" id="cCS-Fu-FAT"/>
                 <outlet property="forgotPasscodeButton" destination="YRO-Ha-Z4h" id="5AQ-qV-oXj"/>
                 <outlet property="lblForgottonYourPasscode" destination="uH3-CJ-3vG" id="mTC-he-8dV"/>
                 <outlet property="lblSentYouCode" destination="WBk-LD-bTU" id="Hpd-zo-GHh"/>
@@ -107,7 +108,7 @@
                     </connections>
                 </button>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your passcode does't match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hME-bb-vkK">
-                    <rect key="frame" x="180" y="105" width="240" height="21"/>
+                    <rect key="frame" x="180" y="110" width="240" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Kbb-PM-Wbn"/>
                         <constraint firstAttribute="width" constant="240" id="WGz-Ev-9fj"/>
@@ -171,12 +172,12 @@
                 <constraint firstItem="oLD-AK-Fy3" firstAttribute="top" secondItem="ajo-fL-EaP" secondAttribute="bottom" constant="17" id="bdZ-0f-Nfb"/>
                 <constraint firstItem="ajo-fL-EaP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hMl-Jz-hUe"/>
                 <constraint firstItem="1ng-Ts-N3O" firstAttribute="top" secondItem="YRO-Ha-Z4h" secondAttribute="bottom" constant="87" id="hZ3-0N-1sh"/>
-                <constraint firstItem="ajo-fL-EaP" firstAttribute="top" secondItem="hME-bb-vkK" secondAttribute="bottom" constant="15" id="k1Y-bE-ood"/>
+                <constraint firstItem="ajo-fL-EaP" firstAttribute="top" secondItem="hME-bb-vkK" secondAttribute="bottom" constant="10" id="k1Y-bE-ood"/>
                 <constraint firstItem="uH3-CJ-3vG" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" constant="5" id="kAa-ix-lHM"/>
                 <constraint firstItem="OTi-RR-xfC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="mL8-rd-Seu"/>
                 <constraint firstAttribute="trailing" secondItem="1ng-Ts-N3O" secondAttribute="trailing" constant="30" id="n2S-k8-Sao"/>
                 <constraint firstItem="yO2-Dv-Fci" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o1g-d8-2Ar"/>
-                <constraint firstItem="hME-bb-vkK" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" constant="-5" id="pZQ-uC-9dh"/>
+                <constraint firstItem="hME-bb-vkK" firstAttribute="top" secondItem="OTi-RR-xfC" secondAttribute="bottom" id="pZQ-uC-9dh"/>
                 <constraint firstItem="WBk-LD-bTU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pun-GM-lA0"/>
                 <constraint firstAttribute="trailing" secondItem="ajo-fL-EaP" secondAttribute="trailing" constant="30" id="stw-AA-zMX"/>
                 <constraint firstItem="YRO-Ha-Z4h" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tWp-PJ-8uI"/>

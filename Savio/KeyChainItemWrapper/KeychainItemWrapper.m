@@ -122,7 +122,9 @@ Keychain API expects as a validly constructed container class.
         }
         @finally {}
     }
-    if (keyData) CFRelease(keyData);
+    if (keyData == nil) {
+        return @"";
+    };
     return ret;
 }
 

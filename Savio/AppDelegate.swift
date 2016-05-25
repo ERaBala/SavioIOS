@@ -20,16 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+        //Check if keychain has encrypted pin value
         let objApi = API()
-        if(objApi.getValueFromKeychainOfKey("myPasscode") as! String == "")
+
+        if ((objApi.getValueFromKeychainOfKey("myPasscode") as! String).isEmpty)
         {
+            //If no then Go to SAWelcomViewController
             objSAWelcomViewController = SAWelcomViewController()
+            //Set SAWelcomViewController as rootViewController of UINavigationViewController
             objSANav = UINavigationController(rootViewController: objSAWelcomViewController!)
             window?.rootViewController = objSANav
         }
         else{
+            //else Go to SAEnterYourPINViewController
             objEnterYourPinViewController = SAEnterYourPINViewController()
+            //Set SAEnterYourPINViewController as rootViewController of UINavigationViewController
             objSANav = UINavigationController(rootViewController: objEnterYourPinViewController!)
             window?.rootViewController = objSANav
 

@@ -2,7 +2,7 @@
 //  SAEnterYourPINViewController.swift
 //  Savio
 //
-//  Created by Vishal  on 21/05/16.
+//  Created by Maheshwari  on 21/05/16.
 //  Copyright © 2016 Prashant. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 
 class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSentDelegate {
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet weak var passcodeDoesNotMatchLabel: UILabel!
     @IBOutlet weak var btnForgottPasscode: UIButton!
@@ -33,6 +34,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterPasscodeTextField.attributedPlaceholder = NSAttributedString(string:"Enter 4 digit passcode",
             attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+        //Set input accessory view to the UITextfield
         enterPasscodeTextField.inputAccessoryView = toolBar
         
         //Add shadowcolor to UIButtons
@@ -49,14 +51,6 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         
     }
     //UITextField delegate method
-    func textFieldShouldReturn(textField: UITextField) -> Bool{
-        if(textField.isFirstResponder())
-        {
-            textField.resignFirstResponder()
-        }
-        return true
-        
-    }
     
     func textFieldDidBeginEditing(textField: UITextField) {
 
@@ -64,10 +58,6 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.textColor = UIColor.blackColor()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func clickOnRegisterButton(sender: AnyObject) {
         
         if(registerButton.titleLabel?.text == "Register")
@@ -75,11 +65,16 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             let saRegisterViewController = SARegistrationViewController(nibName:"SARegistrationViewController",bundle: nil)
             self.navigationController?.pushViewController(saRegisterViewController, animated: true)
         }
-        else{
+        else
+        {
+            //Send the OTP to mobile number
              let objAPI = API()
             objAPI.otpSentDelegate = self
+            //Get the user details from Keychain
             var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
             objAPI.getOTPForNumber(dict["phone_number"]! as String, country_code: "91")
+            
+            //Add animation of logo
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
             objAnimView.frame = self.view.frame
              enterPasscodeTextField.resignFirstResponder()
@@ -91,7 +86,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
     }
     
     @IBAction func clickedOnForgotPasscode(sender: AnyObject) {
-
+        
             lblSentYouCode.hidden = false
             lblForgottonYourPasscode.hidden = false
             btnCancel.hidden = false
@@ -135,25 +130,19 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.hidden = false
     }
     @IBAction func clickOnLoginButton(sender: AnyObject) {
+        //LogInButton click
         if(enterPasscodeTextField.text == "")
         {
-            
+            //Show error when field is empty
             enterPasscodeTextField.layer.borderColor = UIColor.redColor().CGColor
-            passcodeDoesNotMatchLabel.hidden = false
-            passcodeDoesNotMatchLabel.text = "Please enter passcode"
+            errorLabel.hidden = false
+            errorLabel.text = "Please enter passcode"
         }
-        else{
+        else
+        {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }
