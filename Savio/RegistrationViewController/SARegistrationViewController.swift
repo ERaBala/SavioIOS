@@ -93,7 +93,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     cell.tfName?.text = dictForTextFieldValue["name"] as? String
                 }
                 
-                
                 if (dictForTextFieldValue["errorTitle"] != nil) {
                     if dictForTextFieldValue["errorTitle"]!.isEqualToString("We need to know your title and name"){
                         cell.tfName?.layer.borderColor = UIColor.redColor().CGColor
@@ -120,6 +119,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let cell = bundleArr[0] as! TxtFieldTableViewCell
                 cell.delegate = self
                 cell.tblView = tblView
+                cell.tf?.textColor = UIColor.blackColor()
                  cell.tf?.layer.borderColor = UIColor(red: 202/256.0, green: 175/256.0, blue: 120/256.0, alpha: 1.0).CGColor;
                 
                 let tfTitleDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
@@ -128,7 +128,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     cell.tf?.text = dictForTextFieldValue[(cell.tf?.placeholder)!] as? String
                 }
                 
-                if (dictForTextFieldValue["errorTxt"] != nil) {
+                if (dictForTextFieldValue["errorTxt"] != nil && cell.tf?.placeholder == "Surname") {
                     let str = dictForTextFieldValue["errorTxt"]
                     if (str!.isEqualToString("We need to know your surname")){
                          cell.tf?.layer.borderColor = UIColor.redColor().CGColor
@@ -136,7 +136,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     }
                 }
                 
-                if (dictForTextFieldValue["errorSurname"] != nil) {
+                if (dictForTextFieldValue["errorSurname"] != nil && cell.tf?.placeholder == "Surname") {
                     let str = dictForTextFieldValue["errorSurname"]
                     if (str!.isEqualToString("Wow, that’s such a long name we can’t save it")){
                         cell.tf?.textColor = UIColor.redColor()
@@ -146,31 +146,31 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 }
                 
                 
-                if (dictForTextFieldValue["errorFirstAddress"] != nil) {
+                if (dictForTextFieldValue["errorFirstAddress"] != nil && cell.tf?.placeholder == "First Address Line") {
                     let str = dictForTextFieldValue["errorFirstAddress"]
                     if (str!.isEqualToString("Don’t forget your house number")){
                         cell.tf?.layer.borderColor = UIColor.redColor().CGColor
                     }
                 }
-                if (dictForTextFieldValue["errorTown"] != nil) {
+                if (dictForTextFieldValue["errorTown"] != nil && cell.tf?.placeholder == "Town") {
                     let str = dictForTextFieldValue["errorTown"]
                     if (str!.isEqualToString("Don’t forget your town")){
                         cell.tf?.layer.borderColor = UIColor.redColor().CGColor
                     }
                 }
-                if (dictForTextFieldValue["errorCounty"] != nil) {
+                if (dictForTextFieldValue["errorCounty"] != nil && cell.tf?.placeholder == "County") {
                     let str = dictForTextFieldValue["errorCounty"]
                     if (str!.isEqualToString("Don’t forget your county")){
                         cell.tf?.layer.borderColor = UIColor.redColor().CGColor
                     }
                 }
-                if (dictForTextFieldValue["errorMobile"] != nil) {
+                if (dictForTextFieldValue["errorMobile"] != nil && cell.tf?.placeholder == "Mobile number") {
                     let str = dictForTextFieldValue["errorMobile"]
                     if (str!.isEqualToString("Don't forget your mobile number")){
                         cell.tf?.layer.borderColor = UIColor.redColor().CGColor
                     }
                 }
-                if (dictForTextFieldValue["errorMobileValidation"] != nil) {
+                if (dictForTextFieldValue["errorMobileValidation"] != nil && cell.tf?.placeholder == "Mobile number") {
                     let str = dictForTextFieldValue["errorMobileValidation"]
                     if (str!.isEqualToString("That mobile number doesn’t look right")){
                         cell.tf?.textColor = UIColor.redColor()
@@ -178,13 +178,13 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
 
                     }
                 }
-                if (dictForTextFieldValue["errorEmail"] != nil) {
+                if (dictForTextFieldValue["errorEmail"] != nil && cell.tf?.placeholder == "Email") {
                     let str = dictForTextFieldValue["errorEmail"]
                     if (str!.isEqualToString("Don't forget your email address")){
                         cell.tf?.layer.borderColor = UIColor.redColor().CGColor
                     }
                 }
-                if (dictForTextFieldValue["errorEmailValid"] != nil) {
+                if (dictForTextFieldValue["errorEmailValid"] != nil && cell.tf?.placeholder == "Mobile Number") {
                     let str = dictForTextFieldValue["errorEmailValid"]
                     if (str!.isEqualToString("That email address doesn’t look right")){
                         cell.tf?.textColor = UIColor.redColor()
@@ -340,6 +340,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         if txtFldCell.tf?.text?.characters.count>0{
             dictForTextFieldValue.updateValue((txtFldCell.tf?.text)!, forKey: (txtFldCell.tf?.placeholder)!)
         }
+        else{
+            dictForTextFieldValue.removeValueForKey((txtFldCell.tf?.placeholder)!)
+        }
         print("\(dictForTextFieldValue)")
     }
     
@@ -493,7 +496,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 dict["date_of_birth"] = cell.tfDatePicker?.text
             }
             
-              dict["device_ID"] = NSUUID().UUIDString
+            dict["device_ID"] = NSUUID().UUIDString
+            
+            dict["pin"] = ""
+            
+            dict["confirm_pin"] = ""
         }
         
         print("DictPara:\(dict)")

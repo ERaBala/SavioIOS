@@ -94,7 +94,8 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
             else{
                 objAPI.otpVerificationDelegate = self
                 var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
-                objAPI.verifyOTP(dict["Mobile number"]! as String, country_code: "91", OTP: fiveDigitTextField.text!)
+                print("userInfo %@", dict)
+                objAPI.verifyOTP(dict["phone_number"]! as String, country_code: "91", OTP: fiveDigitTextField.text!)
                 codeDoesNotMatchLabel.hidden = true;
                 objAnimView.animate()
                 self.view.addSubview(objAnimView)
@@ -110,7 +111,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         
         objAPI.otpSentDelegate = self
          var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
-        objAPI.getOTPForNumber(dict["Mobile number"]! as String, country_code: "91")
+        objAPI.getOTPForNumber(dict["phone_number"]! as String, country_code: "91")
   
         objAnimView.animate()
         self.view.addSubview(objAnimView)
