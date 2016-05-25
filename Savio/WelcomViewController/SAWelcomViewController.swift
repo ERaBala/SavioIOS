@@ -17,11 +17,10 @@ class SAWelcomViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var signUpBtn: UIButton!
     
-    var flag: Bool = false
-
+    //flag holds the
     var idx: Int = 0
-    let sampleBGColors: Array<UIColor> = [UIColor.redColor(), UIColor.yellowColor(), UIColor.greenColor(), UIColor.magentaColor(), UIColor.orangeColor()]
-    let samleDictArr: Array<String> = ["Page5", "Page1", "Page2", "Page3", "Page4"]
+    //pageArr is an array which holds animation pages
+    let pageArr: Array<String> = ["Page5", "Page1", "Page2", "Page3", "Page4"]
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -31,6 +30,7 @@ class SAWelcomViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Hide navigationbar
         self.navigationController?.navigationBarHidden = true
 
         // Do any additional setup after loading the view.
@@ -38,8 +38,11 @@ class SAWelcomViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        //Function invoke to configure scrollview for animating pages
         configureScrollView()
+        //function invoke for set up page control with scrollview
         configurePageControl()
+        //setting signup button corner
         signUpBtn.layer.cornerRadius = 5.0
         idx = 0
     }
@@ -49,10 +52,12 @@ class SAWelcomViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //This function invoke when user tapping on sign up to savio button
     @IBAction func clickOnSignUpButton(sender:UIButton){
+        //create instance of SARegistrationViewController
         let objSARegistarionViewController = SARegistrationViewController(nibName:"SARegistrationViewController",bundle: nil)
+        //Navigate to registration screen
         self.navigationController?.pushViewController(objSARegistarionViewController, animated: true)
-//        self.presentViewController(saRegistarionViewController, animated: true, completion: nil)
     }
     
 
@@ -68,25 +73,25 @@ class SAWelcomViewController: UIViewController {
     
     
     func configureScrollView() {
-        if flag {
-            return
-        }
+//        if flag {
+//            return
+//        }
         // Enable paging.
         scrollView.pagingEnabled = true
-        flag = true
+//        flag = true
         // Set the following flag values.
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
         
         // Set the scrollview content size.
-        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * CGFloat(samleDictArr.count), scrollView.frame.size.height)
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * CGFloat(pageArr.count), scrollView.frame.size.height)
         print("\(scrollView.frame.size.width,scrollView.frame.size.height)")
         // Set self as the delegate of the scrollview.
 //        scrollView.delegate = self
         
         // Load the PageView view from the TestView.xib file and configure it properly.
-        for var i=0; i<samleDictArr.count; ++i {
+        for var i=0; i<pageArr.count; ++i {
             // Load the TestView view.
             let testView = NSBundle.mainBundle().loadNibNamed("PageView", owner: self, options: nil)[0] as! UIView
             
@@ -94,11 +99,10 @@ class SAWelcomViewController: UIViewController {
 //            testView.frame = CGRectMake(CGFloat(i) * scrollView.frame.size.width, scrollView.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height)
             
             testView.frame = CGRectMake(CGFloat(i) * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)
-//            testView.backgroundColor = sampleBGColors[i]
             
             // Set the proper message to the test view's label.
             let vw = testView.viewWithTag(1) as! UIImageView
-            vw.image = UIImage(named: samleDictArr[i])
+            vw.image = UIImage(named: pageArr[i])
             
             // Add the test view as a subview to the scrollview.
             scrollView.addSubview(testView)
@@ -108,7 +112,7 @@ class SAWelcomViewController: UIViewController {
     
     func configurePageControl() {
         // Set the total pages to the page control.
-        pageControl.numberOfPages = samleDictArr.count
+        pageControl.numberOfPages = pageArr.count
         
         // Set the initial page.
         pageControl.currentPage = 0

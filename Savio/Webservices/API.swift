@@ -85,7 +85,7 @@ class API: UIView {
                             //else return an error
                             dispatch_async(dispatch_get_main_queue()){
                                 print(dict)
-                                self.delegate?.error("The postcode doesn't look right")
+                                self.delegate?.error("That postcode doesn't look right")
                             }
                         }
                     }
@@ -251,6 +251,13 @@ class API: UIView {
     func getValueFromKeychainOfKey(key:String)-> AnyObject{
         //get the value of password from keychain
         return KeychainItemWrapper.load(key) as AnyObject
+//        if (KeychainItemWrapper.load(key) as! String).isEmpty{
+//            return ""
+//        }
+//        else{
+//       
+//        
+//        }
         
     }
 }

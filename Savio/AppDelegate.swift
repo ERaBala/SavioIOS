@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let objApi = API()
-        if(objApi.getValueFromKeychainOfKey("myPasscode") as! String == "")
+       if((objApi.getValueFromKeychainOfKey("myPasscode") as! String) == "")
         {
             objSAWelcomViewController = SAWelcomViewController()
             objSANav = UINavigationController(rootViewController: objSAWelcomViewController!)

@@ -56,6 +56,7 @@ class PickerTextfildTableViewCell: UITableViewCell,UITextFieldDelegate{
         datePickerView.datePickerMode = UIDatePickerMode.Date
         
         sender.inputView = datePickerView
+        datePickerView.maximumDate=NSDate()
         
         datePickerView.addTarget(self, action: "datePickerValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
 //               datePickerView.selectRow(0!, inComponent: 0, animated: false)

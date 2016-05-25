@@ -105,7 +105,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     else if dictForTextFieldValue["errorTitle"]!.isEqualToString("We need to know what to call you"){
                         cell.tfName?.layer.borderColor = UIColor.redColor().CGColor
                     }
-                    else if dictForTextFieldValue["errorTitle"]!.isEqualToString("Wow, that’s such a long name we can’t save it"){
+                    else if (dictForTextFieldValue["errorTitle"]!.isEqualToString("Wow, that’s such a long name we can’t save it") || dictForTextFieldValue["errorTitle"]!.isEqualToString("Surname should contain character only") ){
                         cell.tfName?.textColor = UIColor.redColor()
                     }
                 }
@@ -133,7 +133,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     let str = dictForTextFieldValue["errorTxt"]
                     if (str!.isEqualToString("We need to know your surname")){
                          cell.tf?.layer.borderColor = UIColor.redColor().CGColor
-
                     }
                 }
                 
@@ -185,7 +184,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         cell.tf?.layer.borderColor = UIColor.redColor().CGColor
                     }
                 }
-                if (dictForTextFieldValue["errorEmailValid"] != nil && cell.tf?.placeholder == "Mobile Number") {
+                if (dictForTextFieldValue["errorEmailValid"] != nil && cell.tf?.placeholder == "Email") {
                     let str = dictForTextFieldValue["errorEmailValid"]
                     if (str!.isEqualToString("That email address doesn’t look right")){
                         cell.tf?.textColor = UIColor.redColor()
@@ -422,18 +421,32 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     
     func buttonClicked(sender:UIButton){
-
-        if checkTextFiledValidation() == false{
+        
+        if (checkTextFiledValidation() == false && dictForTextFieldValue["errorPostcodeValid"]==nil){
             //call term and condition screen
-            
             let objImpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
             objImpInfo.delegate = self
-//            objImpInfo.lblHeading.text = "Term And Condition"
+            //            objImpInfo.lblHeading.text = "Term And Condition"
             objImpInfo.frame = self.view.frame
             self.view.addSubview(objImpInfo)
         }
-
-    
+        else{
+            if dictForTextFieldValue["errorPostcodeValid"] != nil{
+                
+                    var dict = arrRegistration[5] as Dictionary<String,AnyObject>
+                    var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
+                    let lableDict = metadataDict["lable"]!.mutableCopy()
+                    lableDict.setValue("Yes", forKey: "isErrorShow")
+                    lableDict.setValue("That postcode doesn't look right", forKey: "title")
+                    metadataDict["lable"] = lableDict
+                    dict["metaData"] = metadataDict
+                    dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
+                    arrRegistration[5] = dict
+                    self.createCells()
+            }
+        }
+        
+        
     }
     
 
@@ -526,6 +539,26 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
     }
    
+    //Function checking textfield content only number or not
+    func checkTextFieldContentOnlyNumber(str:String)->Bool{
+        let set = NSCharacterSet.decimalDigitCharacterSet()
+        if (str.rangeOfCharacterFromSet(set) != nil) {
+           return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func checkTextFieldContentCharacters(str:String)->Bool{
+        let set = NSCharacterSet.letterCharacterSet()
+        if (str.rangeOfCharacterFromSet(set) != nil) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
     
     
     func checkTextFiledValidation()->Bool{
@@ -541,6 +574,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let cell = arrRegistrationFields[i] as! TitleTableViewCell
                 let str = cell.tfName?.text
                 
+                if (self.checkTextFieldContentOnlyNumber(str!) == true){
+                    errorMsg = "Name should contain character only"
+                    errorFLag = true
+                    dictForTextFieldValue["errorTitle"] = errorMsg
+                }
                 
                 if str?.characters.count > 50{
                     errorMsg = "Wow, that’s such a long name we can’t save it"
@@ -597,6 +635,12 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         dictForTextFieldValue["errorSurname"] = errorMsg
                         //                        dictForTextFieldValue["errorTxt"] = errorMsg
                     }
+                        else if(self.checkTextFieldContentOnlyNumber(str!) == true){
+                            errorMsg = "Surname should contain character only"
+                            errorFLag = true
+                            dictForTextFieldValue["errorSurname"] = errorMsg
+                            //                        dictForTextFieldValue["errorTxt"] = errorMsg
+                        }
                     else{
                         dictForTextFieldValue.removeValueForKey("errorSurname")
                     }
@@ -667,13 +711,10 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         dictForTextFieldValue.removeValueForKey("errorMobile")
                     }
                         
-                        if(self.phoneNumberValidation(str!)==false){
+                        if(self.checkTextFieldContentCharacters(str!) == true || self.phoneNumberValidation(str!)==false){
                         errorFLag = true
                         errorMsg = "That mobile number doesn’t look right"
                         dictForTextFieldValue["errorMobileValidation"] = errorMsg
-                        //                        dictForTextFieldValue["errorTxt"] = errorMsg
-                        
-                        
                     }
                     else{
                         dictForTextFieldValue.removeValueForKey("errorMobileValidation")
@@ -690,7 +731,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         errorMsg = "Don't forget your email address"
                         //                        dictForTextFieldValue["errorTxt"] = errorMsg
                         dictForTextFieldValue["errorEmail"] = errorMsg
-                        
                     }
                         
                     else{
@@ -726,6 +766,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     errorFLag = true
                     errorMsg = "Don’t forget your postcode"
                     dictForTextFieldValue["errorPostcode"] = errorMsg
+                    dictForTextFieldValue.removeValueForKey("errorPostcodeValid")
+                    dictForTextFieldValue.removeValueForKey("Postcode")
+
                 }
                 else{
                     dictForTextFieldValue.removeValueForKey("errorPostcode")
@@ -757,10 +800,19 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     
     func phoneNumberValidation(value: String) -> Bool {
+//        var flag: Bool = false
+//        if(self.checkTextFieldContentOnlyNumber(value) == true){
+//            return
+//        }
+        
+        
         let charcter  = NSCharacterSet(charactersInString: "0123456789").invertedSet
         var filtered:NSString!
         let inputString:NSArray = value.componentsSeparatedByCharactersInSet(charcter)
         filtered = inputString.componentsJoinedByString("")
+        
+        
+        
         return  value == filtered
     }
     
@@ -826,7 +878,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func error(error:String){
         objAnimView?.removeFromSuperview()
         print("\(error)")
-        if(error == "The postcode doesn't look right"){
+        if(error == "That postcode doesn't look right"){
         var dict = arrRegistration[5] as Dictionary<String,AnyObject>
         var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
         let lableDict = metadataDict["lable"]!.mutableCopy()
@@ -838,6 +890,12 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         arrRegistration[5] = dict
         self.createCells()
         }
+        else{
+            let alert = UIAlertController(title: error, message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+       
     }
     
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
