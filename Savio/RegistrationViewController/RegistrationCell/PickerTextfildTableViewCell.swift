@@ -64,20 +64,39 @@ class PickerTextfildTableViewCell: UITableViewCell,UITextFieldDelegate{
     }
     
     func setDateToTextField(){
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         tfDatePicker.text = dateFormatter.stringFromDate(datePickerView.date)
     }
 
     func datePickerValueChanged(sender:UIDatePicker) {
+       
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        tfDatePicker.text = dateFormatter.stringFromDate(datePickerView.date)
+
+        
        self.setDateToTextField()
     }
     
     @IBAction func toolBarDoneBtnClicked(){
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+       let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        let pickrDate = dateFormatter.stringFromDate(datePickerView.date)
+        
+        if todayDate == pickrDate{
+            let allarme = UIAlertView(title: "Warning", message: "Birthdate should not be today's date", delegate: nil, cancelButtonTitle: "OK")
+            allarme.show()
+        }else{
         self.setDateToTextField()
         tfDatePicker.resignFirstResponder()
         previousDate = tfDatePicker.text!
         delegate?.selectedDate(self)
+        }
         
     }
     

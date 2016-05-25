@@ -106,7 +106,6 @@ class SAWelcomViewController: UIViewController {
         self.change()
     }
     
-    
     func configurePageControl() {
         // Set the total pages to the page control.
         pageControl.numberOfPages = samleDictArr.count
@@ -134,7 +133,6 @@ class SAWelcomViewController: UIViewController {
         
     }
     
-    
     //Function invoke for make
     func change(){
         var flag = true
@@ -149,12 +147,9 @@ class SAWelcomViewController: UIViewController {
         scrollView.scrollRectToVisible(newFrame, animated: flag)
         NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "change", userInfo: nil, repeats: false)
         idx++
-
     }
     
-    
     @IBAction func clickOnImportantLink(sender:UIButton){
-        
         let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! UIView
         objimpInfo.frame = self.view.frame
         self.view.addSubview(objimpInfo)
