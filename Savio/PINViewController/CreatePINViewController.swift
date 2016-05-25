@@ -28,14 +28,14 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         enterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"4 digit passcode",
                                                                      attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
-        
+        //Set input accessory view to the UITextfield
         enterFourDigitPIN.inputAccessoryView = toolBar
         
         reEnterFourDigitPIN.layer.borderWidth = 1
         reEnterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         reEnterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"Re-enter 4 digit passcode",
                                                                        attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
-        
+        //Set input accessory view to the UITextfield
         reEnterFourDigitPIN.inputAccessoryView = toolBar
         
         //Add shadowcolor to confirmPIN
@@ -48,12 +48,14 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+         // Set the scrollview content size.
         backgroundScrollView.contentSize = CGSizeMake(0, 500)
     }
     
     //UITextFieldDelegateMethods
     func textFieldDidBeginEditing(textField: UITextField){
         
+        //Change the border color of UITextfields
         enterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         reEnterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         
@@ -61,6 +63,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         reEnterFourDigitPIN.textColor = UIColor.blackColor()
         
         enterFiveDigitCodeLabel.hidden = true;
+        //Change the content offset of scrollview so UITextfield will not be hidden by keyboard
         
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
@@ -76,35 +79,22 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool{
-        if(textField.isFirstResponder())
-        {
-            textField.resignFirstResponder()
-        }
-        backgroundScrollView.contentOffset = CGPointMake(0, 0)
-        
-        return true
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     @IBAction func toolBarDoneButtonPressed(sender: AnyObject) {
          enterFourDigitPIN.resignFirstResponder()
          reEnterFourDigitPIN.resignFirstResponder()
+        backgroundScrollView.contentOffset = CGPointMake(0, 0)
     }
     @IBAction func onclickBackButton(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     @IBAction func onClickConfirmButton(sender: AnyObject) {
         enterFourDigitPIN.resignFirstResponder()
         reEnterFourDigitPIN.resignFirstResponder()
+        //Confirm button click
         if(enterFourDigitPIN.text == "" || reEnterFourDigitPIN.text == "")
         {
+            //Show error when field is empty
             enterFiveDigitCodeLabel.hidden = false;
             enterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
             reEnterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
@@ -112,6 +102,8 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         }
         else if(enterFourDigitPIN.text  != reEnterFourDigitPIN.text)
         {
+            //Show error when fields are not same
+            
             enterFiveDigitCodeLabel.hidden = false;
             enterFiveDigitCodeLabel.text = "Passcode do not match"
             
@@ -119,19 +111,17 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
             enterFourDigitPIN.textColor = UIColor.redColor()
             reEnterFourDigitPIN.textColor = UIColor.redColor()
         }
-        else{
+        else
+        {
+            
             enterFiveDigitCodeLabel.hidden = true;
-        
-            print(reEnterFourDigitPIN.text!.MD5())
+            //Store the passcode in Keychain
             objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
-
+            //Navigate user to HurrayViewController to start Saving plan
             let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
             self.navigationController?.pushViewController(objHurrrayView, animated: true)
             
         }
-        
-        
-        
     }
     
 }

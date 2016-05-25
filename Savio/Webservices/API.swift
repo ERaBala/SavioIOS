@@ -81,7 +81,8 @@ class API: UIView {
                                 self.delegate?.success(addressArray)
                             }
                         }
-                        else{
+                        else
+                        {
                             //else return an error
                             dispatch_async(dispatch_get_main_queue()){
                                 print(dict)
@@ -95,6 +96,7 @@ class API: UIView {
             dataTask.resume()
         }
         else{
+             //Give error no network found
              delegate?.error("Network not available")
         }
     }
@@ -102,7 +104,7 @@ class API: UIView {
     
     func registerTheUserWithTitle(dictParam:Dictionary<String,AnyObject>)
     {
-        
+        //Check if network is present
         if(self.isConnectedToNetwork())
         {
             let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
@@ -124,7 +126,8 @@ class API: UIView {
                             self.delegate?.successResponseForRegistrationAPI(dict)
                         }
                     }
-                    else{
+                    else
+                    {
                         print("error")
                         dispatch_async(dispatch_get_main_queue()){
                             self.delegate?.errorResponseForRegistrationAPI("Error")
@@ -137,6 +140,7 @@ class API: UIView {
             dataTask.resume()
         }
         else{
+            //Give error no network found
             delegate?.error("No network found")
         }
         
@@ -145,7 +149,7 @@ class API: UIView {
     
     
     func getOTPForNumber(phoneNumber:String,country_code:String) {
-        
+        //Check if network is present
         if(self.isConnectedToNetwork())
         {
             let request = NSMutableURLRequest(URL: NSURL(string:"http://api.authy.com/protected/json/phones/verification/start")!)
@@ -167,18 +171,23 @@ class API: UIView {
                         print(dict)
                         if(dict["success"] as! Bool == true)
                         {dispatch_async(dispatch_get_main_queue()){
+                            //send successResponse
                             self.otpSentDelegate?.successResponseForOTPSentAPI(dict)
                             }
                         }
                         
                     }
-                    else{
+                    else
+                    {
+                        //send error
                         dispatch_async(dispatch_get_main_queue()){
                             self.otpSentDelegate?.errorResponseForOTPSentAPI((error?.localizedDescription)!)
                         }
                     }
                 }
-                else{
+                else
+                {
+                     //send error
                     dispatch_async(dispatch_get_main_queue()){
                         self.otpSentDelegate?.errorResponseForOTPSentAPI((error?.localizedDescription)!)
                     }
@@ -189,14 +198,17 @@ class API: UIView {
             
         }
         else{
+            //Give error no network found
             self.otpSentDelegate?.errorResponseForOTPSentAPI("No network found")
         }
     }
     
     func verifyOTP(phoneNumber:String,country_code:String,OTP:String)
     {
+        //Check if network is present
         if(self.isConnectedToNetwork())
         {
+            //Start a session 
             let dataTask = session.dataTaskWithURL(NSURL(string: String(format: "http://api.authy.com/protected/json/phones/verification/check?api_key=%@&via=sms&phone_number=%@&country_code=%@&verification_code=%@",APIKey,phoneNumber,country_code,OTP))!) { data, response, error in
                 if let data = data
                 {
@@ -215,20 +227,26 @@ class API: UIView {
                                 self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI("Verification code is incorrect.")
                             }
                         }
-                        else{
+                        else
+                        {
+                             //send error
                             dispatch_async(dispatch_get_main_queue()){
                                 self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI("Verification code is incorrect.")
                             }
                         }
                         
                     }
-                    else{
+                    else
+                    {
+                         //send error
                         dispatch_async(dispatch_get_main_queue()){
                             self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI((error?.localizedDescription)!)
                         }
                     }
                 }
-                else{
+                else
+                {
+                     //send error
                     dispatch_async(dispatch_get_main_queue()){
                         self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI((error?.localizedDescription)!)
                     }
@@ -238,6 +256,7 @@ class API: UIView {
             dataTask.resume()
         }
         else{
+            //Give error no network found
             self.otpSentDelegate?.errorResponseForOTPSentAPI("No network found")
         }
     }
@@ -259,5 +278,9 @@ class API: UIView {
 //        
 //        }
         
+    }
+    
+    func deleteKeychainValue(key:String) {
+        KeychainItemWrapper.delete(key)
     }
 }

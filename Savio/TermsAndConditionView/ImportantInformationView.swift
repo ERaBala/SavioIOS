@@ -30,8 +30,6 @@ class ImportantInformationView: UIView {
         termsAndConditionTextView.contentOffset = CGPointMake(0, 0)
       }
     
-    
-    
     @IBAction func gotItButtonPressed(sender: AnyObject) {
         self.removeFromSuperview()
         delegate?.acceptPolicy(self)

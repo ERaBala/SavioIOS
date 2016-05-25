@@ -30,17 +30,10 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         self.tblView.rowHeight = UITableViewAutomaticDimension
         self.getJSONForUI()
         self.createCells()
-        
-        
-        
-       
-
+  
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+ 
     
     func getJSONForUI(){
         let fileUrl: NSURL = NSBundle.mainBundle().URLForResource("Registration", withExtension: "json")!

@@ -33,16 +33,16 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         //change the border color of UITextField
         fiveDigitTextField.layer.borderWidth = 1
         fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
-        
+        //Set input accessory view to the UITextfield
         fiveDigitTextField.inputAccessoryView = toolbar
         
         gotItButton.layer.shadowColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         gotItButton.layer.shadowOffset = CGSizeMake(0, 4)
         gotItButton.layer.shadowOpacity = 1
         gotItButton.layer.cornerRadius = 5
+        //Get user details from Keychain
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
-        print("userInfo %@", userInfoDict)
-        
+
 
     }
     override func viewWillAppear(animated: Bool) {
@@ -51,25 +51,13 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as String)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //UITextField delegate method
     func textFieldDidBeginEditing(textField: UITextField) {
         codeDoesNotMatchLabel.hidden = true;
         fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         fiveDigitTextField.textColor = UIColor.blackColor()
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool{
-        if(textField.isFirstResponder())
-        {
-            textField.resignFirstResponder()
-        }
-        return true
-        
-    }
+
     @IBAction func clickOnBackButton(sender: AnyObject) {
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
@@ -93,15 +81,16 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
             headerText.text = "Enter your verification code"
             gotItButton.setTitle("Confirm", forState: UIControlState.Normal)
         }
-        else if(yourCodeSentLabel.hidden == true)
+        else
         {
             if(fiveDigitTextField.text == "")
-            {
+            {   //Show error when field is empty
                 fiveDigitTextField.layer.borderColor = UIColor.redColor().CGColor
                 codeDoesNotMatchLabel.text = "Please enter code"
                 codeDoesNotMatchLabel.hidden = false;
             }
-            else{
+            else {
+                //Set the OTPVerificationDelegate
                 objAPI.otpVerificationDelegate = self
                 
                 objAPI.verifyOTP(userInfoDict["phone_number"]! as String, country_code: "91", OTP: fiveDigitTextField.text!)
@@ -116,11 +105,12 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
 
         
     }
+  
     @IBAction func clickOnResentCodeButton(sender: AnyObject) {
-        
-        
+        //Set the OTPSentDelegate
         objAPI.otpSentDelegate = self
       
+          //Resend the OTP to the mobile number present in keychain
         objAPI.getOTPForNumber(userInfoDict["phone_number"]! as String, country_code: "91")
   
         fiveDigitTextField.resignFirstResponder()
@@ -144,7 +134,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         
     }
     func errorResponseForOTPSentAPI(error:String){
-          objAnimView.removeFromSuperview()
+        objAnimView.removeFromSuperview()
         fiveDigitTextField.textColor = UIColor.redColor()
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
@@ -163,19 +153,8 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         self.navigationController?.pushViewController(objCreatePINView, animated: true)
     }
     func errorResponseForOTPVerificationAPI(error:String){
-          objAnimView.removeFromSuperview()
+        objAnimView.removeFromSuperview()
         codeDoesNotMatchLabel.text = error
         codeDoesNotMatchLabel.hidden = false;
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

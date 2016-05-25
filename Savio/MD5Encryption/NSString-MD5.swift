@@ -8,9 +8,6 @@
 
 import UIKit
 
-class NSString_MD5: NSString {
-    
-}
 //extension of NSString to create encryption
 extension String {
     func MD5() -> String {
