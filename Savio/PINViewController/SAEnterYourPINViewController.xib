@@ -30,6 +30,7 @@
                 <outlet property="loginButton" destination="oLD-AK-Fy3" id="gLJ-0D-MQx"/>
                 <outlet property="passcodeDoesNotMatchLabel" destination="uH3-CJ-3vG" id="cqb-Pz-T9Y"/>
                 <outlet property="registerButton" destination="1ng-Ts-N3O" id="TEo-3O-Hbk"/>
+                <outlet property="toolBar" destination="dVV-Qb-gor" id="d5z-Vh-oai"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -51,7 +52,7 @@
                         <constraint firstAttribute="height" constant="40" id="08N-L0-BdL"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="uor-O1-450"/>
                     </connections>
@@ -186,8 +187,20 @@
             </constraints>
             <point key="canvasLocation" x="611" y="267"/>
         </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dVV-Qb-gor">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem title="Done" id="3xk-fz-baZ">
+                    <color key="tintColor" red="0.95294117649999999" green="0.68627450980000004" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="toolBarDoneButtonPressed:" destination="-1" id="WS1-4T-gOP"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+        </toolbar>
     </objects>
     <resources>
-        <image name="savivo-logo.png" width="80" height="80"/>
+        <image name="savivo-logo.png" width="85" height="85"/>
     </resources>
 </document>

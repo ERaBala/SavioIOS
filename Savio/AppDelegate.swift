@@ -14,16 +14,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var objSANav: UINavigationController?
     var objSAWelcomViewController: SAWelcomViewController?
+    var objEnterYourPinViewController: SAEnterYourPINViewController?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        objSAWelcomViewController = SAWelcomViewController()
-        objSANav = UINavigationController(rootViewController: objSAWelcomViewController!)
-        window?.rootViewController = objSANav
-        window?.makeKeyAndVisible()
         
+        let objApi = API()
+        if(objApi.getValueFromKeychainOfKey("myPasscode") as! String == "")
+        {
+            objSAWelcomViewController = SAWelcomViewController()
+            objSANav = UINavigationController(rootViewController: objSAWelcomViewController!)
+            window?.rootViewController = objSANav
+        }
+        else{
+            objEnterYourPinViewController = SAEnterYourPINViewController()
+            objSANav = UINavigationController(rootViewController: objEnterYourPinViewController!)
+            window?.rootViewController = objSANav
+
+        }
+        objSANav?.navigationBarHidden = true
+        
+        window?.makeKeyAndVisible()
+
         return true
     }
 

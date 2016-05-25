@@ -25,6 +25,7 @@
                 <outlet property="gotItButton" destination="F0n-B1-XQp" id="yq7-i5-i25"/>
                 <outlet property="headerText" destination="8DL-NG-yGU" id="6Oi-k5-kmS"/>
                 <outlet property="resentCodeButton" destination="aKg-ku-OcO" id="Ve3-be-61e"/>
+                <outlet property="toolbar" destination="uGA-hE-bS8" id="esh-KV-kwh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yourCodeSentLabel" destination="GpB-HN-YI8" id="Gcp-4n-wkK"/>
             </connections>
@@ -96,7 +97,7 @@
                         <constraint firstAttribute="height" constant="40" id="end-TZ-Q6z"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="1h3-uh-xpX"/>
@@ -194,8 +195,20 @@
             </variation>
             <point key="canvasLocation" x="437" y="348"/>
         </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uGA-hE-bS8">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem title="Done" id="i3K-YM-hSv">
+                    <color key="tintColor" red="0.95294117649999999" green="0.68627450980000004" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="doneButtonToolBarPressed:" destination="-1" id="E7G-b2-WZY"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+        </toolbar>
     </objects>
     <resources>
-        <image name="savivo-logo.png" width="80" height="80"/>
+        <image name="savivo-logo.png" width="85" height="85"/>
     </resources>
 </document>

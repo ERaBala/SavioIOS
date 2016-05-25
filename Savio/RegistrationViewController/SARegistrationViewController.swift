@@ -436,7 +436,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     }
     
-    //
+
     
     func acceptPolicy(obj:ImportantInformationView){
         var dict = Dictionary<String, AnyObject>()
@@ -446,7 +446,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell){
                 let cell = arrRegistrationFields[i] as! TitleTableViewCell
                 dict["title"] = cell.tfTitle?.text
-                dict["first_name"] = cell.tfTitle?.text
+                dict["first_name"] = cell.tfName?.text
             }
             
             if arrRegistrationFields[i].isKindOfClass(TxtFieldTableViewCell){
@@ -843,10 +843,23 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
+        if(objResponse["message"] as! String == "User Already register")
+        {
+            let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
+                let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+                self.navigationController?.pushViewController(objCreatePINView, animated: true)
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else{
+            let objAPI = API()
+            objAPI.otpSentDelegate = self
+            objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+        }
         
-        let objAPI = API()
-        objAPI.otpSentDelegate = self
-        objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+      
       
         
 

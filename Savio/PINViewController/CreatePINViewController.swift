@@ -10,6 +10,7 @@ import UIKit
 
 class CreatePINViewController: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet var toolBar: UIToolbar!
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var enterFiveDigitCodeLabel: UILabel!
     @IBOutlet weak var reEnterFourDigitPIN: UITextField!
@@ -28,10 +29,14 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         enterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"4 digit passcode",
                                                                      attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
         
+        enterFourDigitPIN.inputAccessoryView = toolBar
+        
         reEnterFourDigitPIN.layer.borderWidth = 1
         reEnterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         reEnterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"Re-enter 4 digit passcode",
                                                                        attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+        
+        reEnterFourDigitPIN.inputAccessoryView = toolBar
         
         //Add shadowcolor to confirmPIN
         confirmPIN.layer.shadowColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
@@ -88,6 +93,10 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
     }
     
     
+    @IBAction func toolBarDoneButtonPressed(sender: AnyObject) {
+         enterFourDigitPIN.resignFirstResponder()
+         reEnterFourDigitPIN.resignFirstResponder()
+    }
     @IBAction func onclickBackButton(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
