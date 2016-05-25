@@ -21,7 +21,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     @IBOutlet weak var yourCodeSentLabel: UILabel!
      let objAPI = API()
      var objAnimView = ImageViewAnimation()
-    var userInfoDict : Dictionary<String,String> = [:]
+    var userInfoDict : Dictionary<String,AnyObject> = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +41,15 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         gotItButton.layer.shadowOpacity = 1
         gotItButton.layer.cornerRadius = 5
         //Get user details from Keychain
-        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
+        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+        print(userInfoDict)
 
 
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
-        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as String)
+        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as! String)
     }
 
     //UITextField delegate method
@@ -93,7 +94,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
                 //Set the OTPVerificationDelegate
                 objAPI.otpVerificationDelegate = self
                 
-                objAPI.verifyOTP(userInfoDict["phone_number"]! as String, country_code: "91", OTP: fiveDigitTextField.text!)
+                objAPI.verifyOTP(userInfoDict["phone_number"]! as! String, country_code: "91", OTP: fiveDigitTextField.text!)
                 codeDoesNotMatchLabel.hidden = true;
                 fiveDigitTextField.resignFirstResponder()
                 objAnimView.animate()
@@ -111,7 +112,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         objAPI.otpSentDelegate = self
       
           //Resend the OTP to the mobile number present in keychain
-        objAPI.getOTPForNumber(userInfoDict["phone_number"]! as String, country_code: "91")
+        objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
   
         fiveDigitTextField.resignFirstResponder()
         
