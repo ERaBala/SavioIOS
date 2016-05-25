@@ -12,6 +12,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
 
     @IBOutlet weak var headerText: UILabel!
    
+    @IBOutlet var toolbar: UIToolbar!
     @IBOutlet weak var codeDoesNotMatchLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var gotItButton: UIButton!
@@ -20,6 +21,8 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     @IBOutlet weak var yourCodeSentLabel: UILabel!
      let objAPI = API()
      var objAnimView = ImageViewAnimation()
+    var userInfoDict : Dictionary<String,String> = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
@@ -31,25 +34,29 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         fiveDigitTextField.layer.borderWidth = 1
         fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         
+        fiveDigitTextField.inputAccessoryView = toolbar
+        
         gotItButton.layer.shadowColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         gotItButton.layer.shadowOffset = CGSizeMake(0, 4)
         gotItButton.layer.shadowOpacity = 1
         gotItButton.layer.cornerRadius = 5
+        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
+        print("userInfo %@", userInfoDict)
         
 
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
+        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as String)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-      //UITextField delegate method
     
-    
+    //UITextField delegate method
     func textFieldDidBeginEditing(textField: UITextField) {
         codeDoesNotMatchLabel.hidden = true;
         fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
@@ -72,6 +79,9 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
          gotItButton.setTitle("Got It", forState: UIControlState.Normal)
         codeDoesNotMatchLabel.hidden = true
     }
+    @IBAction func doneButtonToolBarPressed(sender: AnyObject) {
+        fiveDigitTextField.resignFirstResponder()
+    }
     @IBAction func clickOnGotItButton(sender: AnyObject) {
         
         if(yourCodeSentLabel.hidden == false)
@@ -93,10 +103,10 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
             }
             else{
                 objAPI.otpVerificationDelegate = self
-                var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
-                print("userInfo %@", dict)
-                objAPI.verifyOTP(dict["phone_number"]! as String, country_code: "91", OTP: fiveDigitTextField.text!)
+                
+                objAPI.verifyOTP(userInfoDict["phone_number"]! as String, country_code: "91", OTP: fiveDigitTextField.text!)
                 codeDoesNotMatchLabel.hidden = true;
+                fiveDigitTextField.resignFirstResponder()
                 objAnimView.animate()
                 self.view.addSubview(objAnimView)
                
@@ -110,9 +120,11 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         
         
         objAPI.otpSentDelegate = self
-         var dict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,String>
-        objAPI.getOTPForNumber(dict["phone_number"]! as String, country_code: "91")
+      
+        objAPI.getOTPForNumber(userInfoDict["phone_number"]! as String, country_code: "91")
   
+        fiveDigitTextField.resignFirstResponder()
+        
         objAnimView.animate()
         self.view.addSubview(objAnimView)
     }
@@ -121,6 +133,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     //OTP sent Delegate Method
     func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
     {
+        
         objAnimView.removeFromSuperview()
         fiveDigitTextField.hidden = false
         resentCodeButton.hidden = false

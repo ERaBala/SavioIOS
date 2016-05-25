@@ -431,7 +431,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     }
     
-    //
+
     
     func acceptPolicy(obj:ImportantInformationView){
         var dict = Dictionary<String, AnyObject>()
@@ -441,7 +441,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell){
                 let cell = arrRegistrationFields[i] as! TitleTableViewCell
                 dict["title"] = cell.tfTitle?.text
-                dict["first_name"] = cell.tfTitle?.text
+                dict["first_name"] = cell.tfName?.text
             }
             
             if arrRegistrationFields[i].isKindOfClass(TxtFieldTableViewCell){
@@ -820,25 +820,47 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func error(error:String){
         objAnimView?.removeFromSuperview()
         print("\(error)")
-        var dict = arrRegistration[5] as Dictionary<String,AnyObject>
-        var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
-        let lableDict = metadataDict["lable"]!.mutableCopy()
-        lableDict.setValue("Yes", forKey: "isErrorShow")
-        lableDict.setValue(error, forKey: "title")
-        metadataDict["lable"] = lableDict
-        dict["metaData"] = metadataDict
-        dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
-        arrRegistration[5] = dict
-        self.createCells()
+        if(error == "The postcode doesn't look right")
+        {
+            var dict = arrRegistration[5] as Dictionary<String,AnyObject>
+            var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
+            let lableDict = metadataDict["lable"]!.mutableCopy()
+            lableDict.setValue("Yes", forKey: "isErrorShow")
+            lableDict.setValue(error, forKey: "title")
+            metadataDict["lable"] = lableDict
+            dict["metaData"] = metadataDict
+            dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
+            arrRegistration[5] = dict
+            self.createCells()
+        }
+        else{
+            let alert = UIAlertController(title: error, message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+       
     }
     
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
+        if(objResponse["message"] as! String == "User Already register")
+        {
+            let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
+                let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+                self.navigationController?.pushViewController(objCreatePINView, animated: true)
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else{
+            let objAPI = API()
+            objAPI.otpSentDelegate = self
+            objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+        }
         
-        let objAPI = API()
-        objAPI.otpSentDelegate = self
-        objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+      
       
         
 

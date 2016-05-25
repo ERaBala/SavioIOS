@@ -10,6 +10,7 @@ import UIKit
 
 class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSentDelegate {
 
+    @IBOutlet var toolBar: UIToolbar!
     @IBOutlet weak var passcodeDoesNotMatchLabel: UILabel!
     @IBOutlet weak var btnForgottPasscode: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
@@ -32,6 +33,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterPasscodeTextField.attributedPlaceholder = NSAttributedString(string:"Enter 4 digit passcode",
             attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+        enterPasscodeTextField.inputAccessoryView = toolBar
         
         //Add shadowcolor to UIButtons
         registerButton.layer.shadowColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
@@ -80,6 +82,8 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             objAPI.getOTPForNumber(dict["phone_number"]! as String, country_code: "91")
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
             objAnimView.frame = self.view.frame
+             enterPasscodeTextField.resignFirstResponder()
+        
             objAnimView.animate()
             self.view.addSubview(objAnimView)
         }
@@ -100,6 +104,9 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
 
     }
     
+    @IBAction func toolBarDoneButtonPressed(sender: AnyObject) {
+        enterPasscodeTextField.resignFirstResponder()
+    }
     //OTP Verification Delegate Method
     func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
     {

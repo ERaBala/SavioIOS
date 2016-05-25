@@ -84,6 +84,7 @@ class API: UIView {
                         else{
                             //else return an error
                             dispatch_async(dispatch_get_main_queue()){
+                                print(dict)
                                 self.delegate?.error("The postcode doesn't look right")
                             }
                         }
@@ -94,7 +95,7 @@ class API: UIView {
             dataTask.resume()
         }
         else{
-            delegate?.error("No network found")
+             delegate?.error("Network not available")
         }
     }
     
@@ -110,7 +111,7 @@ class API: UIView {
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            print(request)
+        
             let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
                 if let data = data
                 {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -34,11 +34,11 @@
                         <constraint firstAttribute="height" constant="50" id="ogg-N5-oSy"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hooray,                    you'r all set up" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srb-ZI-X44">
-                    <rect key="frame" x="177" y="113" width="246" height="73"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hooray,                    you're all set up" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srb-ZI-X44">
+                    <rect key="frame" x="168" y="113" width="264" height="73"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="246" id="NHZ-a2-m0f"/>
-                        <constraint firstAttribute="width" secondItem="srb-ZI-X44" secondAttribute="height" multiplier="246:73" id="RYl-Dh-IqS"/>
+                        <constraint firstAttribute="width" constant="264" id="NHZ-a2-m0f"/>
+                        <constraint firstAttribute="width" secondItem="srb-ZI-X44" secondAttribute="height" multiplier="246:73" constant="18" id="RYl-Dh-IqS"/>
                         <constraint firstAttribute="height" constant="73" id="bJc-RS-5oD"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="33"/>
@@ -84,6 +84,6 @@
         </view>
     </objects>
     <resources>
-        <image name="savivo-logo.png" width="80" height="80"/>
+        <image name="savivo-logo.png" width="85" height="85"/>
     </resources>
 </document>
