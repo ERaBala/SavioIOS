@@ -16,6 +16,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     var dictForTextFieldValue : Dictionary<String, AnyObject> = [:]
     var strPostCode = String()
     var objAnimView : ImageViewAnimation?
+    var arrAddress = [String]()
 
 
 
@@ -269,10 +270,13 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let tfTitleDict = metadataDict["textField1"]as! Dictionary<String,AnyObject>
                 cell.tf!.attributedPlaceholder = NSAttributedString(string:(tfTitleDict["placeholder"] as? String)!, attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)])
                 if (dictForTextFieldValue[(cell.tf?.placeholder)!] != nil){
+//                    if (arrAddress.count>0){
                     cell.tf?.text = dictForTextFieldValue[(cell.tf?.placeholder)!] as? String
                      arrRegistrationFields.append(cell)
                 }
                 let arrDropDown = tfTitleDict["dropDownArray"] as! Array<String>
+//                let arrDropDown = arrAddress
+
                 print("\(arrDropDown)")
                 cell.arr = arrDropDown
                 print("\(cell.arr)")
@@ -380,7 +384,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             let objGetAddressAPI: API = API()
             objGetAddressAPI.delegate = self
-            objGetAddressAPI.verifyPostCode(strCode)
+            let trimmedString = strCode.stringByReplacingOccurrencesOfString(" ", withString: "")
+            objGetAddressAPI.verifyPostCode(trimmedString)
         }
     }
     
@@ -797,8 +802,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func success(addressArray:Array<String>){
         objAnimView?.removeFromSuperview()
         self.getJSONForUI()
+//        arrAddress = addressArray
+//        print("\(arrAddress)")
         
-        print("\(addressArray)")
         var dict = arrRegistration[7] as Dictionary<String,AnyObject>
         var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
         let lableDict = metadataDict["textField1"]!.mutableCopy()
@@ -813,25 +819,18 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func error(error:String){
         objAnimView?.removeFromSuperview()
         print("\(error)")
-        if(error == "The postcode doesn't look right")
-        {
-            var dict = arrRegistration[5] as Dictionary<String,AnyObject>
-            var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
-            let lableDict = metadataDict["lable"]!.mutableCopy()
-            lableDict.setValue("Yes", forKey: "isErrorShow")
-            lableDict.setValue(error, forKey: "title")
-            metadataDict["lable"] = lableDict
-            dict["metaData"] = metadataDict
-            dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
-            arrRegistration[5] = dict
-            self.createCells()
+        if(error == "The postcode doesn't look right"){
+        var dict = arrRegistration[5] as Dictionary<String,AnyObject>
+        var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
+        let lableDict = metadataDict["lable"]!.mutableCopy()
+        lableDict.setValue("Yes", forKey: "isErrorShow")
+        lableDict.setValue(error, forKey: "title")
+        metadataDict["lable"] = lableDict
+        dict["metaData"] = metadataDict
+        dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
+        arrRegistration[5] = dict
+        self.createCells()
         }
-        else{
-            let alert = UIAlertController(title: error, message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-       
     }
     
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
