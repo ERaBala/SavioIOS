@@ -501,13 +501,14 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let cell = arrRegistrationFields[i] as! PickerTextfildTableViewCell
                 dict["date_of_birth"] = cell.tfDatePicker?.text
             }
-            let udidDict : Dictionary<String,String> = ["DEVICE_ID":NSUUID().UUIDString]
-            dict["deviceRegistration"] = udidDict
+//            let udidDict : Dictionary<String,String> = ["DEVICE_ID":NSUUID().UUIDString]
+//            dict["deviceRegistration"] = udidDict
 //            dict["device_ID"] = NSUUID().UUIDString
             
-            dict["pin"] = ""
-            
-            dict["confirm_pin"] = ""
+            let udidDict : Dictionary<String,String> = ["DEVICE_ID":NSUUID().UUIDString]
+            dict["deviceRegistration"] = udidDict
+         
+ 
         }
         
         print("DictPara:\(dict)")

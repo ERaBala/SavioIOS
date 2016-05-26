@@ -154,6 +154,9 @@
 		C97949791CEC987900416BD5 /* VTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949741CEC987900416BD5 /* VTButton.swift */; };
 		C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949751CEC987900416BD5 /* VTLabel.swift */; };
 		C979497B1CEC987900416BD5 /* VTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97949761CEC987900416BD5 /* VTView.swift */; };
+		C97A351B1CF6CC7900BEB441 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C97A35191CF6CC7900BEB441 /* icon.png */; };
+		C97A351C1CF6CC7900BEB441 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97A351A1CF6CC7900BEB441 /* icon@2x.png */; };
+		C97A351E1CF6D55D00BEB441 /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97A351D1CF6D55D00BEB441 /* icon@3x.png */; };
 		C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9854A8A1CED9A5000D09AB3 /* SAWelcomViewController.swift */; };
 		C9854A9A1CED9A5000D09AB3 /* SAWelcomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9854A8B1CED9A5000D09AB3 /* SAWelcomViewController.xib */; };
 		C9905F9D1CED9EF700E63471 /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9905F8F1CED9EF700E63471 /* PageView.xib */; };
@@ -341,6 +344,9 @@
 		C97949741CEC987900416BD5 /* VTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTButton.swift; sourceTree = "<group>"; };
 		C97949751CEC987900416BD5 /* VTLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTLabel.swift; sourceTree = "<group>"; };
 		C97949761CEC987900416BD5 /* VTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTView.swift; sourceTree = "<group>"; };
+		C97A35191CF6CC7900BEB441 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Savio/icon.png; sourceTree = "<group>"; };
+		C97A351A1CF6CC7900BEB441 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Savio/icon@2x.png"; sourceTree = "<group>"; };
+		C97A351D1CF6D55D00BEB441 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@3x.png"; path = "Savio/icon@3x.png"; sourceTree = "<group>"; };
 		C9854A8A1CED9A5000D09AB3 /* SAWelcomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAWelcomViewController.swift; sourceTree = "<group>"; };
 		C9854A8B1CED9A5000D09AB3 /* SAWelcomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAWelcomViewController.xib; sourceTree = "<group>"; };
 		C9905F8F1CED9EF700E63471 /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
@@ -697,6 +703,9 @@
 		C9E5259F1CE986F9000FD01E = {
 			isa = PBXGroup;
 			children = (
+				C97A351D1CF6D55D00BEB441 /* icon@3x.png */,
+				C97A35191CF6CC7900BEB441 /* icon.png */,
+				C97A351A1CF6CC7900BEB441 /* icon@2x.png */,
 				A8095B9B1CEDC52B006366F7 /* SystemConfiguration.framework */,
 				C9E525C81CE9D29D000FD01E /* Security.framework */,
 				C9E525AA1CE986FA000FD01E /* Savio */,
@@ -801,6 +810,7 @@
 				TargetAttributes = {
 					C9E525A71CE986FA000FD01E = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 235FYPWGUK;
 					};
 				};
 			};
@@ -908,6 +918,7 @@
 				C9FD9A9A1CEEED5D006FF2C7 /* ErrorTableViewCell.xib in Resources */,
 				A8095C2D1CEDC616006366F7 /* pre-loader@2x1.png in Resources */,
 				A8095C6B1CEDC617006366F7 /* pre-loader@3x34.png in Resources */,
+				C97A351C1CF6CC7900BEB441 /* icon@2x.png in Resources */,
 				A8095C351CEDC616006366F7 /* pre-loader@2x17.png in Resources */,
 				A8095C201CEDC616006366F7 /* pre-loader@1x3.png in Resources */,
 				A8095C661CEDC617006366F7 /* pre-loader@3x3.png in Resources */,
@@ -940,6 +951,7 @@
 				C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */,
 				A8095C4F1CEDC616006366F7 /* pre-loader@2x9.png in Resources */,
 				A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */,
+				C97A351E1CF6D55D00BEB441 /* icon@3x.png in Resources */,
 				C9E854EB1CF43732006213BF /* down-arrow-1.png in Resources */,
 				A8095C0B1CEDC616006366F7 /* pre-loader@1x10.png in Resources */,
 				A8095C0E1CEDC616006366F7 /* pre-loader@1x13.png in Resources */,
@@ -973,6 +985,7 @@
 				A8095C521CEDC616006366F7 /* pre-loader@3x11.png in Resources */,
 				A8095C3D1CEDC616006366F7 /* pre-loader@2x24.png in Resources */,
 				A8095C141CEDC616006366F7 /* pre-loader@1x19.png in Resources */,
+				C97A351B1CF6CC7900BEB441 /* icon.png in Resources */,
 				C9905FA11CED9EF700E63471 /* FindAddressTableViewCell.xib in Resources */,
 				A8095C341CEDC616006366F7 /* pre-loader@2x16.png in Resources */,
 				A8095C311CEDC616006366F7 /* pre-loader@2x13.png in Resources */,
@@ -1051,7 +1064,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Atul Deore (GDH82HZKLM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Atul Deore (GDH82HZKLM)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1073,6 +1087,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ff9edb91-85e7-4dd4-8b77-0051695c1f28";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = ../Savio/BridgingHeader.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1096,7 +1111,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Atul Deore (GDH82HZKLM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Atul Deore (GDH82HZKLM)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1111,6 +1127,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "ff9edb91-85e7-4dd4-8b77-0051695c1f28";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = ../Savio/BridgingHeader.h;
 				VALIDATE_PRODUCT = YES;
@@ -1121,12 +1138,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Atul Deore (GDH82HZKLM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Atul Deore (GDH82HZKLM)";
 				INFOPLIST_FILE = Savio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vatsa.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ff9edb91-85e7-4dd4-8b77-0051695c1f28";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1136,12 +1155,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Atul Deore (GDH82HZKLM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Atul Deore (GDH82HZKLM)";
 				INFOPLIST_FILE = Savio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = VSPLC.Savio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vatsa.Savio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ff9edb91-85e7-4dd4-8b77-0051695c1f28";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
