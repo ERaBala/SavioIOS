@@ -30,14 +30,14 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         enterFourDigitPIN.layer.borderWidth = 1
         enterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"4 digit passcode",
-            attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+                                                                     attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
         //Set input accessory view to the UITextfield
         enterFourDigitPIN.inputAccessoryView = toolBar
         
         reEnterFourDigitPIN.layer.borderWidth = 1
         reEnterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         reEnterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"Re-enter 4 digit passcode",
-            attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+                                                                       attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
         //Set input accessory view to the UITextfield
         reEnterFourDigitPIN.inputAccessoryView = toolBar
         
@@ -120,22 +120,31 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         else
         {
             
-            userInfoDict["passcode"] = enterFourDigitPIN.text
-            
-            print(userInfoDict)
-            objAPI.registerTheUserWithTitle(userInfoDict)
-            //Add animation of logo
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
             objAnimView.frame = self.view.frame
             enterFourDigitPIN.resignFirstResponder()
             
             objAnimView.animate()
             self.view.addSubview(objAnimView)
-            //Store the passcode in Keychain
-            objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
-            //Navigate user to HurrayViewController to start Saving plan
-            let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
-            self.navigationController?.pushViewController(objHurrrayView, animated: true)
+            
+            userInfoDict["passcode"] = enterFourDigitPIN.text
+            
+            print(userInfoDict)
+            
+            objAPI.delegate = self
+            if(checkString == "ForgotPasscode")
+            {
+                
+                objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers/update")
+                
+            }
+            else{
+                objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
+            }
+            
+            //Add animation of logo
+            
+            
             
             
             
@@ -152,11 +161,19 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
     }
     
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
+        print(objResponse)
+        objAnimView.removeFromSuperview()
+        //Store the passcode in Keychain
+        objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
+        //Navigate user to HurrayViewController to start Saving plan
+        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+        self.navigationController?.pushViewController(objHurrrayView, animated: true)
+        
         
     }
     func errorResponseForRegistrationAPI(error:String){
-        
+        objAnimView.removeFromSuperview()
     }
-
+    
     
 }

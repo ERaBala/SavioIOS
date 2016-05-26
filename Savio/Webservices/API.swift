@@ -17,6 +17,7 @@ var isResetPassword : Bool! = false
 var checkString = ""
 
 protocol PostCodeVerificationDelegate {
+    
     func success(addressArray:Array<String>)
     func error(error:String)
     
@@ -117,12 +118,12 @@ class API: UIView {
     }
     
     
-    func registerTheUserWithTitle(dictParam:Dictionary<String,AnyObject>)
+    func registerTheUserWithTitle(dictParam:Dictionary<String,AnyObject>,apiName:String)
     {
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
-            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers",baseURL))!)
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/%@",baseURL,apiName))!)
             request.HTTPMethod = "POST"
             
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])

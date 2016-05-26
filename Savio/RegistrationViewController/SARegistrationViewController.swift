@@ -480,8 +480,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
                 let cell = arrRegistrationFields[i] as! FindAddressTableViewCell
-                dict["post_code"] = cell.tfPostCode?.text
-                //dict["post_code"] = "nw1w9be"
+                //dict["post_code"] = cell.tfPostCode?.text
+                dict["post_code"] = "se19dy"
             }
             
             if arrRegistrationFields[i].isKindOfClass(PickerTextfildTableViewCell){
@@ -492,7 +492,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
 //            dict["deviceRegistration"] = udidDict
 //            dict["device_ID"] = NSUUID().UUIDString
             
-            let udidDict : Dictionary<String,String> = ["DEVICE_ID":NSUUID().UUIDString]
+            let udidDict : Dictionary<String,String> = ["DEVICE_ID":UIDevice.currentDevice().identifierForVendor!.UUIDString]
             dict["deviceRegistration"] = udidDict
         }
         
@@ -505,7 +505,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
         let objAPI = API()
         objAPI.delegate = self
-        objAPI.registerTheUserWithTitle(dict)
+        objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
         objAPI.storeValueInKeychainForKey("userInfo", value: dict)
         
         //        objAPI.registerTheUserWithTitle(dictForTextFieldValue["title"] as! String, first_name: dictForTextFieldValue["name"] as! String, second_name: dictForTextFieldValue["Surname"] as! String, date_of_birth: dictForTextFieldValue["Date of birth"] as! String, email: dictForTextFieldValue["Email"] as! String, phone_number: dictForTextFieldValue[Mobile number] as! String, address_1: dictForTextFieldValue["title"] as! String, address_2: dictForTextFieldValue["title"] as! String, address_3: dictForTextFieldValue["title"] as! String, town: dictForTextFieldValue["title"] as! String, country: dictForTextFieldValue["title"] as! String, post_code: dictForTextFieldValue["title"] as! String, house_number: dictForTextFieldValue["title"] as! String)
@@ -878,6 +878,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         {
             let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
+                checkString = "ForgotPasscode"
                 let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
                 self.navigationController?.pushViewController(objCreatePINView, animated: true)
                 
