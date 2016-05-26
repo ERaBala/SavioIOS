@@ -499,8 +499,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
                 let cell = arrRegistrationFields[i] as! FindAddressTableViewCell
-                //dict["post_code"] = cell.tfPostCode?.text
-                dict["post_code"] = "nw1w9be"
+                dict["post_code"] = cell.tfPostCode?.text
+                //dict["post_code"] = "nw1w9be"
             }
             
             if arrRegistrationFields[i].isKindOfClass(PickerTextfildTableViewCell){
