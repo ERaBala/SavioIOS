@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         //Check if keychain has encrypted pin value
         let objApi = API()
-        //objApi.deleteKeychainValue("myPasscode")
+       //objApi.deleteKeychainValue("myPasscode")
+        print(objApi.getValueFromKeychainOfKey("myPasscode") as! String)
         if((objApi.getValueFromKeychainOfKey("myPasscode") as! String) == "")
         {
             //If no then Go to SAWelcomViewController
@@ -35,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else{
             let userInfoDict = objApi.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
             let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String> //= ["DEVICE_ID":NSUUID().UUIDString]
+            print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
+            print(udidDict["DEVICE_ID"])
+            
             if(udidDict["DEVICE_ID"] == NSUUID().UUIDString)
             {
                 //else Go to SAEnterYourPINViewController
@@ -45,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
             else{
-           
                 //else Go to SARegistrationViewController
                 objRegisterViewController = SARegistrationViewController()
                 //Set SARegistrationViewController as rootViewController of UINavigationViewController
