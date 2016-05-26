@@ -13,8 +13,8 @@ import Foundation
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
 let APIKey = "TYJHDBcrTqsh8l8Jffuv2BSXUIpKV40Z"
 let custom_message = "Your Savio phone verification code is {{code}}"
-var isResetPassword : Bool! = false
 var checkString = ""
+var changePhoneNumber : Bool = false
 
 protocol PostCodeVerificationDelegate {
     
@@ -55,7 +55,7 @@ class API: UIView {
     var otpVerificationDelegate : OTPVerificationDelegate?
     var logInDelegate : LogInDelegate?
     var resetPasscodeDelegate : ResetPasscodeDelegate?
-
+    
     //Checking Reachability function
     func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
@@ -112,8 +112,8 @@ class API: UIView {
             dataTask.resume()
         }
         else{
-             //Give error no network found
-             delegate?.error("Network not available")
+            //Give error no network found
+            delegate?.error("Network not available")
         }
     }
     
@@ -129,7 +129,7 @@ class API: UIView {
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
+            
             let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
                 if let data = data
                 {
@@ -185,10 +185,19 @@ class API: UIView {
                     {
                         print(dict)
                         if(dict["success"] as! Bool == true)
-                        {dispatch_async(dispatch_get_main_queue()){
-                            //send successResponse
-                            self.otpSentDelegate?.successResponseForOTPSentAPI(dict)
+                        {
+                            dispatch_async(dispatch_get_main_queue()){
+                                //send successResponse
+                                self.otpSentDelegate?.successResponseForOTPSentAPI(dict)
                             }
+                        }
+                        else
+                        {
+                            dispatch_async(dispatch_get_main_queue()){
+                                //send successResponse
+                                self.otpSentDelegate?.errorResponseForOTPSentAPI(dict["message"] as! String)
+                            }
+                            
                         }
                         
                     }
@@ -202,7 +211,7 @@ class API: UIView {
                 }
                 else
                 {
-                     //send error
+                    //send error
                     dispatch_async(dispatch_get_main_queue()){
                         self.otpSentDelegate?.errorResponseForOTPSentAPI((error?.localizedDescription)!)
                     }
@@ -223,7 +232,7 @@ class API: UIView {
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
-            //Start a session 
+            //Start a session
             let dataTask = session.dataTaskWithURL(NSURL(string: String(format: "http://api.authy.com/protected/json/phones/verification/check?api_key=%@&via=sms&phone_number=%@&country_code=%@&verification_code=%@",APIKey,phoneNumber,country_code,OTP))!) { data, response, error in
                 if let data = data
                 {
@@ -244,7 +253,7 @@ class API: UIView {
                         }
                         else
                         {
-                             //send error
+                            //send error
                             dispatch_async(dispatch_get_main_queue()){
                                 self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI("Verification code is incorrect.")
                             }
@@ -253,7 +262,7 @@ class API: UIView {
                     }
                     else
                     {
-                         //send error
+                        //send error
                         dispatch_async(dispatch_get_main_queue()){
                             self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI((error?.localizedDescription)!)
                         }
@@ -261,7 +270,7 @@ class API: UIView {
                 }
                 else
                 {
-                     //send error
+                    //send error
                     dispatch_async(dispatch_get_main_queue()){
                         self.otpVerificationDelegate?.errorResponseForOTPVerificationAPI((error?.localizedDescription)!)
                     }
@@ -320,7 +329,7 @@ class API: UIView {
             //Give error no network found
             logInDelegate?.errorResponseForOTPLogInAPI("No network found")
         }
-
+        
     }
     
     
@@ -369,7 +378,7 @@ class API: UIView {
         }
         
     }
-
+    
     
     //KeychainItemWrapper methods
     func storeValueInKeychainForKey(key:String,value:AnyObject){
@@ -380,13 +389,13 @@ class API: UIView {
     func getValueFromKeychainOfKey(key:String)-> AnyObject{
         //get the value of password from keychain
         return KeychainItemWrapper.load(key) as AnyObject
-//        if (KeychainItemWrapper.load(key) as! String).isEmpty{
-//            return ""
-//        }
-//        else{
-//       
-//        
-//        }
+        //        if (KeychainItemWrapper.load(key) as! String).isEmpty{
+        //            return ""
+        //        }
+        //        else{
+        //
+        //
+        //        }
         
     }
     

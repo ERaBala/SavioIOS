@@ -9,9 +9,9 @@
 import UIKit
 
 class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,OTPSentDelegate,OTPVerificationDelegate {
-
+    
     @IBOutlet weak var headerText: UILabel!
-   
+    
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet weak var codeDoesNotMatchLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
@@ -19,15 +19,15 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     @IBOutlet weak var resentCodeButton: UIButton!
     @IBOutlet weak var fiveDigitTextField: UITextField!
     @IBOutlet weak var yourCodeSentLabel: UILabel!
-     let objAPI = API()
-     var objAnimView = ImageViewAnimation()
+    let objAPI = API()
+    var objAnimView = ImageViewAnimation()
     var userInfoDict : Dictionary<String,AnyObject> = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
         objAnimView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-
+        
         
         // Do any additional setup after loading the view.
         //change the border color of UITextField
@@ -42,29 +42,37 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         gotItButton.layer.cornerRadius = 5
         //Get user details from Keychain
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
-
-
+        
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
         yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as! String)
+        
+        
+        headerText.text = "Enter your new mobile number"
+        fiveDigitTextField.hidden = false
+        resentCodeButton.hidden = true
+        backButton.hidden = true
+        yourCodeSentLabel.hidden = true
+        
     }
-
+    
     //UITextField delegate method
     func textFieldDidBeginEditing(textField: UITextField) {
         codeDoesNotMatchLabel.hidden = true;
         fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         fiveDigitTextField.textColor = UIColor.blackColor()
     }
-
+    
     @IBAction func clickOnBackButton(sender: AnyObject) {
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
         backButton.hidden = true
         yourCodeSentLabel.hidden = false
         headerText.text = "We've sent you a verfication code"
-         gotItButton.setTitle("Got It", forState: UIControlState.Normal)
+        gotItButton.setTitle("Got It", forState: UIControlState.Normal)
         codeDoesNotMatchLabel.hidden = true
     }
     @IBAction func doneButtonToolBarPressed(sender: AnyObject) {
@@ -98,21 +106,21 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
                 fiveDigitTextField.resignFirstResponder()
                 objAnimView.animate()
                 self.view.addSubview(objAnimView)
-               
+                
             }
-      
+            
         }
-
+        
         
     }
-  
+    
     @IBAction func clickOnResentCodeButton(sender: AnyObject) {
         //Set the OTPSentDelegate
         objAPI.otpSentDelegate = self
-      
-          //Resend the OTP to the mobile number present in keychain
+        
+        //Resend the OTP to the mobile number present in keychain
         objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
-  
+        
         fiveDigitTextField.resignFirstResponder()
         
         objAnimView.animate()
@@ -134,6 +142,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         
     }
     func errorResponseForOTPSentAPI(error:String){
+        
         objAnimView.removeFromSuperview()
         fiveDigitTextField.textColor = UIColor.redColor()
         fiveDigitTextField.hidden = true
@@ -143,12 +152,12 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         headerText.text = "We've sent you a verfication code"
         gotItButton.setTitle("Got It", forState: UIControlState.Normal)
     }
-
+    
     
     //OTP Verification Delegate Method
     func successResponseForOTPVerificationAPI(objResponse:Dictionary<String,AnyObject>)
     {
-       
+        
         let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
         self.navigationController?.pushViewController(objCreatePINView, animated: true)
     }

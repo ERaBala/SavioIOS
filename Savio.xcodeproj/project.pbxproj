@@ -125,6 +125,8 @@
 		A8392A411CEEE0C200C7EE48 /* gotham-rounded-book-2.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8392A3E1CEEE0C200C7EE48 /* gotham-rounded-book-2.otf */; };
 		A8392A421CEEE0C200C7EE48 /* GothamRounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8392A3F1CEEE0C200C7EE48 /* GothamRounded-Light.otf */; };
 		A8392A431CEEE0C200C7EE48 /* GothamRounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8392A401CEEE0C200C7EE48 /* GothamRounded-Medium.otf */; };
+		A84625AD1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84625AB1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift */; };
+		A84625AE1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84625AC1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib */; };
 		A86CD6311CF47E8000222765 /* HurreyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86CD62F1CF47E8000222765 /* HurreyViewController.swift */; };
 		A86CD6321CF47E8000222765 /* HurreyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86CD6301CF47E8000222765 /* HurreyViewController.xib */; };
 		A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897514C1CEF099500F122AD /* CreatePINViewController.swift */; };
@@ -315,6 +317,8 @@
 		A8392A3E1CEEE0C200C7EE48 /* gotham-rounded-book-2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-rounded-book-2.otf"; sourceTree = "<group>"; };
 		A8392A3F1CEEE0C200C7EE48 /* GothamRounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Light.otf"; sourceTree = "<group>"; };
 		A8392A401CEEE0C200C7EE48 /* GothamRounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Medium.otf"; sourceTree = "<group>"; };
+		A84625AB1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAEnterPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		A84625AC1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAEnterPhoneNumberViewController.xib; sourceTree = "<group>"; };
 		A86CD62F1CF47E8000222765 /* HurreyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HurreyViewController.swift; sourceTree = "<group>"; };
 		A86CD6301CF47E8000222765 /* HurreyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HurreyViewController.xib; sourceTree = "<group>"; };
 		A897514C1CEF099500F122AD /* CreatePINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePINViewController.swift; sourceTree = "<group>"; };
@@ -599,6 +603,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		A84625AA1CF712BB004C07DD /* PhoneNumberViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A84625AB1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift */,
+				A84625AC1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib */,
+			);
+			path = PhoneNumberViewController;
+			sourceTree = "<group>";
+		};
 		A86CD62E1CF47E8000222765 /* HurrayViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +737,7 @@
 		C9E525AA1CE986FA000FD01E /* Savio */ = {
 			isa = PBXGroup;
 			children = (
+				A84625AA1CF712BB004C07DD /* PhoneNumberViewController */,
 				A86CD62E1CF47E8000222765 /* HurrayViewController */,
 				C95CD6101CF2C92100013200 /* DropDownList */,
 				A897514B1CEF07D400F122AD /* PINViewController */,
@@ -947,6 +961,7 @@
 				A8095C5E1CEDC616006366F7 /* pre-loader@3x22.png in Resources */,
 				A8095B991CEDC4D5006366F7 /* ImportantInformationView.xib in Resources */,
 				A8095C491CEDC616006366F7 /* pre-loader@2x35.png in Resources */,
+				A84625AE1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib in Resources */,
 				A86CD6321CF47E8000222765 /* HurreyViewController.xib in Resources */,
 				C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */,
 				A8095C4F1CEDC616006366F7 /* pre-loader@2x9.png in Resources */,
@@ -1020,6 +1035,7 @@
 				C9905FA81CED9EF700E63471 /* SARegistrationViewController.swift in Sources */,
 				C97949791CEC987900416BD5 /* VTButton.swift in Sources */,
 				C9905FA61CED9EF700E63471 /* TxtFieldTableViewCell.swift in Sources */,
+				A84625AD1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift in Sources */,
 				C95CD6171CF2C92100013200 /* DPDConstants.swift in Sources */,
 				C95CD61A1CF2C92100013200 /* DropDown.swift in Sources */,
 				C9905FA21CED9EF700E63471 /* linkButtonTableViewCell.swift in Sources */,

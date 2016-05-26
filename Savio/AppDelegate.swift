@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         //Check if keychain has encrypted pin value
         let objApi = API()
-       //objApi.deleteKeychainValue("myPasscode")
+        //objApi.deleteKeychainValue("myPasscode")
         print(objApi.getValueFromKeychainOfKey("myPasscode") as! String)
         if((objApi.getValueFromKeychainOfKey("myPasscode") as! String) == "")
         {
@@ -34,12 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = objSANav
         }
         else{
+            
             let userInfoDict = objApi.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
             let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String> //= ["DEVICE_ID":NSUUID().UUIDString]
             print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
             print(udidDict["DEVICE_ID"])
             
-            if(udidDict["DEVICE_ID"] == NSUUID().UUIDString)
+            if(udidDict["DEVICE_ID"] == UIDevice.currentDevice().identifierForVendor!.UUIDString)
             {
                 //else Go to SAEnterYourPINViewController
                 objEnterYourPinViewController = SAEnterYourPINViewController()
@@ -56,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.rootViewController = objSANav
                 
             }
+            
         }
         objSANav?.navigationBarHidden = true
         
