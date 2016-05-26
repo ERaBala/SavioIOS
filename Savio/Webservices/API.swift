@@ -13,6 +13,8 @@ import Foundation
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
 let APIKey = "TYJHDBcrTqsh8l8Jffuv2BSXUIpKV40Z"
 let custom_message = "Your Savio phone verification code is {{code}}"
+var isResetPassword : Bool! = false
+var checkString = ""
 
 protocol PostCodeVerificationDelegate {
     func success(addressArray:Array<String>)
@@ -33,13 +35,26 @@ protocol OTPVerificationDelegate{
     func errorResponseForOTPVerificationAPI(error:String)
 }
 
+protocol LogInDelegate{
+    
+    func successResponseForLogInAPI(objResponse:Dictionary<String,AnyObject>)
+    func errorResponseForOTPLogInAPI(error:String)
+}
+
+protocol ResetPasscodeDelegate{
+    
+    func successResponseForResetPasscodeAPI(objResponse:Dictionary<String,AnyObject>)
+    func errorResponseForOTPResetPasscodeAPI(error:String)
+}
 
 class API: UIView {
     let session = NSURLSession.sharedSession()
     var delegate: PostCodeVerificationDelegate?
     var otpSentDelegate : OTPSentDelegate?
     var otpVerificationDelegate : OTPVerificationDelegate?
-    
+    var logInDelegate : LogInDelegate?
+    var resetPasscodeDelegate : ResetPasscodeDelegate?
+
     //Checking Reachability function
     func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
@@ -260,6 +275,101 @@ class API: UIView {
         }
     }
     
+    
+    //LogIn function
+    func logInWithUserID(dictParam:Dictionary<String,AnyObject>)
+    {
+        //Check if network is present
+        if(self.isConnectedToNetwork())
+        {
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
+            request.HTTPMethod = "POST"
+            
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if let data = data
+                {
+                    let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                    print(json)
+                    if let dict = json as? Dictionary<String,AnyObject>
+                    {
+                        print("\(dict)")
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.logInDelegate?.successResponseForLogInAPI(dict)
+                        }
+                    }
+                    else
+                    {
+                        print("error")
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.logInDelegate?.errorResponseForOTPLogInAPI((error?.localizedDescription)!)
+                        }
+                        
+                    }
+                }
+                
+            }
+            dataTask.resume()
+        }
+        else{
+            //Give error no network found
+            logInDelegate?.errorResponseForOTPLogInAPI("No network found")
+        }
+
+    }
+    
+    
+    //ResetPasscode function
+    func resetPasscodeOfUserID(dictParam:Dictionary<String,AnyObject>)
+    {
+        //Check if network is present
+        if(self.isConnectedToNetwork())
+        {
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
+            request.HTTPMethod = "POST"
+            
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if let data = data
+                {
+                    let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                    print(json)
+                    if let dict = json as? Dictionary<String,AnyObject>
+                    {
+                        print("\(dict)")
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.resetPasscodeDelegate?.successResponseForResetPasscodeAPI(dict)
+                        }
+                    }
+                    else
+                    {
+                        print("error")
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.resetPasscodeDelegate?.errorResponseForOTPResetPasscodeAPI((error?.localizedDescription)!)
+                        }
+                        
+                    }
+                }
+                
+            }
+            dataTask.resume()
+        }
+        else{
+            //Give error no network found
+            self.resetPasscodeDelegate?.errorResponseForOTPResetPasscodeAPI("No network found")
+        }
+        
+    }
+
+    
     //KeychainItemWrapper methods
     func storeValueInKeychainForKey(key:String,value:AnyObject){
         //Save the value of password into keychain
@@ -282,4 +392,6 @@ class API: UIView {
     func deleteKeychainValue(key:String) {
         KeychainItemWrapper.delete(key)
     }
+    
+    
 }

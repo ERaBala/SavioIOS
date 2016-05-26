@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreatePINViewController: UIViewController,UITextFieldDelegate {
+class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVerificationDelegate{
     
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -17,7 +17,10 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var enterFourDigitPIN: UITextField!
     @IBOutlet weak var confirmPIN: UIButton!
     
+    
     var objAPI = API()
+    var objAnimView = ImageViewAnimation()
+    var userInfoDict  = Dictionary<String,AnyObject>()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,14 +30,14 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         enterFourDigitPIN.layer.borderWidth = 1
         enterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"4 digit passcode",
-                                                                     attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+            attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
         //Set input accessory view to the UITextfield
         enterFourDigitPIN.inputAccessoryView = toolBar
         
         reEnterFourDigitPIN.layer.borderWidth = 1
         reEnterFourDigitPIN.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         reEnterFourDigitPIN.attributedPlaceholder = NSAttributedString(string:"Re-enter 4 digit passcode",
-                                                                       attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+            attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
         //Set input accessory view to the UITextfield
         reEnterFourDigitPIN.inputAccessoryView = toolBar
         
@@ -44,11 +47,14 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         confirmPIN.layer.shadowOpacity = 1
         confirmPIN.layer.cornerRadius = 5
         
+        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-         // Set the scrollview content size.
+        // Set the scrollview content size.
         backgroundScrollView.contentSize = CGSizeMake(0, 500)
     }
     
@@ -80,8 +86,8 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func toolBarDoneButtonPressed(sender: AnyObject) {
-         enterFourDigitPIN.resignFirstResponder()
-         reEnterFourDigitPIN.resignFirstResponder()
+        enterFourDigitPIN.resignFirstResponder()
+        reEnterFourDigitPIN.resignFirstResponder()
         backgroundScrollView.contentOffset = CGPointMake(0, 0)
     }
     @IBAction func onclickBackButton(sender: AnyObject) {
@@ -114,14 +120,43 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate {
         else
         {
             
-            enterFiveDigitCodeLabel.hidden = true;
+            userInfoDict["passcode"] = enterFourDigitPIN.text
+            
+            print(userInfoDict)
+            objAPI.registerTheUserWithTitle(userInfoDict)
+            //Add animation of logo
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView.frame = self.view.frame
+            enterFourDigitPIN.resignFirstResponder()
+            
+            objAnimView.animate()
+            self.view.addSubview(objAnimView)
             //Store the passcode in Keychain
             objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
             //Navigate user to HurrayViewController to start Saving plan
             let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
             self.navigationController?.pushViewController(objHurrrayView, animated: true)
             
+            
+            
+            
         }
     }
+    
+    //
+    func success(addressArray:Array<String>){
+    }
+    
+    func error(error:String){
+        
+    }
+    
+    func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
+        
+    }
+    func errorResponseForRegistrationAPI(error:String){
+        
+    }
+
     
 }

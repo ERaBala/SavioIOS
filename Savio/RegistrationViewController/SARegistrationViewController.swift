@@ -494,6 +494,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
                 let cell = arrRegistrationFields[i] as! FindAddressTableViewCell
                 dict["post_code"] = cell.tfPostCode?.text
+                //dict["post_code"] = "nw1w9be"
             }
             
             if arrRegistrationFields[i].isKindOfClass(PickerTextfildTableViewCell){
@@ -889,7 +890,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
-        if(objResponse["message"] as! String == "User Already register")
+        if(objResponse["message"] as! String == "Looks like you are an existing user, change you passcode")
         {
             let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
@@ -902,7 +903,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         else{
             let objAPI = API()
             objAPI.otpSentDelegate = self
+            checkString = "Register"
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+          
         }
         
     }
