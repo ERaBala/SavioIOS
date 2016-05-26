@@ -42,19 +42,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if(udidDict["DEVICE_ID"] == UIDevice.currentDevice().identifierForVendor!.UUIDString)
             {
-                //else Go to SAEnterYourPINViewController
-                objEnterYourPinViewController = SAEnterYourPINViewController()
-                //Set SAEnterYourPINViewController as rootViewController of UINavigationViewController
-                objSANav = UINavigationController(rootViewController: objEnterYourPinViewController!)
-                window?.rootViewController = objSANav
+                let userInfoDict = objApi.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+                let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String> //= ["DEVICE_ID":NSUUID().UUIDString]
+                print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
+                print(udidDict["DEVICE_ID"])
+                
+                if(udidDict["DEVICE_ID"] == UIDevice.currentDevice().identifierForVendor!.UUIDString)
+                {
+                    //else Go to SAEnterYourPINViewController
+                    objEnterYourPinViewController = SAEnterYourPINViewController()
+                    //Set SAEnterYourPINViewController as rootViewController of UINavigationViewController
+                    objSANav = UINavigationController(rootViewController: objEnterYourPinViewController!)
+                    window?.rootViewController = objSANav
+                    
+                }
+                else{
+                    //else Go to SARegistrationViewController
+                    objRegisterViewController = SARegistrationViewController()
+                    //Set SARegistrationViewController as rootViewController of UINavigationViewController
+                    objSANav = UINavigationController(rootViewController: objRegisterViewController!)
+                    window?.rootViewController = objSANav
+                    
+                }
                 
             }
-            else{
-                //else Go to SARegistrationViewController
-                objRegisterViewController = SARegistrationViewController()
-                //Set SARegistrationViewController as rootViewController of UINavigationViewController
-                objSANav = UINavigationController(rootViewController: objRegisterViewController!)
+            else
+            {
+                //If no then Go to SAWelcomViewController
+                objSAWelcomViewController = SAWelcomViewController()
+                //Set SAWelcomViewController as rootViewController of UINavigationViewController
+                objSANav = UINavigationController(rootViewController: objSAWelcomViewController!)
                 window?.rootViewController = objSANav
+                
                 
             }
             

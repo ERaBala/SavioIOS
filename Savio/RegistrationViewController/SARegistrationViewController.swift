@@ -419,7 +419,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
         else{
             if dictForTextFieldValue["errorPostcodeValid"] != nil{
-                
                 var dict = arrRegistration[5] as Dictionary<String,AnyObject>
                 var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
                 let lableDict = metadataDict["lable"]!.mutableCopy()
@@ -432,11 +431,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 self.createCells()
             }
         }
-        
-        
     }
-    
-    
     
     func acceptPolicy(obj:ImportantInformationView){
         var dict = Dictionary<String, AnyObject>()
@@ -459,36 +454,28 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 }
                 if cell.tf?.placeholder == "First Address Line"{
                     dict["address_1"] = cell.tf?.text
-                    
                 }
                 if cell.tf?.placeholder == "Second Address Line"{
                     dict["address_2"] = cell.tf?.text
-                    
                 }
                 if cell.tf?.placeholder == "Third Address Line"{
                     dict["address_3"] = cell.tf?.text
-                    
                 }
                 
                 if cell.tf?.placeholder == "Town"{
                     dict["town"] = cell.tf?.text
-                    
                 }
                 
                 if cell.tf?.placeholder == "Mobile number"{
                     dict["phone_number"] = cell.tf?.text
-                    
                 }
                 if cell.tf?.placeholder == "County"{
                     dict["county"] = cell.tf?.text
-                    
                 }
                 
                 if cell.tf?.placeholder == "Email"{
                     dict["email"] = cell.tf?.text
-                    
                 }
-                
             }
             
             if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
@@ -512,8 +499,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
         
         print("DictPara:\(dict)")
-        
-        
         
         objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
         objAnimView!.frame = self.view.frame
