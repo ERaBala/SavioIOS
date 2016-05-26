@@ -42,7 +42,6 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         gotItButton.layer.cornerRadius = 5
         //Get user details from Keychain
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
-        print(userInfoDict)
 
 
     }

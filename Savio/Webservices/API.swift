@@ -123,7 +123,6 @@ class API: UIView {
         if(self.isConnectedToNetwork())
         {
             let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers",baseURL))!)
-            print(request)
             request.HTTPMethod = "POST"
             
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
@@ -148,7 +147,6 @@ class API: UIView {
                         dispatch_async(dispatch_get_main_queue()){
                             self.delegate?.errorResponseForRegistrationAPI("Error")
                         }
-                        
                     }
                 }
                 
