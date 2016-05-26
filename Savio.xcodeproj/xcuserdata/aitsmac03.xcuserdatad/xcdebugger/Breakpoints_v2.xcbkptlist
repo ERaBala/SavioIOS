@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "485893938.765813"
+            timestampString = "485939761.004966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "878"
-            endingLineNumber = "878"
+            startingLineNumber = "861"
+            endingLineNumber = "861"
             landmarkName = "error(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "485894184.114851"
+            timestampString = "485939761.004966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "890"
-            endingLineNumber = "890"
+            startingLineNumber = "873"
+            endingLineNumber = "873"
             landmarkName = "SARegistrationViewController"
             landmarkType = "3">
          </BreakpointContent>
