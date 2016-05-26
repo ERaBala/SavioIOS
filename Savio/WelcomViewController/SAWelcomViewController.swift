@@ -71,14 +71,10 @@ class SAWelcomViewController: UIViewController {
     }
     */
     
-    
+    //Function invoking for configure the scrollview for page animation
     func configureScrollView() {
-//        if flag {
-//            return
-//        }
         // Enable paging.
         scrollView.pagingEnabled = true
-//        flag = true
         // Set the following flag values.
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
@@ -86,41 +82,32 @@ class SAWelcomViewController: UIViewController {
         
         // Set the scrollview content size.
         scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * CGFloat(pageArr.count), scrollView.frame.size.height)
-        print("\(scrollView.frame.size.width,scrollView.frame.size.height)")
-        // Set self as the delegate of the scrollview.
-//        scrollView.delegate = self
         
         // Load the PageView view from the TestView.xib file and configure it properly.
         for var i=0; i<pageArr.count; ++i {
             // Load the TestView view.
             let testView = NSBundle.mainBundle().loadNibNamed("PageView", owner: self, options: nil)[0] as! UIView
-            
             // Set its frame and the background color.
-//            testView.frame = CGRectMake(CGFloat(i) * scrollView.frame.size.width, scrollView.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height)
-            
             testView.frame = CGRectMake(CGFloat(i) * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)
-            
             // Set the proper message to the test view's label.
             let vw = testView.viewWithTag(1) as! UIImageView
             vw.image = UIImage(named: pageArr[i])
-            
             // Add the test view as a subview to the scrollview.
             scrollView.addSubview(testView)
         }
         self.change()
     }
     
+    //Function invoking for configure the page control for animated pages
     func configurePageControl() {
         // Set the total pages to the page control.
         pageControl.numberOfPages = pageArr.count
-        
         // Set the initial page.
         pageControl.currentPage = 0
     }
     
     
     // MARK: UIScrollViewDelegate method implementation
-    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // Calculate the new page index depending on the content offset.
         let currentPage = floor(scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width);
@@ -128,37 +115,39 @@ class SAWelcomViewController: UIViewController {
         // Set the new page index to the page control.
         pageControl.currentPage = Int(currentPage)
     }
-    
-    
-    // MARK: IBAction method implementation
-    
-    @IBAction func changePage(sender: AnyObject) {
-        // Calculate the frame that should scroll to based on the page control current page.
         
-    }
-    
-    //Function invoke for make
+    //Function invoke for make animation on pages
     func change(){
+        //flag set for showing animation or not
         var flag = true
+        //Checkin last page appear, if appear then showing 1st page
         if(idx == 5){
             idx = 0
             flag = false
         }
         var newFrame = scrollView.frame
+        //Set the new page index to the page control.
         pageControl.currentPage = idx
+         // Calculate the frame that should scroll to based on the page control current page.
         newFrame.origin.x = newFrame.size.width * CGFloat(pageControl.currentPage)
-        
+        //Showing scrollview rect as per the page
         scrollView.scrollRectToVisible(newFrame, animated: flag)
+        //set timer for showing animation
         NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "change", userInfo: nil, repeats: false)
         idx++
     }
     
+    
+    // MARK: IBAction method implementation
+    @IBAction func changePage(sender: AnyObject) {
+    }
+    
+    //Function invoke when user tap on important Information link
     @IBAction func clickOnImportantLink(sender:UIButton){
         let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! UIView
         objimpInfo.frame = self.view.frame
         self.view.addSubview(objimpInfo)
     }
-    
 }
 
   

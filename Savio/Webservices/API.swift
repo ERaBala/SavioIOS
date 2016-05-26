@@ -107,7 +107,7 @@ class API: UIView {
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
-            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers",baseURL))!)
             request.HTTPMethod = "POST"
             
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
@@ -128,11 +128,10 @@ class API: UIView {
                     }
                     else
                     {
-                        print("error")
+                        print(response?.description)
                         dispatch_async(dispatch_get_main_queue()){
                             self.delegate?.errorResponseForRegistrationAPI("Error")
                         }
-                        
                     }
                 }
                 
