@@ -912,7 +912,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             metadataDict["lable"] = lableDict
             dict["metaData"] = metadataDict
             dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
-            arrRegistration[5] = dict
+            arrRegistration[6] = dict
             self.createCells()
         }
         else{
