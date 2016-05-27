@@ -273,8 +273,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     cell.tf?.text = dictForTextFieldValue[(cell.tf?.placeholder)!] as? String
                     arrRegistrationFields.append(cell)
                 }
-//                let arrDropDown = tfTitleDict["dropDownArray"] as! Array<String>
-                              let arrDropDown = arrAddress
+                //                let arrDropDown = tfTitleDict["dropDownArray"] as! Array<String>
+                let arrDropDown = arrAddress
                 
                 print("\(arrDropDown)")
                 cell.arr = arrDropDown
@@ -406,8 +406,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-1], forKey: "County")
         
         print(dictForTextFieldValue)
-        self.createCells()
         
+        //        dictForTextFieldValue.updateValue((dropDownTextCell.tf?.text)!, forKey: (dropDownTextCell.tf?.placeholder)!)
         //        dictForTextFieldValue.updateValue((dropDownTextCell.tf?.text)!, forKey: (dropDownTextCell.tf?.placeholder)!)
         self.createCells()
     }
@@ -523,8 +523,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             
         }
-        
+        let objAPI = API()
         print("DictPara:\(dict)")
+        
         
         if(changePhoneNumber == false)
         {
@@ -533,17 +534,30 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             objAnimView?.animate()
             self.view.addSubview(objAnimView!)
             
-            let objAPI = API()
+            
             objAPI.delegate = self
             objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
-            objAPI.storeValueInKeychainForKey("userInfo", value: dict)
+            objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
         }
         else{
-            
-            let alert = UIAlertController(title: "Looks like you have an earlier enrolled mobile number", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
+            if(objAPI.getValueFromKeychainOfKey("myMobile") as! String == dict["phone_number"] as! String)
+            {
+                objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+                objAnimView!.frame = self.view.frame
+                objAnimView?.animate()
+                self.view.addSubview(objAnimView!)
+                
+                
+                objAPI.delegate = self
+                objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
+                
+            }
+            else
+            {
+                let alert = UIAlertController(title: "Looks like you have an earlier enrolled mobile number", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
         
         
@@ -942,9 +956,13 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        else if(objResponse["message"] as! String == " Three Field is match and Mobile number is different")
+        else if(objResponse["message"] as! String == "Three Field is match and Mobile number is different")
         {
             changePhoneNumber = true
+            var dict = objResponse["party"] as! Dictionary<String,AnyObject>
+            let objAPI = API()
+            objAPI.storeValueInKeychainForKey("myMobile", value: dict["phone_number"] as! String)
+            
             let alert = UIAlertController(title: "Looks like you have an earlier enrolled mobile number", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)

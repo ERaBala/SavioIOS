@@ -48,7 +48,9 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
-        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as! String)
+        let dict = userInfoDict["party"] as! Dictionary<String,AnyObject>
+        
+        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",dict["phone_number"]! as! String)
    
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
@@ -97,6 +99,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
             }
             else {
                 //Set the OTPVerificationDelegate
+                /*
                 objAPI.otpVerificationDelegate = self
                 
                 objAPI.verifyOTP(userInfoDict["phone_number"]! as! String, country_code: "91", OTP: fiveDigitTextField.text!)
@@ -104,6 +107,9 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
                 fiveDigitTextField.resignFirstResponder()
                 objAnimView.animate()
                 self.view.addSubview(objAnimView)
+ */
+                let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+                self.navigationController?.pushViewController(objCreatePINView, animated: true)
                 
             }
             

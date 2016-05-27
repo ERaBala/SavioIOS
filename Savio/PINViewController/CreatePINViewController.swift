@@ -47,7 +47,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         confirmPIN.layer.shadowOpacity = 1
         confirmPIN.layer.cornerRadius = 5
         
-        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+        userInfoDict = objAPI.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
         
         
     }
@@ -56,6 +56,20 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         super.viewDidLayoutSubviews()
         // Set the scrollview content size.
         backgroundScrollView.contentSize = CGSizeMake(0, 500)
+    }
+    
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        if (newLength > 4) {
+            return false;
+        }
+        return true;
     }
     
     //UITextFieldDelegateMethods
@@ -119,37 +133,39 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         }
         else
         {
-            
-            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-            objAnimView.frame = self.view.frame
-            enterFourDigitPIN.resignFirstResponder()
-            
-            objAnimView.animate()
-            self.view.addSubview(objAnimView)
-            
-            userInfoDict["passcode"] = enterFourDigitPIN.text
-            
-            var newUserInfoDict = Dictionary<String,AnyObject>()
-            newUserInfoDict["oldSecondName"] = userInfoDict["second_name"]
-            newUserInfoDict["OldFirstName"] = userInfoDict["first_name"]
-            newUserInfoDict["postCode"] = userInfoDict["post_code"]
-            newUserInfoDict["oldEmail"] = userInfoDict["email"]
-            newUserInfoDict["party"] = userInfoDict
-            
-            print(newUserInfoDict)
-            objAPI.storeValueInKeychainForKey("userInfo", value: userInfoDict)
-            
-        
-            
-            objAPI.delegate = self
-            if(checkString == "ForgotPasscode")
+            if(enterFourDigitPIN.text?.characters.count < 4 || reEnterFourDigitPIN.text?.characters.count < 4)
             {
-                
-                objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "Customers/update")
-                
+                enterFiveDigitCodeLabel.hidden = false;
+                enterFiveDigitCodeLabel.text = "Passcode should be of 4 digits"
             }
-            else{
-                objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
+            else
+            {
+                objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+                objAnimView.frame = self.view.frame
+                enterFourDigitPIN.resignFirstResponder()
+                
+                objAnimView.animate()
+                self.view.addSubview(objAnimView)
+                
+                userInfoDict["passcode"] = enterFourDigitPIN.text
+                
+                var newUserInfoDict = Dictionary<String,AnyObject>()
+                newUserInfoDict["oldSecondName"] = userInfoDict["second_name"]
+                newUserInfoDict["OldFirstName"] = userInfoDict["first_name"]
+                newUserInfoDict["postCode"] = userInfoDict["post_code"]
+                newUserInfoDict["oldEmail"] = userInfoDict["email"]
+                newUserInfoDict["party"] = userInfoDict
+                
+                print(newUserInfoDict)
+                objAPI.storeValueInKeychainForKey("userInfo", value: userInfoDict)
+                objAPI.delegate = self
+                if(checkString == "ForgotPasscode")
+                {
+                    objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "Customers/update")
+                }
+                else{
+                    objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
+                }  
             }
             
             //Add animation of logo

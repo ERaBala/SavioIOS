@@ -52,7 +52,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.layer.shadowOffset = CGSizeMake(0, 4)
         loginButton.layer.shadowOpacity = 1
         loginButton.layer.cornerRadius = 5
-
+        
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
         print(userInfoDict)
         
@@ -64,6 +64,20 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterPasscodeTextField.textColor = UIColor.blackColor()
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        if (newLength > 4) {
+            return false;
+        }
+        return true;
+    }
+
     
     @IBAction func clickOnRegisterButton(sender: AnyObject) {
         
@@ -113,30 +127,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         
     }
     
-    //LogIn Delegate Methods
-    
-    func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
-        
-    }
-    
-    func errorResponseForOTPLogInAPI(error: String) {
-        
-    }
-    
-    //OTP Verification Delegate Method
-    func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
-    {
-        objAnimView.removeFromSuperview()
-        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
-        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
-    }
-    func errorResponseForOTPSentAPI(error:String){
-        objAnimView.removeFromSuperview()
-        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
-        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
-        
-    }
-    
+   
     
     
     @IBAction func onClickCancelButton(sender: AnyObject) {
@@ -159,15 +150,59 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             errorLabel.hidden = false
             errorLabel.text = "Please enter passcode"
         }
+        else if(enterPasscodeTextField.text?.characters.count < 4)
+        {
+            enterPasscodeTextField.layer.borderColor = UIColor.redColor().CGColor
+            errorLabel.hidden = false
+            errorLabel.text = "Passcode should be of 4 digits"
+        }
         else
         {
+            
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView.frame = self.view.frame
+            enterPasscodeTextField.resignFirstResponder()
+            
+            objAnimView.animate()
+            self.view.addSubview(objAnimView)
+            
             var param = Dictionary<String,AnyObject>()
-            param["userID"] = userInfoDict[""]
-            param["passcode"] = enterPasscodeTextField.text
+            param["userID"] = userInfoDict["partyId"]
+            param["pin"] = enterPasscodeTextField.text?.MD5()
+            print(param)
+             objAPI.logInDelegate = self;
             objAPI.logInWithUserID(param)
+           
         }
     }
     
+    //LogIn Delegate Methods
+    
+    func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
+        objAnimView.removeFromSuperview()
+        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+        self.navigationController?.pushViewController(objHurrrayView, animated: true)
+    }
+    
+    func errorResponseForOTPLogInAPI(error: String) {
+        objAnimView.removeFromSuperview()
+        errorLabel.text = "Passcode is not correct"
+        
+    }
+    
+    //OTP Verification Delegate Method
+    func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
+    {
+        objAnimView.removeFromSuperview()
+        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+    }
+    func errorResponseForOTPSentAPI(error:String){
+        objAnimView.removeFromSuperview()
+        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+        
+    }
     
     
 }
