@@ -16,7 +16,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     var dictForTextFieldValue : Dictionary<String, AnyObject> = [:] // dictionary for saving user data and error messages
     //    var strPostCode = String()
     var objAnimView : ImageViewAnimation?                     //Instance of ImageViewAnimation to showing loding aniation on API call
-    //    var arrAddress = [String]()
+        var arrAddress = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -271,8 +271,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     cell.tf?.text = dictForTextFieldValue[(cell.tf?.placeholder)!] as? String
                     arrRegistrationFields.append(cell)
                 }
-                let arrDropDown = tfTitleDict["dropDownArray"] as! Array<String>
-                //                let arrDropDown = arrAddress
+//                let arrDropDown = tfTitleDict["dropDownArray"] as! Array<String>
+                              let arrDropDown = arrAddress
                 
                 print("\(arrDropDown)")
                 cell.arr = arrDropDown
@@ -386,10 +386,14 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
     {
-        let str = "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
-        let fullNameArr = str.characters.split{$0 == ","}.map(String.init)
+        let str = dropDownTextCell.tf?.text// "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
+        let fullNameArr = str!.characters.split{$0 == ","}.map(String.init)
         print(fullNameArr)
-        dictForTextFieldValue.updateValue(fullNameArr[0], forKey: "First Address Line")
+        var addressStr = ""
+        for var i=0; i<fullNameArr.count-3; i++ {
+            addressStr = addressStr+" \(fullNameArr[i])"
+        }
+        dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-2], forKey: "Town")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-1], forKey: "County")
         
@@ -871,14 +875,15 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         //        arrAddress = addressArray
         //        print("\(arrAddress)")
         
-        var dict = arrRegistration[7] as Dictionary<String,AnyObject>
+        var dict = arrRegistration[8] as Dictionary<String,AnyObject>
         var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
         let lableDict = metadataDict["textField1"]!.mutableCopy()
         lableDict.setValue(addressArray, forKey: "dropDownArray")
         metadataDict["textField1"] = lableDict
         dict["metaData"] = metadataDict
-        arrRegistration[7] = dict
-        print("\(dict)")
+        arrRegistration[8] = dict
+        arrAddress = addressArray
+        print("\(arrAddress)")
         dictForTextFieldValue.removeValueForKey("errorPostcodeValid")
         self.createCells()
     }
@@ -886,7 +891,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         objAnimView?.removeFromSuperview()
         print("\(error)")
         if(error == "That postcode doesn't look right"){
-            var dict = arrRegistration[5] as Dictionary<String,AnyObject>
+            var dict = arrRegistration[6] as Dictionary<String,AnyObject>
             var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
             let lableDict = metadataDict["lable"]!.mutableCopy()
             lableDict.setValue("Yes", forKey: "isErrorShow")

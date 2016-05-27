@@ -232,6 +232,16 @@
 				   }
 	},
 	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"",
+							"dropDownArray":[],
+							"isErrorShow": "Yes"
+						}
+				   }
+	},
+	{
 		"classType":"ButtonTableViewCell",
 		"metaData":{
 						"button":{
