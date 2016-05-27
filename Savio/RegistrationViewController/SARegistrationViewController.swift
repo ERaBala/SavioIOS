@@ -348,10 +348,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     
     func getAddressButtonClicked(findAddrCell: FindAddressTableViewCell){
-//        var strPostCode = String()
+        //        var strPostCode = String()
         
-        /*
-       let strPostCode = (findAddrCell.tfPostCode?.text)!
+        let strPostCode = (findAddrCell.tfPostCode?.text)!
         dictForTextFieldValue.updateValue((findAddrCell.tfPostCode?.text)!, forKey: (findAddrCell.tfPostCode?.placeholder)!)
         
         let strCode = strPostCode
@@ -381,7 +380,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             let trimmedString = strCode.stringByReplacingOccurrencesOfString(" ", withString: "")
             objGetAddressAPI.verifyPostCode(trimmedString)
         }
-        */
+        
     }
     
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
