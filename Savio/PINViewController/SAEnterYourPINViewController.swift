@@ -167,21 +167,37 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             objAPI.logInDelegate = self;
             objAnimView.animate()
             self.view.addSubview(objAnimView)
+
+           
             
+            if (NSUserDefaults.standardUserDefaults().valueForKey("pin") == nil){
+            var userDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+            print(userDict)
             var param = Dictionary<String,AnyObject>()
-            param["userID"] = userInfoDict["partyId"]
+            param["userID"] = userDict["partyId"]
             param["pin"] = enterPasscodeTextField.text?.MD5()
             print(param)
+                objAPI.logInWithUserID(param)
+        }
+            if NSUserDefaults.standardUserDefaults().valueForKey("pin") as! String == enterPasscodeTextField.text
+            {
+                objAnimView.removeFromSuperview()
+                
+                let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+                self.navigationController?.pushViewController(objHurrrayView, animated: true)
+            }
         
-            objAPI.logInWithUserID(param)
+            
             
         }
     }
+  
     
     //LogIn Delegate Methods
     
     func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
         objAnimView.removeFromSuperview()
+        
         let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
         self.navigationController?.pushViewController(objHurrrayView, animated: true)
     }

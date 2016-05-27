@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVerificationDelegate{
+class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVerificationDelegate,ResetPasscodeDelegate{
     
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -149,7 +149,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                 objAnimView.animate()
                 self.view.addSubview(objAnimView)
                 
-                userInfoDict["passcode"] = enterFourDigitPIN.text
+                userInfoDict["passcode"] = enterFourDigitPIN.text?.MD5()
                 
                 var newUserInfoDict = Dictionary<String,AnyObject>()
                 newUserInfoDict["oldSecondName"] = userInfoDict["second_name"]
@@ -160,12 +160,18 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                 
                 print(newUserInfoDict)
                 objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
-                objAPI.delegate = self
+                var updatePasscodeDict = Dictionary<String,AnyObject>()
+                updatePasscodeDict["mobile_Number"] = userInfoDict["phone_number"]
+                updatePasscodeDict["pin"] = enterFourDigitPIN.text?.MD5()
+
+                print(updatePasscodeDict)
                 if(checkString == "ForgotPasscode")
                 {
-                    objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "Customers/update")
+                    objAPI.resetPasscodeDelegate = self
+                    objAPI.resetPasscodeOfUserID(updatePasscodeDict)
                 }
                 else{
+                    objAPI.delegate = self
                     objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
                 }
             }
@@ -182,11 +188,35 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         
     }
     
+    
+    func successResponseForResetPasscodeAPI(objResponse:Dictionary<String,AnyObject>)
+    {
+        objAnimView.removeFromSuperview()
+        print(objResponse)
+        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        if(objResponse["message"] as! String == "Your PIN is updated Sucessfully")
+        {
+            let objEnterYourPinViewController = SAEnterYourPINViewController(nibName: "SAEnterYourPINViewController",bundle: nil)
+            self.navigationController?.pushViewController(objEnterYourPinViewController, animated: true)
+            
+        }
+        
+    }
+    func errorResponseForOTPResetPasscodeAPI(error:String){
+        objAnimView.removeFromSuperview()
+        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        print("error")
+    }
+    
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
         print(objResponse)
         objAnimView.removeFromSuperview()
         //Store the passcode in Keychain
         objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
+        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
+        NSUserDefaults.standardUserDefaults().synchronize()
         if(changePhoneNumber == true)
         {
             let objEnterYourPhoneNumberViewController = SAEnterPhoneNumberViewController(nibName:"SAEnterPhoneNumberViewController",bundle: nil)
