@@ -392,12 +392,16 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         let str = dropDownTextCell.tf?.text
         let fullNameArr = str!.characters.split{$0 == ","}.map(String.init)
         print(fullNameArr)
-        var addressStr = ""
-        for var i=0; i<fullNameArr.count-3; i++ {
-            addressStr = addressStr+" \(fullNameArr[i])"
-        }
+//        var addressStr = ""
+//        for var i=0; i<fullNameArr.count-3; i++ {
+//            addressStr = addressStr+" \(fullNameArr[i])"
+//        }
         
-        dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
+        dictForTextFieldValue.updateValue(fullNameArr[0], forKey: "First Address Line")
+        dictForTextFieldValue.updateValue(fullNameArr[1], forKey: "Second Address Line")
+        dictForTextFieldValue.updateValue(fullNameArr[2], forKey: "Third Address Line")
+
+//        dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-2], forKey: "Town")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-1], forKey: "County")
         
@@ -960,7 +964,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         cell.tf?.becomeFirstResponder()
                         cell.tf?.text = ""
                     }
-                    
                 }
             }
             
@@ -970,7 +973,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             objAPI.otpSentDelegate = self
             checkString = "Register"
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
-            
         }
     }
     func errorResponseForRegistrationAPI(error:String){
