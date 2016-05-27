@@ -37,7 +37,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.layer.borderWidth = 1
         enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterPasscodeTextField.attributedPlaceholder = NSAttributedString(string:"Enter 4 digit passcode",
-            attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
+                                                                          attributes:[NSForegroundColorAttributeName:UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1),NSFontAttributeName :UIFont(name: "GothamRounded-Light", size: 15)!])
         //Set input accessory view to the UITextfield
         enterPasscodeTextField.inputAccessoryView = toolBar
         
@@ -52,9 +52,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.layer.shadowOffset = CGSizeMake(0, 4)
         loginButton.layer.shadowOpacity = 1
         loginButton.layer.cornerRadius = 5
-        
-        objAPI.otpSentDelegate = self
-        
+
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
         print(userInfoDict)
         
@@ -80,15 +78,19 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             
             //Get the user details from Keychain
             
-            objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
+            let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+            self.navigationController?.pushViewController(objCreatePINView, animated: true)
+            
+            
+            // objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
             
             //Add animation of logo
-            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-            objAnimView.frame = self.view.frame
-            enterPasscodeTextField.resignFirstResponder()
-            
-            objAnimView.animate()
-            self.view.addSubview(objAnimView)
+            //            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            //            objAnimView.frame = self.view.frame
+            //            enterPasscodeTextField.resignFirstResponder()
+            //
+            //            objAnimView.animate()
+            //            self.view.addSubview(objAnimView)
         }
         
     }
@@ -99,12 +101,9 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         lblForgottonYourPasscode.hidden = false
         btnCancel.hidden = false
         registerButton .setTitle("Send me a code", forState: UIControlState.Normal)
-        
         forgotPasscodeButton.hidden = true
         loginButton.hidden = true
         enterPasscodeTextField.hidden = true
-        
-        isResetPassword = true
         checkString = "ForgotPasscode"
         
     }

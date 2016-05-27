@@ -129,13 +129,23 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
             
             userInfoDict["passcode"] = enterFourDigitPIN.text
             
-            print(userInfoDict)
+            var newUserInfoDict = Dictionary<String,AnyObject>()
+            newUserInfoDict["oldSecondName"] = userInfoDict["second_name"]
+            newUserInfoDict["OldFirstName"] = userInfoDict["first_name"]
+            newUserInfoDict["postCode"] = userInfoDict["post_code"]
+            newUserInfoDict["oldEmail"] = userInfoDict["email"]
+            newUserInfoDict["party"] = userInfoDict
+            
+            print(newUserInfoDict)
+            objAPI.storeValueInKeychainForKey("userInfo", value: userInfoDict)
+            
+        
             
             objAPI.delegate = self
             if(checkString == "ForgotPasscode")
             {
                 
-                objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers/update")
+                objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "Customers/update")
                 
             }
             else{
@@ -143,12 +153,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
             }
             
             //Add animation of logo
-            
-            
-            
-            
-            
-            
+
         }
     }
     
@@ -165,9 +170,18 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         objAnimView.removeFromSuperview()
         //Store the passcode in Keychain
         objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
-        //Navigate user to HurrayViewController to start Saving plan
-        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
-        self.navigationController?.pushViewController(objHurrrayView, animated: true)
+        if(changePhoneNumber == true)
+        {
+            let objEnterYourPhoneNumberViewController = SAEnterPhoneNumberViewController(nibName:"SAEnterPhoneNumberViewController",bundle: nil)
+            self.navigationController?.pushViewController(objEnterYourPhoneNumberViewController, animated: true)
+        }
+        else
+        {
+            //Navigate user to HurrayViewController to start Saving plan
+            let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+            self.navigationController?.pushViewController(objHurrrayView, animated: true)
+        }
+   
         
         
     }

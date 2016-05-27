@@ -14,9 +14,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     var arrRegistration  = [Dictionary <String, AnyObject>]()     //Array for hold json file data to create UI
     var arrRegistrationFields = [UITableViewCell]()               //Array of textfield cell
     var dictForTextFieldValue : Dictionary<String, AnyObject> = [:] // dictionary for saving user data and error messages
-//    var strPostCode = String()
+    //    var strPostCode = String()
     var objAnimView : ImageViewAnimation?                     //Instance of ImageViewAnimation to showing loding aniation on API call
-//    var arrAddress = [String]()
+    //    var arrAddress = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     func createCells(){
-       // if any old cell belong in array then remove all
+        // if any old cell belong in array then remove all
         if arrRegistrationFields.count>0{
             arrRegistrationFields.removeAll()
         }
@@ -311,20 +311,20 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         return 30.0
     }
     /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func selectedDate(txtFldCell:PickerTextfildTableViewCell){
         
         dictForTextFieldValue.updateValue((txtFldCell.tfDatePicker?.text)!, forKey: (txtFldCell.tfDatePicker?.placeholder)!)
     }
-  
+    
     
     func txtFieldCellText(txtFldCell:TxtFieldTableViewCell){
         if txtFldCell.tf?.text?.characters.count>0{
@@ -503,12 +503,14 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let cell = arrRegistrationFields[i] as! PickerTextfildTableViewCell
                 dict["date_of_birth"] = cell.tfDatePicker?.text
             }
-//            let udidDict : Dictionary<String,String> = ["DEVICE_ID":NSUUID().UUIDString]
-//            dict["deviceRegistration"] = udidDict
-//            dict["device_ID"] = NSUUID().UUIDString
+            //            let udidDict : Dictionary<String,String> = ["DEVICE_ID":NSUUID().UUIDString]
+            //            dict["deviceRegistration"] = udidDict
+            //            dict["device_ID"] = NSUUID().UUIDString
             
             let udidDict : Dictionary<String,String> = ["DEVICE_ID":UIDevice.currentDevice().identifierForVendor!.UUIDString]
             dict["deviceRegistration"] = udidDict
+            
+            
         }
         
         print("DictPara:\(dict)")
@@ -841,6 +843,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         objAnimView?.removeFromSuperview()
         let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
         self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+
         
     }
     
@@ -889,7 +892,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
-        if(objResponse["message"] as! String == "Looks like you are an existing user, change you passcode")
+        if(objResponse["message"] as! String == "Your number is already register")
         {
             let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
@@ -900,12 +903,20 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+        else if(objResponse["message"] as! String == "Your number is already register,Please provide Old Number")
+        {
+            changePhoneNumber = true
+            let alert = UIAlertController(title: "Looks like you have an earlier enrolled mobile number", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
         else{
             let objAPI = API()
             objAPI.otpSentDelegate = self
             checkString = "Register"
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
-          
+            
         }
         
     }
@@ -916,12 +927,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
 }
 
-
-
-
-//["confirm_pin": , "deviceRegistration": {
-//    "DEVICE_ID" = "1F7A8247-747C-42A6-A718-BEB298EAD1A2";
-//    }, "pin": , "post_code": , "county": Maharashtra, "title": Mr., "address_2": , "email": gagan@xyz.com, "date_of_birth": 06/03/1981, "address_1": dfgh, "first_name": Gagan, "address_3": , "town": xdfg, "second_name": Kumar, "phone_number": 9860277880]
 
 
 
