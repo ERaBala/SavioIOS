@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owX-vk-vDV">
-                        <rect key="frame" x="8" y="4" width="304" height="27"/>
+                        <rect key="frame" x="30" y="4" width="260" height="27"/>
                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
@@ -31,8 +31,8 @@
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="owX-vk-vDV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="BJd-Jz-u33"/>
-                    <constraint firstItem="owX-vk-vDV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="CY8-c3-aJx"/>
+                    <constraint firstItem="owX-vk-vDV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-22" id="BJd-Jz-u33"/>
+                    <constraint firstItem="owX-vk-vDV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="22" id="CY8-c3-aJx"/>
                     <constraint firstAttribute="bottomMargin" secondItem="owX-vk-vDV" secondAttribute="bottom" constant="-5" id="hBM-sj-5a4"/>
                     <constraint firstItem="owX-vk-vDV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="t02-r8-3ef"/>
                 </constraints>

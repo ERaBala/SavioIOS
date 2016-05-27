@@ -46,6 +46,16 @@
 						}
 				   }
 	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"We need to know your date of birth",
+							"dropDownArray":[],
+							"isErrorShow": "No"
+						}
+				   }
+	},
 	
 	{
 		"classType":"PickerTextfildTableViewCell",
@@ -218,6 +228,16 @@
 							"placeholder":"Email",
 							"dropDownArray":[],
 							"text":""
+						}
+				   }
+	},
+	{
+		"classType":"ErrorTableViewCell",
+		"metaData":{
+						"lable":{
+							"title":"",
+							"dropDownArray":[],
+							"isErrorShow": "Yes"
 						}
 				   }
 	},
