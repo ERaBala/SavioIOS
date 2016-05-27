@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzl-e3-kmR">
-                        <rect key="frame" x="8" y="2" width="304" height="30"/>
+                        <rect key="frame" x="30" y="2" width="260" height="30"/>
                         <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
                         <state key="normal">
@@ -34,8 +34,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="Yzl-e3-kmR" secondAttribute="bottom" constant="-6" id="0Jr-b6-Rzs"/>
-                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="alM-0J-u4G"/>
-                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bdN-Wr-jgA"/>
+                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-22" id="alM-0J-u4G"/>
+                    <constraint firstItem="Yzl-e3-kmR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="22" id="bdN-Wr-jgA"/>
                     <constraint firstItem="Yzl-e3-kmR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-6" id="dzg-Fx-aCN"/>
                 </constraints>
             </tableViewCellContentView>

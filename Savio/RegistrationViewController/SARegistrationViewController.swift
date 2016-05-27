@@ -299,16 +299,17 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        for var i=0; i<arrRegistration.count; i++ {
-            let dict = arrRegistration[i] as Dictionary<String,AnyObject>
-            if dict["classType"]!.isEqualToString("ErrorTableViewCell"){
-                return 30.0
+        for var i=0; i<arrRegistrationFields.count; i++ {
+            let cell = arrRegistrationFields[i] //as Dictionary<String,AnyObject>
+            
+            if cell.isKindOfClass(ErrorTableViewCell)          {
+                return 35
             }
-            else{
-                35.0
+            else {
+                40
             }
         }
-        return 30.0
+        return 40.0
     }
     /*
      // MARK: - Navigation
@@ -385,7 +386,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
     {
-       
         let str = "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
         let fullNameArr = str.characters.split{$0 == ","}.map(String.init)
         print(fullNameArr)
@@ -650,8 +650,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         dictForTextFieldValue.removeValueForKey("errorFirstAddress")
                     }
                     
-                    dict = arrRegistration[8]as Dictionary<String,AnyObject>
-                    idx = 8
+                    dict = arrRegistration[9]as Dictionary<String,AnyObject>
+                    idx = 9
                 }
                 
                 if cell.tf?.placeholder == "Town"{
@@ -666,8 +666,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         dictForTextFieldValue.removeValueForKey("errorTown")
                     }
                     
-                    dict = arrRegistration[12]as Dictionary<String,AnyObject>
-                    idx = 12
+                    dict = arrRegistration[13]as Dictionary<String,AnyObject>
+                    idx = 13
                 }
                 
                 if cell.tf?.placeholder == "County"{
@@ -682,8 +682,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         dictForTextFieldValue.removeValueForKey("errorCounty")
                     }
                     
-                    dict = arrRegistration[14]as Dictionary<String,AnyObject>
-                    idx = 14
+                    dict = arrRegistration[15]as Dictionary<String,AnyObject>
+                    idx = 15
                 }
                 
                 if cell.tf?.placeholder == "Mobile number"{
@@ -709,8 +709,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         dictForTextFieldValue.removeValueForKey("errorMobileValidation")
                     }
                     
-                    dict = arrRegistration[17]as Dictionary<String,AnyObject>
-                    idx = 17
+                    dict = arrRegistration[18]as Dictionary<String,AnyObject>
+                    idx = 18
                 }
                 
                 if cell.tf?.placeholder == "Email"{
@@ -727,7 +727,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         
                     }
                     
-                    if(self.isValidEmail(str!)==false){
+                    if str?.characters.count>0 && (self.isValidEmail(str!)==false){
                         errorFLag = true
                         errorMsg = "That email address doesn’t look right"
                         //                        dictForTextFieldValue["errorTxt"] = errorMsg
@@ -736,8 +736,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     else{
                         dictForTextFieldValue.removeValueForKey("errorEmailValid")
                     }
-                    dict = arrRegistration[19]as Dictionary<String,AnyObject>
-                    idx = 19
+                    dict = arrRegistration[20]as Dictionary<String,AnyObject>
+                    idx = 20
                 }
                 
                 
@@ -762,9 +762,26 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 else{
                     dictForTextFieldValue.removeValueForKey("errorPostcode")
                 }
-                dict = arrRegistration[5]as Dictionary<String,AnyObject>
-                idx = 5
+                dict = arrRegistration[6]as Dictionary<String,AnyObject>
+                idx = 6
             }
+            
+            if arrRegistrationFields[i].isKindOfClass(PickerTextfildTableViewCell){
+                let cell = arrRegistrationFields[i] as! PickerTextfildTableViewCell
+                let str = cell.tfDatePicker?.text
+                if str==""{
+                    errorFLag = true
+                    errorMsg = "We need to know your date of birth"
+                    dictForTextFieldValue["errorDOB"] = errorMsg
+                    
+                }
+                else{
+                    dictForTextFieldValue.removeValueForKey("errorDOB")
+                }
+                dict = arrRegistration[4]as Dictionary<String,AnyObject>
+                idx = 4
+            }
+            
             print("\(idx)")
             
             if(errorFLag == true){

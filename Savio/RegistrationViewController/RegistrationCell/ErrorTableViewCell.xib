@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmA-Le-iBO">
-                        <rect key="frame" x="8" y="14" width="304" height="18"/>
+                        <rect key="frame" x="8" y="18" width="304" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="KM2-Hn-Nih"/>
                         </constraints>
@@ -31,7 +31,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qmA-Le-iBO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="6hr-Vg-gED"/>
+                    <constraint firstItem="qmA-Le-iBO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="6hr-Vg-gED"/>
                     <constraint firstItem="qmA-Le-iBO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="NDp-W9-Hz3"/>
                     <constraint firstItem="qmA-Le-iBO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vfL-Fl-DtW"/>
                 </constraints>
