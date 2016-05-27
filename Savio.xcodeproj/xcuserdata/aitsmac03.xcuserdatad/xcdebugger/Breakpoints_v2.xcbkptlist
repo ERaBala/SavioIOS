@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "873"
             endingLineNumber = "873"
-            landmarkName = "success(_:)"
+            landmarkName = "successResponseForOTPSentAPI(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "891"
             endingLineNumber = "891"
-            landmarkName = "error(_:)"
+            landmarkName = "success(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

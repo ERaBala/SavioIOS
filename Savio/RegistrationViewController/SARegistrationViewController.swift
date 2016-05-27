@@ -16,7 +16,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     var dictForTextFieldValue : Dictionary<String, AnyObject> = [:] // dictionary for saving user data and error messages
     //    var strPostCode = String()
     var objAnimView : ImageViewAnimation?                     //Instance of ImageViewAnimation to showing loding aniation on API call
-    //    var arrAddress = [String]()
+       var arrAddress = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
