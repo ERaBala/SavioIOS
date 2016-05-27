@@ -161,9 +161,13 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                 print(newUserInfoDict)
                 objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
                 objAPI.delegate = self
- 
-                    objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "")
-            
+                if(checkString == "ForgotPasscode")
+                {
+                    objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "Customers/update")
+                }
+                else{
+                    objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
+                }
             }
            
 
