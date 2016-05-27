@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "486024787.948697"
+            timestampString = "486027281.789153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "873"
-            endingLineNumber = "873"
-            landmarkName = "success(_:)"
+            startingLineNumber = "874"
+            endingLineNumber = "874"
+            landmarkName = "successResponseForOTPSentAPI(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "486024787.948697"
+            timestampString = "486027281.789153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "891"
-            endingLineNumber = "891"
-            landmarkName = "error(_:)"
+            startingLineNumber = "892"
+            endingLineNumber = "892"
+            landmarkName = "success(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,6 +80,22 @@
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "setUpDropDown()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
+            timestampString = "486028448.413018"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "955"
+            endingLineNumber = "955"
+            landmarkName = "successResponseForRegistrationAPI(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

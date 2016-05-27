@@ -360,7 +360,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         let strCode = strPostCode
         print("\(strPostCode)")
         if strCode.characters.count == 0 {
-            var dict = arrRegistration[5] as Dictionary<String,AnyObject>
+            var dict = arrRegistration[6] as Dictionary<String,AnyObject>
             var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
             let lableDict = metadataDict["lable"]!.mutableCopy()
             lableDict.setValue("Yes", forKey: "isErrorShow")
@@ -369,7 +369,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             metadataDict["lable"] = lableDict
             dict["metaData"] = metadataDict
-            arrRegistration[5] = dict
+            arrRegistration[6] = dict
             self.createCells()
         }
         else{
@@ -395,6 +395,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         for var i=0; i<fullNameArr.count-3; i++ {
             addressStr = addressStr+" \(fullNameArr[i])"
         }
+        
         dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
         dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-2], forKey: "Town")
@@ -420,7 +421,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         else
         {
             let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
-            objimpInfo.lblHeader.text = "Why do need this information?"
+            objimpInfo.lblHeader.text = "Why do we need this information?"
             objimpInfo.frame = self.view.frame
             self.view.addSubview(objimpInfo)
         }
@@ -924,7 +925,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             metadataDict["lable"] = lableDict
             dict["metaData"] = metadataDict
             dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
-            arrRegistration[5] = dict
+            arrRegistration[6] = dict
             self.createCells()
         }
         else{
