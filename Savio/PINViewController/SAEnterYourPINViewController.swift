@@ -186,6 +186,11 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
                 let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
                 self.navigationController?.pushViewController(objHurrrayView, animated: true)
             }
+            else{
+                objAnimView.removeFromSuperview()
+                errorLabel.hidden = false
+                errorLabel.text = "Passcode do not match"
+            }
         
             
             
