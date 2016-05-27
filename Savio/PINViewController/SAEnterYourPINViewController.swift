@@ -53,7 +53,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.layer.shadowOpacity = 1
         loginButton.layer.cornerRadius = 5
         
-        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+        userInfoDict = objAPI.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
         print(userInfoDict)
         
     }
@@ -77,7 +77,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         }
         return true;
     }
-
+    
     
     @IBAction func clickOnRegisterButton(sender: AnyObject) {
         
@@ -91,20 +91,21 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             //Send the OTP to mobile number
             
             //Get the user details from Keychain
+//            
+//            let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+//            self.navigationController?.pushViewController(objCreatePINView, animated: true)
+//            
             
-            let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
-            self.navigationController?.pushViewController(objCreatePINView, animated: true)
-            
-            
-            // objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
+            objAPI.otpSentDelegate = self;
+             objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
             
             //Add animation of logo
-            //            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-            //            objAnimView.frame = self.view.frame
-            //            enterPasscodeTextField.resignFirstResponder()
-            //
-            //            objAnimView.animate()
-            //            self.view.addSubview(objAnimView)
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView.frame = self.view.frame
+            enterPasscodeTextField.resignFirstResponder()
+            
+            objAnimView.animate()
+            self.view.addSubview(objAnimView)
         }
         
     }
@@ -127,7 +128,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         
     }
     
-   
+    
     
     
     @IBAction func onClickCancelButton(sender: AnyObject) {
@@ -163,6 +164,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             objAnimView.frame = self.view.frame
             enterPasscodeTextField.resignFirstResponder()
             
+            objAPI.logInDelegate = self;
             objAnimView.animate()
             self.view.addSubview(objAnimView)
             
@@ -170,9 +172,9 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             param["userID"] = userInfoDict["partyId"]
             param["pin"] = enterPasscodeTextField.text?.MD5()
             print(param)
-             objAPI.logInDelegate = self;
+        
             objAPI.logInWithUserID(param)
-           
+            
         }
     }
     

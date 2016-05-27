@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 let userInfoDict = objApi.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
                 let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String> //= ["DEVICE_ID":NSUUID().UUIDString]
-                print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
-                print(udidDict["DEVICE_ID"])
                 
                 if(udidDict["DEVICE_ID"] == UIDevice.currentDevice().identifierForVendor!.UUIDString)
                 {

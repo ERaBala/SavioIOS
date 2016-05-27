@@ -140,6 +140,8 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
             }
             else
             {
+                
+                //Add animation of logo
                 objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
                 objAnimView.frame = self.view.frame
                 enterFourDigitPIN.resignFirstResponder()
@@ -157,18 +159,13 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                 newUserInfoDict["party"] = userInfoDict
                 
                 print(newUserInfoDict)
-                objAPI.storeValueInKeychainForKey("userInfo", value: userInfoDict)
+                objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
                 objAPI.delegate = self
-                if(checkString == "ForgotPasscode")
-                {
-                    objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "Customers/update")
-                }
-                else{
-                    objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
-                }  
-            }
+ 
+                    objAPI.registerTheUserWithTitle(newUserInfoDict,apiName: "")
             
-            //Add animation of logo
+            }
+           
 
         }
     }

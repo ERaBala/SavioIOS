@@ -522,7 +522,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
         let objAPI = API()
         print("DictPara:\(dict)")
-        
+        objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
         
         if(changePhoneNumber == false)
         {
@@ -534,7 +534,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             objAPI.delegate = self
             objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
-            objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
+          
         }
         else{
             if(objAPI.getValueFromKeychainOfKey("myMobile") as! String == dict["phone_number"] as! String)
@@ -986,10 +986,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
         else{
             let objAPI = API()
+            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse)
             objAPI.otpSentDelegate = self
             checkString = "Register"
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
-            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse)
+            
             
         }
     }

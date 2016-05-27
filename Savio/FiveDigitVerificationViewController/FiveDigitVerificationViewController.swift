@@ -48,10 +48,11 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
+        print(userInfoDict)
         let dict = userInfoDict["party"] as! Dictionary<String,AnyObject>
         
         yourCodeSentLabel.text = String(format:"Your code was sent to  %@",dict["phone_number"]! as! String)
-   
+        
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
         backButton.hidden = true
@@ -100,14 +101,14 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
             else {
                 //Set the OTPVerificationDelegate
                 /*
-                objAPI.otpVerificationDelegate = self
-                
-                objAPI.verifyOTP(userInfoDict["phone_number"]! as! String, country_code: "91", OTP: fiveDigitTextField.text!)
-                codeDoesNotMatchLabel.hidden = true;
-                fiveDigitTextField.resignFirstResponder()
-                objAnimView.animate()
-                self.view.addSubview(objAnimView)
- */
+                 objAPI.otpVerificationDelegate = self
+                 
+                 objAPI.verifyOTP(userInfoDict["phone_number"]! as! String, country_code: "91", OTP: fiveDigitTextField.text!)
+                 codeDoesNotMatchLabel.hidden = true;
+                 fiveDigitTextField.resignFirstResponder()
+                 objAnimView.animate()
+                 self.view.addSubview(objAnimView)
+                 */
                 let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
                 self.navigationController?.pushViewController(objCreatePINView, animated: true)
                 
@@ -123,7 +124,8 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         objAPI.otpSentDelegate = self
         
         //Resend the OTP to the mobile number present in keychain
-        objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
+        let dict = userInfoDict["party"] as! Dictionary<String,AnyObject>
+        objAPI.getOTPForNumber(dict["phone_number"]! as! String, country_code: "91")
         
         fiveDigitTextField.resignFirstResponder()
         
