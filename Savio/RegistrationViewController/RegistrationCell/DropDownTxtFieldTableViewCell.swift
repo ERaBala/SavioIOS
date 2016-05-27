@@ -77,6 +77,7 @@ class DropDownTxtFieldTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     
     @IBAction func clickeOnDropDownArrow(sender:UIButton){
+         self.setUpDropDown()
         self.showOrDismiss()
     }
     

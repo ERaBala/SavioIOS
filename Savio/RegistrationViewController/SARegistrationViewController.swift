@@ -389,13 +389,14 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
     {
         
-        let str = "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
-        let fullNameArr = str.characters.split{$0 == ","}.map(String.init)
+        let str = dropDownTextCell.tf?.text
+        let fullNameArr = str!.characters.split{$0 == ","}.map(String.init)
         print(fullNameArr)
         var addressStr = ""
         for var i=0; i<fullNameArr.count-3; i++ {
             addressStr = addressStr+" \(fullNameArr[i])"
         }
+        
         dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-2], forKey: "Town")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-1], forKey: "County")
