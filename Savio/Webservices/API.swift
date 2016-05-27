@@ -11,7 +11,8 @@ import SystemConfiguration
 import Foundation
 
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
-let APIKey = "Ppia3IHl0frDIgr711SlZWUBlpWdNfDs"
+//let APIKey = "Ppia3IHl0frDIgr711SlZWUBlpWdNfDs"
+let APIKey = "bcdfb7ce5e6854dcfe65ce5dd0d568c7"
 let custom_message = "Your Savio phone verification code is {{code}}"
 var checkString = ""
 var changePhoneNumber : Bool = false
@@ -167,7 +168,7 @@ class API: UIView {
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
-            let request = NSMutableURLRequest(URL: NSURL(string:"http://api.authy.com/protected/json/phones/verification/start")!)
+            let request = NSMutableURLRequest(URL: NSURL(string:"http://sandbox-api.authy.com/protected/json/phones/verification/start")!)
             
             request.HTTPMethod = "POST"
             
@@ -233,7 +234,7 @@ class API: UIView {
         if(self.isConnectedToNetwork())
         {
             //Start a session
-            let dataTask = session.dataTaskWithURL(NSURL(string: String(format: "http://api.authy.com/protected/json/phones/verification/check?api_key=%@&via=sms&phone_number=%@&country_code=%@&verification_code=%@",APIKey,phoneNumber,country_code,OTP))!) { data, response, error in
+            let dataTask = session.dataTaskWithURL(NSURL(string: String(format: "http://sandbox-api.authy.com/protected/json/phones/verification/check?api_key=%@&via=sms&phone_number=%@&country_code=%@&verification_code=%@",APIKey,phoneNumber,country_code,OTP))!) { data, response, error in
                 if let data = data
                 {
                     let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
@@ -292,7 +293,7 @@ class API: UIView {
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
-            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Register",baseURL))!)
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/Login",baseURL))!)
             request.HTTPMethod = "POST"
             
             

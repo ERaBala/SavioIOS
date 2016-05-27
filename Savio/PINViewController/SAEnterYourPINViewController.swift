@@ -52,7 +52,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.layer.shadowOffset = CGSizeMake(0, 4)
         loginButton.layer.shadowOpacity = 1
         loginButton.layer.cornerRadius = 5
-
+        
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
         print(userInfoDict)
         
@@ -116,10 +116,14 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
     //LogIn Delegate Methods
     
     func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
-        
+        objAnimView.removeFromSuperview()
+        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+        self.navigationController?.pushViewController(objHurrrayView, animated: true)
     }
     
     func errorResponseForOTPLogInAPI(error: String) {
+        objAnimView.removeFromSuperview()
+        errorLabel.text = "Passcode is not correct"
         
     }
     
@@ -161,10 +165,19 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         }
         else
         {
+            
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView.frame = self.view.frame
+            enterPasscodeTextField.resignFirstResponder()
+            
+            objAnimView.animate()
+            self.view.addSubview(objAnimView)
+            
             var param = Dictionary<String,AnyObject>()
-            param["userID"] = userInfoDict[""]
-            param["passcode"] = enterPasscodeTextField.text
+            param["userID"] = userInfoDict["partyId"]
+            param["pin"] = enterPasscodeTextField.text
             objAPI.logInWithUserID(param)
+            objAPI.logInDelegate = self;
         }
     }
     

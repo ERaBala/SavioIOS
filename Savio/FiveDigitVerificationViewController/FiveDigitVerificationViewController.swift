@@ -97,6 +97,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
             }
             else {
                 //Set the OTPVerificationDelegate
+                /*
                 objAPI.otpVerificationDelegate = self
                 
                 objAPI.verifyOTP(userInfoDict["phone_number"]! as! String, country_code: "91", OTP: fiveDigitTextField.text!)
@@ -104,6 +105,9 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
                 fiveDigitTextField.resignFirstResponder()
                 objAnimView.animate()
                 self.view.addSubview(objAnimView)
+ */
+                let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+                self.navigationController?.pushViewController(objCreatePINView, animated: true)
                 
             }
             
