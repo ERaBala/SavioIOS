@@ -17,6 +17,7 @@ class ImportantInformationView: UIView {
     var delegate: ImportantInformationViewDelegate?
     @IBOutlet weak var termsAndConditionTextView: UITextView!
     @IBOutlet weak var gotItButton: UIButton!
+    @IBOutlet weak var lblHeader: UILabel!
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

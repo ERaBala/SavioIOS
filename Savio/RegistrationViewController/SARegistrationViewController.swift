@@ -349,7 +349,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     func getAddressButtonClicked(findAddrCell: FindAddressTableViewCell){
 //        var strPostCode = String()
-
+        
+        /*
        let strPostCode = (findAddrCell.tfPostCode?.text)!
         dictForTextFieldValue.updateValue((findAddrCell.tfPostCode?.text)!, forKey: (findAddrCell.tfPostCode?.placeholder)!)
         
@@ -380,12 +381,24 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             let trimmedString = strCode.stringByReplacingOccurrencesOfString(" ", withString: "")
             objGetAddressAPI.verifyPostCode(trimmedString)
         }
+        */
     }
     
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
     {
-        dictForTextFieldValue.updateValue((dropDownTextCell.tf?.text)!, forKey: (dropDownTextCell.tf?.placeholder)!)
+       
+        let str = "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
+        let fullNameArr = str.characters.split{$0 == ","}.map(String.init)
+        print(fullNameArr)
+        dictForTextFieldValue.updateValue(fullNameArr[0], forKey: "First Address Line")
+        dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-2], forKey: "Town")
+        dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-1], forKey: "County")
         
+        print(dictForTextFieldValue)
+        self.createCells()
+
+//        dictForTextFieldValue.updateValue((dropDownTextCell.tf?.text)!, forKey: (dropDownTextCell.tf?.placeholder)!)
+        self.createCells()
     }
     func linkButtonClicked(sender:UIButton){
         
@@ -400,7 +413,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
         else
         {
-            let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! UIView
+            let objimpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
+            objimpInfo.lblHeader.text = "Why do need this information?"
             objimpInfo.frame = self.view.frame
             self.view.addSubview(objimpInfo)
         }
@@ -413,6 +427,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             //call term and condition screen
             let objImpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
             objImpInfo.delegate = self
+            objImpInfo.lblHeader.text = "Terms & Conditions"
             //            objImpInfo.lblHeading.text = "Term And Condition"
             objImpInfo.frame = self.view.frame
             self.view.addSubview(objImpInfo)
@@ -548,7 +563,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 let str = cell.tfName?.text
                 
                 if (self.checkTextFieldContentOnlyNumber(str!) == true){
-                    errorMsg = "Name should contain character only"
+                    errorMsg = "Name should contain alphabets only"
                     errorFLag = true
                     dictForTextFieldValue["errorTitle"] = errorMsg
                 }
@@ -609,7 +624,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         //                        dictForTextFieldValue["errorTxt"] = errorMsg
                     }
                     else if(self.checkTextFieldContentOnlyNumber(str!) == true){
-                        errorMsg = "Surname should contain character only"
+                        errorMsg = "Surname should contain alphabets only"
                         errorFLag = true
                         dictForTextFieldValue["errorSurname"] = errorMsg
                         //                        dictForTextFieldValue["errorTxt"] = errorMsg
