@@ -16,8 +16,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     var dictForTextFieldValue : Dictionary<String, AnyObject> = [:] // dictionary for saving user data and error messages
     //    var strPostCode = String()
     var objAnimView : ImageViewAnimation?                     //Instance of ImageViewAnimation to showing loding aniation on API call
-    var arrAddress = [String]()
-    
+       var arrAddress = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -389,8 +388,10 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
     {
-        let str = dropDownTextCell.tf?.text// "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
+        
+        let str = dropDownTextCell.tf?.text
         let fullNameArr = str!.characters.split{$0 == ","}.map(String.init)
+        print(fullNameArr)
         var addressStr = ""
         for var i=0; i<fullNameArr.count-3; i++ {
             addressStr = addressStr+" \(fullNameArr[i])"
@@ -522,6 +523,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         let objAPI = API()
         print("DictPara:\(dict)")
         
+        
         if(changePhoneNumber == false)
         {
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
@@ -532,7 +534,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             objAPI.delegate = self
             objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
-            objAPI.storeValueInKeychainForKey("userInfo", value: dict)
+            objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
         }
         else{
             if(objAPI.getValueFromKeychainOfKey("myMobile") as! String == dict["phone_number"] as! String)
@@ -545,7 +547,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                 
                 objAPI.delegate = self
                 objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
-                objAPI.storeValueInKeychainForKey("userInfo", value: dict)
+                
             }
             else
             {
@@ -987,6 +989,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             objAPI.otpSentDelegate = self
             checkString = "Register"
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
+            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse)
             
         }
     }

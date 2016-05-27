@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var objSAWelcomViewController: SAWelcomViewController?
     var objEnterYourPinViewController: SAEnterYourPINViewController?
     var objRegisterViewController: SARegistrationViewController?
+    var objCreateViewController: CreatePINViewController?
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -32,17 +33,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //Set SAWelcomViewController as rootViewController of UINavigationViewController
             objSANav = UINavigationController(rootViewController: objSAWelcomViewController!)
             window?.rootViewController = objSANav
+            
         }
         else{
             
-            let userInfoDict = objApi.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
-            let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String> //= ["DEVICE_ID":NSUUID().UUIDString]
+            let userInfoDict = objApi.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
+            let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String>
             print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
             print(udidDict["DEVICE_ID"])
             
             if(udidDict["DEVICE_ID"] == UIDevice.currentDevice().identifierForVendor!.UUIDString)
             {
-                let userInfoDict = objApi.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+                let userInfoDict = objApi.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
                 let udidDict = userInfoDict["deviceRegistration"] as! Dictionary<String,String> //= ["DEVICE_ID":NSUUID().UUIDString]
                 print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
                 print(udidDict["DEVICE_ID"])

@@ -48,7 +48,9 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
-        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as! String)
+        let dict = userInfoDict["party"] as! Dictionary<String,AnyObject>
+        
+        yourCodeSentLabel.text = String(format:"Your code was sent to  %@",dict["phone_number"]! as! String)
    
         fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true

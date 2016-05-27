@@ -65,6 +65,20 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         enterPasscodeTextField.textColor = UIColor.blackColor()
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        if (newLength > 4) {
+            return false;
+        }
+        return true;
+    }
+
+    
     @IBAction func clickOnRegisterButton(sender: AnyObject) {
         
         if(registerButton.titleLabel?.text == "Register")
@@ -113,6 +127,55 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         
     }
     
+   
+    
+    
+    @IBAction func onClickCancelButton(sender: AnyObject) {
+        
+        lblSentYouCode.hidden = true
+        lblForgottonYourPasscode.hidden = true
+        btnCancel.hidden = true
+        registerButton .setTitle("Register", forState: UIControlState.Normal)
+        
+        forgotPasscodeButton.hidden = false
+        loginButton.hidden = false
+        enterPasscodeTextField.hidden = false
+    }
+    @IBAction func clickOnLoginButton(sender: AnyObject) {
+        //LogInButton click
+        if(enterPasscodeTextField.text == "")
+        {
+            //Show error when field is empty
+            enterPasscodeTextField.layer.borderColor = UIColor.redColor().CGColor
+            errorLabel.hidden = false
+            errorLabel.text = "Please enter passcode"
+        }
+        else if(enterPasscodeTextField.text?.characters.count < 4)
+        {
+            enterPasscodeTextField.layer.borderColor = UIColor.redColor().CGColor
+            errorLabel.hidden = false
+            errorLabel.text = "Passcode should be of 4 digits"
+        }
+        else
+        {
+            
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView.frame = self.view.frame
+            enterPasscodeTextField.resignFirstResponder()
+            
+            objAnimView.animate()
+            self.view.addSubview(objAnimView)
+            
+            var param = Dictionary<String,AnyObject>()
+            param["userID"] = userInfoDict["partyId"]
+            param["pin"] = enterPasscodeTextField.text?.MD5()
+            print(param)
+             objAPI.logInDelegate = self;
+            objAPI.logInWithUserID(param)
+           
+        }
+    }
+    
     //LogIn Delegate Methods
     
     func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
@@ -140,47 +203,6 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
         
     }
-    
-    
-    
-    @IBAction func onClickCancelButton(sender: AnyObject) {
-        
-        lblSentYouCode.hidden = true
-        lblForgottonYourPasscode.hidden = true
-        btnCancel.hidden = true
-        registerButton .setTitle("Register", forState: UIControlState.Normal)
-        
-        forgotPasscodeButton.hidden = false
-        loginButton.hidden = false
-        enterPasscodeTextField.hidden = false
-    }
-    @IBAction func clickOnLoginButton(sender: AnyObject) {
-        //LogInButton click
-        if(enterPasscodeTextField.text == "")
-        {
-            //Show error when field is empty
-            enterPasscodeTextField.layer.borderColor = UIColor.redColor().CGColor
-            errorLabel.hidden = false
-            errorLabel.text = "Please enter passcode"
-        }
-        else
-        {
-            
-            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-            objAnimView.frame = self.view.frame
-            enterPasscodeTextField.resignFirstResponder()
-            
-            objAnimView.animate()
-            self.view.addSubview(objAnimView)
-            
-            var param = Dictionary<String,AnyObject>()
-            param["userID"] = userInfoDict["partyId"]
-            param["pin"] = enterPasscodeTextField.text
-            objAPI.logInWithUserID(param)
-            objAPI.logInDelegate = self;
-        }
-    }
-    
     
     
 }

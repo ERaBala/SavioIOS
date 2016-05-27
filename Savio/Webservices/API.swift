@@ -16,6 +16,7 @@ let APIKey = "bcdfb7ce5e6854dcfe65ce5dd0d568c7"
 let custom_message = "Your Savio phone verification code is {{code}}"
 var checkString = ""
 var changePhoneNumber : Bool = false
+var phoneNumber = ""
 
 protocol PostCodeVerificationDelegate {
     
@@ -124,7 +125,7 @@ class API: UIView {
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
-            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/%@",baseURL,apiName))!)
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers",baseURL))!)
             request.HTTPMethod = "POST"
             
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dictParam, options: [])
