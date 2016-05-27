@@ -127,6 +127,8 @@
 		A8392A431CEEE0C200C7EE48 /* GothamRounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8392A401CEEE0C200C7EE48 /* GothamRounded-Medium.otf */; };
 		A84625AD1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84625AB1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift */; };
 		A84625AE1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84625AC1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib */; };
+		A850454C1CF823D8002E8B47 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850454A1CF823D8002E8B47 /* SwitchTableViewCell.swift */; };
+		A850454D1CF823D8002E8B47 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A850454B1CF823D8002E8B47 /* SwitchTableViewCell.xib */; };
 		A86CD6311CF47E8000222765 /* HurreyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86CD62F1CF47E8000222765 /* HurreyViewController.swift */; };
 		A86CD6321CF47E8000222765 /* HurreyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86CD6301CF47E8000222765 /* HurreyViewController.xib */; };
 		A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897514C1CEF099500F122AD /* CreatePINViewController.swift */; };
@@ -319,6 +321,8 @@
 		A8392A401CEEE0C200C7EE48 /* GothamRounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Medium.otf"; sourceTree = "<group>"; };
 		A84625AB1CF712D0004C07DD /* SAEnterPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAEnterPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		A84625AC1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAEnterPhoneNumberViewController.xib; sourceTree = "<group>"; };
+		A850454A1CF823D8002E8B47 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		A850454B1CF823D8002E8B47 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		A86CD62F1CF47E8000222765 /* HurreyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HurreyViewController.swift; sourceTree = "<group>"; };
 		A86CD6301CF47E8000222765 /* HurreyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HurreyViewController.xib; sourceTree = "<group>"; };
 		A897514C1CEF099500F122AD /* CreatePINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePINViewController.swift; sourceTree = "<group>"; };
@@ -709,6 +713,8 @@
 				C9905F9A1CED9EF700E63471 /* TxtFieldTableViewCell.xib */,
 				C9FD9A971CEEED5D006FF2C7 /* ErrorTableViewCell.swift */,
 				C9FD9A981CEEED5D006FF2C7 /* ErrorTableViewCell.xib */,
+				A850454A1CF823D8002E8B47 /* SwitchTableViewCell.swift */,
+				A850454B1CF823D8002E8B47 /* SwitchTableViewCell.xib */,
 			);
 			path = RegistrationCell;
 			sourceTree = "<group>";
@@ -966,6 +972,7 @@
 				C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */,
 				A8095C4F1CEDC616006366F7 /* pre-loader@2x9.png in Resources */,
 				A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */,
+				A850454D1CF823D8002E8B47 /* SwitchTableViewCell.xib in Resources */,
 				C97A351E1CF6D55D00BEB441 /* icon@3x.png in Resources */,
 				C9E854EB1CF43732006213BF /* down-arrow-1.png in Resources */,
 				A8095C0B1CEDC616006366F7 /* pre-loader@1x10.png in Resources */,
@@ -1016,6 +1023,7 @@
 			files = (
 				C9905F9E1CED9EF700E63471 /* ButtonTableViewCell.swift in Sources */,
 				A8392A3B1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.swift in Sources */,
+				A850454C1CF823D8002E8B47 /* SwitchTableViewCell.swift in Sources */,
 				C95CD60C1CF2C7EE00013200 /* DropDownTxtFieldTableViewCell.swift in Sources */,
 				C95CD6181CF2C92100013200 /* DPDKeyboardListener.swift in Sources */,
 				C9905FA01CED9EF700E63471 /* FindAddressTableViewCell.swift in Sources */,

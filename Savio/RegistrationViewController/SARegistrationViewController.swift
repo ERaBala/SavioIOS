@@ -17,7 +17,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     //    var strPostCode = String()
     var objAnimView : ImageViewAnimation?                     //Instance of ImageViewAnimation to showing loding aniation on API call
     //    var arrAddress = [String]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,6 +28,9 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         self.createCells()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     func getJSONForUI(){
         //create file url
         let fileUrl: NSURL = NSBundle.mainBundle().URLForResource("Registration", withExtension: "json")!
@@ -385,7 +387,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     
     func dropDownTxtFieldCellText(dropDownTextCell:DropDownTxtFieldTableViewCell)
     {
-       
+        
         let str = "10 Watkin Terrace, , , , , Northampton, Northamptonshire"  //dropDownTextCell.tf?.text
         let fullNameArr = str.characters.split{$0 == ","}.map(String.init)
         print(fullNameArr)
@@ -395,8 +397,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
         print(dictForTextFieldValue)
         self.createCells()
-
-//        dictForTextFieldValue.updateValue((dropDownTextCell.tf?.text)!, forKey: (dropDownTextCell.tf?.placeholder)!)
+        
+        //        dictForTextFieldValue.updateValue((dropDownTextCell.tf?.text)!, forKey: (dropDownTextCell.tf?.placeholder)!)
         self.createCells()
     }
     func linkButtonClicked(sender:UIButton){
@@ -514,17 +516,26 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
         print("DictPara:\(dict)")
         
-        objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-        objAnimView!.frame = self.view.frame
-        objAnimView?.animate()
-        self.view.addSubview(objAnimView!)
+        if(changePhoneNumber == false)
+        {
+            objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+            objAnimView!.frame = self.view.frame
+            objAnimView?.animate()
+            self.view.addSubview(objAnimView!)
+            
+            let objAPI = API()
+            objAPI.delegate = self
+            objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
+            objAPI.storeValueInKeychainForKey("userInfo", value: dict)
+        }
+        else{
+            
+            let alert = UIAlertController(title: "Looks like you have an earlier enrolled mobile number", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
         
-        let objAPI = API()
-        objAPI.delegate = self
-        objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
-        objAPI.storeValueInKeychainForKey("userInfo", value: dict)
-        
-        //        objAPI.registerTheUserWithTitle(dictForTextFieldValue["title"] as! String, first_name: dictForTextFieldValue["name"] as! String, second_name: dictForTextFieldValue["Surname"] as! String, date_of_birth: dictForTextFieldValue["Date of birth"] as! String, email: dictForTextFieldValue["Email"] as! String, phone_number: dictForTextFieldValue[Mobile number] as! String, address_1: dictForTextFieldValue["title"] as! String, address_2: dictForTextFieldValue["title"] as! String, address_3: dictForTextFieldValue["title"] as! String, town: dictForTextFieldValue["title"] as! String, country: dictForTextFieldValue["title"] as! String, post_code: dictForTextFieldValue["title"] as! String, house_number: dictForTextFieldValue["title"] as! String)
         
     }
     
@@ -842,7 +853,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         objAnimView?.removeFromSuperview()
         let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
         self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
-
+        
         
     }
     
@@ -891,7 +902,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     func successResponseForRegistrationAPI(objResponse:Dictionary<String,AnyObject>){
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
-        if(objResponse["message"] as! String == "Your number is already register")
+        
+        if(objResponse["message"] as! String == "All field are match")
         {
             let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
@@ -902,12 +914,31 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        else if(objResponse["message"] as! String == "Your number is already register,Please provide Old Number")
+        else if(objResponse["message"] as! String == " Three Field is match and Mobile number is different")
         {
             changePhoneNumber = true
             let alert = UIAlertController(title: "Looks like you have an earlier enrolled mobile number", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            for var i=0; i<arrRegistrationFields.count; i++ {
+                //            var  dict : NSMutableDictionary = NSMutableDictionary()
+                if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell)
+                {
+                    let cell = arrRegistrationFields[i] as! TitleTableViewCell
+                    
+                }
+                
+                if arrRegistrationFields[i].isKindOfClass(TxtFieldTableViewCell)
+                {
+                    let cell = arrRegistrationFields[i] as! TxtFieldTableViewCell
+                    
+                    if cell.tf?.placeholder == "Mobile number"{
+                        cell.tf?.becomeFirstResponder()
+                        cell.tf?.text = ""
+                    }
+                    
+                }
+            }
             
         }
         else{
@@ -917,7 +948,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
             
         }
-        
     }
     func errorResponseForRegistrationAPI(error:String){
         objAnimView?.removeFromSuperview()

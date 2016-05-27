@@ -49,13 +49,11 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
         yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as! String)
-        
-        
-        headerText.text = "Enter your new mobile number"
-        fiveDigitTextField.hidden = false
+   
+        fiveDigitTextField.hidden = true
         resentCodeButton.hidden = true
         backButton.hidden = true
-        yourCodeSentLabel.hidden = true
+        yourCodeSentLabel.hidden = false
         
     }
     

@@ -11,7 +11,7 @@ import SystemConfiguration
 import Foundation
 
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
-let APIKey = "TYJHDBcrTqsh8l8Jffuv2BSXUIpKV40Z"
+let APIKey = "Ppia3IHl0frDIgr711SlZWUBlpWdNfDs"
 let custom_message = "Your Savio phone verification code is {{code}}"
 var checkString = ""
 var changePhoneNumber : Bool = false
