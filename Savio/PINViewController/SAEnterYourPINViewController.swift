@@ -63,6 +63,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         
         enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         enterPasscodeTextField.textColor = UIColor.blackColor()
+        errorLabel.hidden = true
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -91,13 +92,13 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             //Send the OTP to mobile number
             
             //Get the user details from Keychain
-//            
-//            let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
-//            self.navigationController?.pushViewController(objCreatePINView, animated: true)
-//            
+            //
+            //            let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
+            //            self.navigationController?.pushViewController(objCreatePINView, animated: true)
+            //
             
             objAPI.otpSentDelegate = self;
-             objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
+            objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
             
             //Add animation of logo
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
@@ -167,65 +168,75 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             objAPI.logInDelegate = self;
             objAnimView.animate()
             self.view.addSubview(objAnimView)
-
-           
             
-            if (NSUserDefaults.standardUserDefaults().valueForKey("pin") == nil){
             var userDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
             print(userDict)
+            var partyDict = userDict["party"] as! Dictionary<String,AnyObject>
             var param = Dictionary<String,AnyObject>()
-            param["userID"] = userDict["partyId"]
+            param["userID"] = partyDict["partyId"]
             param["pin"] = enterPasscodeTextField.text?.MD5()
             print(param)
-                objAPI.logInWithUserID(param)
-        }
-            if NSUserDefaults.standardUserDefaults().valueForKey("pin") as! String == enterPasscodeTextField.text
-            {
-                objAnimView.removeFromSuperview()
-                
-                let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
-                self.navigationController?.pushViewController(objHurrrayView, animated: true)
-            }
-            else{
-                objAnimView.removeFromSuperview()
-                errorLabel.hidden = false
-                errorLabel.text = "Passcode do not match"
-            }
-        
+            objAPI.logInWithUserID(param)
             
-            
+            /*
+             if (NSUserDefaults.standardUserDefaults().valueForKey("pin") == nil){
+             var userDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+             print(userDict)
+             var param = Dictionary<String,AnyObject>()
+             param["userID"] = userDict["partyId"]
+             param["pin"] = enterPasscodeTextField.text?.MD5()
+             print(param)
+             objAPI.logInWithUserID(param)
+             
         }
-    }
-  
     
-    //LogIn Delegate Methods
-    
-    func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
-        objAnimView.removeFromSuperview()
-        
-        let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
-        self.navigationController?.pushViewController(objHurrrayView, animated: true)
-    }
-    
-    func errorResponseForOTPLogInAPI(error: String) {
-        objAnimView.removeFromSuperview()
-        errorLabel.text = "Passcode is not correct"
-        
-    }
-    
-    //OTP Verification Delegate Method
-    func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
-    {
-        objAnimView.removeFromSuperview()
-        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
-        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
-    }
-    func errorResponseForOTPSentAPI(error:String){
-        objAnimView.removeFromSuperview()
-        let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
-        self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+         if NSUserDefaults.standardUserDefaults().valueForKey("pin") as! String == enterPasscodeTextField.text
+         {
+         objAnimView.removeFromSuperview()
+         
+         let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+         self.navigationController?.pushViewController(objHurrrayView, animated: true)
+         }
+         else{
+         objAnimView.removeFromSuperview()
+         errorLabel.hidden = false
+         errorLabel.text = "Passcode do not match"
+         }
+         
+         */
         
     }
+}
+
+
+//LogIn Delegate Methods
+
+func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
+    objAnimView.removeFromSuperview()
     
+    let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
+    self.navigationController?.pushViewController(objHurrrayView, animated: true)
+}
+
+func errorResponseForOTPLogInAPI(error: String) {
+    objAnimView.removeFromSuperview()
+    errorLabel.text = "Passcode is not correct"
     
+}
+
+//OTP Verification Delegate Method
+func successResponseForOTPSentAPI(objResponse:Dictionary<String,AnyObject>)
+{
+    objAnimView.removeFromSuperview()
+    let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+    self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+}
+func errorResponseForOTPSentAPI(error:String){
+    objAnimView.removeFromSuperview()
+    let fiveDigitVerificationViewController = FiveDigitVerificationViewController(nibName:"FiveDigitVerificationViewController",bundle: nil)
+    self.navigationController?.pushViewController(fiveDigitVerificationViewController, animated: true)
+    
+}
+
+
 }

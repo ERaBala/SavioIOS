@@ -52,11 +52,11 @@
                         <constraint firstAttribute="width" constant="283" id="VZd-xw-Bmv"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEm-qu-yo9">
-                    <rect key="frame" x="30" y="406" width="540" height="51"/>
+                    <rect key="frame" x="30" y="350" width="540" height="51"/>
                     <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="540" id="7xe-7R-FKX"/>
@@ -77,7 +77,7 @@
                 <constraint firstAttribute="trailing" secondItem="xEm-qu-yo9" secondAttribute="trailing" constant="30" id="aNu-xR-TqH"/>
                 <constraint firstItem="srb-ZI-X44" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cMg-GF-vpM"/>
                 <constraint firstItem="Kl4-Vf-3Td" firstAttribute="top" secondItem="srb-ZI-X44" secondAttribute="bottom" constant="21" id="ezv-lJ-c68"/>
-                <constraint firstAttribute="bottom" secondItem="xEm-qu-yo9" secondAttribute="bottom" constant="143" id="feI-TH-v8Z"/>
+                <constraint firstAttribute="bottom" secondItem="xEm-qu-yo9" secondAttribute="bottom" constant="199" id="feI-TH-v8Z"/>
                 <constraint firstItem="YAh-VO-ioi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="pAk-Cu-7NA"/>
                 <constraint firstItem="srb-ZI-X44" firstAttribute="top" secondItem="YAh-VO-ioi" secondAttribute="bottom" constant="9" id="wjy-Ty-YJH"/>
             </constraints>
