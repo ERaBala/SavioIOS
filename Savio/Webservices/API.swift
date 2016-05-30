@@ -310,8 +310,16 @@ class API: UIView {
                     if let dict = json as? Dictionary<String,AnyObject>
                     {
                         print("\(dict)")
-                        dispatch_async(dispatch_get_main_queue()){
-                            self.logInDelegate?.successResponseForLogInAPI(dict)
+                        if(dict["message"] as! String == "Password is incorrect")
+                        {
+                            dispatch_async(dispatch_get_main_queue()){
+                                self.logInDelegate?.errorResponseForOTPLogInAPI("Password is incorrect")
+                            }
+                        }
+                        else{
+                            dispatch_async(dispatch_get_main_queue()){
+                                self.logInDelegate?.successResponseForLogInAPI(dict)
+                            }
                         }
                     }
                     else

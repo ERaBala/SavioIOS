@@ -213,13 +213,14 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
 
 func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
     objAnimView.removeFromSuperview()
-    
+    print(objResponse)
     let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
     self.navigationController?.pushViewController(objHurrrayView, animated: true)
 }
 
 func errorResponseForOTPLogInAPI(error: String) {
     objAnimView.removeFromSuperview()
+    errorLabel.hidden = false
     errorLabel.text = "Passcode is not correct"
     
 }
