@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,21 +16,21 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3sh-OZ-4w0">
-                    <rect key="frame" x="180" y="236" width="240" height="128"/>
+                    <rect key="frame" x="262" y="263" width="75" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="3ar-cY-b7z"/>
-                        <constraint firstAttribute="height" constant="128" id="GYM-fU-h8D"/>
+                        <constraint firstAttribute="width" constant="75" id="EC4-i6-rqV"/>
+                        <constraint firstAttribute="height" constant="75" id="LuG-hV-eZi"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="3sh-OZ-4w0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3jv-iK-5PC"/>
-                <constraint firstItem="cpT-R4-93g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9Rr-3G-ZSC"/>
-                <constraint firstAttribute="trailing" secondItem="cpT-R4-93g" secondAttribute="trailing" id="9xp-3L-PY4"/>
-                <constraint firstAttribute="bottom" secondItem="cpT-R4-93g" secondAttribute="bottom" id="Dfe-kr-Olh"/>
-                <constraint firstItem="3sh-OZ-4w0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HQe-5G-f6h"/>
-                <constraint firstItem="cpT-R4-93g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="trd-Ut-cAg"/>
+                <constraint firstItem="cpT-R4-93g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1KI-9z-blC"/>
+                <constraint firstItem="3sh-OZ-4w0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4Ex-XJ-xgL"/>
+                <constraint firstItem="3sh-OZ-4w0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AZP-W7-JhY"/>
+                <constraint firstAttribute="trailing" secondItem="cpT-R4-93g" secondAttribute="trailing" id="FeG-CC-4tu"/>
+                <constraint firstAttribute="bottom" secondItem="cpT-R4-93g" secondAttribute="bottom" id="UBv-Xp-IEI"/>
+                <constraint firstItem="cpT-R4-93g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zP6-vt-0dM"/>
             </constraints>
             <connections>
                 <outlet property="animationImageView" destination="3sh-OZ-4w0" id="bWz-TH-ICX"/>
