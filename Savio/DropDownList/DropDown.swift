@@ -291,14 +291,16 @@ private extension DropDown {
 		
 		backgroundColor = DPDConstant.UI.BackgroundColor
 		tableView.rowHeight = DPDConstant.UI.RowHeight
+        tableView.layer.borderWidth = 2.0
+        tableView.layer.borderColor = UIColor(red: 255.0/256.0, green: 165.0/256.0, blue:0/256.0, alpha: 1.0).CGColor;
+
 		tableView.separatorColor = UIColor(red: 255.0/256.0, green: 165.0/256.0, blue:0/256.0, alpha: 1.0);//DPDConstant.UI.SeparatorColor
 		tableView.layer.cornerRadius = DPDConstant.UI.CornerRadius
 		tableView.layer.masksToBounds = true
-		
+        
 		setHiddentState()
 		hidden = true
 	}
-	
 }
 
 //MARK: - UI
