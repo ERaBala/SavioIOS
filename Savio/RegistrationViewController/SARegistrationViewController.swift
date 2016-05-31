@@ -835,6 +835,18 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         errorMsg = "That mobile number doesn’t look right"
                         dictForTextFieldValue["errorMobileValidation"] = errorMsg
                     }
+                    else if(str?.characters.count < 10)
+                    {
+                        errorFLag = true
+                        errorMsg = "That mobile number should greater than 10 digits"
+                        dictForTextFieldValue["errorMobileValidation"] = errorMsg
+                    }
+                    else if(str?.characters.count > 16)
+                    {
+                        errorFLag = true
+                        errorMsg = "That mobile number should be of 15 digits"
+                        dictForTextFieldValue["errorMobileValidation"] = errorMsg
+                    }
                     else{
                         dictForTextFieldValue.removeValueForKey("errorMobileValidation")
                     }
