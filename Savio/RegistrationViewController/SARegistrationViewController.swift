@@ -16,7 +16,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     var dictForTextFieldValue : Dictionary<String, AnyObject> = [:] // dictionary for saving user data and error messages
     //    var strPostCode = String()
     var objAnimView : ImageViewAnimation?                     //Instance of ImageViewAnimation to showing loding aniation on API call
-       var arrAddress = [String]()
+    var arrAddress = [String]()
+    var firstName = ""
+    var lastName = ""
+    var dateOfBirth = ""
+    var phoneNumber = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -371,6 +375,18 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             arrRegistration[6] = dict
             self.createCells()
         }
+        else if checkTextFieldContentSpecialChar(strPostCode){
+            var dict = arrRegistration[6] as Dictionary<String,AnyObject>
+            var metadataDict = dict["metaData"]as! Dictionary<String,AnyObject>
+            let lableDict = metadataDict["lable"]!.mutableCopy()
+            lableDict.setValue("Yes", forKey: "isErrorShow")
+            lableDict.setValue("That postcode doesn't look right", forKey: "title")
+            metadataDict["lable"] = lableDict
+            dict["metaData"] = metadataDict
+            dictForTextFieldValue["errorPostcodeValid"] = "That postcode doesn't look right"
+            arrRegistration[6] = dict
+            self.createCells()
+        }
         else{
             //            NW1W 9BE
             objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
@@ -392,16 +408,16 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         let str = dropDownTextCell.tf?.text
         let fullNameArr = str!.characters.split{$0 == ","}.map(String.init)
         print(fullNameArr)
-//        var addressStr = ""
-//        for var i=0; i<fullNameArr.count-3; i++ {
-//            addressStr = addressStr+" \(fullNameArr[i])"
-//        }
+        //        var addressStr = ""
+        //        for var i=0; i<fullNameArr.count-3; i++ {
+        //            addressStr = addressStr+" \(fullNameArr[i])"
+        //        }
         
         dictForTextFieldValue.updateValue(fullNameArr[0], forKey: "First Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[1], forKey: "Second Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[2], forKey: "Third Address Line")
-
-//        dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
+        
+        //        dictForTextFieldValue.updateValue(addressStr, forKey: "First Address Line")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-2], forKey: "Town")
         dictForTextFieldValue.updateValue(fullNameArr[fullNameArr.count-1], forKey: "County")
         
@@ -436,12 +452,50 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
         if (checkTextFiledValidation() == false && dictForTextFieldValue["errorPostcodeValid"]==nil){
             //call term and condition screen
-            let objImpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
-            objImpInfo.delegate = self
-            objImpInfo.lblHeader.text = "Terms & Conditions"
-            //            objImpInfo.lblHeading.text = "Term And Condition"
-            objImpInfo.frame = self.view.frame
-            self.view.addSubview(objImpInfo)
+            var dict = self.getAllValuesFromTxtFild()
+            if(firstName.characters.count>0 && lastName.characters.count>0 && dateOfBirth.characters.count>0)
+            {
+                for i in 0 ..< arrRegistrationFields.count {
+                    //            var  dict : NSMutableDictionary = NSMutableDictionary()
+                    if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell){
+                        let cell = arrRegistrationFields[i] as! TitleTableViewCell
+                        dict["title"] = cell.tfTitle?.text
+                        dict["first_name"] = cell.tfName?.text
+                    }
+                    
+                    if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell){
+                    }
+                }
+
+                
+                
+                //Webservice call
+                if(firstName == dict["first_name"] as! String || lastName == dict["second_name"] as! String || dateOfBirth == dict["date_of_birth"] as! String)
+                {
+                    objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+                    objAnimView!.frame = self.view.frame
+                    objAnimView?.animate()
+                    self.view.addSubview(objAnimView!)
+                    
+                    let objAPI = API()
+                    objAPI.delegate = self
+                    objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
+                }
+                else{
+                    let alert = UIAlertController(title: "Looks like you have earlier enrolled personal details", message: "Enter your firstname, lastname, date of birth as earlier", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                }
+            }
+            else{
+                let objImpInfo = NSBundle.mainBundle().loadNibNamed("ImportantInformationView", owner: self, options: nil)[0] as! ImportantInformationView
+                objImpInfo.delegate = self
+                objImpInfo.lblHeader.text = "Terms & Conditions"
+                //            objImpInfo.lblHeading.text = "Term And Condition"
+                objImpInfo.frame = self.view.frame
+                self.view.addSubview(objImpInfo)
+            }
         }
         else{
             if dictForTextFieldValue["errorPostcodeValid"] != nil{
@@ -459,10 +513,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
     }
     
-    func acceptPolicy(obj:ImportantInformationView){
+    
+    func getAllValuesFromTxtFild()-> Dictionary<String,AnyObject>{
         var dict = Dictionary<String, AnyObject>()
         
-        for var i=0; i<arrRegistrationFields.count; i++ {
+        for i in 0 ..< arrRegistrationFields.count {
             //            var  dict : NSMutableDictionary = NSMutableDictionary()
             if arrRegistrationFields[i].isKindOfClass(TitleTableViewCell){
                 let cell = arrRegistrationFields[i] as! TitleTableViewCell
@@ -507,7 +562,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             if arrRegistrationFields[i].isKindOfClass(FindAddressTableViewCell){
                 let cell = arrRegistrationFields[i] as! FindAddressTableViewCell
                 dict["post_code"] = cell.tfPostCode?.text
-//                dict["post_code"] = "se19dy"
+                //                dict["post_code"] = "se19dy"
             }
             
             if arrRegistrationFields[i].isKindOfClass(PickerTextfildTableViewCell){
@@ -518,11 +573,35 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             //            dict["deviceRegistration"] = udidDict
             //            dict["device_ID"] = NSUUID().UUIDString
             
-            let udidDict : Dictionary<String,String> = ["DEVICE_ID":UIDevice.currentDevice().identifierForVendor!.UUIDString]
-            dict["deviceRegistration"] = udidDict
+            let udidDict : Dictionary<String,AnyObject> = ["DEVICE_ID":UIDevice.currentDevice().identifierForVendor!.UUIDString]
+            
+            let udidArray: Array<Dictionary<String,AnyObject>> = [udidDict]
+            dict["deviceRegistration"] =  udidArray
             
             
         }
+        return dict
+    }
+    
+    func checkTextFieldContentSpecialChar(str:String)->Bool{
+        
+        let characterSet:NSCharacterSet = NSCharacterSet(charactersInString: "~!@#$%^&*()_-+={}|\\;:'\",.<>*/")
+        
+        if (str.rangeOfCharacterFromSet(characterSet) != nil) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    
+    
+    
+    func acceptPolicy(obj:ImportantInformationView){
+        var dict = self.getAllValuesFromTxtFild()
+        
+        
         let objAPI = API()
         print("DictPara:\(dict)")
         objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
@@ -537,7 +616,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
             objAPI.delegate = self
             objAPI.registerTheUserWithTitle(dict,apiName: "Customers")
-          
+            return
+            
         }
         else{
             if(objAPI.getValueFromKeychainOfKey("myMobile") as! String == dict["phone_number"] as! String)
@@ -604,6 +684,12 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     dictForTextFieldValue["errorTitle"] = errorMsg
                 }
                 
+                if checkTextFieldContentSpecialChar(str!){
+                    errorMsg = "Name should not contain special characters"
+                    errorFLag = true
+                    dictForTextFieldValue["errorTitle"] = errorMsg
+                }
+                
                 if str?.characters.count > 50{
                     errorMsg = "Wow, that’s such a long name we can’t save it"
                     errorFLag = true
@@ -664,6 +750,11 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                         errorFLag = true
                         dictForTextFieldValue["errorSurname"] = errorMsg
                         //                        dictForTextFieldValue["errorTxt"] = errorMsg
+                    }
+                    else if checkTextFieldContentSpecialChar(str!){
+                        errorMsg = "Surname should not contain special characters"
+                        errorFLag = true
+                        dictForTextFieldValue["errorSurname"] = errorMsg
                     }
                     else{
                         dictForTextFieldValue.removeValueForKey("errorSurname")
@@ -840,6 +931,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     
+    
     func phoneNumberValidation(value: String) -> Bool {
         //        var flag: Bool = false
         //        if(self.checkTextFieldContentOnlyNumber(value) == true){
@@ -986,6 +1078,19 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             }
             
         }
+        else if(objResponse["message"] as! String == "Three Field is not match and Mobile number is match")
+        {
+            var dict = objResponse["party"] as! Dictionary<String,AnyObject>
+            firstName = dict["first_name"] as! String
+            lastName = dict["second_name"] as! String
+            dateOfBirth = dict["date_of_birth"] as! String
+            
+            let alert = UIAlertController(title: "Looks like you have earlier enrolled personal details", message: "Enter your firstname, lastname, date of birth as earlier", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+            
         else{
             let objAPI = API()
             objAPI.storeValueInKeychainForKey("userInfo", value: objResponse)

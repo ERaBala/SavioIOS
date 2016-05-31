@@ -152,10 +152,6 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                 userInfoDict["pass_code"] = enterFourDigitPIN.text?.MD5()
                 
                 var newUserInfoDict = Dictionary<String,AnyObject>()
-                newUserInfoDict["oldSecondName"] = userInfoDict["second_name"]
-                newUserInfoDict["OldFirstName"] = userInfoDict["first_name"]
-                newUserInfoDict["postCode"] = userInfoDict["post_code"]
-                newUserInfoDict["oldEmail"] = userInfoDict["email"]
                 newUserInfoDict["party"] = userInfoDict
                 
                 objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
