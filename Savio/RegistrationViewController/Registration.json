@@ -7,7 +7,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"TitleTableViewCell",
@@ -22,7 +23,8 @@
 							"dropDownArray":[],
 							"text":""
 						},
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -33,7 +35,8 @@
 							"isErrorShow": "No"
 							
 						}
-				   }
+				   },
+		"Height": 35
 	},
 
 	{
@@ -44,7 +47,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -54,7 +58,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	
 	{
@@ -65,7 +70,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -75,7 +81,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"FindAddressTableViewCell",
@@ -89,7 +96,8 @@
 							"placeholder":"Find address",
 							"dropDownArray":[]
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"DropDownTxtFieldTableViewCell",
@@ -100,7 +108,8 @@
 							"text":"",
 							"isCellShown": "No"						
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -110,7 +119,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -120,7 +130,8 @@
 							"dropDownArray":[],
 							"text":""							
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -130,7 +141,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -140,7 +152,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -150,7 +163,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -160,7 +174,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -170,7 +185,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -180,7 +196,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"linkButtonTableViewCell",
@@ -189,7 +206,8 @@
 							"placeholder":"Why do we need this information?",
 							"dropDownArray":[]
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -199,7 +217,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -209,7 +228,8 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
 	{
 		"classType":"ErrorTableViewCell",
@@ -219,7 +239,8 @@
 							"dropDownArray":[],
 							"isErrorShow": "No"
 						}
-				   }
+				   },
+		"Height": 35
 	},
 	{
 		"classType":"TxtFieldTableViewCell",
@@ -229,18 +250,10 @@
 							"dropDownArray":[],
 							"text":""
 						}
-				   }
+				   },
+		"Height": 40
 	},
-	{
-		"classType":"ErrorTableViewCell",
-		"metaData":{
-						"lable":{
-							"title":"",
-							"dropDownArray":[],
-							"isErrorShow": "Yes"
-						}
-				   }
-	},
+	
 	{
 		"classType":"ButtonTableViewCell",
 		"metaData":{
@@ -248,7 +261,8 @@
 							"placeholder":"Register",
 							"dropDownArray":[]
 						}
-				   }
+				   },
+		"Height": 100
 	},
 	{
 		"classType":"linkButtonTableViewCell",
@@ -257,7 +271,8 @@
 							"placeholder":"Back",
 							"dropDownArray":[]
 						}
-				   }
+				   },
+		"Height": 40
 	},
 
 

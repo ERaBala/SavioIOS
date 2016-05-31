@@ -85,16 +85,15 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         enterFiveDigitCodeLabel.hidden = true;
         //Change the content offset of scrollview so UITextfield will not be hidden by keyboard
         
-        if(UIScreen.mainScreen().bounds.size.height == 480)
+        if(UIScreen.mainScreen().bounds.size.height == 480 || UIScreen.mainScreen().bounds.size.height == 568)
         {
-            
             if(textField == enterFourDigitPIN)
             {
                 backgroundScrollView.contentOffset = CGPointMake(0, 23)
             }
             else if(textField == reEnterFourDigitPIN)
             {
-                backgroundScrollView.contentOffset = CGPointMake(0, 69)
+                backgroundScrollView.contentOffset = CGPointMake(0, 85)
             }
         }
     }

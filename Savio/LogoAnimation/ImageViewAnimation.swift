@@ -29,7 +29,6 @@ class ImageViewAnimation: UIView {
         for i in 1 ..< 35
         {
             imageArray.append(UIImage(named:String(format: "pre-loader@1x%d",i))!)
-            
         }
        
         //UIImageview animation
