@@ -319,8 +319,6 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             return 60.0
         }
         
-        let dict = arrRegistration[indexPath.row]
-        let ht = dict["Height"] as! CGFloat
         return 35
     }
     /*
