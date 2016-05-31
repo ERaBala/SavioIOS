@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         //Check if keychain has encrypted pin value
         let objApi = API()
-        //objApi.deleteKeychainValue("myPasscode")
+//        objApi.deleteKeychainValue("myPasscode")
+//        objApi.deleteKeychainValue("myUserInfo")
+//        objApi.deleteKeychainValue("userInfo")
         print(objApi.getValueFromKeychainOfKey("myPasscode") as! String)
         if((objApi.getValueFromKeychainOfKey("myPasscode") as! String) == "")
         {
