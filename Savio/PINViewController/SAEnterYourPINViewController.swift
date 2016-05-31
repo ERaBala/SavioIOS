@@ -121,6 +121,11 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.hidden = true
         enterPasscodeTextField.hidden = true
         checkString = "ForgotPasscode"
+        errorLabel.hidden = true
+        enterPasscodeTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
+        enterPasscodeTextField.textColor = UIColor.blackColor()
+        enterPasscodeTextField.resignFirstResponder()
+
         
     }
     
