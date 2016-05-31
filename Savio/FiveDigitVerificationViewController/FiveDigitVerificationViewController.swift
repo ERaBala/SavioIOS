@@ -25,8 +25,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-        objAnimView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+      
         
         
         // Do any additional setup after loading the view.
@@ -128,7 +127,8 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         objAPI.getOTPForNumber(dict["phone_number"]! as! String, country_code: "91")
         
         fiveDigitTextField.resignFirstResponder()
-        
+        objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+        objAnimView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         objAnimView.animate()
         self.view.addSubview(objAnimView)
     }
