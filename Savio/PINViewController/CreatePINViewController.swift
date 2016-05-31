@@ -17,7 +17,9 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
     @IBOutlet weak var enterFourDigitPIN: UITextField!
     @IBOutlet weak var confirmPIN: UIButton!
     
+    @IBOutlet weak var headerLabel: UILabel!
     
+    @IBOutlet weak var backButton: UIButton!
     var objAPI = API()
     var objAnimView = ImageViewAnimation()
     var userInfoDict  = Dictionary<String,AnyObject>()
@@ -47,7 +49,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         confirmPIN.layer.shadowOpacity = 1
         confirmPIN.layer.cornerRadius = 5
         
-        userInfoDict = objAPI.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
+        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
         
         
     }
@@ -107,70 +109,79 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func onClickConfirmButton(sender: AnyObject) {
+    @IBAction func onClickConfirmButton(sender: UIButton) {
         enterFourDigitPIN.resignFirstResponder()
         reEnterFourDigitPIN.resignFirstResponder()
         //Confirm button click
-        if(enterFourDigitPIN.text == "" || reEnterFourDigitPIN.text == "")
+        
+        if(sender.currentTitle == "Got It")
         {
-            //Show error when field is empty
-            enterFiveDigitCodeLabel.hidden = false;
-            enterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
-            reEnterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
-            
+            let objEnterYourPinViewController = SAEnterYourPINViewController(nibName: "SAEnterYourPINViewController",bundle: nil)
+            self.navigationController?.pushViewController(objEnterYourPinViewController, animated: true)
         }
-        else if(enterFourDigitPIN.text  != reEnterFourDigitPIN.text)
-        {
-            //Show error when fields are not same
+        else{
             
-            enterFiveDigitCodeLabel.hidden = false;
-            enterFiveDigitCodeLabel.text = "Passcode do not match"
-            
-            
-            enterFourDigitPIN.textColor = UIColor.redColor()
-            reEnterFourDigitPIN.textColor = UIColor.redColor()
-        }
-        else
-        {
-            if(enterFourDigitPIN.text?.characters.count < 4 || reEnterFourDigitPIN.text?.characters.count < 4)
+            if(enterFourDigitPIN.text == "" || reEnterFourDigitPIN.text == "")
             {
+                //Show error when field is empty
                 enterFiveDigitCodeLabel.hidden = false;
-                enterFiveDigitCodeLabel.text = "Passcode should be of 4 digits"
+                enterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
+                reEnterFourDigitPIN.layer.borderColor = UIColor.redColor().CGColor
+                
+            }
+            else if(enterFourDigitPIN.text  != reEnterFourDigitPIN.text)
+            {
+                //Show error when fields are not same
+                
+                enterFiveDigitCodeLabel.hidden = false;
+                enterFiveDigitCodeLabel.text = "Passcode do not match"
+                
+                
+                enterFourDigitPIN.textColor = UIColor.redColor()
+                reEnterFourDigitPIN.textColor = UIColor.redColor()
             }
             else
             {
-                
-                //Add animation of logo
-                objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
-                objAnimView.frame = self.view.frame
-                enterFourDigitPIN.resignFirstResponder()
-                
-                objAnimView.animate()
-                self.view.addSubview(objAnimView)
-                
-                userInfoDict["pass_code"] = enterFourDigitPIN.text?.MD5()
-                
-                var newUserInfoDict = Dictionary<String,AnyObject>()
-                newUserInfoDict["party"] = userInfoDict
-                
-                objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
-                var updatePasscodeDict = Dictionary<String,AnyObject>()
-                updatePasscodeDict["mobile_Number"] = userInfoDict["phone_number"]
-                updatePasscodeDict["pin"] = enterFourDigitPIN.text?.MD5()
-
-                print(updatePasscodeDict)
-                if(checkString == "ForgotPasscode")
+                if(enterFourDigitPIN.text?.characters.count < 4 || reEnterFourDigitPIN.text?.characters.count < 4)
                 {
-                    objAPI.resetPasscodeDelegate = self
-                    objAPI.resetPasscodeOfUserID(updatePasscodeDict)
+                    enterFiveDigitCodeLabel.hidden = false;
+                    enterFiveDigitCodeLabel.text = "Passcode should be of 4 digits"
                 }
-                else{
-                    objAPI.delegate = self
-                    objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
+                else
+                {
+                    
+                    //Add animation of logo
+                    objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
+                    objAnimView.frame = self.view.frame
+                    enterFourDigitPIN.resignFirstResponder()
+                    
+                    objAnimView.animate()
+                    self.view.addSubview(objAnimView)
+                    
+                    userInfoDict["pass_code"] = enterFourDigitPIN.text?.MD5()
+                    
+                    var newUserInfoDict = Dictionary<String,AnyObject>()
+                    newUserInfoDict["party"] = userInfoDict
+                    print(newUserInfoDict)
+                    objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
+                    var updatePasscodeDict = Dictionary<String,AnyObject>()
+                    updatePasscodeDict["mobile_Number"] = userInfoDict["phone_number"]
+                    updatePasscodeDict["pin"] = enterFourDigitPIN.text?.MD5()
+                    
+                    print(updatePasscodeDict)
+                    if(checkString == "ForgotPasscode")
+                    {
+                        objAPI.resetPasscodeDelegate = self
+                        objAPI.resetPasscodeOfUserID(updatePasscodeDict)
+                    }
+                    else{
+                        objAPI.delegate = self
+                        objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
+                    }
                 }
+                
             }
-           
-
+            
         }
     }
     
@@ -191,16 +202,21 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         NSUserDefaults.standardUserDefaults().synchronize()
         if(objResponse["message"] as! String == "Your PIN is updated Sucessfully")
         {
-            let objEnterYourPinViewController = SAEnterYourPINViewController(nibName: "SAEnterYourPINViewController",bundle: nil)
-            self.navigationController?.pushViewController(objEnterYourPinViewController, animated: true)
+ 
+            headerLabel.text = "Your passcode has been reset"
+            enterFourDigitPIN.hidden = true
+            reEnterFourDigitPIN.hidden = true
+            backButton.hidden = true
+            confirmPIN .setTitle("Got It", forState: UIControlState.Normal)
+                backgroundScrollView.contentOffset = CGPointMake(0, 0)
             
         }
         
     }
     func errorResponseForOTPResetPasscodeAPI(error:String){
         objAnimView.removeFromSuperview()
-//        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
-//        NSUserDefaults.standardUserDefaults().synchronize()
+        //        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
+        //        NSUserDefaults.standardUserDefaults().synchronize()
         print("error")
     }
     
@@ -209,9 +225,9 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         objAnimView.removeFromSuperview()
         //Store the passcode in Keychain
         objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
-        objAPI.storeValueInKeychainForKey("userInfo", value: objResponse)
-//        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
-//        NSUserDefaults.standardUserDefaults().synchronize()
+        objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
+        //        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
+        //        NSUserDefaults.standardUserDefaults().synchronize()
         if(changePhoneNumber == true)
         {
             let objEnterYourPhoneNumberViewController = SAEnterPhoneNumberViewController(nibName:"SAEnterPhoneNumberViewController",bundle: nil)
@@ -223,7 +239,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
             let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
             self.navigationController?.pushViewController(objHurrrayView, animated: true)
         }
-   
+        
         
         
     }

@@ -176,9 +176,8 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
             
             var userDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
             print(userDict)
-            var partyDict = userDict["party"] as! Dictionary<String,AnyObject>
             var param = Dictionary<String,AnyObject>()
-            param["userID"] = partyDict["partyId"]
+            param["userID"] = userDict["partyId"]
             param["pin"] = enterPasscodeTextField.text?.MD5()
             print(param)
             objAPI.logInWithUserID(param)

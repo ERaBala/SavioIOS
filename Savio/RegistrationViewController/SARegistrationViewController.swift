@@ -1098,7 +1098,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             
         else{
             let objAPI = API()
-            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse)
+            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
             objAPI.otpSentDelegate = self
             objAPI.getOTPForNumber(dictForTextFieldValue["Mobile number"] as! String, country_code: "91")
             
