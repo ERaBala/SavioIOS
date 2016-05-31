@@ -301,17 +301,23 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        for var i=0; i<arrRegistrationFields.count; i++ {
-            let cell = arrRegistrationFields[i] //as Dictionary<String,AnyObject>
-            
-            if cell.isKindOfClass(ErrorTableViewCell)          {
-                return 35
-            }
-            else {
-                40
-            }
+//        for var i=0; i<arrRegistrationFields.count; i++ {
+//            let cell = arrRegistrationFields[i] //as Dictionary<String,AnyObject>
+//            
+//            if cell.isKindOfClass(ErrorTableViewCell)          {
+//                return 35
+//            }
+//            else {
+//                40
+//            }
+//        }
+        if(indexPath.row == arrRegistrationFields.count - 2){
+            return 60.0
         }
-        return 40.0
+        
+        let dict = arrRegistration[indexPath.row]
+        let ht = dict["Height"] as! CGFloat
+        return 35
     }
     /*
      // MARK: - Navigation
