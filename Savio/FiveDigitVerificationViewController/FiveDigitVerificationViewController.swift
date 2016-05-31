@@ -72,7 +72,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         resentCodeButton.hidden = true
         backButton.hidden = true
         yourCodeSentLabel.hidden = false
-        headerText.text = "We've sent you a verfication code"
+        headerText.text = "We've sent you a verification code"
         gotItButton.setTitle("Got It", forState: UIControlState.Normal)
         codeDoesNotMatchLabel.hidden = true
     }
@@ -155,7 +155,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         resentCodeButton.hidden = true
         backButton.hidden = true
         yourCodeSentLabel.hidden = false
-        headerText.text = "We've sent you a verfication code"
+        headerText.text = "We've sent you a verification code"
         gotItButton.setTitle("Got It", forState: UIControlState.Normal)
     }
     
