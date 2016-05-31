@@ -139,13 +139,15 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     {
         
         objAnimView.removeFromSuperview()
-        fiveDigitTextField.hidden = false
-        resentCodeButton.hidden = false
-        backButton.hidden = false
-        yourCodeSentLabel.hidden = true
-        headerText.text = "Enter your verification code"
-        gotItButton.setTitle("Confirm", forState: UIControlState.Normal)
         
+        fiveDigitTextField.hidden = true
+        resentCodeButton.hidden = true
+        backButton.hidden = true
+        yourCodeSentLabel.hidden = false
+        headerText.text = "We've sent you a verification code"
+        gotItButton.setTitle("Got It", forState: UIControlState.Normal)
+        codeDoesNotMatchLabel.hidden = true
+
     }
     func errorResponseForOTPSentAPI(error:String){
         
@@ -169,6 +171,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     }
     func errorResponseForOTPVerificationAPI(error:String){
         objAnimView.removeFromSuperview()
+        
         codeDoesNotMatchLabel.text = error
         codeDoesNotMatchLabel.hidden = false;
     }
