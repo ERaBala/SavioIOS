@@ -97,6 +97,38 @@
             endingLineNumber = "306"
             landmarkName = "logInWithUserID(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Savio.API.logInWithUserID (Savio.API)(Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "Savio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aitsmac03/Desktop/Prashant/Project/Savio/Savio_Source_Code/1.1Savio/Savio/Webservices/API.swift"
+                  timestampString = "486459466.192415"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "1592">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Savio.API.(logInWithUserID (Savio.API) -&gt; (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "Savio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aitsmac03/Desktop/Prashant/Project/Savio/Savio_Source_Code/1.1Savio/Savio/Webservices/API.swift"
+                  timestampString = "486459466.192617"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "42">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -112,6 +144,38 @@
             startingLineNumber = "172"
             endingLineNumber = "172"
             landmarkName = "clickOnLoginButton(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Savio/PINViewController/CreatePINViewController.swift"
+            timestampString = "486459466.086256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "onClickConfirmButton(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Savio/Webservices/API.swift"
+            timestampString = "486459548.943302"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "registerTheUserWithTitle(_:apiName:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
