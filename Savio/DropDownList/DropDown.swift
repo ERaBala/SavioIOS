@@ -698,6 +698,9 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 	
 	public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 		cell.selected = indexPath.row == selectedRowIndex
+        if(cell.respondsToSelector(Selector("setLayoutMargins:"))){
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
 	}
 	
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -705,7 +708,6 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 		selectionAction?(selectedRowIndex!, dataSource[selectedRowIndex!])
 		hide()
 	}
-	
 }
 
 //MARK: - Auto dismiss
