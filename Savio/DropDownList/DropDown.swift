@@ -271,6 +271,8 @@ private extension DropDown {
 		
 		tableView.delegate = self
 		tableView.dataSource = self
+
+        tableView.separatorInset = UIEdgeInsetsZero
 		
 		tableView.registerNib(DropDownCell.Nib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 		
@@ -686,6 +688,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 		cell.optionLabel.textColor = textColor
 		cell.optionLabel.font = textFont
 		cell.selectedBackgroundColor = selectionBackgroundColor
+        cell.layoutMargins = UIEdgeInsetsZero
 		
 		if let cellConfiguration = cellConfiguration {
 			cell.optionLabel.text = cellConfiguration(index, dataSource[index])
@@ -695,13 +698,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 		
 		return cell
 	}
-	
-	public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		cell.selected = indexPath.row == selectedRowIndex
-        if(cell.respondsToSelector(Selector("setLayoutMargins:"))){
-            cell.layoutMargins = UIEdgeInsetsZero
-        }
-	}
+
 	
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		selectedRowIndex = indexPath.row

@@ -106,6 +106,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         backgroundScrollView.contentOffset = CGPointMake(0, 0)
     }
     @IBAction func onclickBackButton(sender: AnyObject) {
+        isFromForgotPasscode = true
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -163,7 +164,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                     var newUserInfoDict = Dictionary<String,AnyObject>()
                     newUserInfoDict["party"] = userInfoDict
                     print(newUserInfoDict)
-                    objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
+                    //objAPI.storeValueInKeychainForKey("myUserInfo", value: userInfoDict)
                     var updatePasscodeDict = Dictionary<String,AnyObject>()
                     updatePasscodeDict["mobile_Number"] = userInfoDict["phone_number"]
                     updatePasscodeDict["pin"] = enterFourDigitPIN.text?.MD5()
@@ -215,8 +216,6 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
     }
     func errorResponseForOTPResetPasscodeAPI(error:String){
         objAnimView.removeFromSuperview()
-        //        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
-        //        NSUserDefaults.standardUserDefaults().synchronize()
         print("error")
     }
     
@@ -226,8 +225,6 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         //Store the passcode in Keychain
         objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
         objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
-        //        NSUserDefaults.standardUserDefaults().setObject(enterFourDigitPIN.text, forKey: "pin")
-        //        NSUserDefaults.standardUserDefaults().synchronize()
         if(changePhoneNumber == true)
         {
             let objEnterYourPhoneNumberViewController = SAEnterPhoneNumberViewController(nibName:"SAEnterPhoneNumberViewController",bundle: nil)

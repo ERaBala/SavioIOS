@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else{
             
-            let userInfoDict = objApi.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
+            let userInfoDict = objApi.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
             print(userInfoDict)
             let udidDict = userInfoDict["deviceRegistration"] as! Array<Dictionary<String,AnyObject>>
             print(udidDict)

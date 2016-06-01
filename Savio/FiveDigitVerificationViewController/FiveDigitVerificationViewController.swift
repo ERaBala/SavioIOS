@@ -25,7 +25,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         
         
         // Do any additional setup after loading the view.
@@ -48,8 +48,21 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
         print(userInfoDict)
-
-        
+        let viewController = self.parentViewController
+        print(viewController)
+        if(isFromForgotPasscode == true)
+        {
+            isFromForgotPasscode = false
+            yourCodeSentLabel.text = String(format:"Enter your verification code")
+            
+            fiveDigitTextField.hidden = false
+            resentCodeButton.hidden = false
+            backButton.hidden = false
+            yourCodeSentLabel.hidden = true
+            
+        }
+        else
+        {
         yourCodeSentLabel.text = String(format:"Your code was sent to  %@",userInfoDict["phone_number"]! as! String)
         
         fiveDigitTextField.hidden = true
@@ -57,6 +70,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         backButton.hidden = true
         yourCodeSentLabel.hidden = false
         
+        }
     }
     
     //UITextField delegate method
@@ -121,10 +135,10 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     @IBAction func clickOnResentCodeButton(sender: AnyObject) {
         //Set the OTPSentDelegate
         objAPI.otpSentDelegate = self
-        
+        print(userInfoDict)
         //Resend the OTP to the mobile number present in keychain
-        let dict = userInfoDict["party"] as! Dictionary<String,AnyObject>
-        objAPI.getOTPForNumber(dict["phone_number"]! as! String, country_code: "91")
+
+        objAPI.getOTPForNumber(userInfoDict["phone_number"]! as! String, country_code: "91")
         
         fiveDigitTextField.resignFirstResponder()
         objAnimView = (NSBundle.mainBundle().loadNibNamed("ImageViewAnimation", owner: self, options: nil)[0] as! ImageViewAnimation)
@@ -147,7 +161,7 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         headerText.text = "We've sent you a verification code"
         gotItButton.setTitle("Got It", forState: UIControlState.Normal)
         codeDoesNotMatchLabel.hidden = true
-
+        
     }
     func errorResponseForOTPSentAPI(error:String){
         
