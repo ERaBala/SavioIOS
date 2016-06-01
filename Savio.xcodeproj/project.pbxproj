@@ -138,6 +138,8 @@
 		A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A897514D1CEF099500F122AD /* CreatePINViewController.xib */; };
 		A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */; };
 		A8B74C3D1CEDD152003A5D9A /* DataProtectionPolicy.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */; };
+		C90571961CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90571941CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift */; };
+		C90571971CFEAA8500ECC4FC /* SACreateSavingPlanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90571951CFEAA8500ECC4FC /* SACreateSavingPlanViewController.xib */; };
 		C94A708D1CF55FA8002E9449 /* splash-logo@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = C94A708A1CF55FA8002E9449 /* splash-logo@1x.png */; };
 		C94A708E1CF55FA8002E9449 /* splash-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C94A708B1CF55FA8002E9449 /* splash-logo@2x.png */; };
 		C94A708F1CF55FA8002E9449 /* splash-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C94A708C1CF55FA8002E9449 /* splash-logo@3x.png */; };
@@ -361,6 +363,8 @@
 		A897514D1CEF099500F122AD /* CreatePINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePINViewController.xib; sourceTree = "<group>"; };
 		A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProtectionPolicy.swift; sourceTree = "<group>"; };
 		A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataProtectionPolicy.xib; sourceTree = "<group>"; };
+		C90571941CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SACreateSavingPlanViewController.swift; sourceTree = "<group>"; };
+		C90571951CFEAA8500ECC4FC /* SACreateSavingPlanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SACreateSavingPlanViewController.xib; sourceTree = "<group>"; };
 		C94A708A1CF55FA8002E9449 /* splash-logo@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo@1x.png"; sourceTree = "<group>"; };
 		C94A708B1CF55FA8002E9449 /* splash-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo@2x.png"; sourceTree = "<group>"; };
 		C94A708C1CF55FA8002E9449 /* splash-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo@3x.png"; sourceTree = "<group>"; };
@@ -691,6 +695,15 @@
 				C9E535F21CF02C7F0017FBC6 /* SAEnterYourPINViewController.xib */,
 			);
 			path = PINViewController;
+			sourceTree = "<group>";
+		};
+		C90571931CFEAA8500ECC4FC /* SACreateSavingPlanViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90571941CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift */,
+				C90571951CFEAA8500ECC4FC /* SACreateSavingPlanViewController.xib */,
+			);
+			path = SACreateSavingPlanViewController;
 			sourceTree = "<group>";
 		};
 		C95CD6101CF2C92100013200 /* DropDownList */ = {
@@ -1080,6 +1093,7 @@
 				A8095C461CEDC616006366F7 /* pre-loader@2x32.png in Resources */,
 				C9E854F31CF44B4A006213BF /* down-arrow-15x15.png in Resources */,
 				A8095C401CEDC616006366F7 /* pre-loader@2x27.png in Resources */,
+				C90571971CFEAA8500ECC4FC /* SACreateSavingPlanViewController.xib in Resources */,
 				A8095C501CEDC616006366F7 /* pre-loader@3x1.png in Resources */,
 				A8095C681CEDC617006366F7 /* pre-loader@3x31.png in Resources */,
 				A8392A421CEEE0C200C7EE48 /* GothamRounded-Light.otf in Resources */,
@@ -1135,6 +1149,7 @@
 				C97949781CEC987900416BD5 /* FontCodes.swift in Sources */,
 				A8095B961CEDC4D5006366F7 /* ImageViewAnimation.swift in Sources */,
 				A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */,
+				C90571961CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift in Sources */,
 				C9905FA41CED9EF700E63471 /* TitleTableViewCell.swift in Sources */,
 				C9FD9A991CEEED5D006FF2C7 /* ErrorTableViewCell.swift in Sources */,
 				C95CD61B1CF2C92100013200 /* DropDownCell.swift in Sources */,

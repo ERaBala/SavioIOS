@@ -1053,11 +1053,15 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         objAnimView?.removeFromSuperview()
         print("\(objResponse)")
         
-        checkString = "Register"
+        
+       
         if(objResponse["message"] as! String == "All field are match")
         {
             let alert = UIAlertController(title: "Looks like you are an existing user, change your Passcode", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
+                checkString = "ForgotPasscode"
+                let objAPI = API()
+                            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
           
                 let objAPI = API()
                 objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
@@ -1112,6 +1116,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         }
             
         else{
+             checkString = "Register"
             let objAPI = API()
             objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
             objAPI.otpSentDelegate = self
