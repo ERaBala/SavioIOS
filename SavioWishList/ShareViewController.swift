@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
 
@@ -34,6 +35,23 @@ class ShareViewController: SLComposeServiceViewController {
         */
         
         self.title = "Wish List"
+        
+        for item: AnyObject in (self.extensionContext?.inputItems)! {
+            let inputItem = item as! NSExtensionItem
+            
+            for provider: AnyObject in inputItem.attachments! {
+                let itemProvider = provider as! NSItemProvider
+                
+                if itemProvider.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String) {
+                    itemProvider.loadItemForTypeIdentifier(kUTTypePropertyList as String, options: nil, completionHandler: { (result: NSSecureCoding?, error: NSError!) -> Void in
+                        if let resultDict = result as? NSDictionary {
+                            print(resultDict)
+ 
+                        }
+                    })
+                }
+            }
+        }
 
 
     }
