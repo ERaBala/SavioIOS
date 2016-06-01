@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "486363351.449099"
+            timestampString = "486380984.310764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "999"
-            endingLineNumber = "999"
-            landmarkName = "successResponseForRegistrationAPI(_:)"
+            startingLineNumber = "1036"
+            endingLineNumber = "1036"
+            landmarkName = "error(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "486363351.449099"
+            timestampString = "486377804.205616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "linkButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/RegistrationViewController/SARegistrationViewController.swift"
-            timestampString = "486363351.449099"
+            timestampString = "486377804.205616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
-            landmarkName = "acceptPolicy(_:)"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
+            landmarkName = "buttonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
