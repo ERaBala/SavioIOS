@@ -17,6 +17,7 @@ let custom_message = "Your Savio phone verification code is {{code}}"
 var checkString = ""
 var changePhoneNumber : Bool = false
 var phoneNumber = ""
+var isFromForgotPasscode : Bool = false
 
 protocol PostCodeVerificationDelegate {
     

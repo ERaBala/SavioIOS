@@ -608,7 +608,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
         
         let objAPI = API()
         print("DictPara:\(dict)")
-        objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
+       // objAPI.storeValueInKeychainForKey("myUserInfo", value: dict)
         
         if(changePhoneNumber == false)
         {

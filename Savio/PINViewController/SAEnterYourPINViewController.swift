@@ -53,7 +53,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.layer.shadowOpacity = 1
         loginButton.layer.cornerRadius = 5
         
-        userInfoDict = objAPI.getValueFromKeychainOfKey("myUserInfo") as! Dictionary<String,AnyObject>
+        userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
         print(userInfoDict)
         
     }
