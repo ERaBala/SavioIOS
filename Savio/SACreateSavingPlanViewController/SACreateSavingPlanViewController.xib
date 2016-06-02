@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SACreateSavingPlanViewController" customModule="Savio" customModuleProvider="target">
             <connections>
+                <outlet property="pageControl" destination="ZOB-jp-Im0" id="rFX-dp-Uaj"/>
+                <outlet property="scrlView" destination="Hex-ia-h4p" id="hXS-W6-2ve"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,32 +17,35 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJH-wo-xH1">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="192"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qss-Xl-eCH">
-                            <rect key="frame" x="60" y="35" width="480" height="117"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.52941176470588236" green="0.54117647058823526" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hex-ia-h4p">
+                    <rect key="frame" x="0.0" y="64" width="600" height="192"/>
+                    <color key="backgroundColor" red="0.50196078430000002" green="0.49803921569999998" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Qss-Xl-eCH" firstAttribute="top" secondItem="EJH-wo-xH1" secondAttribute="top" constant="35" id="239-m9-90W"/>
-                        <constraint firstAttribute="bottom" secondItem="Qss-Xl-eCH" secondAttribute="bottom" constant="40" id="7WF-R9-ddS"/>
-                        <constraint firstAttribute="height" constant="192" id="YGc-Sv-Wjy"/>
-                        <constraint firstAttribute="trailing" secondItem="Qss-Xl-eCH" secondAttribute="trailing" constant="60" id="kNJ-8r-WYy"/>
-                        <constraint firstItem="Qss-Xl-eCH" firstAttribute="leading" secondItem="EJH-wo-xH1" secondAttribute="leading" constant="60" id="z69-9o-1Ev"/>
+                        <constraint firstAttribute="height" constant="192" id="REw-Eh-saI"/>
                     </constraints>
-                </view>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Ssc-Ea-syG"/>
+                    </connections>
+                </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZOB-jp-Im0">
+                    <rect key="frame" x="281" y="442" width="39" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="39" id="7EX-Fo-MS3"/>
+                        <constraint firstAttribute="height" constant="37" id="UlV-Xq-vVn"/>
+                    </constraints>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="EJH-wo-xH1" secondAttribute="trailing" id="4gi-4s-AFf"/>
-                <constraint firstItem="EJH-wo-xH1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HKH-TC-AmU"/>
-                <constraint firstItem="EJH-wo-xH1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e7Z-oU-JUR"/>
+                <constraint firstItem="ZOB-jp-Im0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UuX-Bk-FNQ"/>
+                <constraint firstItem="Hex-ia-h4p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Yh0-Z6-fec"/>
+                <constraint firstAttribute="trailing" secondItem="Hex-ia-h4p" secondAttribute="trailing" id="kCD-Fg-NlK"/>
+                <constraint firstItem="Hex-ia-h4p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oDI-JF-cud"/>
+                <constraint firstAttribute="bottom" secondItem="ZOB-jp-Im0" secondAttribute="bottom" constant="121" id="wh0-B8-UKL"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="477" y="-13"/>
         </view>
     </objects>
 </document>
