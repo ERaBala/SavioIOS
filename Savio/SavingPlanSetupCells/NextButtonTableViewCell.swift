@@ -1,14 +1,14 @@
 //
-//  CalculationTableViewCell.swift
+//  NextButtonTableViewCell.swift
 //  Savio
 //
-//  Created by Maheshwari on 01/06/16.
+//  Created by Maheshwari on 02/06/16.
 //  Copyright © 2016 Prashant. All rights reserved.
 //
 
 import UIKit
 
-class CalculationTableViewCell: UITableViewCell {
+class NextButtonTableViewCell: UITableViewCell {
 
        weak var tblView : UITableView?
     override func awakeFromNib() {

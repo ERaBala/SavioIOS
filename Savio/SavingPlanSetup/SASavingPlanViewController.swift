@@ -15,59 +15,73 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         tblView!.registerNib(UINib(nibName: "SavingPlanTitleTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanTitleIdentifier")
-         tblView!.registerNib(UINib(nibName: "SavingPlanCostTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCostIdentifier")
-         tblView!.registerNib(UINib(nibName: "SavingPlanDatePickerTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanDatePickerIdentifier")
-         tblView!.registerNib(UINib(nibName: "SetDayTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanSetDateIdentifier")
-         tblView!.registerNib(UINib(nibName: "CalculationTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCalculationIdentifier")
+        tblView!.registerNib(UINib(nibName: "SavingPlanCostTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCostIdentifier")
+        tblView!.registerNib(UINib(nibName: "SavingPlanDatePickerTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanDatePickerIdentifier")
+        tblView!.registerNib(UINib(nibName: "SetDayTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanSetDateIdentifier")
+        tblView!.registerNib(UINib(nibName: "CalculationTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCalculationIdentifier")
+        tblView!.registerNib(UINib(nibName: "NextButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "NextButtonCellIdentifier")
+        tblView!.registerNib(UINib(nibName: "ClearButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ClearButtonIdentifier")
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 7
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell1")
         
-        if cell == nil {
-            if(indexPath.section == 0)
-            {
-                let bundleArr : Array = NSBundle.mainBundle().loadNibNamed("SavingPlanTitleTableViewCell", owner: nil, options: nil) as Array
-                cell = bundleArr[0] as! SavingPlanTitleTableViewCell
-            }
-            else if(indexPath.section == 1){
-                let bundleArr : Array = NSBundle.mainBundle().loadNibNamed("SavingPlanCostTableViewCell", owner: nil, options: nil) as Array
-                cell = bundleArr[0] as! SavingPlanCostTableViewCell
-            }
-            else if(indexPath.section == 2){
-                let bundleArr : Array = NSBundle.mainBundle().loadNibNamed("SavingPlanDatePickerTableViewCell", owner: nil, options: nil) as Array
-                cell = bundleArr[0] as! SavingPlanDatePickerTableViewCell
-            }
-            else if(indexPath.section == 3){
-                let bundleArr : Array = NSBundle.mainBundle().loadNibNamed("SetDayTableViewCell", owner: nil, options: nil) as Array
-                cell = bundleArr[0] as! SetDayTableViewCell
-            }
-            else if(indexPath.section == 4){
-                let bundleArr : Array = NSBundle.mainBundle().loadNibNamed("CalculationTableViewCell", owner: nil, options: nil) as Array
-                cell = bundleArr[0] as! CalculationTableViewCell
-            }
+        if(indexPath.section == 0)
+        {
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanTitleIdentifier", forIndexPath: indexPath) as! SavingPlanTitleTableViewCell
+            cell1.tblView = tblView
+            cell1.view = self.view
+            return cell1
+        }
+        else if(indexPath.section == 1){
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanCostIdentifier", forIndexPath: indexPath) as! SavingPlanCostTableViewCell
+            cell1.tblView = tblView
+            cell1.view = self.view
+            return cell1
+        }
+        else if(indexPath.section == 2){
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanDatePickerIdentifier", forIndexPath: indexPath) as! SavingPlanDatePickerTableViewCell
+            cell1.tblView = tblView
+            cell1.view = self.view
+            return cell1
+        }
+        else if(indexPath.section == 3){
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanSetDateIdentifier", forIndexPath: indexPath) as! SetDayTableViewCell
+            cell1.tblView = tblView
+            return cell1
+        }
+        else if(indexPath.section == 4){
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanCalculationIdentifier", forIndexPath: indexPath) as! CalculationTableViewCell
+            cell1.tblView = tblView
+            return cell1
+        }
+        else if(indexPath.section == 5){
+            
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("NextButtonCellIdentifier", forIndexPath: indexPath) as! NextButtonTableViewCell
+            cell1.tblView = tblView
+            return cell1
+        }
+        else
+        {
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("ClearButtonIdentifier", forIndexPath: indexPath) as! ClearButtonTableViewCell
+            cell1.tblView = tblView
+            return cell1
         }
         
-        return cell!
+        
     }
-
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view : UIView = UIView()
-       view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.whiteColor()
         return view
     }
     
@@ -88,19 +102,13 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         else if(indexPath.section == 3){
             return 65
         }
+        else if(indexPath.section == 5){
+            return 60
+        }
         else {
             return 44
         }
-
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     
 }

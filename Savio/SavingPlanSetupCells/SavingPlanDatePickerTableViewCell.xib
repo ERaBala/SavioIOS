@@ -6,10 +6,8 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="GothamRounded-Medium.otf">
-            <string>GothamRounded-Medium</string>
-        </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
         </mutableArray>
     </customFonts>
@@ -32,27 +30,33 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8l-3c-7de">
-                        <rect key="frame" x="38" y="39" width="244" height="26"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHM-mG-7Lk">
+                        <rect key="frame" x="38" y="34" width="244" height="26"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="26" id="uWi-B8-zff"/>
+                            <constraint firstAttribute="height" constant="26" id="Uaa-np-ouJ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
-                        <state key="normal" title="Button">
-                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="8gZ-nJ-6Z2"/>
+                        </connections>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="2n4-Vb-xOu" secondAttribute="trailing" id="4vN-6B-4ZG"/>
-                    <constraint firstItem="z8l-3c-7de" firstAttribute="top" secondItem="2n4-Vb-xOu" secondAttribute="bottom" constant="6" id="7EJ-KV-6ls"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="z8l-3c-7de" secondAttribute="trailing" constant="30" id="H55-5J-L3z"/>
+                    <constraint firstItem="PHM-mG-7Lk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="RLr-2U-hVo"/>
                     <constraint firstItem="2n4-Vb-xOu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="VmQ-YG-uz6"/>
                     <constraint firstItem="2n4-Vb-xOu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="j5Q-xp-dxk"/>
-                    <constraint firstItem="z8l-3c-7de" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="wcd-jt-flv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PHM-mG-7Lk" secondAttribute="trailing" constant="30" id="n21-rJ-hcO"/>
+                    <constraint firstItem="PHM-mG-7Lk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="ob9-Hv-tDe"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="datePickerTextField" destination="PHM-mG-7Lk" id="8Ha-1P-DQm"/>
+            </connections>
             <point key="canvasLocation" x="393" y="379"/>
         </tableViewCell>
     </objects>

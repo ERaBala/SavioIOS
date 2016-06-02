@@ -38,13 +38,16 @@
                             <constraint firstAttribute="height" constant="28" id="Wq2-pf-UBh"/>
                         </constraints>
                         <segments>
-                            <segment title="First"/>
-                            <segment title="Second"/>
+                            <segment title="Month"/>
+                            <segment title="Week"/>
                         </segments>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="segmentControlChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="bE2-OY-A2i"/>
+                        </connections>
                     </segmentedControl>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC2-NW-yLo">
-                        <rect key="frame" x="196" y="35" width="42" height="21"/>
+                        <rect key="frame" x="189" y="35" width="49" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="nmv-Z2-Iwc"/>
                         </constraints>
@@ -52,8 +55,8 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-ec-eUM">
-                        <rect key="frame" x="290" y="36" width="25" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-ec-eUM">
+                        <rect key="frame" x="285" y="36" width="32" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Mej-xc-7Mh"/>
                         </constraints>
@@ -62,9 +65,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pof-Or-qca">
-                        <rect key="frame" x="246" y="32" width="46" height="30"/>
+                        <rect key="frame" x="233" y="32" width="44" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="46" id="XP0-Xq-vSa"/>
+                            <constraint firstAttribute="width" constant="44" id="GeF-uW-2A5"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                     </button>
@@ -72,22 +75,27 @@
                 <constraints>
                     <constraint firstItem="lRI-eI-Pwb" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" id="6bL-Ne-iI6"/>
                     <constraint firstAttribute="trailingMargin" secondItem="lRI-eI-Pwb" secondAttribute="trailing" constant="138" id="FPQ-VW-Kz4"/>
-                    <constraint firstItem="zoB-ec-eUM" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="52" id="JyC-Ws-jZN"/>
+                    <constraint firstItem="zoB-ec-eUM" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="47" id="JyC-Ws-jZN"/>
                     <constraint firstItem="yeh-6F-lio" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Lo6-xE-cuk"/>
+                    <constraint firstItem="Pof-Or-qca" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="4" id="NgZ-aj-Jkn"/>
+                    <constraint firstItem="zoB-ec-eUM" firstAttribute="leading" secondItem="Pof-Or-qca" secondAttribute="trailing" constant="8" id="R98-4a-6N8"/>
                     <constraint firstItem="kC2-NW-yLo" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="7" id="SG7-tH-wgY"/>
                     <constraint firstItem="lRI-eI-Pwb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="VFY-GT-cR8"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Pof-Or-qca" secondAttribute="trailing" constant="20" id="XKQ-cc-Ypi"/>
-                    <constraint firstItem="Pof-Or-qca" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="4" id="Xmi-HR-4Eb"/>
                     <constraint firstItem="yeh-6F-lio" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Xyt-nC-cIg"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="74" id="aac-aO-Jcz"/>
-                    <constraint firstItem="Pof-Or-qca" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="8" id="cZC-F5-PBt"/>
+                    <constraint firstItem="Pof-Or-qca" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="-5" id="b7h-Ya-UVI"/>
                     <constraint firstItem="zoB-ec-eUM" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="8" id="fS4-8b-G72"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="zoB-ec-eUM" secondAttribute="trailing" constant="-3" id="fZg-C5-dEH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zoB-ec-eUM" secondAttribute="trailing" constant="-5" id="fZg-C5-dEH"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yeh-6F-lio" secondAttribute="trailing" id="x3M-eo-xpe"/>
-                    <constraint firstItem="kC2-NW-yLo" firstAttribute="leading" secondItem="lRI-eI-Pwb" secondAttribute="trailing" constant="22" id="yOW-8S-mMU"/>
+                    <constraint firstItem="kC2-NW-yLo" firstAttribute="leading" secondItem="lRI-eI-Pwb" secondAttribute="trailing" constant="15" id="yOW-8S-mMU"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="dayDateLabel" destination="zoB-ec-eUM" id="yq7-5v-Xbc"/>
+                <outlet property="segmentControl" destination="lRI-eI-Pwb" id="iH1-PC-az9"/>
+            </connections>
+            <point key="canvasLocation" x="69" y="459.5"/>
         </tableViewCell>
     </objects>
 </document>

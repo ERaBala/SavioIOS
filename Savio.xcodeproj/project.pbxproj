@@ -149,6 +149,10 @@
 		A86CD6321CF47E8000222765 /* HurreyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86CD6301CF47E8000222765 /* HurreyViewController.xib */; };
 		A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897514C1CEF099500F122AD /* CreatePINViewController.swift */; };
 		A897514F1CEF099500F122AD /* CreatePINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A897514D1CEF099500F122AD /* CreatePINViewController.xib */; };
+		A8AEA9421CFFF1DE0069F22A /* NextButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AEA9401CFFF1DE0069F22A /* NextButtonTableViewCell.swift */; };
+		A8AEA9431CFFF1DE0069F22A /* NextButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AEA9411CFFF1DE0069F22A /* NextButtonTableViewCell.xib */; };
+		A8AEA9461CFFF9110069F22A /* ClearButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AEA9441CFFF9110069F22A /* ClearButtonTableViewCell.swift */; };
+		A8AEA9471CFFF9110069F22A /* ClearButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AEA9451CFFF9110069F22A /* ClearButtonTableViewCell.xib */; };
 		A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */; };
 		A8B74C3D1CEDD152003A5D9A /* DataProtectionPolicy.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */; };
 		C90571961CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90571941CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift */; };
@@ -387,6 +391,10 @@
 		A86CD6301CF47E8000222765 /* HurreyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HurreyViewController.xib; sourceTree = "<group>"; };
 		A897514C1CEF099500F122AD /* CreatePINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePINViewController.swift; sourceTree = "<group>"; };
 		A897514D1CEF099500F122AD /* CreatePINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePINViewController.xib; sourceTree = "<group>"; };
+		A8AEA9401CFFF1DE0069F22A /* NextButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A8AEA9411CFFF1DE0069F22A /* NextButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextButtonTableViewCell.xib; sourceTree = "<group>"; };
+		A8AEA9441CFFF9110069F22A /* ClearButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A8AEA9451CFFF9110069F22A /* ClearButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClearButtonTableViewCell.xib; sourceTree = "<group>"; };
 		A8B74C3A1CEDD13E003A5D9A /* DataProtectionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProtectionPolicy.swift; sourceTree = "<group>"; };
 		A8B74C3C1CEDD152003A5D9A /* DataProtectionPolicy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataProtectionPolicy.xib; sourceTree = "<group>"; };
 		C90571941CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SACreateSavingPlanViewController.swift; sourceTree = "<group>"; };
@@ -720,6 +728,10 @@
 				A86682021CFF07C80014DB59 /* SetDayTableViewCell.xib */,
 				A86682051CFF09940014DB59 /* CalculationTableViewCell.swift */,
 				A86682061CFF09940014DB59 /* CalculationTableViewCell.xib */,
+				A8AEA9401CFFF1DE0069F22A /* NextButtonTableViewCell.swift */,
+				A8AEA9411CFFF1DE0069F22A /* NextButtonTableViewCell.xib */,
+				A8AEA9441CFFF9110069F22A /* ClearButtonTableViewCell.swift */,
+				A8AEA9451CFFF9110069F22A /* ClearButtonTableViewCell.xib */,
 			);
 			name = SavingPlanSetupCells;
 			path = Savio/SavingPlanSetupCells;
@@ -1057,6 +1069,7 @@
 				C9905F9F1CED9EF700E63471 /* ButtonTableViewCell.xib in Resources */,
 				A8095C6E1CEDC617006366F7 /* pre-loader@3x5.png in Resources */,
 				A8095C701CEDC617006366F7 /* pre-loader@3x7.png in Resources */,
+				A8AEA9471CFFF9110069F22A /* ClearButtonTableViewCell.xib in Resources */,
 				C9E855011CF456CC006213BF /* savivo-logo.png in Resources */,
 				A8095C3B1CEDC616006366F7 /* pre-loader@2x22.png in Resources */,
 				A8095C301CEDC616006366F7 /* pre-loader@2x12.png in Resources */,
@@ -1131,6 +1144,7 @@
 				A8095B991CEDC4D5006366F7 /* ImportantInformationView.xib in Resources */,
 				A86681F31CFEF1220014DB59 /* SASavingPlanViewController.xib in Resources */,
 				A8095C491CEDC616006366F7 /* pre-loader@2x35.png in Resources */,
+				A8AEA9431CFFF1DE0069F22A /* NextButtonTableViewCell.xib in Resources */,
 				A84625AE1CF712D0004C07DD /* SAEnterPhoneNumberViewController.xib in Resources */,
 				A86CD6321CF47E8000222765 /* HurreyViewController.xib in Resources */,
 				C9E525B31CE986FA000FD01E /* Assets.xcassets in Resources */,
@@ -1205,6 +1219,7 @@
 				C9905FA01CED9EF700E63471 /* FindAddressTableViewCell.swift in Sources */,
 				A86681F21CFEF1220014DB59 /* SASavingPlanViewController.swift in Sources */,
 				C97949781CEC987900416BD5 /* FontCodes.swift in Sources */,
+				A8AEA9461CFFF9110069F22A /* ClearButtonTableViewCell.swift in Sources */,
 				A8095B961CEDC4D5006366F7 /* ImageViewAnimation.swift in Sources */,
 				A8B74C3B1CEDD13E003A5D9A /* DataProtectionPolicy.swift in Sources */,
 				C90571961CFEAA8500ECC4FC /* SACreateSavingPlanViewController.swift in Sources */,
@@ -1233,6 +1248,7 @@
 				C9E525AC1CE986FA000FD01E /* AppDelegate.swift in Sources */,
 				A86682071CFF09940014DB59 /* CalculationTableViewCell.swift in Sources */,
 				C95CD6191CF2C92100013200 /* DPDUIView+Extension.swift in Sources */,
+				A8AEA9421CFFF1DE0069F22A /* NextButtonTableViewCell.swift in Sources */,
 				A897514E1CEF099500F122AD /* CreatePINViewController.swift in Sources */,
 				A86681FB1CFF01EA0014DB59 /* SavingPlanCostTableViewCell.swift in Sources */,
 				C979497B1CEC987900416BD5 /* VTView.swift in Sources */,

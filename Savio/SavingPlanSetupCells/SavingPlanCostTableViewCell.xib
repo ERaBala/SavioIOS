@@ -12,6 +12,7 @@
         </mutableArray>
         <mutableArray key="gotham-rounded-book-2.otf">
             <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -33,17 +34,20 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ukx-QD-x5v">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ukx-QD-x5v">
                         <rect key="frame" x="38" y="32" width="244" height="26"/>
-                        <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="N38-wx-JeH"/>
                         </constraints>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="D0H-zM-UGm"/>
+                        </connections>
                     </textField>
-                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ISQ-4m-YEC">
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3000" translatesAutoresizingMaskIntoConstraints="NO" id="ISQ-4m-YEC">
                         <rect key="frame" x="36" y="60" width="248" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="EmY-No-c0B"/>
@@ -51,9 +55,13 @@
                         <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="maximumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="thumbTintColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="CSz-Gw-0MG"/>
+                        </connections>
                     </slider>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQR-uk-sx8">
                         <rect key="frame" x="18" y="71" width="12" height="12"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="D0y-CI-30I"/>
                             <constraint firstAttribute="width" constant="12" id="uPA-3e-G8v"/>
@@ -62,9 +70,18 @@
                         <state key="normal" title="-">
                             <color key="titleColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="corner.radius">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="minusButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wke-nR-dz8"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW5-xP-CdE">
                         <rect key="frame" x="290" y="71" width="12" height="12"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="12" id="8Q5-nF-lmt"/>
                             <constraint firstAttribute="height" constant="12" id="pJb-G5-Qsd"/>
@@ -73,6 +90,9 @@
                         <state key="normal" title="+">
                             <color key="titleColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="plusButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T44-9P-AOY"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,7 +113,13 @@
                     <constraint firstItem="QW5-xP-CdE" firstAttribute="top" secondItem="owe-f5-37h" secondAttribute="bottom" constant="40" id="uhT-u2-zDY"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="405" y="393.5"/>
+            <connections>
+                <outlet property="costTextField" destination="ukx-QD-x5v" id="a5P-4f-Fvz"/>
+                <outlet property="minusButton" destination="DQR-uk-sx8" id="3MZ-wC-H7s"/>
+                <outlet property="plusButton" destination="QW5-xP-CdE" id="Z3f-ee-QVs"/>
+                <outlet property="slider" destination="ISQ-4m-YEC" id="fyY-2H-QRh"/>
+            </connections>
+            <point key="canvasLocation" x="555" y="393.5"/>
         </tableViewCell>
     </objects>
 </document>
