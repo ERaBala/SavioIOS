@@ -1061,8 +1061,8 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
             alert.addAction(UIAlertAction(title: "Create Passcode", style: UIAlertActionStyle.Cancel, handler: { action -> Void in
                 checkString = "ForgotPasscode"
                 let objAPI = API()
-                            objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
-          
+                objAPI.storeValueInKeychainForKey("userInfo", value: objResponse["party"]!)
+                checkString = "ForgotPasscode"
                 let objCreatePINView = CreatePINViewController(nibName: "CreatePINViewController",bundle: nil)
                 self.navigationController?.pushViewController(objCreatePINView, animated: true)
                 

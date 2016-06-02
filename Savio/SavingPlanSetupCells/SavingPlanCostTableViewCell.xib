@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="GothamRounded-Medium.otf">
+            <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
+        </mutableArray>
+        <mutableArray key="gotham-rounded-book-2.otf">
+            <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingPlanCostIdentifier" rowHeight="90" id="KGk-i7-Jjw" customClass="SavingPlanCostTableViewCell" customModule="Savio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which costs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owe-f5-37h">
+                        <rect key="frame" x="8" y="10" width="304" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="hkN-1N-NzN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ukx-QD-x5v">
+                        <rect key="frame" x="38" y="32" width="244" height="26"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="N38-wx-JeH"/>
+                        </constraints>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="D0H-zM-UGm"/>
+                        </connections>
+                    </textField>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3000" translatesAutoresizingMaskIntoConstraints="NO" id="ISQ-4m-YEC">
+                        <rect key="frame" x="36" y="60" width="248" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="EmY-No-c0B"/>
+                        </constraints>
+                        <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="maximumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="thumbTintColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="CSz-Gw-0MG"/>
+                        </connections>
+                    </slider>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQR-uk-sx8">
+                        <rect key="frame" x="18" y="71" width="12" height="12"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="D0y-CI-30I"/>
+                            <constraint firstAttribute="width" constant="12" id="uPA-3e-G8v"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                        <state key="normal" title="-">
+                            <color key="titleColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="corner.radius">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="minusButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wke-nR-dz8"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW5-xP-CdE">
+                        <rect key="frame" x="290" y="71" width="12" height="12"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="8Q5-nF-lmt"/>
+                            <constraint firstAttribute="height" constant="12" id="pJb-G5-Qsd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                        <state key="normal" title="+">
+                            <color key="titleColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="plusButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T44-9P-AOY"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="QW5-xP-CdE" firstAttribute="leading" secondItem="ISQ-4m-YEC" secondAttribute="trailing" constant="8" id="6jp-gN-xHK"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QW5-xP-CdE" secondAttribute="trailing" constant="10" id="8Bq-4p-JcK"/>
+                    <constraint firstItem="owe-f5-37h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="AWp-iO-itU"/>
+                    <constraint firstItem="ukx-QD-x5v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="EXj-1x-rfM"/>
+                    <constraint firstItem="DQR-uk-sx8" firstAttribute="top" secondItem="owe-f5-37h" secondAttribute="bottom" constant="40" id="Od7-Na-Mkd"/>
+                    <constraint firstItem="ISQ-4m-YEC" firstAttribute="leading" secondItem="DQR-uk-sx8" secondAttribute="trailing" constant="8" id="Ofm-nm-TLC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ukx-QD-x5v" secondAttribute="trailing" constant="30" id="Oop-dD-fYX"/>
+                    <constraint firstItem="ISQ-4m-YEC" firstAttribute="top" secondItem="ukx-QD-x5v" secondAttribute="bottom" constant="2" id="R6a-Ay-SZd"/>
+                    <constraint firstItem="ukx-QD-x5v" firstAttribute="top" secondItem="owe-f5-37h" secondAttribute="bottom" constant="1" id="SMn-bj-B7c"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="owe-f5-37h" secondAttribute="trailing" id="doo-cw-tRX"/>
+                    <constraint firstItem="QW5-xP-CdE" firstAttribute="leading" secondItem="ISQ-4m-YEC" secondAttribute="trailing" constant="8" id="fFZ-cM-0NU"/>
+                    <constraint firstItem="owe-f5-37h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jgR-yN-YDz"/>
+                    <constraint firstItem="DQR-uk-sx8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="nkk-ps-Tc3"/>
+                    <constraint firstItem="QW5-xP-CdE" firstAttribute="top" secondItem="owe-f5-37h" secondAttribute="bottom" constant="40" id="uhT-u2-zDY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="costTextField" destination="ukx-QD-x5v" id="a5P-4f-Fvz"/>
+                <outlet property="minusButton" destination="DQR-uk-sx8" id="3MZ-wC-H7s"/>
+                <outlet property="plusButton" destination="QW5-xP-CdE" id="Z3f-ee-QVs"/>
+                <outlet property="slider" destination="ISQ-4m-YEC" id="fyY-2H-QRh"/>
+            </connections>
+            <point key="canvasLocation" x="555" y="393.5"/>
+        </tableViewCell>
+    </objects>
+</document>

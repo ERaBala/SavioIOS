@@ -114,6 +114,8 @@ class SAWelcomViewController: UIViewController {
         
         // Set the new page index to the page control.
         pageControl.currentPage = Int(currentPage)
+        
+        
     }
         
     //Function invoke for make animation on pages
