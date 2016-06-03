@@ -32,10 +32,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lRI-eI-Pwb">
-                        <rect key="frame" x="20" y="28" width="154" height="29"/>
+                        <rect key="frame" x="20" y="35" width="154" height="18"/>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="28" id="Wq2-pf-UBh"/>
+                            <constraint firstAttribute="height" constant="17" id="Wq2-pf-UBh"/>
                         </constraints>
                         <segments>
                             <segment title="Month"/>
@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-ec-eUM">
-                        <rect key="frame" x="285" y="36" width="32" height="21"/>
+                        <rect key="frame" x="285" y="35" width="32" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Mej-xc-7Mh"/>
                         </constraints>
@@ -64,28 +64,32 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pof-Or-qca">
-                        <rect key="frame" x="233" y="32" width="44" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-ZP-KLb">
+                        <rect key="frame" x="233" y="36" width="53" height="18"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="44" id="GeF-uW-2A5"/>
+                            <constraint firstAttribute="width" constant="53" id="6fH-ma-oNt"/>
+                            <constraint firstAttribute="height" constant="18" id="mlp-H5-jQH"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" title="^">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="lRI-eI-Pwb" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" id="6bL-Ne-iI6"/>
+                    <constraint firstItem="lRI-eI-Pwb" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="7" id="6bL-Ne-iI6"/>
                     <constraint firstAttribute="trailingMargin" secondItem="lRI-eI-Pwb" secondAttribute="trailing" constant="138" id="FPQ-VW-Kz4"/>
                     <constraint firstItem="zoB-ec-eUM" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="47" id="JyC-Ws-jZN"/>
                     <constraint firstItem="yeh-6F-lio" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Lo6-xE-cuk"/>
-                    <constraint firstItem="Pof-Or-qca" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="4" id="NgZ-aj-Jkn"/>
-                    <constraint firstItem="zoB-ec-eUM" firstAttribute="leading" secondItem="Pof-Or-qca" secondAttribute="trailing" constant="8" id="R98-4a-6N8"/>
                     <constraint firstItem="kC2-NW-yLo" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="7" id="SG7-tH-wgY"/>
                     <constraint firstItem="lRI-eI-Pwb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="VFY-GT-cR8"/>
                     <constraint firstItem="yeh-6F-lio" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Xyt-nC-cIg"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="74" id="aac-aO-Jcz"/>
-                    <constraint firstItem="Pof-Or-qca" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="-5" id="b7h-Ya-UVI"/>
-                    <constraint firstItem="zoB-ec-eUM" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="8" id="fS4-8b-G72"/>
+                    <constraint firstItem="zoB-ec-eUM" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="7" id="fS4-8b-G72"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zoB-ec-eUM" secondAttribute="trailing" constant="-5" id="fZg-C5-dEH"/>
+                    <constraint firstItem="VWM-ZP-KLb" firstAttribute="leading" secondItem="kC2-NW-yLo" secondAttribute="trailing" constant="-5" id="h8J-69-IzP"/>
+                    <constraint firstItem="VWM-ZP-KLb" firstAttribute="top" secondItem="yeh-6F-lio" secondAttribute="bottom" constant="8" id="rW6-i7-eSx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="VWM-ZP-KLb" secondAttribute="trailing" constant="26" id="wdx-ib-AxH"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yeh-6F-lio" secondAttribute="trailing" id="x3M-eo-xpe"/>
                     <constraint firstItem="kC2-NW-yLo" firstAttribute="leading" secondItem="lRI-eI-Pwb" secondAttribute="trailing" constant="15" id="yOW-8S-mMU"/>
                 </constraints>
@@ -94,6 +98,7 @@
             <connections>
                 <outlet property="dayDateLabel" destination="zoB-ec-eUM" id="yq7-5v-Xbc"/>
                 <outlet property="segmentControl" destination="lRI-eI-Pwb" id="iH1-PC-az9"/>
+                <outlet property="setDayDateButton" destination="VWM-ZP-KLb" id="hkT-17-Is9"/>
             </connections>
             <point key="canvasLocation" x="69" y="459.5"/>
         </tableViewCell>

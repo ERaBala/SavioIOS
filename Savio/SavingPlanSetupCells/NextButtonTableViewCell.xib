@@ -21,24 +21,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxu-ip-OFE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="18" width="320" height="40"/>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="tj7-W1-pvr"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Next">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="titleShadowColor" red="0.89216056030000002" green="0.37906313380000001" blue="0.054471982760000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oxu-ip-OFE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="OOo-Oz-k9k"/>
+                    <constraint firstItem="oxu-ip-OFE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="OOo-Oz-k9k"/>
                     <constraint firstItem="oxu-ip-OFE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Q6M-Qe-0li"/>
                     <constraint firstAttribute="trailingMargin" secondItem="oxu-ip-OFE" secondAttribute="trailing" constant="-8" id="VP6-a6-qWd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="nextButton" destination="oxu-ip-OFE" id="FmU-p6-zR8"/>
+            </connections>
             <point key="canvasLocation" x="523" y="365.5"/>
         </tableViewCell>
     </objects>
