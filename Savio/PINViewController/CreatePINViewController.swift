@@ -203,6 +203,7 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         NSUserDefaults.standardUserDefaults().synchronize()
         if(objResponse["message"] as! String == "Your PIN is updated Sucessfully")
         {
+            objAPI.storeValueInKeychainForKey("myPasscode", value: reEnterFourDigitPIN.text!.MD5())
  
             headerLabel.text = "Your passcode has been reset"
             enterFourDigitPIN.hidden = true

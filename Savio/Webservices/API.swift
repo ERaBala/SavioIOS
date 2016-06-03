@@ -325,9 +325,9 @@ class API: UIView {
                     }
                     else
                     {
-                        print("error")
+                        print(response?.description)
                         dispatch_async(dispatch_get_main_queue()){
-                            self.logInDelegate?.errorResponseForOTPLogInAPI((error?.localizedDescription)!)
+                            self.logInDelegate?.errorResponseForOTPLogInAPI((response?.description)!)
                         }
                         
                     }
@@ -340,7 +340,6 @@ class API: UIView {
             //Give error no network found
             logInDelegate?.errorResponseForOTPLogInAPI("No network found")
         }
-        
     }
     
     
@@ -376,10 +375,8 @@ class API: UIView {
                         dispatch_async(dispatch_get_main_queue()){
                             self.resetPasscodeDelegate?.errorResponseForOTPResetPasscodeAPI((error?.localizedDescription)!)
                         }
-                        
                     }
                 }
-                
             }
             dataTask.resume()
         }
