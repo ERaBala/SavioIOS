@@ -11,6 +11,7 @@ import UIKit
 class SavingCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var lblHeader: UILabel?
     @IBOutlet weak var lblDetail: UILabel?
+    @IBOutlet weak var imgView: UIImageView?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,8 +20,6 @@ class SavingCategoryTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    
 }

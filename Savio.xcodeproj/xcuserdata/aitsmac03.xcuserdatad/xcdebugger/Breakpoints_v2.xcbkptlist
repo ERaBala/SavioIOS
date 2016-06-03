@@ -81,6 +81,38 @@
             endingLineNumber = "307"
             landmarkName = "logInWithUserID(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Savio.API.(logInWithUserID (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "Savio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aitsmac03/Desktop/Prashant/Project/Savio/Savio_Source_Code/1.1Savio/Savio/Webservices/API.swift"
+                  timestampString = "486651748.008707"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Savio.API.(logInWithUserID (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "Savio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aitsmac03/Desktop/Prashant/Project/Savio/Savio_Source_Code/1.1Savio/Savio/Webservices/API.swift"
+                  timestampString = "486651748.00894"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "119">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Savio/PINViewController/CreatePINViewController.swift"
-            timestampString = "486459466.086256"
+            timestampString = "486650799.450111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "onClickConfirmButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -113,6 +145,38 @@
             endingLineNumber = "137"
             landmarkName = "registerTheUserWithTitle(_:apiName:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Savio.API.(registerTheUserWithTitle (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;, apiName : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Savio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aitsmac03/Desktop/Prashant/Project/Savio/Savio_Source_Code/1.1Savio/Savio/Webservices/API.swift"
+                  timestampString = "486651748.011658"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Savio.API.(registerTheUserWithTitle (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;, apiName : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Savio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aitsmac03/Desktop/Prashant/Project/Savio/Savio_Source_Code/1.1Savio/Savio/Webservices/API.swift"
+                  timestampString = "486651748.011917"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "110">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
