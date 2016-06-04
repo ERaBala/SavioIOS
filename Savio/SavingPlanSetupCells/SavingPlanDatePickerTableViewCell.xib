@@ -36,17 +36,26 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="Uaa-np-ouJ"/>
                         </constraints>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <outlet property="delegate" destination="-1" id="8gZ-nJ-6Z2"/>
                         </connections>
                     </textField>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FGe-Uz-7bK">
+                        <rect key="frame" x="40" y="38" width="17" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="Awl-G7-DFx"/>
+                            <constraint firstAttribute="height" constant="18" id="UcV-Th-krq"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="2n4-Vb-xOu" secondAttribute="trailing" id="4vN-6B-4ZG"/>
                     <constraint firstItem="PHM-mG-7Lk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="RLr-2U-hVo"/>
+                    <constraint firstItem="FGe-Uz-7bK" firstAttribute="top" secondItem="2n4-Vb-xOu" secondAttribute="bottom" constant="5" id="TYR-8a-NgR"/>
+                    <constraint firstItem="FGe-Uz-7bK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="32" id="Uhr-vr-Kez"/>
                     <constraint firstItem="2n4-Vb-xOu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="VmQ-YG-uz6"/>
                     <constraint firstItem="2n4-Vb-xOu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="j5Q-xp-dxk"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PHM-mG-7Lk" secondAttribute="trailing" constant="30" id="n21-rJ-hcO"/>

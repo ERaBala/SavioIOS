@@ -13,7 +13,7 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     weak var tblView : UITableView?
     weak var view : UIView?
-  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -62,7 +62,6 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
-        titleTextField!.textColor = UIColor.blackColor()
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)
@@ -86,7 +85,7 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
- 
+        titleTextField.textColor = UIColor.whiteColor()
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)

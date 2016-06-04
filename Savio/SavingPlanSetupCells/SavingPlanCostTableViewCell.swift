@@ -53,13 +53,15 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     @IBAction func sliderValueChanged(sender: UISlider) {
         if(sender.value >= 2000)
         {
-            sender.value = sender.value + 300;
+            sender.value = sender.value + 30;
         }
         else{
-            sender.value = sender.value + 100;
+            sender.value = sender.value + 10;
         }
         
         costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(sender.value))
+        costTextField.textColor = UIColor.whiteColor()
+        delegate?.txtFieldCellText(self)
     }
     func registerForKeyboardNotifications(){
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SavingPlanCostTableViewCell.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
@@ -75,10 +77,10 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     @IBAction func plusButtonPressed(sender: AnyObject) {
         if(slider.value >= 2000)
         {
-            slider.value = slider.value + 300;
+            slider.value = slider.value + 30;
         }
         else{
-            slider.value = slider.value + 100;
+            slider.value = slider.value + 10;
         }
         
         let attrString = NSMutableAttributedString(
@@ -92,18 +94,22 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         dict["£"] = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)
         dict[String(format: "%d",Int(slider.value))] = UIColor.whiteColor()
         costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(slider.value))
+        costTextField.textColor = UIColor.whiteColor()
+         delegate?.txtFieldCellText(self)
     }
     @IBAction func minusButtonPressed(sender: AnyObject) {
         if(slider.value >= 2000)
         {
-            slider.value = slider.value - 300;
+            slider.value = slider.value - 30;
         }
         else
         {
-            slider.value = slider.value - 100;
+            slider.value = slider.value - 10;
         }
         
         costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(slider.value))
+        costTextField.textColor = UIColor.whiteColor()
+         delegate?.txtFieldCellText(self)
     }
     
     @objc func keyboardWasShown(notification: NSNotification){
@@ -131,8 +137,7 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
-        costTextField!.textColor = UIColor.blackColor()
-        //self.registerForKeyboardNotifications()
+
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)
@@ -148,7 +153,8 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(textField: UITextField){
-        
+        //costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(slider.value))
+        slider.value = Float(textField.text!)!
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{

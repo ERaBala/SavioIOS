@@ -119,6 +119,8 @@
 		A8095C711CEDC617006366F7 /* pre-loader@3x8.png in Resources */ = {isa = PBXBuildFile; fileRef = A8095C081CEDC616006366F7 /* pre-loader@3x8.png */; };
 		A8095C721CEDC617006366F7 /* pre-loader@3x9.png in Resources */ = {isa = PBXBuildFile; fileRef = A8095C091CEDC616006366F7 /* pre-loader@3x9.png */; };
 		A8095C751CEDC6A3006366F7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8095C741CEDC6A3006366F7 /* API.swift */; };
+		A8308E8E1D015605003BE375 /* SAPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8308E8C1D015605003BE375 /* SAPopOverViewController.swift */; };
+		A8308E8F1D015605003BE375 /* SAPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8308E8D1D015605003BE375 /* SAPopOverViewController.xib */; };
 		A8392A1E1CEED33600C7EE48 /* NSString-MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8392A1D1CEED33600C7EE48 /* NSString-MD5.swift */; };
 		A8392A3B1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8392A391CEEDA8300C7EE48 /* FiveDigitVerificationViewController.swift */; };
 		A8392A3C1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8392A3A1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.xib */; };
@@ -402,6 +404,8 @@
 		A8095C081CEDC616006366F7 /* pre-loader@3x8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pre-loader@3x8.png"; sourceTree = "<group>"; };
 		A8095C091CEDC616006366F7 /* pre-loader@3x9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pre-loader@3x9.png"; sourceTree = "<group>"; };
 		A8095C741CEDC6A3006366F7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A8308E8C1D015605003BE375 /* SAPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAPopOverViewController.swift; sourceTree = "<group>"; };
+		A8308E8D1D015605003BE375 /* SAPopOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPopOverViewController.xib; sourceTree = "<group>"; };
 		A8392A1D1CEED33600C7EE48 /* NSString-MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString-MD5.swift"; sourceTree = "<group>"; };
 		A8392A391CEEDA8300C7EE48 /* FiveDigitVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiveDigitVerificationViewController.swift; sourceTree = "<group>"; };
 		A8392A3A1CEEDA8300C7EE48 /* FiveDigitVerificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiveDigitVerificationViewController.xib; sourceTree = "<group>"; };
@@ -797,6 +801,8 @@
 				A86681F41CFF019B0014DB59 /* SavingPlanSetupCells */,
 				A86681F01CFEF1220014DB59 /* SASavingPlanViewController.swift */,
 				A86681F11CFEF1220014DB59 /* SASavingPlanViewController.xib */,
+				A8308E8C1D015605003BE375 /* SAPopOverViewController.swift */,
+				A8308E8D1D015605003BE375 /* SAPopOverViewController.xib */,
 			);
 			path = SavingPlanSetup;
 			sourceTree = "<group>";
@@ -1422,6 +1428,7 @@
 				C95CD61B1CF2C92100013200 /* DropDownCell.swift in Sources */,
 				A8392A1E1CEED33600C7EE48 /* NSString-MD5.swift in Sources */,
 				C9854A991CED9A5000D09AB3 /* SAWelcomViewController.swift in Sources */,
+				A8308E8E1D015605003BE375 /* SAPopOverViewController.swift in Sources */,
 				A8095B981CEDC4D5006366F7 /* ImportantInformationView.swift in Sources */,
 				C979497A1CEC987900416BD5 /* VTLabel.swift in Sources */,
 				A86CD6311CF47E8000222765 /* HurreyViewController.swift in Sources */,

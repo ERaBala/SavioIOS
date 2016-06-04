@@ -35,6 +35,9 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="calculationLabel" destination="ebY-ia-hj4" id="bZI-40-HU9"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

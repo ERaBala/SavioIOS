@@ -40,7 +40,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="N38-wx-JeH"/>
                         </constraints>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
@@ -70,11 +70,6 @@
                         <state key="normal" title="-">
                             <color key="titleColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="corner.radius">
-                                <integer key="value" value="0"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="minusButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wke-nR-dz8"/>
                         </connections>

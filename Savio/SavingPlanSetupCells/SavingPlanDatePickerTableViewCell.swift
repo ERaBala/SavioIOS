@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol SavingPlanDatePickerCellDelegate {
+    func datePickerText(date:Int)
+}
 class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     @IBOutlet weak var datePickerTextField: UITextField!
@@ -15,6 +18,7 @@ class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
     weak var view : UIView?
     var customToolBar : UIToolbar?
     var datePickerView:UIDatePicker = UIDatePicker()
+    var savingPlanDatePickerDelegate : SavingPlanDatePickerCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,6 +38,8 @@ class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
         datePickerTextField.inputView = datePickerView
         datePickerTextField.inputAccessoryView = customToolBar
         
+
+        
         
         
     }
@@ -51,6 +57,11 @@ class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
         dateFormatter.dateFormat = "EEE dd/MM/yyyy"
         let pickrDate = dateFormatter.stringFromDate(datePickerView.date)
         datePickerTextField.text = pickrDate
+        datePickerTextField.textColor = UIColor.whiteColor()
+        let timeDifference : NSTimeInterval = datePickerView.date.timeIntervalSinceDate(NSDate())
+        print(timeDifference)
+        
+        savingPlanDatePickerDelegate?.datePickerText(Int(timeDifference/3600))
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDelegate(self)
         UIView.setAnimationDuration(0.5)
@@ -99,7 +110,6 @@ class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
-        datePickerTextField!.textColor = UIColor.blackColor()
         var y : Float = 0.0
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
