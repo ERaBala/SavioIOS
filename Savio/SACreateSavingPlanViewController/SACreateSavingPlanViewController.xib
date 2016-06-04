@@ -56,6 +56,9 @@
                             <state key="normal" title="See wish list items">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="clickedOnWishListButton:" destination="-1" eventType="touchUpInside" id="ZiZ-XL-VLE"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lh-ZB-Y80">
                             <rect key="frame" x="60" y="66" width="480" height="1"/>
@@ -92,7 +95,7 @@
                         <constraint firstItem="L5g-j6-Ux2" firstAttribute="leading" secondItem="3dm-A6-YOR" secondAttribute="leading" constant="30" id="xra-mq-nqJ"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhW-M7-wm6">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhW-M7-wm6">
                     <rect key="frame" x="0.0" y="372" width="600" height="228"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>

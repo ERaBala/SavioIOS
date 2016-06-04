@@ -26,20 +26,11 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
-//        self.navigationController?.navigationBar.translucent = false;
-//        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-        //       self.navigationController!.navigationBar.titleTextAttributes = [UITextAttributeTextColor: UIColor(red: 55/255, green: 58/255, blue: 68/255, alpha: 1)]
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor() //UIColor(red: 55/255, green: 58/255, blue: 68/255, alpha: 1)
-//        lblWarningLable?.layer.borderWidth = 1.5
-//        lblWarningLable?.layer.borderColor = UIColor.whiteColor().CGColor
-//        
-//        lblBoostedView?.layer.borderWidth = 1.5
-//        lblBoostedView?.layer.borderColor = UIColor.blackColor().CGColor
-        
-//        tblView!.registerNib(UINib(nibName: "SavingCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell1")
-        
         tblView?.registerClass(SavingCategoryTableViewCell.self, forCellReuseIdentifier: "SavingCategoryTableViewCell")
         self.setUpView()
+        
+        
         
      let isShowFull = true
         if isShowFull == false {
@@ -65,6 +56,33 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
         btnWishList!.layer.shadowOffset = CGSizeMake(0, 2)
         btnWishList!.layer.shadowOpacity = 1
         btnWishList!.layer.cornerRadius = 5
+        
+        
+        //set Navigation left button
+        let leftBtnName = UIButton()
+        leftBtnName.setImage(UIImage(named: "nav-menu.png"), forState: UIControlState.Normal)
+        leftBtnName.frame = CGRectMake(0, 0, 30, 30)
+        leftBtnName.addTarget(self, action: #selector(SACreateSavingPlanViewController.menuButtonClicked), forControlEvents: .TouchUpInside)
+        
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.customView = leftBtnName
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        //set Navigation right button nav-heart
+        
+        let btnName = UIButton()
+//        btnName.setImage(UIImage(named: "nav-heart.png"), forState: UIControlState.Normal)
+        btnName.setBackgroundImage(UIImage(named: "nav-heart.png"), forState: UIControlState.Normal)
+        btnName.frame = CGRectMake(0, 0, 30, 30)
+        btnName.setTitle("0", forState: UIControlState.Normal)
+        btnName.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnName.addTarget(self, action: #selector(SACreateSavingPlanViewController.heartBtnClicked), forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = btnName
+        self.navigationItem.rightBarButtonItem = rightBarButton
+
+
         
      self.configureScrollView()
     }
@@ -116,6 +134,14 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
         pageControl!.currentPage = Int(currentPage)
     }
     
+    //MARK: Bar button action
+    func menuButtonClicked(){
+        
+    }
+    
+    func heartBtnClicked(){
+        
+    }
     
     // MARK: IBAction method implementation
     @IBAction func changePage(sender: AnyObject) {
@@ -125,6 +151,14 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
         scrlView!.scrollRectToVisible(newFrame, animated: true)
     }
     
+    @IBAction func clickedOnWishListButton(sender:UIButton){
+        print("Clicked on Wishlist button")
+        let objSAWishListViewController = SAWishListViewController()
+        self.navigationController?.pushViewController(objSAWishListViewController, animated: true)
+    }
+    
+    
+    //MARK: TableView Delegate and Datasource method
     func numberOfSectionsInTableView(tableView: UITableView) -> Int  {
         return 1;
     }
