@@ -13,11 +13,14 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     weak var tblView : UITableView?
     weak var view : UIView?
+    var colorDataDict : Dictionary<String,AnyObject> = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         titleTextField.delegate = self
+        colorDataDict =  NSUserDefaults.standardUserDefaults().objectForKey("colorDataDict") as! Dictionary<String,AnyObject>
+        print(colorDataDict)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -36,6 +39,63 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     
     
+    func setUpColor()-> UIColor
+    {
+        var red : CGFloat = 0.0
+        var green : CGFloat = 0.0
+        var blue: CGFloat  = 0.0
+        
+        if(colorDataDict["header"] as! String == "Group Save")
+        {
+            red = 161/255
+            green = 214/255
+            blue = 248/255
+            
+        }
+        else if(colorDataDict["header"] as! String == "Wedding")
+        {
+            red = 189/255
+            green = 184/255
+            blue = 235/255
+        }
+        else if(colorDataDict["header"] as! String == "Baby")
+        {
+            red = 122/255
+            green = 223/255
+            blue = 172/255
+        }
+        else if(colorDataDict["header"] as! String == "Holiday")
+        {
+            red = 109/255
+            green = 214/255
+            blue = 200/255
+        }
+        else if(colorDataDict["header"] as! String == "Ride")
+        {
+            red = 242/255
+            green = 104/255
+            blue = 107/255
+        }
+        else if(colorDataDict["header"] as! String == "Home")
+        {
+            red = 244/255
+            green = 161/255
+            blue = 111/255
+        }
+        else if(colorDataDict["header"] as! String == "Gadget")
+        {
+            red = 205/255
+            green = 220/255
+            blue = 57/255
+        }
+        else
+        {
+            red = 161/255
+            green = 214/255
+            blue = 248/255
+        }
+        return UIColor(red:red as CGFloat, green: green as CGFloat, blue: blue as CGFloat, alpha: 1)
+    }
     
     @objc func keyboardWasShown(notification: NSNotification){
         //do stuff
@@ -62,6 +122,7 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
+        titleTextField.textColor = setUpColor()
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)
@@ -85,7 +146,7 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
-        titleTextField.textColor = UIColor.whiteColor()
+        titleTextField.textColor = setUpColor()
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)

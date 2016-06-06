@@ -13,15 +13,20 @@ protocol SavingPlanDatePickerCellDelegate {
 }
 class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
     
+    @IBOutlet weak var calenderImageView: UIImageView!
     @IBOutlet weak var datePickerTextField: UITextField!
     weak var tblView : UITableView?
     weak var view : UIView?
     var customToolBar : UIToolbar?
     var datePickerView:UIDatePicker = UIDatePicker()
     var savingPlanDatePickerDelegate : SavingPlanDatePickerCellDelegate?
+    var colorDataDict : Dictionary<String,AnyObject> = [:]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        colorDataDict =  NSUserDefaults.standardUserDefaults().objectForKey("colorDataDict") as! Dictionary<String,AnyObject>
         
         let date = datePickerView.date
         let dateFormatter = NSDateFormatter()
@@ -39,11 +44,50 @@ class SavingPlanDatePickerTableViewCell: UITableViewCell,UITextFieldDelegate {
         datePickerTextField.inputView = datePickerView
         datePickerTextField.inputAccessoryView = customToolBar
         
-
-        
-        
+        calenderImageView.image = self.setUpImage()
         
     }
+    
+    func setUpImage()-> UIImage
+    {
+        
+        var imageName = ""
+        if(colorDataDict["header"] as! String == "Group Save")
+        {
+            imageName = "group-save-calendar.png"
+        }
+        else if(colorDataDict["header"] as! String == "Wedding")
+        {
+            imageName = "wedding-calendar.png"
+        }
+        else if(colorDataDict["header"] as! String == "Baby")
+        {
+            imageName = "baby-calendar.png"
+        }
+        else if(colorDataDict["header"] as! String == "Holiday")
+        {
+            imageName = "holiday-calendar.png"
+        }
+        else if(colorDataDict["header"] as! String == "Ride")
+        {
+            imageName = "ride-calendar.png"
+        }
+        else if(colorDataDict["header"] as! String == "Home")
+        {
+            imageName = "home-calendar.png"
+        }
+        else if(colorDataDict["header"] as! String == "Gadget")
+        {
+            imageName = "gadget-calendar.png"
+        }
+        else
+        {
+            imageName = "generic-calendar.png"
+        }
+        return UIImage(named:imageName)!
+        
+    }
+    
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

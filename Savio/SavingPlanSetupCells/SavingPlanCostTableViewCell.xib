@@ -149,6 +149,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="costTextField" destination="ukx-QD-x5v" id="a5P-4f-Fvz"/>
+                <outlet property="currencyLabel" destination="smW-fd-VOu" id="McL-RI-zuJ"/>
                 <outlet property="minusButton" destination="DQR-uk-sx8" id="3MZ-wC-H7s"/>
                 <outlet property="plusButton" destination="QW5-xP-CdE" id="Z3f-ee-QVs"/>
                 <outlet property="slider" destination="ISQ-4m-YEC" id="fyY-2H-QRh"/>
