@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SACreateSavingPlanViewController" customModule="Savio" customModuleProvider="target">
             <connections>
                 <outlet property="btnWishList" destination="L5g-j6-Ux2" id="Ak5-YJ-AVC"/>
+                <outlet property="lblLine" destination="1lh-ZB-Y80" id="wBU-YB-kzc"/>
                 <outlet property="pageControl" destination="ZOB-jp-Im0" id="rFX-dp-Uaj"/>
                 <outlet property="scrlView" destination="Hex-ia-h4p" id="hXS-W6-2ve"/>
                 <outlet property="suggestedHt" destination="DT8-ue-i3F" id="CJW-n5-0uD"/>

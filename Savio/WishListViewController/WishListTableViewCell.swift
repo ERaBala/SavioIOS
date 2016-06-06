@@ -15,11 +15,9 @@ class WishListTableViewCell: UITableViewCell {
     @IBOutlet weak var vwProductDetail: UIView?
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         
         // Set attributed title to delete button
         let attributes = [

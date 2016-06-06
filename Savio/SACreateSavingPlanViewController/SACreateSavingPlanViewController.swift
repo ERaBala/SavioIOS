@@ -14,7 +14,7 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
     @IBOutlet weak var scrlView: UIScrollView?
     @IBOutlet weak var pageControl: UIPageControl?
     @IBOutlet weak var btnWishList: UIButton?
-    
+    @IBOutlet weak var lblLine: UILabel?
 
     @IBOutlet weak var suggestedTop: NSLayoutConstraint!
     @IBOutlet weak var suggestedY: NSLayoutConstraint!
@@ -26,18 +26,20 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor() //UIColor(red: 55/255, green: 58/255, blue: 68/255, alpha: 1)
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+      //        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor() //UIColor(red: 55/255, green: 58/255, blue: 68/255, alpha: 1)
         tblView?.registerClass(SavingCategoryTableViewCell.self, forCellReuseIdentifier: "SavingCategoryTableViewCell")
         self.setUpView()
-        
-        
         
      let isShowFull = true
         if isShowFull == false {
 //            suggestedY.constant = 20.0
             suggestedHt.constant = 50.0
-            suggestedTop.constant = -50.0
+            suggestedTop.constant = -52.0
             btnWishList?.hidden = true
+            pageControl?.hidden = true
+            lblLine?.hidden = true
         }
     }
     
@@ -57,7 +59,6 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
         btnWishList!.layer.shadowOpacity = 1
         btnWishList!.layer.cornerRadius = 5
         
-        
         //set Navigation left button
         let leftBtnName = UIButton()
         leftBtnName.setImage(UIImage(named: "nav-menu.png"), forState: UIControlState.Normal)
@@ -67,22 +68,21 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
         let leftBarButton = UIBarButtonItem()
         leftBarButton.customView = leftBtnName
         self.navigationItem.leftBarButtonItem = leftBarButton
-        
+        self.title = "Create a saving plan"
         //set Navigation right button nav-heart
         
         let btnName = UIButton()
 //        btnName.setImage(UIImage(named: "nav-heart.png"), forState: UIControlState.Normal)
         btnName.setBackgroundImage(UIImage(named: "nav-heart.png"), forState: UIControlState.Normal)
         btnName.frame = CGRectMake(0, 0, 30, 30)
+        btnName.titleLabel!.font = UIFont(name: "GothamRounded-Book", size: 12)
         btnName.setTitle("0", forState: UIControlState.Normal)
-        btnName.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnName.setTitleColor(UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1), forState: UIControlState.Normal)
         btnName.addTarget(self, action: #selector(SACreateSavingPlanViewController.heartBtnClicked), forControlEvents: .TouchUpInside)
         
         let rightBarButton = UIBarButtonItem()
         rightBarButton.customView = btnName
         self.navigationItem.rightBarButtonItem = rightBarButton
-
-
         
      self.configureScrollView()
     }
@@ -97,21 +97,55 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
         
         // Set the scrollview content size.
         scrlView!.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width * CGFloat(colors.count), 0)
-        
+        let count = 1
         // Load the PageView view from the TestView.xib file and configure it properly.
+        if count > 0{
         for i in 0 ..< colors.count {
             // Load the TestView view.
             let testView = NSBundle.mainBundle().loadNibNamed("SavingPageView", owner: self, options: nil)[0] as! UIView
-            // Set its frame and the background color.
+            // Set its frame and data to pageview
             testView.frame = CGRectMake(CGFloat(i) * UIScreen.mainScreen().bounds.size.width, -64, testView.frame.size.width, scrlView!.frame.size.height)
             let vw = testView.viewWithTag(2)! as UIView
             vw.layer.borderWidth = 1
             vw.layer.borderColor = UIColor.whiteColor().CGColor
+             let lblNoWishList = testView.viewWithTag(5)! as! UILabel
+            lblNoWishList.hidden = true
+            
+            let lblTitle = testView.viewWithTag(3)! as! UILabel
+            lblTitle.hidden = false
+            
+            let lblCost = testView.viewWithTag(4)! as! UILabel
+            lblCost.hidden = false
+            
+            let imgEuro = testView.viewWithTag(6)! as! UIImageView
+            imgEuro.hidden = false
+            
 
             
-            // Set the proper message to the test view's label.
-//            let imgVw = testView.viewWithTag(1) as! UIImageView
-//            imgVw.image = UIImage(named: pageArr[i])
+            // Add the test view as a subview to the scrollview.
+            scrlView!.addSubview(testView)
+        }
+        }
+        else{
+             scrlView!.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width , 0)
+            let testView = NSBundle.mainBundle().loadNibNamed("SavingPageView", owner: self, options: nil)[0] as! UIView
+            // Set its frame and data to pageview
+            testView.frame = CGRectMake(0, -64, testView.frame.size.width, scrlView!.frame.size.height)
+            let vw = testView.viewWithTag(2)! as UIView
+            vw.layer.borderWidth = 1
+            vw.layer.borderColor = UIColor.whiteColor().CGColor
+            let lblNoWishList = testView.viewWithTag(5)! as! UILabel
+            lblNoWishList.hidden = false
+            let lblTitle = testView.viewWithTag(3)! as! UILabel
+            lblTitle.hidden = true
+            
+            let lblCost = testView.viewWithTag(4)! as! UILabel
+            lblCost.hidden = true
+            
+            let imgEuro = testView.viewWithTag(6)! as! UIImageView
+            imgEuro.hidden = true
+            
+            
             // Add the test view as a subview to the scrollview.
             scrlView!.addSubview(testView)
         }
@@ -153,7 +187,7 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
     
     @IBAction func clickedOnWishListButton(sender:UIButton){
         print("Clicked on Wishlist button")
-        let objSAWishListViewController = SAWishListViewController()
+        let objSAWishListViewController = SAOfferListViewController()
         self.navigationController?.pushViewController(objSAWishListViewController, animated: true)
     }
     
@@ -187,6 +221,11 @@ class SACreateSavingPlanViewController: UIViewController,UITableViewDelegate,UIT
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print(tblArr[indexPath.row])
+        NSUserDefaults.standardUserDefaults().setObject(tblArr[indexPath.row], forKey:"colorDataDict")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        let objSavingPlanViewController = SASavingPlanViewController(nibName: "SASavingPlanViewController",bundle: nil)
+        self.navigationController?.pushViewController(objSavingPlanViewController, animated: true)
     }
     
     /*
