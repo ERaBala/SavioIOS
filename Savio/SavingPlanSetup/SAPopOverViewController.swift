@@ -20,28 +20,21 @@ class SAPopOverViewController: UIViewController,UITableViewDelegate,UITableViewD
     var popOverDelegate : PopOverDelegate?
     let dayArray : Array<String> = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dateArray : Array<String> = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         popOverTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         popOverTableView.separatorInset = UIEdgeInsetsZero
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(setArrayString == "day")
-        {
+        if(setArrayString == "day") {
             return 7
         }
-        else{
+        else {
             return 28
         }
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
