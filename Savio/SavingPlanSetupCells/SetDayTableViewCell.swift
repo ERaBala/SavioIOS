@@ -14,7 +14,9 @@ class SetDayTableViewCell: UITableViewCell,UIPopoverPresentationControllerDelega
     @IBOutlet weak var dayDateTextField: UITextField!
     @IBOutlet weak var dayDateLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-       weak var tblView : UITableView?
+
+    weak var tblView : UITableView?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +25,7 @@ class SetDayTableViewCell: UITableViewCell,UIPopoverPresentationControllerDelega
         segmentControl.selectedSegmentIndex = 1
         //UISegmentedControl.appearance().tintColor = UIColor.clearColor()
         UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        segmentControl.selectedSegmentIndex = 0
         let layer =  CAGradientLayer()
         layer.frame.size = setDayDateButton.frame.size
         layer.startPoint = CGPointZero
@@ -35,7 +38,6 @@ class SetDayTableViewCell: UITableViewCell,UIPopoverPresentationControllerDelega
         layer.cornerRadius = 5
         
         setDayDateButton.layer.insertSublayer(layer, atIndex: 0)
-        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -53,13 +55,15 @@ class SetDayTableViewCell: UITableViewCell,UIPopoverPresentationControllerDelega
     }
     
     @IBAction func segmentControlChanged(sender: UISegmentedControl) {
-        if(sender.selectedSegmentIndex == 0)
-        {
-            dayDateLabel.text = "day"
+        
+        print(sender.titleForSegmentAtIndex(sender.selectedSegmentIndex))
+        if(sender.selectedSegmentIndex == 0) {
+            dayDateLabel.text = "date"
+            sender.setImage(UIImage(named: "butn01-1.png"), forSegmentAtIndex: 1)
         }
         else{
-            dayDateLabel.text = "date"
+            dayDateLabel.text = "day"
+            sender.setImage(UIImage(named: "butn01-1.png"), forSegmentAtIndex: 0)
         }
-        
     }
 }

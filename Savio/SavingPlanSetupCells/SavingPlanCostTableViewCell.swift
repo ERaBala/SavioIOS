@@ -59,13 +59,13 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
             sender.value = sender.value + 10;
         }
         
-        costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(sender.value))
+        costTextField.text = String(format: " %d",Int(sender.value))
         costTextField.textColor = UIColor.whiteColor()
         delegate?.txtFieldCellText(self)
     }
     func registerForKeyboardNotifications(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SavingPlanCostTableViewCell.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SavingPlanCostTableViewCell.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWasShown:"), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeHidden:"), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func removeKeyboardNotification(){
@@ -83,19 +83,9 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
             slider.value = slider.value + 10;
         }
         
-        let attrString = NSMutableAttributedString(
-            string: String(format: "%d",Int(slider.value)),
-            attributes: [NSFontAttributeName:UIFont(
-                name: "GothamRounded-Book",
-                size: 14.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
-        
-        self.getAttributedString().appendAttributedString(attrString)
-        var dict = Dictionary<String,UIColor>()
-        dict["£"] = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1)
-        dict[String(format: "%d",Int(slider.value))] = UIColor.whiteColor()
-        costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(slider.value))
+        costTextField.text = String(format: " %d",Int(slider.value))
         costTextField.textColor = UIColor.whiteColor()
-         delegate?.txtFieldCellText(self)
+        delegate?.txtFieldCellText(self)
     }
     @IBAction func minusButtonPressed(sender: AnyObject) {
         if(slider.value >= 2000)
@@ -107,7 +97,7 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
             slider.value = slider.value - 10;
         }
         
-        costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(slider.value))
+        costTextField.text = String(format: " %d",Int(slider.value))
         costTextField.textColor = UIColor.whiteColor()
          delegate?.txtFieldCellText(self)
     }
@@ -138,6 +128,7 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
 
+        textField.textColor = UIColor.whiteColor()
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)
@@ -154,7 +145,7 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldDidEndEditing(textField: UITextField){
         //costTextField.text = String(format: "%@ %d",self.getAttributedString().mutableString as String,Int(slider.value))
-        slider.value = Float(textField.text!)!
+       
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
@@ -163,6 +154,10 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
+        
+        slider.value = (costTextField.text! as NSString).floatValue
+        delegate?.txtFieldCellText(self)
+        
         if(UIScreen.mainScreen().bounds.size.height == 480)
         {
             UIView.beginAnimations(nil, context: nil)

@@ -11,13 +11,20 @@ import UIKit
 class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPopoverPresentationControllerDelegate,PopOverDelegate,SavingPlanCostTableViewCellDelegate,SavingPlanDatePickerCellDelegate {
     
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var savingPlanTitleLabel: UILabel!
     var tableViewCellArray = []
     var cost : Int = 0
     var dateDiff : Int = 0
     var dateString = ""
+    var popOverSelectedStr = ""
     
+    var isPopoverValueChanged = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        savingPlanTitleLabel.layer.borderWidth = 1
+        savingPlanTitleLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        
         tblView!.registerNib(UINib(nibName: "SavingPlanTitleTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanTitleIdentifier")
         tblView!.registerNib(UINib(nibName: "SavingPlanCostTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCostIdentifier")
         tblView!.registerNib(UINib(nibName: "SavingPlanDatePickerTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanDatePickerIdentifier")
@@ -25,17 +32,22 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         tblView!.registerNib(UINib(nibName: "CalculationTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCalculationIdentifier")
         tblView!.registerNib(UINib(nibName: "NextButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "NextButtonCellIdentifier")
         tblView!.registerNib(UINib(nibName: "ClearButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ClearButtonIdentifier")
-        
     }
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 6
+        if(isPopoverValueChanged == false) {
+            return 6
+        }
+        else {
+            return 7
+        }
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
         if(indexPath.section == 0)
@@ -63,13 +75,28 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
             let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanSetDateIdentifier", forIndexPath: indexPath) as! SetDayTableViewCell
             cell1.tblView = tblView
             cell1.setDayDateButton.tag = indexPath.row
-            cell1.setDayDateButton.addTarget(self, action: #selector(SASavingPlanViewController.setDayDateButtonButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            if(popOverSelectedStr != "")
+            {
+                cell1.setDayDateButton.setTitle(popOverSelectedStr, forState: UIControlState.Normal)
+                cell1.setDayDateButton.titleLabel?.textAlignment = NSTextAlignment.Left
+                cell1.setDayDateButton.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
+            }
+            cell1.setDayDateButton.addTarget(self, action: Selector("setDayDateButtonButtonPressed:"), forControlEvents: UIControlEvents.TouchUpInside)
             return cell1
         }
         else if(indexPath.section == 4){
             let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanCalculationIdentifier", forIndexPath: indexPath) as! CalculationTableViewCell
             cell1.tblView = tblView
-            cell1.calculationLabel.text = String(format: "You will need to £ save per month for 10 months")
+            if(isPopoverValueChanged)
+            {
+                if(dateString == "day")
+                {
+                    cell1.calculationLabel.text = String(format: "You will need to save £%d per week for %d week(s)",cost/(dateDiff/168),(dateDiff/168))
+                }
+                else{
+                    cell1.calculationLabel.text = String(format: "You will need to save £%d per month for %d month(s)",(cost/((dateDiff/168)/4)),(dateDiff/168)/4)
+                }
+            }
             return cell1
         }
         else if(indexPath.section == 5){
@@ -95,43 +122,52 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
     
     func setDayDateButtonButtonPressed(sender:UIButton)
     {
-        
-        let cell = sender.superview?.superview as! SetDayTableViewCell
-        
-        let objPopOverView = SAPopOverViewController(nibName: "SAPopOverViewController",bundle: nil)
-        if(cell.dayDateLabel.text == "day")
+        if(cost != 0 && dateDiff != 0)
         {
-            objPopOverView.setArrayString = "day"
-            dateString = "day"
+            let cell = sender.superview?.superview as? SetDayTableViewCell
+            //let indexPath = tblView.indexPathForCell(cell)
+            //tblView.scrollToRowAtIndexPath(indexPath!, atScrollPosition: .Top, animated: true)
+            
+            let objPopOverView = SAPopOverViewController(nibName: "SAPopOverViewController",bundle: nil)
+            if(cell?.dayDateLabel.text == "day") {
+                objPopOverView.setArrayString = "day"
+                dateString = "day"
+            }
+            else {
+                objPopOverView.setArrayString = "date"
+                dateString = "date"
+            }
+            
+            objPopOverView.popOverDelegate = self
+            
+            objPopOverView.modalPresentationStyle = UIModalPresentationStyle.Popover
+            objPopOverView.popoverPresentationController?.delegate = self
+            objPopOverView.popoverPresentationController?.sourceView = sender
+            objPopOverView.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Up
+            objPopOverView.preferredContentSize = CGSizeMake(60, 80)
+            objPopOverView.popoverPresentationController?.sourceRect = CGRectMake(0, -70, 53, 90)
+            self.presentViewController(objPopOverView, animated: true, completion: nil)
         }
-        else
-        {
-            objPopOverView.setArrayString = "date"
-            dateString = "date"
+        else{
+            let alert = UIAlertView(title: "Warning", message: "Please select cost and date first", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
         }
-        
-        objPopOverView.popOverDelegate = self
-        
-        objPopOverView.modalPresentationStyle = UIModalPresentationStyle.Popover
-        objPopOverView.popoverPresentationController?.delegate = self
-        objPopOverView.popoverPresentationController?.sourceView = sender
-        objPopOverView.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Up
-        objPopOverView.preferredContentSize = CGSizeMake(60, 80)
-        objPopOverView.popoverPresentationController?.sourceRect = CGRectMake(0, -70, 53, 90)
-        self.presentViewController(objPopOverView, animated: true, completion: nil)
-        
     }
     
     func popOverValueChanged(value: String) {
         
+        isPopoverValueChanged = true
         if(dateString == "day")
         {
             print(dateDiff/168)
         }
         else{
+            
             print((dateDiff/168)/4)
         }
-
+        popOverSelectedStr = value
+        tblView.reloadData()
+        
     }
     
     
@@ -164,7 +200,16 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
             return 70
         }
         else if(indexPath.section == 3){
-            return 65
+            return 95
+        }
+        else if(indexPath.section == 4){
+            if(isPopoverValueChanged == true)
+            {
+                return 40
+            }
+            else{
+                return 0
+            }
         }
         else if(indexPath.section == 5){
             return 60
