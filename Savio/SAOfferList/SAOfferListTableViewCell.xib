@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WPK-HC-PwS" firstAttribute="centerX" secondItem="XmZ-h8-1JZ" secondAttribute="centerX" id="0rC-YW-QSQ"/>
                             <constraint firstItem="O0e-wc-OHU" firstAttribute="top" secondItem="sj8-Jr-iYt" secondAttribute="bottom" constant="8" id="APu-Ha-CRL"/>
@@ -106,7 +106,6 @@
                         </state>
                     </button>
                 </subviews>
-                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="ZVB-3Q-ELu" firstAttribute="top" secondItem="XmZ-h8-1JZ" secondAttribute="bottom" constant="20" id="JM1-pT-VSd"/>
                     <constraint firstItem="ZVB-3Q-ELu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="Ne4-6L-LGe"/>

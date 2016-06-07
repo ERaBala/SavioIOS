@@ -88,7 +88,7 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         else if(imageDataDict["header"] as! String == "Baby")
         {
-            topBackgroundImageView.image = UIImage(named: "baby-setup-bg.png")
+//            topBackgroundImageView.image = UIImage(named: "baby-setup-bg.png")
         }
         else if(imageDataDict["header"] as! String == "Holiday")
         {
