@@ -57,13 +57,13 @@ class SetDayTableViewCell: UITableViewCell,UIPopoverPresentationControllerDelega
     @IBAction func segmentControlChanged(sender: UISegmentedControl) {
         
         print(sender.titleForSegmentAtIndex(sender.selectedSegmentIndex))
-        if(sender.selectedSegmentIndex == 0) {
-            dayDateLabel.text = "date"
-            sender.setImage(UIImage(named: "butn01-1.png"), forSegmentAtIndex: 1)
-        }
-        else{
-            dayDateLabel.text = "day"
-            sender.setImage(UIImage(named: "butn01-1.png"), forSegmentAtIndex: 0)
-        }
+//        if(sender.selectedSegmentIndex == 0) {
+//            dayDateLabel.text = "date"
+//            sender.setImage(UIImage(named: "butn01-1.png"), forSegmentAtIndex: 1)
+//        }
+//        else{
+//            dayDateLabel.text = "day"
+//            sender.setImage(UIImage(named: "butn01-1.png"), forSegmentAtIndex: 0)
+//        }
     }
 }
