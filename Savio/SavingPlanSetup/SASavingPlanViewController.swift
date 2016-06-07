@@ -8,17 +8,18 @@
 
 import UIKit
 
-class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPopoverPresentationControllerDelegate,PopOverDelegate,SavingPlanCostTableViewCellDelegate,SavingPlanDatePickerCellDelegate {
+class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPopoverPresentationControllerDelegate,PopOverDelegate,SavingPlanCostTableViewCellDelegate,SavingPlanDatePickerCellDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var topBackgroundImageView: UIImageView!
     
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var savingPlanTitleLabel: UILabel!
-    var tableViewCellArray = []
     var cost : Int = 0
     var dateDiff : Int = 0
     var dateString = ""
     var popOverSelectedStr = ""
     var imageDataDict : Dictionary<String,AnyObject> = [:]
+    var offerCount = 0
     
     
     var isPopoverValueChanged = false
@@ -40,18 +41,24 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         tblView!.registerNib(UINib(nibName: "SavingPlanDatePickerTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanDatePickerIdentifier")
         tblView!.registerNib(UINib(nibName: "SetDayTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanSetDateIdentifier")
         tblView!.registerNib(UINib(nibName: "CalculationTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCalculationIdentifier")
+        //OfferTableViewCell
+        tblView!.registerNib(UINib(nibName: "OfferTableViewCell", bundle: nil), forCellReuseIdentifier: "OfferTableViewCellIdentifier")
         tblView!.registerNib(UINib(nibName: "NextButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "NextButtonCellIdentifier")
         tblView!.registerNib(UINib(nibName: "ClearButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ClearButtonIdentifier")
+        
+        
         self.setUpView()
+     
     }
     
+
     func setUpView(){
         
         //set Navigation left button
         let leftBtnName = UIButton()
-        leftBtnName.setImage(UIImage(named: "nav-menu.png"), forState: UIControlState.Normal)
+        leftBtnName.setImage(UIImage(named: "nav-back.png"), forState: UIControlState.Normal)
         leftBtnName.frame = CGRectMake(0, 0, 30, 30)
-        // leftBtnName.addTarget(self, action: #selector(SACreateSavingPlanViewController.menuButtonClicked), forControlEvents: .TouchUpInside)
+        leftBtnName.addTarget(self, action: #selector(SASavingPlanViewController.backButtonClicked), forControlEvents: .TouchUpInside)
         
         let leftBarButton = UIBarButtonItem()
         leftBarButton.customView = leftBtnName
@@ -105,9 +112,29 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         }
     }
     
+    func backButtonClicked()
+    {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    @IBAction func cameraButtonPressed(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertView(title: "Warning", message: "No camera available", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
+        
+        
+    }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        return 7
+        return offerCount+7
         
     }
     
@@ -141,7 +168,7 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         else if(indexPath.section == 3){
             let cell1 = tableView.dequeueReusableCellWithIdentifier("SavingPlanSetDateIdentifier", forIndexPath: indexPath) as! SetDayTableViewCell
             cell1.tblView = tblView
-            cell1.setDayDateButton.tag = indexPath.row
+            cell1.setDayDateButton.tag = indexPath.section
             if(popOverSelectedStr != "")
             {
                 cell1.setDayDateButton.setTitle(popOverSelectedStr, forState: UIControlState.Normal)
@@ -166,19 +193,25 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
             }
             return cell1
         }
-        else if(indexPath.section == 5){
-            
+        else if(indexPath.section == offerCount+5)
+        {
             let cell1 = tableView.dequeueReusableCellWithIdentifier("NextButtonCellIdentifier", forIndexPath: indexPath) as! NextButtonTableViewCell
             cell1.tblView = tblView
             return cell1
         }
-        else
+        else if(indexPath.section == offerCount+6)
         {
             let cell1 = tableView.dequeueReusableCellWithIdentifier("ClearButtonIdentifier", forIndexPath: indexPath) as! ClearButtonTableViewCell
             cell1.tblView = tblView
             return cell1
         }
-        
+        else{
+            let cell1 = tableView.dequeueReusableCellWithIdentifier("OfferTableViewCellIdentifier", forIndexPath: indexPath) as! OfferTableViewCell
+            cell1.tblView = tblView
+            cell1.closeButton.tag = indexPath.section
+            cell1.closeButton.addTarget(self, action: Selector("closeOfferButtonPressed:"), forControlEvents: UIControlEvents.TouchUpInside)
+            return cell1
+        }
         
     }
     
@@ -187,6 +220,12 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         dateDiff = date
     }
     
+    
+    func closeOfferButtonPressed(sender:UIButton)
+    {
+        offerCount = offerCount - 1
+        tblView.reloadData()
+    }
     func setDayDateButtonButtonPressed(sender:UIButton)
     {
         if(cost != 0 && dateDiff != 0)
@@ -267,7 +306,7 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
             return 70
         }
         else if(indexPath.section == 3){
-            return 95
+            return 65
         }
         else if(indexPath.section == 4)
         {
@@ -279,16 +318,29 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
                 return 0
             }
         }
-        else if(indexPath.section == 5){
-            return 60
+        else if(indexPath.section == offerCount+5)
+        {
+            return 65
         }
-        else if(indexPath.section == 6){
-            return 40
-        }
-        else{
+        else if(indexPath.section == offerCount+6){
             return 44
         }
+        else {
+            return 60
+        }
         
+    }
+    
+    //MARK: UIImagePickerControllerDelegate methods
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        picker .dismissViewControllerAnimated(true, completion: nil)
+        topBackgroundImageView?.image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
+        cameraButton.hidden = true
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker .dismissViewControllerAnimated(true, completion: nil)
     }
     
     

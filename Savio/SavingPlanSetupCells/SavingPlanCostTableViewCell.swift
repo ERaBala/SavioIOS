@@ -38,6 +38,8 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         plusButton.setTitleColor(self.setUpColor(), forState: UIControlState.Normal)
 
         slider.thumbTintColor = self.setUpColor()
+        //slider.setThumbImage(UIImage(named: "offer-close.png"), forState: UIControlState.Normal)
+
         currencyLabel.textColor = self.setUpColor()
     }
     
@@ -46,6 +48,7 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         
         // Configure the view for the selected state
     }
+    
     
     func setUpColor()-> UIColor
     {
