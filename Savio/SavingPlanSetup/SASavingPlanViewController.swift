@@ -9,6 +9,7 @@
 import UIKit
 
 class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPopoverPresentationControllerDelegate,PopOverDelegate,SavingPlanCostTableViewCellDelegate,SavingPlanDatePickerCellDelegate {
+    @IBOutlet weak var topBackgroundImageView: UIImageView!
     
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var savingPlanTitleLabel: UILabel!
@@ -17,10 +18,19 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
     var dateDiff : Int = 0
     var dateString = ""
     var popOverSelectedStr = ""
+    var imageDataDict : Dictionary<String,AnyObject> = [:]
+    
     
     var isPopoverValueChanged = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Savings plan setup"
+        let font = UIFont(name: "GothamRounded-Book", size: 15)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font!]
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         savingPlanTitleLabel.layer.borderWidth = 1
         savingPlanTitleLabel.layer.borderColor = UIColor.whiteColor().CGColor
@@ -32,16 +42,73 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         tblView!.registerNib(UINib(nibName: "CalculationTableViewCell", bundle: nil), forCellReuseIdentifier: "SavingPlanCalculationIdentifier")
         tblView!.registerNib(UINib(nibName: "NextButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "NextButtonCellIdentifier")
         tblView!.registerNib(UINib(nibName: "ClearButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ClearButtonIdentifier")
+        self.setUpView()
     }
     
+    func setUpView(){
+        
+        //set Navigation left button
+        let leftBtnName = UIButton()
+        leftBtnName.setImage(UIImage(named: "nav-menu.png"), forState: UIControlState.Normal)
+        leftBtnName.frame = CGRectMake(0, 0, 30, 30)
+        // leftBtnName.addTarget(self, action: #selector(SACreateSavingPlanViewController.menuButtonClicked), forControlEvents: .TouchUpInside)
+        
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.customView = leftBtnName
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        //set Navigation right button nav-heart
+        
+        let btnName = UIButton()
+        btnName.setBackgroundImage(UIImage(named: "nav-heart.png"), forState: UIControlState.Normal)
+        btnName.frame = CGRectMake(0, 0, 30, 30)
+        btnName.setTitle("0", forState: UIControlState.Normal)
+        btnName.setTitleColor(UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1), forState: UIControlState.Normal)
+        btnName.titleLabel!.font = UIFont(name: "GothamRounded-Book", size: 12)
+        //  btnName.addTarget(self, action: #selector(SACreateSavingPlanViewController.heartBtnClicked), forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = btnName
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        imageDataDict =  NSUserDefaults.standardUserDefaults().objectForKey("colorDataDict") as! Dictionary<String,AnyObject>
+        if(imageDataDict["header"] as! String == "Group Save")
+        {
+            topBackgroundImageView.image = UIImage(named: "groupsave-setup-bg.png")
+        }
+        else if(imageDataDict["header"] as! String == "Wedding")
+        {
+            topBackgroundImageView.image = UIImage(named: "wdding-setup-bg.png")
+        }
+        else if(imageDataDict["header"] as! String == "Baby")
+        {
+            topBackgroundImageView.image = UIImage(named: "baby-setup-bg.png")
+        }
+        else if(imageDataDict["header"] as! String == "Holiday")
+        {
+            topBackgroundImageView.image = UIImage(named: "holiday-setup-bg.png")
+        }
+        else if(imageDataDict["header"] as! String == "Ride")
+        {
+            topBackgroundImageView.image = UIImage(named: "ride-setup-bg.png")
+        }
+        else if(imageDataDict["header"] as! String == "Home")
+        {
+            topBackgroundImageView.image = UIImage(named: "home-setup-bg.png")
+        }
+        else if(imageDataDict["header"] as! String == "Gadget")
+        {
+            topBackgroundImageView.image = UIImage(named: "gadget-setup-bg.png")
+        }
+        else
+        {
+            topBackgroundImageView.image = UIImage(named: "generic-setup-bg.png")
+        }
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if(isPopoverValueChanged == false) {
-            return 6
-        }
-        else {
-            return 7
-        }
+        
+        return 7
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -202,7 +269,8 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         else if(indexPath.section == 3){
             return 95
         }
-        else if(indexPath.section == 4){
+        else if(indexPath.section == 4)
+        {
             if(isPopoverValueChanged == true)
             {
                 return 40
@@ -214,9 +282,13 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         else if(indexPath.section == 5){
             return 60
         }
-        else {
+        else if(indexPath.section == 6){
+            return 40
+        }
+        else{
             return 44
         }
+        
     }
     
     

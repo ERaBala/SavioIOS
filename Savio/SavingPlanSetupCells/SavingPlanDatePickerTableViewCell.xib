@@ -43,7 +43,7 @@
                             <outlet property="delegate" destination="-1" id="8gZ-nJ-6Z2"/>
                         </connections>
                     </textField>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FGe-Uz-7bK">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="generic-calendar@1x.png" translatesAutoresizingMaskIntoConstraints="NO" id="FGe-Uz-7bK">
                         <rect key="frame" x="40" y="38" width="17" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="17" id="Awl-G7-DFx"/>
@@ -64,9 +64,13 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="calenderImageView" destination="FGe-Uz-7bK" id="XaR-fb-rRx"/>
                 <outlet property="datePickerTextField" destination="PHM-mG-7Lk" id="8Ha-1P-DQm"/>
             </connections>
             <point key="canvasLocation" x="393" y="379"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="generic-calendar@1x.png" width="16" height="16"/>
+    </resources>
 </document>

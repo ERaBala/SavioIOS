@@ -1,18 +1,15 @@
 //
-//  CalculationTableViewCell.swift
+//  OfferTableViewCell.swift
 //  Savio
 //
-//  Created by Maheshwari on 01/06/16.
+//  Created by Maheshwari on 06/06/16.
 //  Copyright © 2016 Prashant. All rights reserved.
 //
 
 import UIKit
 
-class CalculationTableViewCell: UITableViewCell {
+class OfferTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var calculationLabel: UILabel!
-       weak var tblView : UITableView?
-    var colorDataDict : Dictionary<String,AnyObject> = [:]
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

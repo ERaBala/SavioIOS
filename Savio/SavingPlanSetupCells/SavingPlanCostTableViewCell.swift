@@ -21,16 +21,24 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+    var colorDataDict : Dictionary<String,AnyObject> = [:]
+    
+    @IBOutlet weak var currencyLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         costTextField.delegate = self
+         colorDataDict =  NSUserDefaults.standardUserDefaults().objectForKey("colorDataDict") as! Dictionary<String,AnyObject>
         
         minusButton.layer.cornerRadius = minusButton.frame.size.height / 2
+        minusButton.setTitleColor(self.setUpColor(), forState: UIControlState.Normal)
         minusButton.layer.masksToBounds = true
         
         plusButton.layer.cornerRadius = plusButton.frame.size.height / 2
         plusButton.layer.masksToBounds = true
-        
+        plusButton.setTitleColor(self.setUpColor(), forState: UIControlState.Normal)
+
+        slider.thumbTintColor = self.setUpColor()
+        currencyLabel.textColor = self.setUpColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -39,6 +47,64 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
+    func setUpColor()-> UIColor
+    {
+        var red : CGFloat = 0.0
+        var green : CGFloat = 0.0
+        var blue: CGFloat  = 0.0
+        
+        if(colorDataDict["header"] as! String == "Group Save")
+        {
+            red = 161/255
+            green = 214/255
+            blue = 248/255
+            
+        }
+        else if(colorDataDict["header"] as! String == "Wedding")
+        {
+            red = 189/255
+            green = 184/255
+            blue = 235/255
+        }
+        else if(colorDataDict["header"] as! String == "Baby")
+        {
+            red = 122/255
+            green = 223/255
+            blue = 172/255
+        }
+        else if(colorDataDict["header"] as! String == "Holiday")
+        {
+            red = 109/255
+            green = 214/255
+            blue = 200/255
+        }
+        else if(colorDataDict["header"] as! String == "Ride")
+        {
+            red = 242/255
+            green = 104/255
+            blue = 107/255
+        }
+        else if(colorDataDict["header"] as! String == "Home")
+        {
+            red = 244/255
+            green = 161/255
+            blue = 111/255
+        }
+        else if(colorDataDict["header"] as! String == "Gadget")
+        {
+            red = 205/255
+            green = 220/255
+            blue = 57/255
+        }
+        else
+        {
+            red = 161/255
+            green = 214/255
+            blue = 248/255
+        }
+        return UIColor(red:red as CGFloat, green: green as CGFloat, blue: blue as CGFloat, alpha: 1)
+    }
+
     
     func getAttributedString() -> NSMutableAttributedString
     {

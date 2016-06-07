@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="savingPlanTitleLabel" destination="M9o-cd-Fof" id="IVZ-jL-KJe"/>
                 <outlet property="tblView" destination="MUm-JV-X8Q" id="TWU-IH-I3j"/>
+                <outlet property="topBackgroundImageView" destination="Ohz-oo-qwT" id="LVI-61-nnX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +26,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7I-Oc-D2D">
                     <rect key="frame" x="0.0" y="44" width="600" height="192"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9o-cd-Fof">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9o-cd-Fof">
                             <rect key="frame" x="60" y="35" width="480" height="117"/>
                             <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,17 +37,24 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ohz-oo-qwT">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="192"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.36470588240000001" green="0.37254901959999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="M9o-cd-Fof" secondAttribute="bottom" constant="40" id="1QY-t0-Sqq"/>
                         <constraint firstItem="M9o-cd-Fof" firstAttribute="leading" secondItem="x7I-Oc-D2D" secondAttribute="leading" constant="60" id="2XB-cQ-EKv"/>
+                        <constraint firstItem="Ohz-oo-qwT" firstAttribute="leading" secondItem="x7I-Oc-D2D" secondAttribute="leading" id="3Mn-3q-Fi3"/>
+                        <constraint firstAttribute="bottom" secondItem="Ohz-oo-qwT" secondAttribute="bottom" id="FqH-MW-Twv"/>
+                        <constraint firstAttribute="trailing" secondItem="Ohz-oo-qwT" secondAttribute="trailing" id="dc7-8l-EaL"/>
+                        <constraint firstItem="Ohz-oo-qwT" firstAttribute="top" secondItem="x7I-Oc-D2D" secondAttribute="top" id="nEc-ou-MIo"/>
                         <constraint firstItem="M9o-cd-Fof" firstAttribute="top" secondItem="x7I-Oc-D2D" secondAttribute="top" constant="35" id="uaU-s5-Vpj"/>
                         <constraint firstAttribute="trailing" secondItem="M9o-cd-Fof" secondAttribute="trailing" constant="60" id="v4P-ZP-vZo"/>
                         <constraint firstAttribute="height" constant="192" id="wjg-Ef-b20"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MUm-JV-X8Q">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MUm-JV-X8Q">
                     <rect key="frame" x="35" y="246" width="530" height="354"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
