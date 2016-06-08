@@ -38,13 +38,10 @@ class SAOfferListTableViewCell: UITableViewCell {
     }
     
     @IBAction func clickedOnOfferDetail(sender:UIButton){
-        
         let str = "This is Savio application and team size is 4, name: Prashant, Maheshwari, Manoj and Gagan"
         lblHT.constant = 30.0
         lblProductDetail?.text = str
-        
     }
-    
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
         let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
