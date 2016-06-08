@@ -9,6 +9,10 @@
 import UIKit
 
 class SAOfferListViewController: UIViewController {
+    var indx : Int = 0
+    var rowHT : CGFloat = 310.0
+    
+    @IBOutlet weak var tblView : UITableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,27 +82,59 @@ class SAOfferListViewController: UIViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         //        let cell = tableView.dequeueReusableCellWithIdentifier("SavingCategoryTableViewCell") as? SavingCategoryTableViewCell
-        //        if cell == nil {
+   
         let bundleArr : Array = NSBundle.mainBundle().loadNibNamed("SAOfferListTableViewCell", owner: nil, options: nil) as Array
         let cell = bundleArr[0] as! SAOfferListTableViewCell
-        //        }
-        //        let cellDict = tblArr[indexPath.row]
-        //        print(cellDict["header"])
-        //        cell.lblHeader!.text = cellDict["header"] as? String;
-        //        cell.lblDetail?.text = cellDict["detail"] as? String
-        //        cell.imgView?.image = UIImage(named: cellDict["image"] as! String)
+   
         
         cell.btnAddOffer?.addTarget(self, action: #selector(SAOfferListViewController.clickedOnAddOffer(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.btnOfferDetail?.addTarget(self, action: #selector(SAOfferListViewController.clickedOnOfferDetail(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.btnOfferDetail?.tag = indexPath.row
+        if indx == indexPath.row {
+             let str = "This is Savio application and team size is 4, name: Prashant, Maheshwari, Manoj and Gagan"
+            let ht = self.heightForView(str, font: UIFont(name: "GothamRounded-Book", size: 10)!, width: (cell.lblProductDetail?.frame.size.width)! )
+            cell.lblHT.constant = ht
+            cell.lblProductDetail?.text = str
+        }
+        else{
+            cell.lblHT.constant = 0.0
+            cell.lblProductDetail?.text = ""
+        }
+
+//        cell.lblHT.constant = 20.0
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if indexPath.row == indx{
+            return rowHT + 310.0
+        }else{
         return 310.0
+        }
     }
     
     func clickedOnAddOffer(sender:UIButton) {
-        print("Clicked on Wishlist button")
+        print(sender.tag)
+    }
+    
+    func clickedOnOfferDetail(sender:UIButton) {
+        print(sender.tag)
+        indx = sender.tag
+        tblView?.reloadData()
+       
     }
 
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        
+        label.sizeToFit()
+        rowHT = label.frame.height
+        return rowHT
+    }
 
 }
