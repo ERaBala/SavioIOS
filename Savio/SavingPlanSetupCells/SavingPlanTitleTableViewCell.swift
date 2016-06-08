@@ -90,9 +90,9 @@ class SavingPlanTitleTableViewCell: UITableViewCell,UITextFieldDelegate {
         }
         else
         {
-            red = 161/255
-            green = 214/255
-            blue = 248/255
+            red = 244/255
+            green = 176/255
+            blue = 58/255
         }
         return UIColor(red:red as CGFloat, green: green as CGFloat, blue: blue as CGFloat, alpha: 1)
     }

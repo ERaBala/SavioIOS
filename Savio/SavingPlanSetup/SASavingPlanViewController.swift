@@ -117,18 +117,47 @@ class SASavingPlanViewController: UIViewController,UITableViewDelegate,UITableVi
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func cameraButtonPressed(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-            imagePicker.allowsEditing = false
+        
+        
+        let alertController = UIAlertController(title: "select image from", message: "", preferredStyle:UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
+        { action -> Void in
             
-            self.presentViewController(imagePicker, animated: true, completion: nil)
-        }
-        else {
-            let alert = UIAlertView(title: "Warning", message: "No camera available", delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
-        }
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                imagePicker.allowsEditing = false
+                
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }
+            else {
+                let alert = UIAlertView(title: "Warning", message: "No camera available", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+
+            })
+        alertController.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default)
+        { action -> Void in
+            
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                imagePicker.allowsEditing = false
+                
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }
+            else {
+                let alert = UIAlertView(title: "Warning", message: "No camera available", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+            
+            })
+
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
         
         
     }

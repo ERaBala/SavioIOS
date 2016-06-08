@@ -21,6 +21,7 @@ MyExtensionJavaScriptClass.prototype = {
         }
         return "xyz";
     },
+    
     run: function(arguments) {
     // Pass the baseURI of the webpage to the extension.
         arguments.completionFunction({"url": document.baseURI, "host": document.location.hostname, "title": document.title, "description":this.getDescription(), "image": this.getImage()});

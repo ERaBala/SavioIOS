@@ -54,7 +54,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         loginButton.layer.cornerRadius = 5
         
         userInfoDict = objAPI.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
-        print(userInfoDict)
+        
         
     }
     //UITextField delegate method
@@ -117,6 +117,7 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
         lblForgottonYourPasscode.hidden = false
         btnCancel.hidden = false
         registerButton .setTitle("Send me a code", forState: UIControlState.Normal)
+        registerButton.hidden = false
         forgotPasscodeButton.hidden = true
         loginButton.hidden = true
         enterPasscodeTextField.hidden = true
@@ -217,7 +218,15 @@ class SAEnterYourPINViewController: UIViewController,UITextFieldDelegate,OTPSent
 
 func successResponseForLogInAPI(objResponse: Dictionary<String, AnyObject>) {
     objAnimView.removeFromSuperview()
-    print(objResponse)
+    //print(objResponse)
+    let dict = objResponse["party"]
+    let udidDict = dict!["deviceRegistration"] as! Array<Dictionary<String,AnyObject>>
+    print(udidDict)
+    let udidArray = udidDict[0]
+    print(udidArray)
+    userInfoDict["cookie"] = udidArray["COOKIE"] as! String
+    objAPI.storeValueInKeychainForKey("userInfo", value: userInfoDict)
+    print(userInfoDict)
     let objHurrrayView = HurreyViewController(nibName:"HurreyViewController",bundle: nil)
     self.navigationController?.pushViewController(objHurrrayView, animated: true)
 }

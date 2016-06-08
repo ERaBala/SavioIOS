@@ -44,6 +44,13 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         
         
     }
+    
+
+    
+    func removeKeyboardNotification(){
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         objAnimView.removeFromSuperview()
@@ -75,6 +82,17 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
     
     //UITextField delegate method
     func textFieldDidBeginEditing(textField: UITextField) {
+        if(UIScreen.mainScreen().bounds.size.height == 480)
+        {
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDelegate(self)
+            UIView.setAnimationDuration(0.5)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            view!.frame = CGRectMake(view!.frame.origin.x, (view!.frame.origin.y-40), view!.frame.size.width, view!.frame.size.height)
+            UIView.commitAnimations()
+        }
+    
+
         codeDoesNotMatchLabel.hidden = true;
         fiveDigitTextField.layer.borderColor = UIColor(red: 0.94, green: 0.58, blue: 0.20, alpha: 1).CGColor
         fiveDigitTextField.textColor = UIColor.blackColor()
@@ -90,6 +108,15 @@ class FiveDigitVerificationViewController: UIViewController,UITextFieldDelegate,
         codeDoesNotMatchLabel.hidden = true
     }
     @IBAction func doneButtonToolBarPressed(sender: AnyObject) {
+        if(UIScreen.mainScreen().bounds.size.height == 480)
+        {
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDelegate(self)
+            UIView.setAnimationDuration(0.5)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            view!.frame = CGRectMake(view!.frame.origin.x, (view!.frame.origin.y+50), view!.frame.size.width, view!.frame.size.height)
+            UIView.commitAnimations()
+        }
         fiveDigitTextField.resignFirstResponder()
     }
     @IBAction func clickOnGotItButton(sender: AnyObject) {

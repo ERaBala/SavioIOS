@@ -34,10 +34,10 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3000" translatesAutoresizingMaskIntoConstraints="NO" id="ISQ-4m-YEC">
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3000" translatesAutoresizingMaskIntoConstraints="NO" id="ISQ-4m-YEC" customClass="slider" customModule="Savio" customModuleProvider="target">
                         <rect key="frame" x="36" y="73" width="248" height="31"/>
-                        <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="maximumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="minimumTrackTintColor" red="0.21176470588235294" green="0.2196078431372549" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="maximumTrackTintColor" red="0.21176470588235294" green="0.2196078431372549" blue="0.26666666666666666" alpha="1" colorSpace="deviceRGB"/>
                         <color key="thumbTintColor" red="0.95686274510000002" green="0.69019607839999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="CSz-Gw-0MG"/>

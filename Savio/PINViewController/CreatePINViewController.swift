@@ -91,11 +91,11 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
         {
             if(textField == enterFourDigitPIN)
             {
-                backgroundScrollView.contentOffset = CGPointMake(0, 23)
+                backgroundScrollView.contentOffset = CGPointMake(0, 90)
             }
             else if(textField == reEnterFourDigitPIN)
             {
-                backgroundScrollView.contentOffset = CGPointMake(0, 85)
+                backgroundScrollView.contentOffset = CGPointMake(0, 105)
             }
         }
     }
@@ -169,13 +169,15 @@ class CreatePINViewController: UIViewController,UITextFieldDelegate,PostCodeVeri
                     updatePasscodeDict["mobile_Number"] = userInfoDict["phone_number"]
                     updatePasscodeDict["pin"] = enterFourDigitPIN.text?.MD5()
                     
-                    print(updatePasscodeDict)
+                   
                     if(checkString == "ForgotPasscode")
                     {
+                         print(updatePasscodeDict)
                         objAPI.resetPasscodeDelegate = self
                         objAPI.resetPasscodeOfUserID(updatePasscodeDict)
                     }
                     else{
+                         print(userInfoDict)
                         objAPI.delegate = self
                         objAPI.registerTheUserWithTitle(userInfoDict,apiName: "Customers")
                     }

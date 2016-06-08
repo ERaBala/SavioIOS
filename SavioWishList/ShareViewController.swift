@@ -1,99 +1,96 @@
 //
 //  ShareViewController.swift
-//  SavioWishList
+//  Share
 //
-//  Created by Maheshwari on 01/06/16.
-//  Copyright © 2016 Prashant. All rights reserved.
+//  Created by Mangesh on 03/06/16.
+//  Copyright © 2016 Mangesh  Tekale. All rights reserved.
 //
 
 import UIKit
 import Social
 import MobileCoreServices
 
-
-class ShareViewController: SLComposeServiceViewController,TeamViewProtocol {
+class ShareViewController: UIViewController,UITextFieldDelegate {
     
-    
-    var item: SLComposeSheetConfigurationItem!
-    var teamPickerVC: EditPriceViewController!
-    
-    override func didSelectPost() {
-        super.didSelectPost()
-        for item: AnyObject in (self.extensionContext?.inputItems)! {
-            let inputItem = item as! NSExtensionItem
-            
-            for provider: AnyObject in inputItem.attachments! {
-                let itemProvider = provider as! NSItemProvider
-                
-                if itemProvider.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String) {
-                    itemProvider.loadItemForTypeIdentifier(kUTTypePropertyList as String, options: nil, completionHandler: { (result: NSSecureCoding?, error: NSError!) -> Void in
-                        if let resultDict = result as? NSDictionary {
-                            print(resultDict)
-                            
-                        }
-                    })
-                }
-            }
-        }
-        
-    }
-    override func didSelectCancel() {
-        
-    }
-    override func configurationItems() -> [AnyObject]! {
-        self.item = SLComposeSheetConfigurationItem()
-        
-        self.item.title = "Price"
-        self.item.value = "None"
-        
-        self.item.tapHandler = {
-            self.teamPickerVC = EditPriceViewController()
-            self.teamPickerVC.delegate = self
-            self.pushConfigurationViewController(self.teamPickerVC)
-        }
-        
-        return [self.item]
-    }
-    
-    func sendingViewController(viewController: EditPriceViewController, sentItem: String) {
-        self.item.value = sentItem
-        self.popConfigurationViewController()
-    }
-
-    
-    /*
-    @IBOutlet weak var priceButton: UIButton!
     @IBOutlet var lblImagePagingCount: UILabel!
     @IBOutlet var textView: UITextView!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var bgView: UIView!
     var currentImagePosition: Int = 0;
-    
-    var item: SLComposeSheetConfigurationItem!
-    
     var dictGlobal: Dictionary = [String: AnyObject]()
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
     }
     
     @IBAction func postButtonTapped(sender: AnyObject) {
-        // self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
-        
         let objAPI = API()
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let imageData:NSData = UIImageJPEGRepresentation(self.imageView.image!, 1.0)!
+            let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+            //print(base64String)
+            
+            var dict : Dictionary<String,AnyObject> = [:]
+            dict["title"] = "TV"
+            dict["amount"] = "500"
+            dict["pty_id"] = "196"
+            dict["imageURL"] = base64String
+            
+            objAPI.sendWishList(dict)
+            dispatch_async(dispatch_get_main_queue(), {
+                // update some UI
+            });
+        });
+        
+        
         if((objAPI.getValueFromKeychainOfKey("myPasscode") as! String) == "")
         {
-            let alert = UIAlertController(title: "Warning", message: "Please login to Savio first", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let imageData:NSData = UIImageJPEGRepresentation(self.imageView.image!, 1.0)!
+                let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+                //print(base64String)
+                
+                var dict : Dictionary<String,AnyObject> = [:]
+                dict["title"] = "TV"
+                dict["amount"] = "500"
+                dict["pty_id"] = "196"
+                dict["imageURL"] = base64String
+                
+                objAPI.sendWishList(dict)
+                dispatch_async(dispatch_get_main_queue(), {
+                    // update some UI
+                });
+            });
+            
+
+            
+            //self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
         }
         else
         {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let imageData:NSData = UIImageJPEGRepresentation(self.imageView.image!, 1.0)!
+                let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+                print(base64String)
+                
+                var dict : Dictionary<String,AnyObject> = [:]
+                dict["title"] = "TV"
+                dict["amount"] = "500"
+                dict["pty_id"] = "196"
+                dict["imageURL"] = base64String
+                
+                objAPI.sendWishList(dict)
+                dispatch_async(dispatch_get_main_queue(), {
+                    // update some UI
+                    });
+                });
             
+         
         }
         
         
     }
-    
-
     @IBAction func leftBtnPressed(sender: AnyObject) {
         currentImagePosition -= 1;
         if currentImagePosition < 0 {
@@ -101,6 +98,11 @@ class ShareViewController: SLComposeServiceViewController,TeamViewProtocol {
         } else {
             self.showImage(currentImagePosition)
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        return textField.resignFirstResponder()
     }
     
     @IBAction func rightButtonPressed(sender: AnyObject) {
@@ -119,6 +121,10 @@ class ShareViewController: SLComposeServiceViewController,TeamViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.bgView.layer.borderColor = UIColor.grayColor().CGColor
+        self.bgView.layer.borderWidth = 2.0
+        self.bgView.layer.cornerRadius = 5.0
         for item: AnyObject in (self.extensionContext?.inputItems)! {
             let inputItem = item as! NSExtensionItem
             for provider: AnyObject in inputItem.attachments! {
@@ -140,12 +146,7 @@ class ShareViewController: SLComposeServiceViewController,TeamViewProtocol {
             }
         }
         
-        let objPriceViewController = EditPriceViewController()
-        let item = SLComposeSheetConfigurationItem()
-        item.title = "Price"
-        item.tapHandler = {
-           self.presentViewController(objPriceViewController, animated: true, completion: nil)
-        };
+        
     }
     
     func showImage(idx: Int)  {
@@ -170,10 +171,6 @@ class ShareViewController: SLComposeServiceViewController,TeamViewProtocol {
         });
     }
     
-    @IBAction func priceButtonPressed(sender: AnyObject) {
-        
-
-    }
     //    override func isContentValid() -> Bool {
     //        // Do validation of contentText and/or NSExtensionContext attachments here
     //        return true
@@ -190,5 +187,5 @@ class ShareViewController: SLComposeServiceViewController,TeamViewProtocol {
     //        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
     //        return []
     //    }
-    */
+    
 }

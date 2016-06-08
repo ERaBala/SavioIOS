@@ -105,7 +105,7 @@ class API: UIView {
                         {
                             //else return an error
                             dispatch_async(dispatch_get_main_queue()){
-                                print(dict)
+                                //print(dict)
                                 self.delegate?.error("That postcode doesn't look right")
                             }
                         }
@@ -138,10 +138,10 @@ class API: UIView {
                 if let data = data
                 {
                     let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
-                    print(json)
+                   // print(json)
                     if let dict = json as? Dictionary<String,AnyObject>
                     {
-                        print("\(dict)")
+                        //print("\(dict)")
                         dispatch_async(dispatch_get_main_queue()){
                             self.delegate?.successResponseForRegistrationAPI(dict)
                         }
@@ -180,14 +180,14 @@ class API: UIView {
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            print(request)
+            //print(request)
             let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
                 if let data = data
                 {
                     let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
                     if let dict = json as? Dictionary<String,AnyObject>
                     {
-                        print(dict)
+                       // print(dict)
                         if(dict["success"] as! Bool == true)
                         {
                             dispatch_async(dispatch_get_main_queue()){
@@ -243,7 +243,7 @@ class API: UIView {
                     let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
                     if let dict = json as? Dictionary<String,AnyObject>
                     {
-                        print(dict)
+                        //print(dict)
                         if(dict["message"] as! String  == "Verification code is correct.")
                         {
                             dispatch_async(dispatch_get_main_queue()){
@@ -308,10 +308,10 @@ class API: UIView {
                 if let data = data
                 {
                     let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
-                    print(json)
+                    //print(json)
                     if let dict = json as? Dictionary<String,AnyObject>
                     {
-                        print("\(dict)")
+                        //print("\(dict)")
                         if(dict["message"] as! String == "Password is incorrect")
                         {
                             dispatch_async(dispatch_get_main_queue()){
@@ -326,7 +326,7 @@ class API: UIView {
                     }
                     else
                     {
-                        print(response?.description)
+                        //print(response?.description)
                         dispatch_async(dispatch_get_main_queue()){
                             self.logInDelegate?.errorResponseForOTPLogInAPI((response?.description)!)
                         }
@@ -365,16 +365,16 @@ class API: UIView {
                     print(json)
                     if let dict = json as? Dictionary<String,AnyObject>
                     {
-                        print("\(dict)")
+                       // print("\(dict)")
                         dispatch_async(dispatch_get_main_queue()){
                             self.resetPasscodeDelegate?.successResponseForResetPasscodeAPI(dict)
                         }
                     }
                     else
                     {
-                        print("error")
+                        //print("error")
                         dispatch_async(dispatch_get_main_queue()){
-                            self.resetPasscodeDelegate?.errorResponseForOTPResetPasscodeAPI((error?.localizedDescription)!)
+                           // self.resetPasscodeDelegate?.errorResponseForOTPResetPasscodeAPI((error?.localizedDescription)!)
                         }
                     }
                 }
@@ -393,6 +393,7 @@ class API: UIView {
     func storeValueInKeychainForKey(key:String,value:AnyObject){
         //Save the value of password into keychain
         KeychainItemWrapper.save(key, data: value)
+        
     }
     
     func getValueFromKeychainOfKey(key:String)-> AnyObject{
@@ -415,9 +416,20 @@ class API: UIView {
     
     func sendWishList(dict:Dictionary<String,AnyObject>)
     {
+        let userInfoDict = self.getValueFromKeychainOfKey("userInfo") as! Dictionary<String,AnyObject>
+        let udidDict = userInfoDict["deviceRegistration"] as! Array<Dictionary<String,AnyObject>>
+
+        let cookie = userInfoDict["cookie"] as! String
+        let partyID = userInfoDict["partyId"] as! NSNumber
+        
+        let utf8str = String(format: "%@:%@",partyID,cookie).dataUsingEncoding(NSUTF8StringEncoding)
+        let base64Encoded = utf8str?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+    
         //Check if network is present
         if(self.isConnectedToNetwork())
         {
+   
+
             let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/savio-rest/V1/WishList/WL",baseURL))!)
             request.HTTPMethod = "POST"
             
@@ -425,6 +437,7 @@ class API: UIView {
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dict, options: [])
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.addValue(base64Encoded!, forHTTPHeaderField: "Authorization")
             
             let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
                 if let data = data
@@ -437,7 +450,7 @@ class API: UIView {
                     }
                     else
                     {
-                        print(response?.description)
+                       print(response?.description)
                         
                         
                     }

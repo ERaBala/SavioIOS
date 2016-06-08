@@ -17,9 +17,8 @@ class slider: UISlider {
         // Drawing code
     }
     */
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
-        var bounds: CGRect = self.bounds
-        bounds = CGRectInset(bounds, -10, -15)
-        return CGRectContainsPoint(bounds, point)
+    override func trackRectForBounds(bounds: CGRect) -> CGRect {
+        let rect:CGRect = CGRectMake(0, 10, UIScreen.mainScreen().bounds.width-140, 8)
+        return rect
     }
 }

@@ -38,7 +38,7 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         plusButton.setTitleColor(self.setUpColor(), forState: UIControlState.Normal)
 
         slider.thumbTintColor = self.setUpColor()
-        //slider.setThumbImage(UIImage(named: "offer-close.png"), forState: UIControlState.Normal)
+        slider.setThumbImage(self.setUpImage(), forState: UIControlState.Normal)
 
         currencyLabel.textColor = self.setUpColor()
     }
@@ -49,7 +49,46 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
-    
+    func setUpImage()-> UIImage
+    {
+        
+        var imageName = ""
+        if(colorDataDict["header"] as! String == "Group Save")
+        {
+            imageName = "group-save-circle.png"
+        }
+        else if(colorDataDict["header"] as! String == "Wedding")
+        {
+            imageName = "wedding-circle.png"
+        }
+        else if(colorDataDict["header"] as! String == "Baby")
+        {
+            imageName = "baby-circle.png"
+        }
+        else if(colorDataDict["header"] as! String == "Holiday")
+        {
+            imageName = "holiday-circle.png"
+        }
+        else if(colorDataDict["header"] as! String == "Ride")
+        {
+            imageName = "ride-circle.png"
+        }
+        else if(colorDataDict["header"] as! String == "Home")
+        {
+            imageName = "home-circle.png"
+        }
+        else if(colorDataDict["header"] as! String == "Gadget")
+        {
+            imageName = "gadget-circle.png"
+        }
+        else
+        {
+            imageName = "generic-circle.png"
+        }
+        return UIImage(named:imageName)!
+        
+    }
+
     func setUpColor()-> UIColor
     {
         var red : CGFloat = 0.0
@@ -101,9 +140,9 @@ class SavingPlanCostTableViewCell: UITableViewCell,UITextFieldDelegate {
         }
         else
         {
-            red = 161/255
-            green = 214/255
-            blue = 248/255
+            red = 244/255
+            green = 176/255
+            blue = 58/255
         }
         return UIColor(red:red as CGFloat, green: green as CGFloat, blue: blue as CGFloat, alpha: 1)
     }
