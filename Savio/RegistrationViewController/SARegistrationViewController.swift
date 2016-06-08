@@ -838,7 +838,7 @@ class SARegistrationViewController: UIViewController,UITableViewDelegate,UITable
                     else if(str?.characters.count < 10)
                     {
                         errorFLag = true
-                        errorMsg = "That mobile number should greater than 10 digits"
+                        errorMsg = "That mobile number should be greater than 10 digits"
                         dictForTextFieldValue["errorMobileValidation"] = errorMsg
                     }
                     else if(str?.characters.count > 16)

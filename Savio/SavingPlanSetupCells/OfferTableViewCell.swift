@@ -10,6 +10,12 @@ import UIKit
 
 class OfferTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var offerDetailLabel: UILabel!
+    @IBOutlet weak var offerTitleLabel: UILabel!
+    @IBOutlet weak var offerImageView: UIImageView!
+     weak var tblView : UITableView?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -10,6 +10,7 @@ import UIKit
 import SystemConfiguration
 import Foundation
 
+
 let baseURL = "http://54.191.188.214:8080/SavioAPI/V1"
 //let APIKey = "Ppia3IHl0frDIgr711SlZWUBlpWdNfDs"
 let APIKey = "bcdfb7ce5e6854dcfe65ce5dd0d568c7"
@@ -409,6 +410,46 @@ class API: UIView {
     
     func deleteKeychainValue(key:String) {
         KeychainItemWrapper.delete(key)
+    }
+    
+    
+    func sendWishList(dict:Dictionary<String,AnyObject>)
+    {
+        //Check if network is present
+        if(self.isConnectedToNetwork())
+        {
+            let request = NSMutableURLRequest(URL: NSURL(string: String(format:"%@/Customers/savio-rest/V1/WishList/WL",baseURL))!)
+            request.HTTPMethod = "POST"
+            
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(dict, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if let data = data
+                {
+                    let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+                    print(json)
+                    if let dict = json as? Dictionary<String,AnyObject>
+                    {
+                        print("\(dict)")
+                    }
+                    else
+                    {
+                        print(response?.description)
+                        
+                        
+                    }
+                }
+                
+            }
+            dataTask.resume()
+        }
+        else{
+            //Give error no network found
+        }
+        
     }
     
     
